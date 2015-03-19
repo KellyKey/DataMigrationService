@@ -1,0 +1,230 @@
+2014-12-14 21:17:38.5816 *********************************************************
+2014-12-14 21:17:38.6440 * VersionOne Data Migration Log
+2014-12-14 21:17:38.6440 * 12/14/2014 9:17:38 PM
+2014-12-14 21:17:38.6440 *********************************************************
+2014-12-14 21:17:38.6596 
+2014-12-14 21:17:38.6596 Initializing configurations.
+2014-12-14 21:17:38.8624 Verifying connections.
+2014-12-14 21:17:41.0776 -> Connection to staging database "V1Staging" verified.
+2014-12-14 21:18:11.2480 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-14 21:18:11.2480 -> V1 target instance version: 14.3.2.6314.
+2014-12-14 21:18:11.9812 
+2014-12-14 21:18:11.9812 *** CLOSING:
+2014-12-14 21:18:12.4804 Closing defects.
+2014-12-14 21:18:13.8532 -> Closed 0 defects.
+2014-12-14 21:18:23.1196 Closing stories.
+2014-12-14 21:18:23.5408 -> Closed 0 stories.
+2014-12-14 21:18:23.5408 Closing epics.
+2014-12-14 21:18:24.4144 -> Closed 0 epics.
+2014-12-14 21:18:24.4144 
+2014-12-14 21:18:24.4144 Data migration complete!
+2014-12-14 21:18:24.4144 
+2014-12-14 21:18:24.4144 
+2014-12-14 21:19:48.9786 *********************************************************
+2014-12-14 21:19:48.9942 * VersionOne Data Migration Log
+2014-12-14 21:19:48.9942 * 12/14/2014 9:19:48 PM
+2014-12-14 21:19:49.0098 *********************************************************
+2014-12-14 21:19:49.0098 
+2014-12-14 21:19:49.0098 Initializing configurations.
+2014-12-14 21:19:49.4466 Verifying connections.
+2014-12-14 21:19:57.1842 -> Connection to staging database "V1Staging" verified.
+2014-12-14 21:20:24.5310 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-14 21:20:24.5310 -> V1 source instance version: 11.1.11.2269.
+2014-12-14 21:20:26.4810 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-14 21:20:26.4810 -> V1 target instance version: 14.3.2.6314.
+2014-12-14 21:20:26.6370 
+2014-12-14 21:20:26.6370 *** EXPORTING:
+2014-12-14 21:20:26.7150 Exporting projects.
+2014-12-14 21:20:32.1282 Calling projects.Export
+2014-12-14 21:20:34.9518 assetTotal is 70 
+2014-12-14 21:20:37.2918 -> Exported 70 projects.
+2014-12-14 21:20:37.2918 Exporting epics.
+2014-12-14 21:20:37.3074 -> Exported 0 epics.
+2014-12-14 21:20:37.3074 Exporting stories.
+2014-12-14 21:22:10.3614 -> Exported 4566 stories.
+2014-12-14 21:22:10.6110 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-14 21:22:39.3944 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-14 21:22:59.4890 The CustomField is Custom_Workstream and Type is Relation
+2014-12-14 21:23:18.9712 The CustomField is Custom_Ticket and Type is Text
+2014-12-14 21:23:40.4748 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-14 21:24:35.0032 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-14 21:25:18.3212 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-14 21:25:39.1782 The CustomField is Custom_Comments and Type is Text
+2014-12-14 21:25:56.8494 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-14 21:26:00.0942 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-14 21:26:02.9022 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-14 21:26:23.3694 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-14 21:26:31.9338 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-14 21:27:17.7666 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2014-12-14 22:25:57.9671 *********************************************************
+2014-12-14 22:25:58.0295 * VersionOne Data Migration Log
+2014-12-14 22:25:58.0295 * 12/14/2014 10:25:58 PM
+2014-12-14 22:25:58.0451 *********************************************************
+2014-12-14 22:25:58.0451 
+2014-12-14 22:25:58.0451 Initializing configurations.
+2014-12-14 22:25:58.2947 Verifying connections.
+2014-12-14 22:26:31.4029 -> Unable to connect to staging database "V1Staging".
+2014-12-14 22:26:31.6681 ERROR: Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=31882; handshake=0; 
+2014-12-14 22:26:31.6681 
+2014-12-14 22:26:31.6681 Data migration terminated.
+2014-12-14 22:26:31.6681 
+2014-12-14 22:26:31.6681 
+2014-12-14 22:26:58.3112 *********************************************************
+2014-12-14 22:26:58.3424 * VersionOne Data Migration Log
+2014-12-14 22:26:58.3424 * 12/14/2014 10:26:58 PM
+2014-12-14 22:26:58.3580 *********************************************************
+2014-12-14 22:26:58.3580 
+2014-12-14 22:26:58.3580 Initializing configurations.
+2014-12-14 22:26:58.6076 Verifying connections.
+2014-12-14 22:27:00.8384 -> Connection to staging database "V1Staging" verified.
+2014-12-14 22:27:22.9979 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-14 22:27:22.9979 -> V1 source instance version: 11.1.11.2269.
+2014-12-14 22:27:33.4967 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-14 22:27:33.4967 -> V1 target instance version: 14.3.2.6314.
+2014-12-14 22:27:33.7775 
+2014-12-14 22:27:33.7775 *** EXPORTING:
+2014-12-14 22:27:34.1207 Exporting projects.
+2014-12-14 22:27:34.1207 Calling projects.Export
+2014-12-14 22:27:36.4139 assetTotal is 70 
+2014-12-14 22:27:36.9599 ERROR: Violation of PRIMARY KEY constraint 'PK_Projects'. Cannot insert duplicate key in object 'dbo.Projects'. The duplicate key value is (Scope:15251).
+The statement has been terminated.
+2014-12-14 22:27:36.9599 
+2014-12-14 22:27:36.9755 Data migration terminated.
+2014-12-14 22:27:36.9755 
+2014-12-14 22:27:36.9755 
+2014-12-14 22:28:50.2213 *********************************************************
+2014-12-14 22:28:50.2369 * VersionOne Data Migration Log
+2014-12-14 22:28:55.7749 * 12/14/2014 10:28:55 PM
+2014-12-14 22:28:55.7905 *********************************************************
+2014-12-14 22:28:55.7905 
+2014-12-14 22:28:55.7905 Initializing configurations.
+2014-12-14 22:28:56.0557 Verifying connections.
+2014-12-14 22:28:58.2397 -> Connection to staging database "V1Staging" verified.
+2014-12-14 22:29:01.7965 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-14 22:29:01.7965 -> V1 source instance version: 11.1.11.2269.
+2014-12-14 22:29:02.0461 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-14 22:29:02.0461 -> V1 target instance version: 14.3.2.6314.
+2014-12-14 22:29:02.0461 
+2014-12-14 22:29:02.0461 *** EXPORTING:
+2014-12-14 22:29:02.1709 Exporting projects.
+2014-12-14 22:29:02.1709 Calling projects.Export
+2014-12-14 22:29:02.3581 assetTotal is 70 
+2014-12-14 22:29:05.0101 -> Exported 70 projects.
+2014-12-14 22:29:05.0101 Exporting epics.
+2014-12-14 22:29:05.0413 -> Exported 0 epics.
+2014-12-14 22:29:05.0413 Exporting stories.
+2014-12-14 22:30:34.9585 -> Exported 4566 stories.
+2014-12-14 22:30:37.3297 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-14 22:30:47.1028 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-14 22:31:38.8772 The CustomField is Custom_Workstream and Type is Relation
+2014-12-14 22:31:48.6322 The CustomField is Custom_Ticket and Type is Text
+2014-12-14 22:31:51.7742 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-14 22:32:00.2294 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-14 22:32:07.9982 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-14 22:32:10.6346 The CustomField is Custom_Comments and Type is Text
+2014-12-14 22:32:16.2350 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-14 22:32:19.5422 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-14 22:32:25.4161 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-14 22:32:57.7019 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-14 22:33:17.9401 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-14 22:33:53.8039 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2014-12-14 22:40:33.5829 *********************************************************
+2014-12-14 22:40:33.6141 * VersionOne Data Migration Log
+2014-12-14 22:40:33.6141 * 12/14/2014 10:40:33 PM
+2014-12-14 22:40:33.6297 *********************************************************
+2014-12-14 22:40:33.6297 
+2014-12-14 22:40:33.6297 Initializing configurations.
+2014-12-14 22:40:33.8013 Verifying connections.
+2014-12-14 22:40:35.0493 -> Connection to staging database "V1Staging" verified.
+2014-12-14 22:40:36.6455 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-14 22:40:36.6455 -> V1 source instance version: 11.1.11.2269.
+2014-12-14 22:40:36.9263 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-14 22:40:37.0823 -> V1 target instance version: 14.3.2.6314.
+2014-12-14 22:40:37.0823 
+2014-12-14 22:40:37.0823 *** EXPORTING:
+2014-12-14 22:40:37.1447 Exporting projects.
+2014-12-14 22:40:37.1447 Calling projects.Export
+2014-12-14 22:40:37.4255 assetTotal is 70 
+2014-12-14 22:40:38.1587 ERROR: Violation of PRIMARY KEY constraint 'PK_Projects'. Cannot insert duplicate key in object 'dbo.Projects'. The duplicate key value is (Scope:15251).
+The statement has been terminated.
+2014-12-14 22:40:38.1587 
+2014-12-14 22:40:38.1587 Data migration terminated.
+2014-12-14 22:40:38.1587 
+2014-12-14 22:40:38.1587 
+2014-12-14 22:43:41.6567 *********************************************************
+2014-12-14 22:43:41.6879 * VersionOne Data Migration Log
+2014-12-14 22:43:41.6879 * 12/14/2014 10:43:41 PM
+2014-12-14 22:43:41.7035 *********************************************************
+2014-12-14 22:43:41.7035 
+2014-12-14 22:43:41.7035 Initializing configurations.
+2014-12-14 22:43:41.9531 Verifying connections.
+2014-12-14 22:43:44.1059 -> Connection to staging database "V1Staging" verified.
+2014-12-14 22:43:44.7143 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-14 22:43:44.7143 -> V1 source instance version: 11.1.11.2269.
+2014-12-14 22:43:44.9377 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-14 22:43:44.9377 -> V1 target instance version: 14.3.2.6314.
+2014-12-14 22:43:44.9377 
+2014-12-14 22:43:44.9377 *** EXPORTING:
+2014-12-14 22:43:45.0469 Exporting projects.
+2014-12-14 22:43:45.0469 Calling projects.Export
+2014-12-14 22:43:45.6553 assetTotal is 70 
+2014-12-14 22:43:47.3713 -> Exported 70 projects.
+2014-12-14 22:43:47.3869 Exporting epics.
+2014-12-14 22:43:47.3869 -> Exported 0 epics.
+2014-12-14 22:43:47.3869 Exporting stories.
+2014-12-14 22:44:21.3276 -> Exported 4566 stories.
+2014-12-14 22:44:21.9828 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-14 22:44:39.2258 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-14 22:44:43.3286 The CustomField is Custom_Workstream and Type is Relation
+2014-12-14 22:44:49.8388 The CustomField is Custom_Ticket and Type is Text
+2014-12-14 22:44:52.2256 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-14 22:44:57.0388 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-14 22:45:02.5300 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-14 22:45:04.8644 The CustomField is Custom_Comments and Type is Text
+2014-12-14 22:45:10.5272 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-14 22:45:23.9819 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-14 22:45:32.5307 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-14 22:45:38.6459 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-14 22:45:41.5787 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-14 22:45:55.7067 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2014-12-14 22:45:56.1903 ERROR: The remote server returned an error: (500) Internal Server Error.
+2014-12-14 22:45:56.1903 
+2014-12-14 22:45:56.1903 Data migration terminated.
+2014-12-14 22:45:56.1903 
+2014-12-14 22:45:56.1903 
+2014-12-14 23:10:05.6871 *********************************************************
+2014-12-14 23:10:05.7027 * VersionOne Data Migration Log
+2014-12-14 23:10:05.7027 * 12/14/2014 11:10:05 PM
+2014-12-14 23:10:05.7183 *********************************************************
+2014-12-14 23:10:05.7183 
+2014-12-14 23:10:05.7183 Initializing configurations.
+2014-12-14 23:10:05.9211 Verifying connections.
+2014-12-14 23:10:08.2923 -> Connection to staging database "V1Staging" verified.
+2014-12-14 23:10:09.0255 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-14 23:10:09.0255 -> V1 source instance version: 11.1.11.2269.
+2014-12-14 23:10:35.9377 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-14 23:10:35.9377 -> V1 target instance version: 14.3.2.6314.
+2014-12-14 23:10:36.0781 
+2014-12-14 23:10:36.0781 *** EXPORTING:
+2014-12-14 23:10:36.5305 Exporting projects.
+2014-12-14 23:10:36.5305 Calling projects.Export
+2014-12-14 23:10:38.8549 assetTotal is 70 
+2014-12-14 23:10:41.8091 -> Exported 70 projects.
+2014-12-14 23:10:45.8339 Exporting epics.
+2014-12-14 23:10:46.3955 -> Exported 0 epics.
+2014-12-14 23:10:46.3955 Exporting stories.
+2014-12-14 23:11:18.5480 -> Exported 4566 stories.
+2014-12-14 23:11:20.2328 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-14 23:11:43.5202 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-14 23:11:46.5310 The CustomField is Custom_Workstream and Type is Relation
+2014-12-14 23:11:51.5592 The CustomField is Custom_Ticket and Type is Text
+2014-12-14 23:11:53.8992 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-14 23:11:57.1128 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-14 23:12:02.0344 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-14 23:12:15.1072 The CustomField is Custom_Comments and Type is Text
+2014-12-14 23:12:18.5392 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-14 23:12:23.6348 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-14 23:12:26.2400 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-14 23:12:29.3912 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-14 23:12:32.7502 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-14 23:12:46.8838 The CustomField is Custom_CRM_ProposedApproach and Type is LongText

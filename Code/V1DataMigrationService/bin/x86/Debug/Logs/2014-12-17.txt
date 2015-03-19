@@ -1,0 +1,203 @@
+2014-12-17 20:34:46.0341 *********************************************************
+2014-12-17 20:34:46.0821 * VersionOne Data Migration Log
+2014-12-17 20:34:46.0821 * 12/17/2014 8:34:46 PM
+2014-12-17 20:34:46.0961 *********************************************************
+2014-12-17 20:34:46.0961 
+2014-12-17 20:34:46.0961 Initializing configurations.
+2014-12-17 20:34:46.3271 Verifying connections.
+2014-12-17 20:34:48.5101 -> Connection to staging database "V1Staging" verified.
+2014-12-17 20:34:49.2491 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-17 20:34:49.2491 -> V1 target instance version: 14.3.2.6314.
+2014-12-17 20:34:49.2561 
+2014-12-17 20:34:49.2561 *** IMPORTING:
+2014-12-17 20:34:49.3301 Importing projects.
+2014-12-17 20:34:49.4311 -> Imported 0 projects.
+2014-12-17 20:34:49.4311 Importing epics.
+2014-12-17 20:34:49.7891 -> Imported 0 epics.
+2014-12-17 20:34:49.7891 Importing stories.
+2014-12-17 20:34:49.9721 Custom field Config is Custom_Legacy
+2014-12-17 20:34:49.9721 Custom Field Name is Custom_LegacyBacklogID
+2014-12-17 20:34:50.0781 *****Setting Story Dependencies
+2014-12-17 20:34:50.1141 -> Imported 0 stories.
+2014-12-17 20:34:50.4621 -> Imported 0 Story custom fields.
+2014-12-17 20:34:50.4621 Importing defects.
+2014-12-17 20:34:50.7761 -> Imported 0 defects.
+2014-12-17 20:34:50.7761 -> Imported 0 defects custom fields.
+2014-12-17 20:34:50.7761 
+2014-12-17 20:34:50.7761 Data migration complete!
+2014-12-17 20:34:50.7761 
+2014-12-17 20:34:50.7761 
+2014-12-17 20:36:00.2595 *********************************************************
+2014-12-17 20:36:00.2907 * VersionOne Data Migration Log
+2014-12-17 20:36:00.2907 * 12/17/2014 8:36:00 PM
+2014-12-17 20:36:00.3063 *********************************************************
+2014-12-17 20:36:00.3063 
+2014-12-17 20:36:00.3063 Initializing configurations.
+2014-12-17 20:36:00.5559 Verifying connections.
+2014-12-17 20:36:02.6463 -> Connection to staging database "V1Staging" verified.
+2014-12-17 20:36:14.8193 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-17 20:36:14.8661 -> V1 source instance version: 11.1.11.2269.
+2014-12-17 20:36:16.0361 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-17 20:36:16.0361 -> V1 target instance version: 14.3.2.6314.
+2014-12-17 20:36:16.1921 
+2014-12-17 20:36:16.1921 *** EXPORTING:
+2014-12-17 20:36:16.4261 Exporting projects.
+2014-12-17 20:36:16.4261 Calling projects.Export
+2014-12-17 20:36:17.1749 assetTotal is 70 
+2014-12-17 20:36:17.4245 -> Exported 70 projects.
+2014-12-17 20:36:17.4401 Exporting epics.
+2014-12-17 20:36:17.4401 -> Exported 0 epics.
+2014-12-17 20:36:17.4401 Exporting stories.
+2014-12-17 20:36:43.2787 -> Exported 4566 stories.
+2014-12-17 20:36:44.0743 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-17 20:36:45.4939 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-17 20:36:46.3831 The CustomField is Custom_Workstream and Type is Relation
+2014-12-17 20:36:53.1535 The CustomField is Custom_Ticket and Type is Text
+2014-12-17 20:36:55.2127 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-17 20:36:55.2751 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-17 20:36:59.2063 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-17 20:37:01.2574 The CustomField is Custom_Comments and Type is Text
+2014-12-17 20:37:01.6006 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-17 20:37:01.7722 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-17 20:37:01.8970 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-17 20:37:02.0842 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-17 20:37:04.6426 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-17 20:37:17.9338 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2014-12-17 20:37:20.9914 The CustomField is Custom_CRM_Object3 and Type is Text
+2014-12-17 20:37:23.5342 The CustomField is Custom_CRM_GapYesNo2 and Type is Text
+2014-12-17 20:37:26.3110 The CustomField is Custom_CRM_StoryStatus3 and Type is Relation
+2014-12-17 20:37:36.6663 The CustomField is Custom_CRM_RequirementType and Type is Relation
+2014-12-17 20:37:46.8999 The CustomField is Custom_CRM_IntegrationNeeded and Type is Relation
+2014-12-17 20:37:55.2615 The CustomField is Custom_CRM_Webservice2 and Type is LongText
+2014-12-17 20:37:57.6327 The CustomField is Custom_CRMPriority2 and Type is Numeric
+2014-12-17 20:37:58.0695 -> Exported 14632 Story custom fields.
+2014-12-17 20:37:58.0695 -> Exported 0 PrimaryWorkitem custom fields.
+2014-12-17 20:37:58.0851 Exporting defects.
+2014-12-17 20:38:01.0959 -> Exported 171 defects.
+2014-12-17 20:38:01.1115 -> Exported 0 Defects custom fields.
+2014-12-17 20:38:01.1115 
+2014-12-17 20:38:01.1115 Data migration complete!
+2014-12-17 20:38:01.1115 
+2014-12-17 20:38:01.1115 
+2014-12-17 21:39:27.5902 *********************************************************
+2014-12-17 21:39:27.6214 * VersionOne Data Migration Log
+2014-12-17 21:39:27.6214 * 12/17/2014 9:39:27 PM
+2014-12-17 21:39:27.6370 *********************************************************
+2014-12-17 21:39:27.6370 
+2014-12-17 21:39:27.6370 Initializing configurations.
+2014-12-17 21:39:27.9490 Verifying connections.
+2014-12-17 21:39:30.0550 -> Connection to staging database "V1Staging" verified.
+2014-12-17 21:39:39.7426 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-17 21:39:39.7426 -> V1 source instance version: 11.1.11.2269.
+2014-12-17 21:39:52.2638 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-17 21:39:52.2638 -> V1 target instance version: 14.3.2.6314.
+2014-12-17 21:39:52.4510 
+2014-12-17 21:39:55.4150 *** EXPORTING:
+2014-12-17 21:39:55.6178 Exporting projects.
+2014-12-17 21:39:55.6178 Calling projects.Export
+2014-12-17 21:39:56.9906 assetTotal is 70 
+2014-12-17 21:39:58.0433 -> Exported 70 projects.
+2014-12-17 21:39:58.0433 Exporting epics.
+2014-12-17 21:39:58.0589 -> Exported 0 epics.
+2014-12-17 21:39:58.0589 Exporting stories.
+2014-12-17 21:40:28.2524 ERROR: Dependents
+2014-12-17 21:40:28.2992 
+2014-12-17 21:40:28.3304 Data migration terminated.
+2014-12-17 21:40:28.3304 
+2014-12-17 21:40:28.3304 
+2014-12-17 21:42:03.7411 *********************************************************
+2014-12-17 21:42:03.7567 * VersionOne Data Migration Log
+2014-12-17 21:42:03.7567 * 12/17/2014 9:42:03 PM
+2014-12-17 21:42:03.7723 *********************************************************
+2014-12-17 21:42:03.7723 
+2014-12-17 21:42:03.7723 Initializing configurations.
+2014-12-17 21:42:04.0063 Verifying connections.
+2014-12-17 21:42:06.1747 -> Connection to staging database "V1Staging" verified.
+2014-12-17 21:42:06.8143 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-17 21:42:06.8143 -> V1 source instance version: 11.1.11.2269.
+2014-12-17 21:42:07.0327 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-17 21:42:07.0327 -> V1 target instance version: 14.3.2.6314.
+2014-12-17 21:42:07.0327 
+2014-12-17 21:42:07.0327 *** EXPORTING:
+2014-12-17 21:42:07.0951 Exporting projects.
+2014-12-17 21:42:07.1107 Calling projects.Export
+2014-12-17 21:42:07.5943 assetTotal is 70 
+2014-12-17 21:42:09.5337 ERROR: Violation of PRIMARY KEY constraint 'PK_Projects'. Cannot insert duplicate key in object 'dbo.Projects'. The duplicate key value is (Scope:15251).
+The statement has been terminated.
+2014-12-17 21:42:09.5337 
+2014-12-17 21:42:09.5337 Data migration terminated.
+2014-12-17 21:42:09.5337 
+2014-12-17 21:42:09.5337 
+2014-12-17 21:42:51.3464 *********************************************************
+2014-12-17 21:42:51.3776 * VersionOne Data Migration Log
+2014-12-17 21:42:51.3776 * 12/17/2014 9:42:51 PM
+2014-12-17 21:42:51.3932 *********************************************************
+2014-12-17 21:42:51.3932 
+2014-12-17 21:42:51.3932 Initializing configurations.
+2014-12-17 21:42:51.6584 Verifying connections.
+2014-12-17 21:42:53.8268 -> Connection to staging database "V1Staging" verified.
+2014-12-17 21:42:54.4820 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-17 21:42:54.4820 -> V1 source instance version: 11.1.11.2269.
+2014-12-17 21:42:54.6848 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-17 21:42:54.6848 -> V1 target instance version: 14.3.2.6314.
+2014-12-17 21:42:54.7004 
+2014-12-17 21:42:54.7004 *** EXPORTING:
+2014-12-17 21:42:54.8096 Exporting projects.
+2014-12-17 21:42:54.8096 Calling projects.Export
+2014-12-17 21:42:55.1840 assetTotal is 70 
+2014-12-17 21:42:57.2432 -> Exported 70 projects.
+2014-12-17 21:42:57.2432 Exporting epics.
+2014-12-17 21:42:57.2432 -> Exported 0 epics.
+2014-12-17 21:42:57.2432 Exporting stories.
+2014-12-17 21:46:42.2172 *********************************************************
+2014-12-17 21:46:42.2328 * VersionOne Data Migration Log
+2014-12-17 21:46:42.2328 * 12/17/2014 9:46:42 PM
+2014-12-17 21:46:42.2484 *********************************************************
+2014-12-17 21:46:42.2484 
+2014-12-17 21:46:42.2484 Initializing configurations.
+2014-12-17 21:46:42.5292 Verifying connections.
+2014-12-17 21:46:44.7444 -> Connection to staging database "V1Staging" verified.
+2014-12-17 21:46:45.3528 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-17 21:46:45.3684 -> V1 source instance version: 11.1.11.2269.
+2014-12-17 21:46:45.5712 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-17 21:46:45.5712 -> V1 target instance version: 14.3.2.6314.
+2014-12-17 21:46:45.5712 
+2014-12-17 21:46:45.5712 *** EXPORTING:
+2014-12-17 21:46:45.7896 Exporting projects.
+2014-12-17 21:46:45.7896 Calling projects.Export
+2014-12-17 21:46:46.5072 assetTotal is 70 
+2014-12-17 21:46:47.9736 -> Exported 70 projects.
+2014-12-17 21:46:47.9736 Exporting epics.
+2014-12-17 21:46:47.9892 -> Exported 0 epics.
+2014-12-17 21:46:47.9892 Exporting stories.
+2014-12-17 21:48:21.3721 -> Exported 4566 stories.
+2014-12-17 21:48:22.4797 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-17 21:48:23.6497 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-17 21:48:24.3673 The CustomField is Custom_Workstream and Type is Relation
+2014-12-17 21:48:29.2969 The CustomField is Custom_Ticket and Type is Text
+2014-12-17 21:48:31.3561 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-17 21:48:31.3873 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-17 21:48:35.1282 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-17 21:48:35.1594 The CustomField is Custom_Comments and Type is Text
+2014-12-17 21:48:37.6086 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-17 21:48:37.8270 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-17 21:48:37.9362 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-17 21:48:38.1546 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-17 21:48:40.5570 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-17 21:48:54.2694 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2014-12-17 21:48:57.1554 The CustomField is Custom_CRM_Object3 and Type is Text
+2014-12-17 21:48:59.7294 The CustomField is Custom_CRM_GapYesNo2 and Type is Text
+2014-12-17 21:49:02.1630 The CustomField is Custom_CRM_StoryStatus3 and Type is Relation
+2014-12-17 21:49:12.3548 The CustomField is Custom_CRM_RequirementType and Type is Relation
+2014-12-17 21:49:22.5884 The CustomField is Custom_CRM_IntegrationNeeded and Type is Relation
+2014-12-17 21:49:30.9500 The CustomField is Custom_CRM_Webservice2 and Type is LongText
+2014-12-17 21:49:33.2744 The CustomField is Custom_CRMPriority2 and Type is Numeric
+2014-12-17 21:49:33.6956 -> Exported 14632 Story custom fields.
+2014-12-17 21:49:33.7112 -> Exported 0 PrimaryWorkitem custom fields.
+2014-12-17 21:49:33.7112 Exporting defects.
+2014-12-17 21:49:36.7688 -> Exported 171 defects.
+2014-12-17 21:49:36.8000 -> Exported 0 Defects custom fields.
+2014-12-17 21:49:36.8000 
+2014-12-17 21:49:36.8000 Data migration complete!
+2014-12-17 21:49:36.8000 
+2014-12-17 21:49:36.8000 

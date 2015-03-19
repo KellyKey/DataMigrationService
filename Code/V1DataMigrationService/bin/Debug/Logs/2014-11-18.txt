@@ -1,0 +1,663 @@
+2014-11-18 00:03:43.0474 *********************************************************
+2014-11-18 00:03:43.1254 * VersionOne Data Migration Log
+2014-11-18 00:03:43.1254 * 11/18/2014 12:03:43 AM
+2014-11-18 00:03:43.1254 *********************************************************
+2014-11-18 00:03:43.1254 
+2014-11-18 00:03:43.1410 Initializing configurations.
+2014-11-18 00:03:43.2502 Verifying connections.
+2014-11-18 00:03:44.7010 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:03:45.4966 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:03:45.4966 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:03:45.5278 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:03:45.5278 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:03:45.5278 
+2014-11-18 00:03:45.5278 *** EXPORTING:
+2014-11-18 00:03:45.5434 Exporting members.
+2014-11-18 00:03:45.7150 The TotalAvailable Members is 129 
+2014-11-18 00:03:45.8866 -> Exported 129 members.
+2014-11-18 00:03:45.9022 
+2014-11-18 00:03:45.9022 *** IMPORTING:
+2014-11-18 00:03:45.9178 Importing members.
+2014-11-18 00:03:55.5898 -> Imported 113 members.
+2014-11-18 00:03:56.6194 
+2014-11-18 00:03:56.6662 Data migration complete!
+2014-11-18 00:03:56.6662 
+2014-11-18 00:03:56.6662 
+2014-11-18 00:08:22.5262 *********************************************************
+2014-11-18 00:08:22.5574 * VersionOne Data Migration Log
+2014-11-18 00:08:22.5574 * 11/18/2014 12:08:22 AM
+2014-11-18 00:08:22.5730 *********************************************************
+2014-11-18 00:08:22.5730 
+2014-11-18 00:08:22.5730 Initializing configurations.
+2014-11-18 00:08:22.6354 Verifying connections.
+2014-11-18 00:08:24.3514 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:08:25.1782 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:08:25.1782 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:08:25.2406 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:08:25.2406 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:08:25.2406 
+2014-11-18 00:08:25.2406 *** EXPORTING:
+2014-11-18 00:08:25.2562 Exporting member groups.
+2014-11-18 00:08:25.3342 -> Exported 0 member groups.
+2014-11-18 00:08:25.3342 
+2014-11-18 00:08:25.3342 *** IMPORTING:
+2014-11-18 00:08:25.3498 Importing member groups.
+2014-11-18 00:08:25.3654 -> Imported 0 member groups.
+2014-11-18 00:08:25.3654 
+2014-11-18 00:08:25.3654 Data migration complete!
+2014-11-18 00:08:25.3654 
+2014-11-18 00:08:25.3654 
+2014-11-18 00:10:42.3834 *********************************************************
+2014-11-18 00:10:42.4770 * VersionOne Data Migration Log
+2014-11-18 00:10:42.4770 * 11/18/2014 12:10:42 AM
+2014-11-18 00:10:42.4770 *********************************************************
+2014-11-18 00:10:42.4770 
+2014-11-18 00:10:42.4770 Initializing configurations.
+2014-11-18 00:10:42.5862 ERROR: An error occurred creating the configuration section handler for migration: String was not recognized as a valid Boolean. (C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataMigrationService\bin\Debug\V1DataMigrationService.exe.Config line 23)
+2014-11-18 00:10:42.5862 
+2014-11-18 00:10:42.5862 Data migration terminated.
+2014-11-18 00:10:42.5862 
+2014-11-18 00:10:42.5862 
+2014-11-18 00:11:18.1956 *********************************************************
+2014-11-18 00:11:18.2424 * VersionOne Data Migration Log
+2014-11-18 00:11:18.2424 * 11/18/2014 12:11:18 AM
+2014-11-18 00:11:18.2580 *********************************************************
+2014-11-18 00:11:18.2580 
+2014-11-18 00:11:18.2580 Initializing configurations.
+2014-11-18 00:11:18.4296 Verifying connections.
+2014-11-18 00:11:19.9740 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:11:20.7228 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:11:20.7228 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:11:20.7696 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:11:20.7696 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:11:20.7852 
+2014-11-18 00:11:20.7852 *** EXPORTING:
+2014-11-18 00:11:20.7852 Exporting teams.
+2014-11-18 00:11:20.9412 -> Exported 5 teams.
+2014-11-18 00:11:20.9412 
+2014-11-18 00:11:20.9412 *** IMPORTING:
+2014-11-18 00:11:20.9412 Importing teams.
+2014-11-18 00:11:21.5652 -> Imported 4 teams.
+2014-11-18 00:11:21.5652 
+2014-11-18 00:11:21.5652 Data migration complete!
+2014-11-18 00:11:21.5652 
+2014-11-18 00:11:21.5652 
+2014-11-18 00:13:05.2066 *********************************************************
+2014-11-18 00:13:05.2534 * VersionOne Data Migration Log
+2014-11-18 00:13:05.2534 * 11/18/2014 12:13:05 AM
+2014-11-18 00:13:05.2534 *********************************************************
+2014-11-18 00:13:05.2534 
+2014-11-18 00:13:05.2534 Initializing configurations.
+2014-11-18 00:13:05.3782 Verifying connections.
+2014-11-18 00:13:07.4218 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:13:07.6246 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:13:07.6246 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:13:07.6558 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:13:07.6558 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:13:07.6558 
+2014-11-18 00:13:07.6714 *** EXPORTING:
+2014-11-18 00:13:07.6870 Exporting schedules.
+2014-11-18 00:13:07.7650 -> Exported 14 schedules.
+2014-11-18 00:13:07.7650 
+2014-11-18 00:13:07.7650 *** IMPORTING:
+2014-11-18 00:13:07.7806 Importing schedules.
+2014-11-18 00:13:10.8226 -> Imported 14 schedules.
+2014-11-18 00:13:11.1034 
+2014-11-18 00:13:11.1034 Data migration complete!
+2014-11-18 00:13:11.1034 
+2014-11-18 00:13:11.1034 
+2014-11-18 00:14:18.4546 *********************************************************
+2014-11-18 00:14:18.5326 * VersionOne Data Migration Log
+2014-11-18 00:14:18.5326 * 11/18/2014 12:14:18 AM
+2014-11-18 00:14:18.5326 *********************************************************
+2014-11-18 00:14:18.5326 
+2014-11-18 00:14:18.5482 Initializing configurations.
+2014-11-18 00:14:18.6886 Verifying connections.
+2014-11-18 00:14:20.0614 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:14:20.7478 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:14:20.7478 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:14:20.7790 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:14:20.7790 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:14:20.7790 
+2014-11-18 00:14:20.7790 *** EXPORTING:
+2014-11-18 00:14:20.7946 Exporting projects.
+2014-11-18 00:14:20.7946 Calling projects.Export
+2014-11-18 00:14:20.8726 assetTotal is 40 
+2014-11-18 00:14:20.9350 -> Exported 40 projects.
+2014-11-18 00:14:20.9350 
+2014-11-18 00:14:20.9350 *** IMPORTING:
+2014-11-18 00:14:20.9506 Importing projects.
+2014-11-18 00:14:29.8738 -> Imported 39 projects.
+2014-11-18 00:14:34.7254 -> Imported 128 project memberships to target root project.
+2014-11-18 00:14:34.7254 
+2014-11-18 00:14:34.7254 Data migration complete!
+2014-11-18 00:14:34.7254 
+2014-11-18 00:14:34.7254 
+2014-11-18 00:18:50.4432 *********************************************************
+2014-11-18 00:18:50.4900 * VersionOne Data Migration Log
+2014-11-18 00:18:50.4900 * 11/18/2014 12:18:50 AM
+2014-11-18 00:18:50.5056 *********************************************************
+2014-11-18 00:18:50.5056 
+2014-11-18 00:18:50.5056 Initializing configurations.
+2014-11-18 00:18:50.6304 Verifying connections.
+2014-11-18 00:18:52.7676 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:18:52.9860 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:18:53.0016 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:18:53.1108 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:18:53.1108 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:18:53.1264 
+2014-11-18 00:18:53.1264 *** EXPORTING:
+2014-11-18 00:18:53.1420 Exporting programs.
+2014-11-18 00:18:53.2044 -> Exported 1 programs.
+2014-11-18 00:18:53.2044 
+2014-11-18 00:18:53.2044 *** IMPORTING:
+2014-11-18 00:18:53.2200 Importing programs.
+2014-11-18 00:18:53.3136 -> Imported 1 programs.
+2014-11-18 00:18:53.3136 
+2014-11-18 00:18:53.3136 Data migration complete!
+2014-11-18 00:18:53.3136 
+2014-11-18 00:18:53.3136 
+2014-11-18 00:20:36.0570 *********************************************************
+2014-11-18 00:20:36.1350 * VersionOne Data Migration Log
+2014-11-18 00:20:36.1350 * 11/18/2014 12:20:36 AM
+2014-11-18 00:20:36.1350 *********************************************************
+2014-11-18 00:20:36.1350 
+2014-11-18 00:20:36.1350 Initializing configurations.
+2014-11-18 00:20:36.2442 Verifying connections.
+2014-11-18 00:20:37.9310 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:20:38.3834 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:20:38.3990 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:20:38.4302 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:20:38.4302 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:20:38.4302 
+2014-11-18 00:20:38.4302 *** EXPORTING:
+2014-11-18 00:20:38.4458 Exporting iterations.
+2014-11-18 00:20:38.7266 -> Exported 205 iterations.
+2014-11-18 00:20:38.7890 
+2014-11-18 00:20:38.7890 *** IMPORTING:
+2014-11-18 00:20:38.8046 Importing iterations.
+2014-11-18 00:20:56.3234 -> Imported 205 iterations.
+2014-11-18 00:20:56.3234 
+2014-11-18 00:20:56.3234 Data migration complete!
+2014-11-18 00:20:56.3234 
+2014-11-18 00:20:56.3234 
+2014-11-18 00:24:07.7416 *********************************************************
+2014-11-18 00:24:07.8352 * VersionOne Data Migration Log
+2014-11-18 00:24:07.8352 * 11/18/2014 12:24:07 AM
+2014-11-18 00:24:07.8352 *********************************************************
+2014-11-18 00:24:07.8352 
+2014-11-18 00:24:07.8352 Initializing configurations.
+2014-11-18 00:24:07.9444 Verifying connections.
+2014-11-18 00:24:09.8632 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:24:10.2376 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:24:10.2376 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:24:10.2688 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:24:10.2688 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:24:10.2844 
+2014-11-18 00:24:10.2844 *** EXPORTING:
+2014-11-18 00:24:10.3000 Exporting goals.
+2014-11-18 00:24:10.4248 -> Exported 0 goals.
+2014-11-18 00:24:10.4248 
+2014-11-18 00:24:10.4248 *** IMPORTING:
+2014-11-18 00:24:10.4404 Importing goals.
+2014-11-18 00:24:10.4560 -> Imported 0 goals.
+2014-11-18 00:24:10.4560 
+2014-11-18 00:24:10.4560 Data migration complete!
+2014-11-18 00:24:10.4560 
+2014-11-18 00:24:10.4560 
+2014-11-18 00:25:28.1570 *********************************************************
+2014-11-18 00:25:28.2506 * VersionOne Data Migration Log
+2014-11-18 00:25:28.2506 * 11/18/2014 12:25:28 AM
+2014-11-18 00:25:28.2506 *********************************************************
+2014-11-18 00:25:28.2506 
+2014-11-18 00:25:28.2506 Initializing configurations.
+2014-11-18 00:25:28.4176 Verifying connections.
+2014-11-18 00:25:30.3624 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:25:30.4872 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:25:30.4872 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:25:30.5028 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:25:30.5028 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:25:30.5028 
+2014-11-18 00:25:30.5028 *** EXPORTING:
+2014-11-18 00:25:30.5184 Exporting feature groups.
+2014-11-18 00:25:31.1424 -> Exported 174 feature groups.
+2014-11-18 00:25:31.1424 
+2014-11-18 00:25:31.1424 *** IMPORTING:
+2014-11-18 00:25:31.1580 Importing feature groups.
+2014-11-18 00:25:54.8544 -> Imported 174 feature groups.
+2014-11-18 00:25:54.8544 
+2014-11-18 00:25:54.8544 Data migration complete!
+2014-11-18 00:25:54.8544 
+2014-11-18 00:25:54.8544 
+2014-11-18 00:27:33.9286 *********************************************************
+2014-11-18 00:27:34.0066 * VersionOne Data Migration Log
+2014-11-18 00:27:36.0190 * 11/18/2014 12:27:36 AM
+2014-11-18 00:27:36.0346 *********************************************************
+2014-11-18 00:27:36.0346 
+2014-11-18 00:27:36.0346 Initializing configurations.
+2014-11-18 00:27:36.0970 Verifying connections.
+2014-11-18 00:27:36.1906 -> Connection to staging database "V1Staging" verified.
+2014-11-18 00:27:36.3310 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 00:27:36.3466 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 00:27:36.3778 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 00:27:36.3778 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 00:27:36.3934 
+2014-11-18 00:27:36.3934 *** EXPORTING:
+2014-11-18 00:27:36.4090 Exporting requests.
+2014-11-18 00:27:36.6274 -> Exported 10 requests.
+2014-11-18 00:27:36.6274 
+2014-11-18 00:27:36.6274 *** IMPORTING:
+2014-11-18 00:27:36.6430 Importing requests.
+2014-11-18 00:27:40.3870 -> Imported 10 requests.
+2014-11-18 00:27:41.6506 
+2014-11-18 00:27:41.6974 Data migration complete!
+2014-11-18 00:27:41.6974 
+2014-11-18 00:27:41.6974 
+2014-11-18 09:34:21.3468 *********************************************************
+2014-11-18 09:34:21.4248 * VersionOne Data Migration Log
+2014-11-18 09:34:23.4840 * 11/18/2014 9:34:23 AM
+2014-11-18 09:34:23.4840 *********************************************************
+2014-11-18 09:34:23.4840 
+2014-11-18 09:34:23.4840 Initializing configurations.
+2014-11-18 09:34:23.5620 Verifying connections.
+2014-11-18 09:34:23.6556 -> Connection to staging database "V1Staging" verified.
+2014-11-18 09:34:23.8116 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 09:34:23.8116 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 09:34:24.1392 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 09:34:24.1392 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 09:34:24.1392 
+2014-11-18 09:34:24.1548 *** EXPORTING:
+2014-11-18 09:34:24.1548 Exporting issues.
+2014-11-18 09:34:26.6040 -> Exported 32 issues.
+2014-11-18 09:34:26.7288 
+2014-11-18 09:34:26.7288 *** IMPORTING:
+2014-11-18 09:34:26.7444 Importing issues.
+2014-11-18 09:34:33.3900 -> Imported 32 issues.
+2014-11-18 09:34:33.5304 
+2014-11-18 09:34:33.5772 Data migration complete!
+2014-11-18 09:34:33.5772 
+2014-11-18 09:34:33.5772 
+2014-11-18 09:36:38.8170 *********************************************************
+2014-11-18 09:36:38.8950 * VersionOne Data Migration Log
+2014-11-18 09:36:38.8950 * 11/18/2014 9:36:38 AM
+2014-11-18 09:36:38.8950 *********************************************************
+2014-11-18 09:36:38.8950 
+2014-11-18 09:36:38.8950 Initializing configurations.
+2014-11-18 09:36:38.9574 Verifying connections.
+2014-11-18 09:36:40.9074 -> Connection to staging database "V1Staging" verified.
+2014-11-18 09:36:41.2350 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 09:36:41.2350 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 09:36:41.2506 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 09:36:41.2506 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 09:36:41.2506 
+2014-11-18 09:36:41.2506 *** EXPORTING:
+2014-11-18 09:36:41.2662 Exporting epics.
+2014-11-18 09:36:41.2818 -> Exported 0 epics.
+2014-11-18 09:36:41.2818 
+2014-11-18 09:36:41.2818 *** IMPORTING:
+2014-11-18 09:36:41.2974 Importing epics.
+2014-11-18 09:36:41.3286 -> Imported 0 epics.
+2014-11-18 09:36:41.3442 -> Imported 0 epic custom fields.
+2014-11-18 09:36:41.3442 
+2014-11-18 09:36:41.3442 Data migration complete!
+2014-11-18 09:36:41.3442 
+2014-11-18 09:36:41.3442 
+2014-11-18 09:39:13.4618 *********************************************************
+2014-11-18 09:39:13.5398 * VersionOne Data Migration Log
+2014-11-18 09:39:13.5398 * 11/18/2014 9:39:13 AM
+2014-11-18 09:39:13.5398 *********************************************************
+2014-11-18 09:39:13.5398 
+2014-11-18 09:39:13.5398 Initializing configurations.
+2014-11-18 09:39:13.6490 Verifying connections.
+2014-11-18 09:39:15.5366 -> Connection to staging database "V1Staging" verified.
+2014-11-18 09:39:15.9890 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-11-18 09:39:15.9890 -> V1 source instance version: 11.1.11.2269.
+2014-11-18 09:39:16.0046 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-18 09:39:16.0046 -> V1 target instance version: 14.3.2.6314.
+2014-11-18 09:39:16.0046 
+2014-11-18 09:39:16.0046 *** EXPORTING:
+2014-11-18 09:39:16.0358 Exporting stories.
+2014-11-18 09:39:41.7914 -> Exported 3561 stories.
+2014-11-18 09:39:41.7914 
+2014-11-18 09:39:41.7914 *** IMPORTING:
+2014-11-18 09:39:41.8538 Importing stories.
+2014-11-18 09:39:43.0082 Custom field Config is Custom_LegacyID
+2014-11-18 09:39:43.0238 Custom Field Name is Custom_LegacyID
+2014-11-18 09:40:06.3614 Story is Story:7101 
+2014-11-18 09:40:21.8220 Story is Story:21162 
+2014-11-18 09:40:22.9296 Story is Story:21163 
+2014-11-18 09:40:24.2400 Story is Story:21164 
+2014-11-18 09:40:49.7616 Story is Story:18414 
+2014-11-18 09:40:51.1032 Story is Story:18401 
+2014-11-18 09:40:57.6708 Story is Story:18087 
+2014-11-18 09:40:58.4664 Story is Story:18088 
+2014-11-18 09:40:59.4180 Story is Story:18089 
+2014-11-18 09:40:59.9172 Story is Story:18090 
+2014-11-18 09:40:59.9484 Story is Story:18091 
+2014-11-18 09:41:00.0888 Story is Story:18092 
+2014-11-18 09:41:00.0888 Story is Story:18093 
+2014-11-18 09:41:00.1044 Story is Story:18094 
+2014-11-18 09:41:00.1200 Story is Story:18097 
+2014-11-18 09:41:06.8436 Story is Story:13254 
+2014-11-18 09:41:15.3768 Story is Story:20740 
+2014-11-18 09:41:16.9212 Story is Story:21339 
+2014-11-18 09:41:23.9412 Story is Story:19924 
+2014-11-18 09:41:32.2716 Story is Story:61119 
+2014-11-18 09:41:33.7068 Story is Story:49196 
+2014-11-18 09:41:37.5600 Story is Story:49185 
+2014-11-18 09:41:39.4008 Story is Story:18234 
+2014-11-18 09:41:39.4788 Story is Story:18235 
+2014-11-18 09:41:39.4788 Story is Story:18236 
+2014-11-18 09:41:39.4788 Story is Story:18238 
+2014-11-18 09:41:40.7424 Story is Story:18242 
+2014-11-18 09:41:41.6316 Story is Story:18244 
+2014-11-18 09:41:44.7204 Story is Story:18245 
+2014-11-18 09:41:44.7516 Story is Story:18248 
+2014-11-18 09:41:44.7672 Story is Story:48705 
+2014-11-18 09:41:44.7828 Story is Story:18249 
+2014-11-18 09:41:44.7984 Story is Story:18250 
+2014-11-18 09:41:44.8140 Story is Story:18251 
+2014-11-18 09:41:44.8296 Story is Story:18305 
+2014-11-18 09:41:50.0868 Story is Story:16914 
+2014-11-18 09:42:00.5232 Story is Story:70426 
+2014-11-18 09:42:01.5996 Story is Story:18271 
+2014-11-18 09:42:02.8008 Story is Story:70231 
+2014-11-18 09:42:02.8320 Story is Story:70245 
+2014-11-18 09:42:02.8476 Story is Story:70252 
+2014-11-18 09:42:02.8632 Story is Story:70238 
+2014-11-18 09:42:02.8788 Story is Story:70334 
+2014-11-18 09:42:02.8944 Story is Story:70327 
+2014-11-18 09:42:02.9256 Story is Story:70320 
+2014-11-18 09:42:02.9412 Story is Story:18272 
+2014-11-18 09:42:02.9724 Story is Story:70355 
+2014-11-18 09:42:02.9880 Story is Story:70362 
+2014-11-18 09:42:03.0036 Story is Story:18342 
+2014-11-18 09:42:03.0192 Story is Story:18273 
+2014-11-18 09:42:03.0660 Story is Story:70383 
+2014-11-18 09:42:03.0972 Story is Story:70390 
+2014-11-18 09:42:03.1128 Story is Story:18274 
+2014-11-18 09:42:03.1284 Story is Story:70415 
+2014-11-18 09:42:03.1440 Story is Story:70397 
+2014-11-18 09:42:03.1596 Story is Story:70404 
+2014-11-18 09:42:03.1752 Story is Story:18347 
+2014-11-18 09:42:03.1908 Story is Story:70341 
+2014-11-18 09:42:03.2064 Story is Story:70348 
+2014-11-18 09:42:03.2064 Story is Story:18424 
+2014-11-18 09:42:03.2220 Story is Story:70369 
+2014-11-18 09:42:03.2376 Story is Story:70376 
+2014-11-18 09:42:03.2532 Story is Story:18275 
+2014-11-18 09:42:03.2532 Story is Story:18326 
+2014-11-18 09:42:03.2844 Story is Story:59374 
+2014-11-18 09:42:03.3312 Story is Story:59380 
+2014-11-18 09:42:03.3468 Story is Story:61954 
+2014-11-18 09:42:03.3780 Story is Story:59386 
+2014-11-18 09:42:03.4248 Story is Story:61216 
+2014-11-18 09:42:03.4404 Story is Story:59377 
+2014-11-18 09:42:03.4560 Story is Story:61252 
+2014-11-18 09:42:03.4716 Story is Story:59371 
+2014-11-18 09:42:03.5028 Story is Story:64609 
+2014-11-18 09:42:03.5340 Story is Story:59368 
+2014-11-18 09:42:03.6120 Story is Story:18279 
+2014-11-18 09:42:03.6276 Story is Story:70457 
+2014-11-18 09:42:03.6432 Story is Story:70217 
+2014-11-18 09:42:03.6588 Story is Story:70450 
+2014-11-18 09:42:03.6744 Story is Story:70224 
+2014-11-18 09:42:03.6744 Story is Story:70464 
+2014-11-18 09:42:03.6900 Story is Story:18315 
+2014-11-18 09:42:07.8552 Story is Story:18415 
+2014-11-18 09:42:09.6960 Story is Story:18416 
+2014-11-18 09:42:10.1796 Story is Story:18417 
+2014-11-18 09:42:10.6008 Story is Story:18418 
+2014-11-18 09:42:10.6164 Story is Story:18409 
+2014-11-18 09:42:10.6164 Story is Story:18408 
+2014-11-18 09:42:10.6320 Story is Story:18406 
+2014-11-18 09:42:10.6476 Story is Story:62324 
+2014-11-18 09:42:10.6632 Story is Story:18405 
+2014-11-18 09:42:10.6788 Story is Story:18407 
+2014-11-18 09:42:10.6788 Story is Story:22560 
+2014-11-18 09:42:10.6944 Story is Story:18397 
+2014-11-18 09:42:10.7100 Story is Story:18400 
+2014-11-18 09:42:10.7100 Story is Story:18402 
+2014-11-18 09:42:10.7256 Story is Story:18403 
+2014-11-18 09:42:10.7256 Story is Story:18404 
+2014-11-18 09:42:10.7256 Story is Story:18398 
+2014-11-18 09:42:29.2116 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:29.3676 Adding Value Issue:27167
+2014-11-18 09:42:31.6920 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:31.6920 Adding Value Issue:27167
+2014-11-18 09:42:31.9104 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:31.9104 Adding Value Issue:27167
+2014-11-18 09:42:31.9728 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:31.9728 Adding Value Issue:27167
+2014-11-18 09:42:32.0040 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:32.0040 Adding Value Issue:27167
+2014-11-18 09:42:32.0508 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:32.0508 Adding Value Issue:27167
+2014-11-18 09:42:32.0976 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:32.0976 Adding Value Issue:27160
+2014-11-18 09:42:32.1600 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:32.1600 Adding Value Issue:27159
+2014-11-18 09:42:32.2068 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:32.2068 Adding Value Issue:27160
+2014-11-18 09:42:32.2848 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:32.2848 Adding Value Issue:27159
+2014-11-18 09:42:32.3160 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:32.3160 Adding Value Issue:27160
+2014-11-18 09:42:32.3628 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:32.3628 Adding Value Issue:27159
+2014-11-18 09:42:38.9616 Name is Request:23604 and newAssetOId is Request:27141
+2014-11-18 09:42:39.1176 Adding Value Request:27141
+2014-11-18 09:42:41.8944 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:44.3904 Adding Value Issue:27160
+2014-11-18 09:42:44.3904 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:44.3904 Adding Value Issue:27167
+2014-11-18 09:42:44.3904 Name is Issue:23773 and newAssetOId is Issue:27172
+2014-11-18 09:42:44.3904 Adding Value Issue:27172
+2014-11-18 09:42:44.4996 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:44.5464 Adding Value Issue:27167
+2014-11-18 09:42:44.5932 Name is Request:25220 and newAssetOId is Request:27146
+2014-11-18 09:42:44.6556 Adding Value Request:27146
+2014-11-18 09:42:44.7180 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:44.7180 Adding Value Issue:27167
+2014-11-18 09:42:44.7648 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:44.7648 Adding Value Issue:27160
+2014-11-18 09:42:44.8116 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:44.8116 Adding Value Issue:27160
+2014-11-18 09:42:44.8584 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:44.8584 Adding Value Issue:27160
+2014-11-18 09:42:44.9052 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:44.9052 Adding Value Issue:27160
+2014-11-18 09:42:44.9676 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:44.9676 Adding Value Issue:27160
+2014-11-18 09:42:45.0144 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:45.0144 Adding Value Issue:27160
+2014-11-18 09:42:45.0612 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:45.0612 Adding Value Issue:27160
+2014-11-18 09:42:45.1236 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:45.1236 Adding Value Issue:27160
+2014-11-18 09:42:45.1704 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:45.1704 Adding Value Issue:27160
+2014-11-18 09:42:47.2920 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:47.2920 Adding Value Issue:27167
+2014-11-18 09:42:47.3700 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:47.3700 Adding Value Issue:27167
+2014-11-18 09:42:47.4636 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:47.4636 Adding Value Issue:27167
+2014-11-18 09:42:47.5416 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:47.5416 Adding Value Issue:27167
+2014-11-18 09:42:47.6352 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:47.6352 Adding Value Issue:27167
+2014-11-18 09:42:47.7756 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:47.7756 Adding Value Issue:27159
+2014-11-18 09:42:47.8224 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:47.8224 Adding Value Issue:27159
+2014-11-18 09:42:47.8848 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:47.9316 Adding Value Issue:27160
+2014-11-18 09:42:47.9628 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:47.9784 Adding Value Issue:27159
+2014-11-18 09:42:48.0252 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:48.0252 Adding Value Issue:27167
+2014-11-18 09:42:48.0720 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:48.0720 Adding Value Issue:27167
+2014-11-18 09:42:48.1032 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:48.1188 Adding Value Issue:27167
+2014-11-18 09:42:48.1656 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:48.1812 Adding Value Issue:27167
+2014-11-18 09:42:48.2124 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:48.2124 Adding Value Issue:27167
+2014-11-18 09:42:48.2592 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:48.2592 Adding Value Issue:27167
+2014-11-18 09:42:50.4588 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:50.4588 Adding Value Issue:27159
+2014-11-18 09:42:50.5524 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:50.5524 Adding Value Issue:27167
+2014-11-18 09:42:50.6460 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:50.6460 Adding Value Issue:27160
+2014-11-18 09:42:50.7084 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:42:50.7084 Adding Value Issue:27160
+2014-11-18 09:42:50.7552 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:50.7552 Adding Value Issue:27159
+2014-11-18 09:42:50.8176 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:50.8176 Adding Value Issue:27159
+2014-11-18 09:42:50.8644 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:42:50.8644 Adding Value Issue:27159
+2014-11-18 09:42:50.9112 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:50.9112 Adding Value Issue:27167
+2014-11-18 09:42:50.9580 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:50.9580 Adding Value Issue:27167
+2014-11-18 09:42:51.0048 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:51.0048 Adding Value Issue:27167
+2014-11-18 09:42:51.0672 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:51.0672 Adding Value Issue:27167
+2014-11-18 09:42:51.1140 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:51.1140 Adding Value Issue:27167
+2014-11-18 09:42:51.1608 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:51.1608 Adding Value Issue:27167
+2014-11-18 09:42:51.2076 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:51.2076 Adding Value Issue:27167
+2014-11-18 09:42:51.2544 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:51.2544 Adding Value Issue:27167
+2014-11-18 09:42:53.7816 Name is Issue:22883 and newAssetOId is Issue:27165
+2014-11-18 09:42:54.0624 Adding Value Issue:27165
+2014-11-18 09:42:54.1248 Name is Issue:22883 and newAssetOId is Issue:27165
+2014-11-18 09:42:54.1248 Adding Value Issue:27165
+2014-11-18 09:42:54.1716 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:54.1716 Adding Value Issue:27167
+2014-11-18 09:42:54.2184 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:54.2340 Adding Value Issue:27167
+2014-11-18 09:42:54.2808 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:54.2808 Adding Value Issue:27167
+2014-11-18 09:42:54.3276 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:54.3276 Adding Value Issue:27167
+2014-11-18 09:42:54.3744 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:54.3744 Adding Value Issue:27167
+2014-11-18 09:42:54.4368 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:54.4368 Adding Value Issue:27167
+2014-11-18 09:42:54.4680 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:54.4680 Adding Value Issue:27167
+2014-11-18 09:42:56.7144 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:57.0264 Adding Value Issue:27167
+2014-11-18 09:42:57.0576 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:57.4632 Adding Value Issue:27167
+2014-11-18 09:42:57.5100 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:57.5100 Adding Value Issue:27167
+2014-11-18 09:42:57.5724 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:42:57.5724 Adding Value Issue:27167
+2014-11-18 09:42:59.9904 Name is Request:24410 and newAssetOId is Request:27144
+2014-11-18 09:42:59.9904 Adding Value Request:27144
+2014-11-18 09:43:03.4848 Name is Issue:22230 and newAssetOId is Issue:27159
+2014-11-18 09:43:03.4848 Adding Value Issue:27159
+2014-11-18 09:43:03.5316 Name is Issue:22231 and newAssetOId is Issue:27160
+2014-11-18 09:43:03.5316 Adding Value Issue:27160
+2014-11-18 09:43:03.7812 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:03.7812 Adding Value Issue:27168
+2014-11-18 09:43:06.1368 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:06.1368 Adding Value Issue:27168
+2014-11-18 09:43:06.5892 Name is Issue:23463 and newAssetOId is Issue:27167
+2014-11-18 09:43:06.5892 Adding Value Issue:27167
+2014-11-18 09:43:10.4736 Name is Issue:22327 and newAssetOId is Issue:27161
+2014-11-18 09:43:10.4736 Adding Value Issue:27161
+2014-11-18 09:43:14.2020 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:14.2020 Adding Value Issue:27168
+2014-11-18 09:43:16.4484 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:16.4484 Adding Value Issue:27168
+2014-11-18 09:43:16.5420 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:17.5092 Adding Value Issue:27168
+2014-11-18 09:43:19.5060 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:19.8024 Adding Value Issue:27168
+2014-11-18 09:43:19.8492 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:19.8492 Adding Value Issue:27168
+2014-11-18 09:43:19.9116 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:19.9116 Adding Value Issue:27168
+2014-11-18 09:43:19.9272 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:19.9272 Adding Value Issue:27168
+2014-11-18 09:43:19.9740 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:19.9740 Adding Value Issue:27168
+2014-11-18 09:43:20.0208 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:20.0208 Adding Value Issue:27168
+2014-11-18 09:43:20.4420 Name is Issue:23581 and newAssetOId is Issue:27168
+2014-11-18 09:43:20.4420 Adding Value Issue:27168
+2014-11-18 09:43:23.9208 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:23.9208 Adding Value Issue:27176
+2014-11-18 09:43:26.0424 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:26.0424 Adding Value Issue:27176
+2014-11-18 09:43:26.1048 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:26.1048 Adding Value Issue:27176
+2014-11-18 09:43:26.1984 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:26.1984 Adding Value Issue:27176
+2014-11-18 09:43:26.2608 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:26.2764 Adding Value Issue:27176
+2014-11-18 09:43:26.2920 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:26.2920 Adding Value Issue:27176
+2014-11-18 09:43:26.3388 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:26.3544 Adding Value Issue:27176
+2014-11-18 09:43:26.4012 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:26.4012 Adding Value Issue:27176
+2014-11-18 09:43:26.4480 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:26.4480 Adding Value Issue:27176
+2014-11-18 09:43:26.6196 Name is Issue:28136 and newAssetOId is Issue:27175
+2014-11-18 09:43:26.7132 Adding Value Issue:27175
+2014-11-18 09:43:29.5524 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:29.5524 Adding Value Issue:27177
+2014-11-18 09:43:29.6616 Name is Issue:28528 and newAssetOId is Issue:27176
+2014-11-18 09:43:29.6616 Adding Value Issue:27176
+2014-11-18 09:43:29.8956 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:29.8956 Adding Value Issue:27177
+2014-11-18 09:43:29.9580 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:29.9580 Adding Value Issue:27177
+2014-11-18 09:43:29.9892 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:29.9892 Adding Value Issue:27177
+2014-11-18 09:43:30.0360 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:30.0360 Adding Value Issue:27177
+2014-11-18 09:43:30.0828 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:30.0984 Adding Value Issue:27177
+2014-11-18 09:43:30.1296 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:30.2076 Adding Value Issue:27177
+2014-11-18 09:43:32.2824 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:32.2824 Adding Value Issue:27177
+2014-11-18 09:43:32.3604 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:32.3604 Adding Value Issue:27177
+2014-11-18 09:43:32.4540 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:32.4540 Adding Value Issue:27177
+2014-11-18 09:43:32.5008 Name is Issue:28639 and newAssetOId is Issue:27177
+2014-11-18 09:43:32.5008 Adding Value Issue:27177
+2014-11-18 09:43:32.7504 Name is Issue:28809 and newAssetOId is Issue:27180
+2014-11-18 09:43:32.7504 Adding Value Issue:27180
+2014-11-18 09:43:32.8440 Name is Issue:28809 and newAssetOId is Issue:27180
+2014-11-18 09:43:32.8440 Adding Value Issue:27180
+2014-11-18 09:43:33.1716 Name is Issue:22329 and newAssetOId is Issue:27163
+2014-11-18 09:43:33.1716 Adding Value Issue:27163
+2014-11-18 09:43:36.9000 Name is Request:29450 and newAssetOId is Request:27148
+2014-11-18 09:43:36.9000 Adding Value Request:27148
+2014-11-18 09:43:39.2244 Name is Request:29450 and newAssetOId is Request:27148
+2014-11-18 09:43:39.2244 Adding Value Request:27148
+2014-11-18 09:43:39.2868 Name is Request:29450 and newAssetOId is Request:27148
+2014-11-18 09:43:39.2868 Adding Value Request:27148
+2014-11-18 09:43:39.3336 Name is Request:29450 and newAssetOId is Request:27148
+2014-11-18 09:43:39.3336 Adding Value Request:27148
+2014-11-18 09:44:45.9788 *****Setting Story Dependencies
+2014-11-18 09:44:52.2188 ERROR: Invalid OID token: 
+2014-11-18 09:44:52.2656 
+2014-11-18 09:44:52.2656 Data migration terminated.
+2014-11-18 09:44:52.3124 
+2014-11-18 09:44:52.3124 

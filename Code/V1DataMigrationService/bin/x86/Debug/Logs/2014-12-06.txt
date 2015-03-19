@@ -1,0 +1,1133 @@
+2014-12-06 11:26:49.2864 *********************************************************
+2014-12-06 11:26:49.3020 * VersionOne Data Migration Log
+2014-12-06 11:26:49.3020 * 12/6/2014 11:26:49 AM
+2014-12-06 11:26:49.3176 *********************************************************
+2014-12-06 11:26:49.3176 
+2014-12-06 11:26:49.3176 Initializing configurations.
+2014-12-06 11:26:49.5672 Verifying connections.
+2014-12-06 11:26:51.7356 -> Connection to staging database "V1Staging" verified.
+2014-12-06 11:26:52.4376 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 11:26:52.4376 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 11:26:52.4376 
+2014-12-06 11:26:52.4376 *** IMPORTING:
+2014-12-06 11:26:52.6092 Importing stories.
+2014-12-06 11:26:53.2176 Custom field Config is Custom_Legacy
+2014-12-06 11:26:53.2176 Custom Field Name is Custom_LegacyBacklogID
+2014-12-06 11:27:01.7508 Name is Issue:18508 and newAssetOId is 
+2014-12-06 11:27:01.7508 Asset is AssetType'Story
+2014-12-06 11:27:18.8952 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:20.8764 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:20.9700 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:21.0480 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:21.1572 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:21.2820 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:21.3444 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:21.3912 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:21.4692 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:21.5160 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:21.5784 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:21.6564 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:24.5892 Name is Request:23604 and newAssetOId is 
+2014-12-06 11:27:24.8700 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:24.8700 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:24.9636 Name is Issue:23773 and newAssetOId is 
+2014-12-06 11:27:26.9292 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:27.0384 Name is Request:25220 and newAssetOId is 
+2014-12-06 11:27:27.1476 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:27.2568 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:27.3660 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:27.4284 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:27.5064 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:27.5688 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:27.6468 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:27.6936 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:27.7716 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:29.6436 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:36.0552 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:36.1332 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:36.2424 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:36.3828 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:36.5544 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:36.7260 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:36.7728 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:36.8664 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:36.9132 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:36.9756 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:38.9724 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:39.0816 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:39.2064 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:39.3312 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:39.4248 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:39.4872 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:39.5496 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:39.6120 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:39.6744 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:39.7524 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:39.7992 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:39.8772 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:41.7960 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:41.8896 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:41.9988 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:42.0924 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:42.2172 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:42.3108 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:42.3888 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:42.4512 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:42.6072 Name is Issue:22883 and newAssetOId is 
+2014-12-06 11:27:42.6540 Name is Issue:22883 and newAssetOId is 
+2014-12-06 11:27:42.7320 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:42.8724 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:44.6820 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:44.7912 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:44.8692 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:44.9628 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:45.0876 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:45.1500 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:45.2124 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:45.2592 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:45.3372 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:45.5400 Name is Request:24410 and newAssetOId is 
+2014-12-06 11:27:48.4104 Name is Issue:22230 and newAssetOId is 
+2014-12-06 11:27:48.4572 Name is Issue:22231 and newAssetOId is 
+2014-12-06 11:27:50.5632 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:27:56.8500 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:27:57.1152 Name is Issue:23463 and newAssetOId is 
+2014-12-06 11:27:57.5832 Name is Issue:22327 and newAssetOId is 
+2014-12-06 11:28:00.0480 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:00.1416 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:06.2412 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:06.3504 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:06.4284 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:06.5376 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:06.6624 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:14.2752 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:14.4468 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:14.7744 Name is Issue:23581 and newAssetOId is 
+2014-12-06 11:28:17.5200 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:17.6136 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:17.6604 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:17.7072 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:17.7852 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:17.8320 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:17.8944 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:17.9568 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:18.0192 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:20.1564 Name is Issue:28136 and newAssetOId is 
+2014-12-06 11:28:20.7180 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:20.7960 Name is Issue:28528 and newAssetOId is 
+2014-12-06 11:28:20.9052 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:20.9676 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:22.9332 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:23.0268 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:23.1204 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:23.2296 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:23.3388 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:23.4636 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:23.5260 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:23.5728 Name is Issue:28639 and newAssetOId is 
+2014-12-06 11:28:23.8224 Name is Issue:28809 and newAssetOId is 
+2014-12-06 11:28:23.8692 Name is Issue:28809 and newAssetOId is 
+2014-12-06 11:28:25.9128 Name is Issue:22329 and newAssetOId is 
+2014-12-06 11:28:26.6304 Name is Request:29450 and newAssetOId is 
+2014-12-06 11:28:26.7084 Name is Request:29450 and newAssetOId is 
+2014-12-06 11:28:26.7708 Name is Request:29450 and newAssetOId is 
+2014-12-06 11:28:26.8020 Name is Request:29450 and newAssetOId is 
+2014-12-06 11:29:06.6288 *****Setting Story Dependencies
+2014-12-06 11:29:23.8512 -> Imported 1111 stories.
+2014-12-06 11:30:09.0412 -> Imported 0 story custom fields.
+2014-12-06 13:46:57.9904 *********************************************************
+2014-12-06 13:46:58.0216 * VersionOne Data Migration Log
+2014-12-06 13:46:58.0216 * 12/6/2014 1:46:58 PM
+2014-12-06 13:46:58.0372 *********************************************************
+2014-12-06 13:46:58.0372 
+2014-12-06 13:46:58.0372 Initializing configurations.
+2014-12-06 13:46:58.3024 Verifying connections.
+2014-12-06 13:47:00.5644 -> Connection to staging database "V1Staging" verified.
+2014-12-06 13:47:18.3328 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 13:47:18.3328 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 13:47:18.5824 
+2014-12-06 13:47:18.5824 *** IMPORTING:
+2014-12-06 13:47:18.7696 Importing stories.
+2014-12-06 13:47:20.5480 Custom field Config is Custom_Legacy
+2014-12-06 13:47:20.5480 Custom Field Name is Custom_LegacyBacklogID
+2014-12-06 13:47:31.2188 Name is Issue:18508 and newAssetOId is 
+2014-12-06 13:47:31.2188 Asset is AssetType'Story
+2014-12-06 13:47:45.6810 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:47.8338 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:48.0210 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:48.0990 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:48.2082 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:48.3018 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:48.3954 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:48.4578 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:47:48.5046 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:48.5826 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:47:48.6294 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:48.6918 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:47:51.6558 Name is Request:23604 and newAssetOId is 
+2014-12-06 13:47:53.9802 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:53.9802 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:53.9958 Name is Issue:23773 and newAssetOId is 
+2014-12-06 13:47:54.0894 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:54.1986 Name is Request:25220 and newAssetOId is 
+2014-12-06 13:47:54.2766 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:54.3390 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:54.4014 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:54.4794 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:54.5262 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:54.5886 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:54.6666 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:54.7290 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:54.8226 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:56.8662 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:56.9754 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:57.0378 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:57.1626 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:57.2562 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:57.3966 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:47:57.5682 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:47:57.6306 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:47:57.7086 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:47:57.7710 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:47:58.5666 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:00.0642 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:00.1734 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:00.2982 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:00.4074 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:00.5010 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:00.5478 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:48:00.6414 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:00.6882 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:48:00.7662 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:48:00.8286 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:48:00.8598 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:48:00.9378 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:48:06.3510 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:06.4134 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:06.5226 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:06.6318 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:06.7254 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:06.8190 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:06.8970 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:06.9438 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:07.1154 Name is Issue:22883 and newAssetOId is 
+2014-12-06 13:48:07.1778 Name is Issue:22883 and newAssetOId is 
+2014-12-06 13:48:07.2402 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:07.2870 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:09.4242 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:09.5178 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:09.6114 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:09.7050 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:09.8298 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:09.8922 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:09.9390 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:10.0326 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:10.0794 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:12.4818 Name is Request:24410 and newAssetOId is 
+2014-12-06 13:48:14.1042 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:48:15.5550 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:48:15.7734 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:15.8826 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:16.0386 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:48:16.4754 Name is Issue:22327 and newAssetOId is 
+2014-12-06 13:48:19.2678 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:19.3614 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:19.4082 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:19.4550 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:19.5330 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:21.0462 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:21.7170 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:21.7950 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:21.8886 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:22.1382 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:48:25.0086 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:25.1022 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:25.1646 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:25.1958 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:25.2894 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:25.3206 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:25.3830 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:25.4766 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:25.5234 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:27.7854 Name is Issue:28136 and newAssetOId is 
+2014-12-06 13:48:28.3782 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:28.4406 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:48:39.4758 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:39.5694 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:39.6786 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:39.7566 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:39.8346 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:39.8970 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:39.9594 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:39.9906 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:40.0374 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:40.1154 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:48:42.2682 Name is Issue:28809 and newAssetOId is 
+2014-12-06 13:48:42.3306 Name is Issue:28809 and newAssetOId is 
+2014-12-06 13:48:42.4554 Name is Issue:22329 and newAssetOId is 
+2014-12-06 13:48:43.0794 Name is Request:29450 and newAssetOId is 
+2014-12-06 13:48:43.1574 Name is Request:29450 and newAssetOId is 
+2014-12-06 13:48:43.2042 Name is Request:29450 and newAssetOId is 
+2014-12-06 13:48:43.5942 Name is Request:29450 and newAssetOId is 
+2014-12-06 13:49:24.1260 *****Setting Story Dependencies
+2014-12-06 13:49:42.0836 -> Imported 1111 stories.
+2014-12-06 13:50:00.2264 ERROR: Object reference not set to an instance of an object.
+2014-12-06 13:50:00.3512 
+2014-12-06 13:50:00.3512 Data migration terminated.
+2014-12-06 13:50:00.3512 
+2014-12-06 13:50:00.3512 
+2014-12-06 13:52:43.9140 *********************************************************
+2014-12-06 13:52:43.9452 * VersionOne Data Migration Log
+2014-12-06 13:52:43.9452 * 12/6/2014 1:52:43 PM
+2014-12-06 13:52:43.9608 *********************************************************
+2014-12-06 13:52:43.9608 
+2014-12-06 13:52:43.9608 Initializing configurations.
+2014-12-06 13:52:44.2260 Verifying connections.
+2014-12-06 13:52:46.5192 -> Connection to staging database "V1Staging" verified.
+2014-12-06 13:52:47.2056 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 13:52:47.2056 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 13:52:47.2212 
+2014-12-06 13:52:47.2212 *** IMPORTING:
+2014-12-06 13:52:47.3460 Importing stories.
+2014-12-06 13:52:47.3772 Custom field Config is Custom_Legacy
+2014-12-06 13:52:47.3772 Custom Field Name is Custom_LegacyBacklogID
+2014-12-06 13:52:52.1664 Name is Issue:18508 and newAssetOId is 
+2014-12-06 13:52:52.1664 Asset is AssetType'Story
+2014-12-06 13:53:08.2344 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:10.3560 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:10.4496 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:10.5588 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:10.6368 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:10.7148 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:10.8240 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:10.9800 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:11.0892 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:11.1516 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:11.2140 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:11.2764 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:14.1936 Name is Request:23604 and newAssetOId is 
+2014-12-06 13:53:16.6584 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:16.6584 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:16.6584 Name is Issue:23773 and newAssetOId is 
+2014-12-06 13:53:16.7364 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:16.8456 Name is Request:25220 and newAssetOId is 
+2014-12-06 13:53:16.9392 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:17.0328 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:17.0952 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:17.1732 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:17.2356 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:17.3292 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:17.4384 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:17.4852 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:17.5164 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:18.4992 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:19.7160 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:19.8096 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:19.9188 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:20.0436 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:20.1528 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:20.3400 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:20.3868 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:20.4336 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:20.5116 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:20.5584 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:20.6208 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:22.7112 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:22.7892 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:22.8672 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:22.9764 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:23.0700 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:23.1636 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:23.2416 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:23.3352 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:23.3664 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:23.4288 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:23.5068 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:23.5692 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:23.6472 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:23.6940 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:25.8936 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:26.0652 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:26.1588 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:26.2368 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:26.3772 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:26.5800 Name is Issue:22883 and newAssetOId is 
+2014-12-06 13:53:26.6424 Name is Issue:22883 and newAssetOId is 
+2014-12-06 13:53:26.7048 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:26.7516 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:28.8732 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:28.9824 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:29.0448 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:29.1384 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:29.2320 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:29.3412 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:29.3880 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:29.4192 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:29.5128 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:29.7468 Name is Request:24410 and newAssetOId is 
+2014-12-06 13:53:32.7576 Name is Issue:22230 and newAssetOId is 
+2014-12-06 13:53:32.8044 Name is Issue:22231 and newAssetOId is 
+2014-12-06 13:53:32.9292 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:34.9572 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:35.2224 Name is Issue:23463 and newAssetOId is 
+2014-12-06 13:53:35.6904 Name is Issue:22327 and newAssetOId is 
+2014-12-06 13:53:38.6232 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:38.7012 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:46.2672 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:46.3920 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:46.4856 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:46.5792 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:46.6728 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:46.7508 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:46.7976 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:46.9848 Name is Issue:23581 and newAssetOId is 
+2014-12-06 13:53:49.9176 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:49.9644 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:50.0268 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:50.0580 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:50.1204 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:50.1828 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:50.2296 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:50.2764 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:52.4448 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:52.7568 Name is Issue:28136 and newAssetOId is 
+2014-12-06 13:53:53.2092 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:53.2560 Name is Issue:28528 and newAssetOId is 
+2014-12-06 13:53:53.3808 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:55.4556 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:55.5492 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:55.6740 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:55.7832 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:55.9080 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:56.0016 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:56.0796 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:56.1420 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:56.2200 Name is Issue:28639 and newAssetOId is 
+2014-12-06 13:53:56.4228 Name is Issue:28809 and newAssetOId is 
+2014-12-06 13:53:58.4976 Name is Issue:28809 and newAssetOId is 
+2014-12-06 13:53:58.6692 Name is Issue:22329 and newAssetOId is 
+2014-12-06 13:54:01.9920 Name is Request:29450 and newAssetOId is 
+2014-12-06 13:54:02.0856 Name is Request:29450 and newAssetOId is 
+2014-12-06 13:54:02.1792 Name is Request:29450 and newAssetOId is 
+2014-12-06 13:54:02.2416 Name is Request:29450 and newAssetOId is 
+2014-12-06 13:54:41.2104 *****Setting Story Dependencies
+2014-12-06 13:54:58.6824 -> Imported 1111 stories.
+2014-12-06 14:00:26.7008 *********************************************************
+2014-12-06 14:00:26.7320 * VersionOne Data Migration Log
+2014-12-06 14:00:26.7320 * 12/6/2014 2:00:26 PM
+2014-12-06 14:00:26.7476 *********************************************************
+2014-12-06 14:00:26.7476 
+2014-12-06 14:00:26.7476 Initializing configurations.
+2014-12-06 14:00:26.8568 Verifying connections.
+2014-12-06 14:00:29.3840 -> Connection to staging database "V1Staging" verified.
+2014-12-06 14:00:30.1016 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 14:00:30.1016 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 14:00:30.1172 
+2014-12-06 14:00:30.1172 *** IMPORTING:
+2014-12-06 14:00:30.2264 Importing stories.
+2014-12-06 14:00:30.2576 Custom field Config is Custom_Legacy
+2014-12-06 14:00:30.2576 Custom Field Name is Custom_LegacyBacklogID
+2014-12-06 14:00:35.0000 Name is Issue:18508 and newAssetOId is 
+2014-12-06 14:00:35.0000 Asset is AssetType'Story
+2014-12-06 14:00:51.1148 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:00:53.2520 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:00:53.4548 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:00:53.5172 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:00:53.6420 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:00:53.7200 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:00:53.8136 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:00:53.8760 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:00:53.9540 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:00:54.0008 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:00:54.0476 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:00:54.1412 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:00:57.1052 Name is Request:23604 and newAssetOId is 
+2014-12-06 14:00:59.4452 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:00:59.4608 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:00:59.4608 Name is Issue:23773 and newAssetOId is 
+2014-12-06 14:00:59.5544 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:00:59.6480 Name is Request:25220 and newAssetOId is 
+2014-12-06 14:00:59.7260 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:00:59.8196 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:00:59.8664 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:00:59.9132 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:00:59.9912 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:00.0380 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:00.1316 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:00.2252 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:02.5808 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:02.6744 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:02.7836 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:02.8772 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:02.9708 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:03.0332 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:03.1424 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:03.3140 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:01:03.3764 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:01:03.5012 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:06.1376 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:01:06.3092 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:06.4028 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:06.5276 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:06.8084 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:09.7724 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:09.8660 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:09.9128 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:01:10.0064 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:10.0532 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:10.1312 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:10.2248 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:01:10.2716 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:01:10.3652 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:01:10.4120 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:10.4900 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:10.5836 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:10.6304 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:10.7240 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:10.7864 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:13.1108 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:13.2200 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:13.5164 Name is Issue:22883 and newAssetOId is 
+2014-12-06 14:01:13.6568 Name is Issue:22883 and newAssetOId is 
+2014-12-06 14:01:13.7504 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:13.7972 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:13.8440 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:13.9376 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:14.0000 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:14.0624 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:16.8080 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:17.0108 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:17.0888 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:17.1824 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:17.2916 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:17.5568 Name is Request:24410 and newAssetOId is 
+2014-12-06 14:01:20.6924 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:01:20.7392 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:01:23.0168 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:23.1104 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:23.4068 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:01:23.8436 Name is Issue:22327 and newAssetOId is 
+2014-12-06 14:01:26.5112 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:26.5580 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:26.6204 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:26.6984 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:26.7608 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:26.8388 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:26.8856 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:26.9324 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:27.0104 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:29.6312 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:01:32.4392 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:32.5016 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:32.5796 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:32.6888 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:32.7824 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:32.8604 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:32.9072 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:32.9384 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:33.0164 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:33.2348 Name is Issue:28136 and newAssetOId is 
+2014-12-06 14:01:35.8712 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:35.9336 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:01:36.0428 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:36.1208 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:36.1832 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:36.2144 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:36.3080 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:36.3548 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:36.4172 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:36.4796 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:37.3688 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:38.6168 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:01:38.9600 Name is Issue:28809 and newAssetOId is 
+2014-12-06 14:01:39.0380 Name is Issue:28809 and newAssetOId is 
+2014-12-06 14:01:39.1316 Name is Issue:22329 and newAssetOId is 
+2014-12-06 14:01:41.9864 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:01:42.1112 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:01:42.2048 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:01:42.2672 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:02:23.0924 *****Setting Story Dependencies
+2014-12-06 14:02:41.0480 -> Imported 1111 stories.
+2014-12-06 14:02:41.0636 -> Imported 1111 Story custom fields.
+2014-12-06 14:07:51.8464 *********************************************************
+2014-12-06 14:07:51.8776 * VersionOne Data Migration Log
+2014-12-06 14:07:51.8776 * 12/6/2014 2:07:51 PM
+2014-12-06 14:07:51.8932 *********************************************************
+2014-12-06 14:07:51.8932 
+2014-12-06 14:07:51.8932 Initializing configurations.
+2014-12-06 14:07:52.0648 Verifying connections.
+2014-12-06 14:07:54.4516 -> Connection to staging database "V1Staging" verified.
+2014-12-06 14:07:55.1692 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 14:07:55.1692 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 14:07:55.1692 
+2014-12-06 14:07:55.1848 *** IMPORTING:
+2014-12-06 14:07:55.2940 Importing stories.
+2014-12-06 14:07:55.3252 Custom field Config is Custom_Legacy
+2014-12-06 14:07:55.3252 Custom Field Name is Custom_LegacyBacklogID
+2014-12-06 14:07:59.9116 Name is Issue:18508 and newAssetOId is 
+2014-12-06 14:07:59.9116 Asset is AssetType'Story
+2014-12-06 14:08:14.4664 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:16.8376 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:22.8280 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:28.4128 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:28.5532 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:28.6468 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:28.7716 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:28.8808 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:28.9276 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:29.0056 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:29.0524 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:29.0992 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:32.1568 Name is Request:23604 and newAssetOId is 
+2014-12-06 14:08:34.4968 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:34.4968 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:34.4968 Name is Issue:23773 and newAssetOId is 
+2014-12-06 14:08:34.5904 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:34.6528 Name is Request:25220 and newAssetOId is 
+2014-12-06 14:08:34.7776 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:34.8868 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:34.9492 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:35.0272 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:35.0740 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:35.1208 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:35.1988 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:35.2612 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:35.3392 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:35.3860 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:35.4484 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:37.5544 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:37.6480 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:37.7104 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:37.9288 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:38.1004 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:38.1472 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:38.1940 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:38.2720 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:38.3344 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:38.4124 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:38.4592 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:38.5060 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:40.7056 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:40.8928 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:40.9708 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:41.0332 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:41.1268 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:41.2204 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:41.3140 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:41.3764 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:41.4388 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:41.4856 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:41.5324 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:41.6104 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:41.6572 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:43.7164 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:43.8880 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:43.9660 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:44.0752 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:44.3092 Name is Issue:22883 and newAssetOId is 
+2014-12-06 14:08:44.3560 Name is Issue:22883 and newAssetOId is 
+2014-12-06 14:08:44.4340 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:44.4808 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:44.5276 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:44.6056 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:44.6680 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:44.7304 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:44.8864 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:46.9456 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:47.1484 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:47.2264 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:47.3200 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:47.5696 Name is Request:24410 and newAssetOId is 
+2014-12-06 14:08:50.5960 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:08:50.6428 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:08:50.7988 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:08:50.8612 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:08:53.3260 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:08:58.7392 Name is Issue:22327 and newAssetOId is 
+2014-12-06 14:09:00.6580 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:06.2584 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:06.3208 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:06.4300 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:06.5548 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:06.6952 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:06.7576 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:06.8200 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:06.8980 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:07.1008 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:09:10.0336 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:10.0960 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:10.1428 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:10.2208 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:10.2676 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:10.3144 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:12.4204 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:12.5140 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:12.5764 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:12.8884 Name is Issue:28136 and newAssetOId is 
+2014-12-06 14:09:13.3096 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:13.3720 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:09:15.6808 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:15.7744 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:15.8836 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:15.9772 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:16.0396 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:16.0864 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:16.1488 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:16.2268 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:16.2736 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:16.3672 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:09:18.7072 Name is Issue:28809 and newAssetOId is 
+2014-12-06 14:09:18.8008 Name is Issue:28809 and newAssetOId is 
+2014-12-06 14:09:18.9880 Name is Issue:22329 and newAssetOId is 
+2014-12-06 14:09:19.5496 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:09:21.6712 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:09:21.7492 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:09:21.8272 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:10:03.1048 *****Setting Story Dependencies
+2014-12-06 14:10:21.2320 -> Imported 1111 stories.
+2014-12-06 14:10:21.2320 -> Imported 1111 Story custom fields.
+2014-12-06 14:10:21.2320 -> Imported 0 Story PrimaryWorkitem custom fields.
+2014-12-06 14:10:21.2320 Importing defects.
+2014-12-06 14:16:18.5032 ERROR: Invalid OID token: 
+2014-12-06 14:16:18.5500 
+2014-12-06 14:16:18.5500 Data migration terminated.
+2014-12-06 14:16:18.5500 
+2014-12-06 14:16:18.5500 
+2014-12-06 14:35:41.0376 *********************************************************
+2014-12-06 14:35:41.0532 * VersionOne Data Migration Log
+2014-12-06 14:35:41.0532 * 12/6/2014 2:35:41 PM
+2014-12-06 14:35:41.0688 *********************************************************
+2014-12-06 14:35:41.0688 
+2014-12-06 14:35:41.0688 Initializing configurations.
+2014-12-06 14:35:41.2872 Verifying connections.
+2014-12-06 14:35:42.3012 -> Connection to staging database "V1Staging" verified.
+2014-12-06 14:35:44.0016 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 14:35:44.0016 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 14:35:44.1888 
+2014-12-06 14:35:44.1888 *** IMPORTING:
+2014-12-06 14:35:44.3916 Importing stories.
+2014-12-06 14:35:45.2496 Custom field Config is Custom_Legacy
+2014-12-06 14:35:45.2496 Custom Field Name is Custom_LegacyBacklogID
+2014-12-06 14:35:54.6564 Name is Issue:18508 and newAssetOId is 
+2014-12-06 14:35:59.1804 Asset is AssetType'Story
+2014-12-06 14:36:16.0284 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:18.1656 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:18.2748 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:18.3528 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:18.4464 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:18.5556 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:18.6180 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:18.6648 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:18.7428 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:18.8052 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:18.8676 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:18.9456 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:21.8628 Name is Request:23604 and newAssetOId is 
+2014-12-06 14:36:24.2652 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:24.2808 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:24.2808 Name is Issue:23773 and newAssetOId is 
+2014-12-06 14:36:24.3588 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:24.4680 Name is Request:25220 and newAssetOId is 
+2014-12-06 14:36:24.5460 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:24.6084 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:24.7020 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:24.7644 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:24.8268 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:24.9204 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:24.9672 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:25.0452 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:25.1076 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:25.1700 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:27.3852 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:27.5100 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:27.6036 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:27.7284 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:27.8688 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:28.1028 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:28.1496 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:28.1964 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:28.2744 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:30.3180 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:30.3960 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:30.4740 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:30.5832 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:30.6768 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:30.7548 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:30.8484 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:30.9108 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:30.9576 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:31.0356 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:31.0824 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:31.1604 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:31.2072 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:31.2696 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:33.3444 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:33.4536 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:33.5316 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:33.6252 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:33.7188 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:33.7968 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:33.8280 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:34.0152 Name is Issue:22883 and newAssetOId is 
+2014-12-06 14:36:34.0932 Name is Issue:22883 and newAssetOId is 
+2014-12-06 14:36:34.1400 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:34.1868 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:34.2648 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:35.4504 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:36.3708 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:36.4488 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:36.5424 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:36.6360 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:36.7140 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:36.7764 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:36.8544 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:37.0572 Name is Request:24410 and newAssetOId is 
+2014-12-06 14:36:40.3176 Name is Issue:22230 and newAssetOId is 
+2014-12-06 14:36:40.5984 Name is Issue:22231 and newAssetOId is 
+2014-12-06 14:36:42.6732 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:49.2876 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:49.5216 Name is Issue:23463 and newAssetOId is 
+2014-12-06 14:36:50.1924 Name is Issue:22327 and newAssetOId is 
+2014-12-06 14:36:52.7976 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:52.8756 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:52.9224 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:52.9692 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:53.0472 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:53.0940 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:53.1720 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:55.2000 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:55.3092 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:55.6368 Name is Issue:23581 and newAssetOId is 
+2014-12-06 14:36:58.3512 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:36:58.4760 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:36:58.5696 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:36:58.6476 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:36:58.6944 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:36:58.7724 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:36:58.8192 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:36:58.8660 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:36:58.9440 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:36:59.1624 Name is Issue:28136 and newAssetOId is 
+2014-12-06 14:37:02.0016 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:02.0640 Name is Issue:28528 and newAssetOId is 
+2014-12-06 14:37:02.1732 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:02.2356 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:02.2980 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:04.1076 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:04.3728 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:04.4508 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:04.5756 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:04.6692 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:04.7316 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:04.8096 Name is Issue:28639 and newAssetOId is 
+2014-12-06 14:37:05.0280 Name is Issue:28809 and newAssetOId is 
+2014-12-06 14:37:05.1216 Name is Issue:28809 and newAssetOId is 
+2014-12-06 14:37:05.1996 Name is Issue:22329 and newAssetOId is 
+2014-12-06 14:37:07.9452 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:37:07.9920 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:37:08.0388 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:37:08.1324 Name is Request:29450 and newAssetOId is 
+2014-12-06 14:37:48.1620 *****Setting Story Dependencies
+2014-12-06 14:38:05.7276 -> Imported 1111 stories.
+2014-12-06 14:38:05.7276 -> Imported 1111 Story custom fields.
+2014-12-06 17:22:09.3124 *********************************************************
+2014-12-06 17:22:09.3436 * VersionOne Data Migration Log
+2014-12-06 17:22:09.3436 * 12/6/2014 5:22:09 PM
+2014-12-06 17:22:09.3592 *********************************************************
+2014-12-06 17:22:09.3592 
+2014-12-06 17:22:09.3592 Initializing configurations.
+2014-12-06 17:22:09.6088 Verifying connections.
+2014-12-06 17:22:11.7460 -> Connection to staging database "V1Staging" verified.
+2014-12-06 17:22:23.1028 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 17:22:28.1884 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 17:22:29.8888 
+2014-12-06 17:22:29.8888 *** IMPORTING:
+2014-12-06 17:22:30.1228 Importing stories.
+2014-12-06 17:22:30.4504 Custom field Config is Custom_Legacy
+2014-12-06 17:22:30.4504 Custom Field Name is Custom_LegacyBacklogID
+2014-12-06 17:22:42.9928 Name is Issue:18508 and newAssetOId is 
+2014-12-06 17:22:42.9928 Asset is AssetType'Story
+2014-12-06 17:23:01.4320 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:03.6004 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:09.8092 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:09.9496 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:10.0900 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:10.1836 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:10.2928 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:10.3396 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:10.4332 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:10.4800 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:10.5736 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:10.6204 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:13.5376 Name is Request:23604 and newAssetOId is 
+2014-12-06 17:23:15.9556 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:15.9556 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:15.9556 Name is Issue:23773 and newAssetOId is 
+2014-12-06 17:23:16.0804 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:16.1896 Name is Request:25220 and newAssetOId is 
+2014-12-06 17:23:16.2676 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:16.3144 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:16.4080 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:16.4548 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:16.5016 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:16.5952 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:16.6264 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:16.6888 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:18.7324 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:18.8572 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:18.9508 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:19.0756 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:19.2160 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:19.2784 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:19.4344 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:19.6216 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:19.7152 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:21.7744 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:21.8836 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:21.9928 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:22.1176 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:22.2580 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:22.4296 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:22.4920 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:22.5232 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:22.6168 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:22.6636 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:24.2860 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:28.7476 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:28.8724 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:28.9972 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:29.0908 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:29.1532 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:29.2000 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:29.2780 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:29.3404 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:29.4184 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:29.4652 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:29.5432 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:29.6212 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:31.7740 Name is Issue:22883 and newAssetOId is 
+2014-12-06 17:23:31.8988 Name is Issue:22883 and newAssetOId is 
+2014-12-06 17:23:32.0080 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:32.0860 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:32.1328 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:32.2420 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:32.2888 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:32.3668 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:32.4136 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:32.5384 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:34.5820 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:34.7224 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:34.8160 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:35.1592 Name is Request:24410 and newAssetOId is 
+2014-12-06 17:23:38.2948 Name is Issue:22230 and newAssetOId is 
+2014-12-06 17:23:38.3416 Name is Issue:22231 and newAssetOId is 
+2014-12-06 17:23:38.4976 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:38.5444 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:40.5100 Name is Issue:23463 and newAssetOId is 
+2014-12-06 17:23:41.3368 Name is Issue:22327 and newAssetOId is 
+2014-12-06 17:23:44.1136 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:44.1916 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:44.2696 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:44.3164 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:44.3788 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:44.4568 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:44.4880 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:44.5504 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:44.6284 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:46.9684 Name is Issue:23581 and newAssetOId is 
+2014-12-06 17:23:49.8388 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:49.9012 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:49.9792 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:50.1352 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:50.2132 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:50.2756 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:50.3068 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:50.4004 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:50.4628 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:52.0852 Name is Issue:28136 and newAssetOId is 
+2014-12-06 17:23:57.8104 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:23:57.8416 Name is Issue:28528 and newAssetOId is 
+2014-12-06 17:23:57.9820 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:23:58.0444 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:23:58.1380 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:23:58.2004 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:24:00.2128 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:24:00.3220 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:24:00.4156 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:24:00.4936 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:24:00.6184 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:24:00.6808 Name is Issue:28639 and newAssetOId is 
+2014-12-06 17:24:00.9148 Name is Issue:28809 and newAssetOId is 
+2014-12-06 17:24:00.9928 Name is Issue:28809 and newAssetOId is 
+2014-12-06 17:24:01.1332 Name is Issue:22329 and newAssetOId is 
+2014-12-06 17:24:04.0660 Name is Request:29450 and newAssetOId is 
+2014-12-06 17:24:04.1596 Name is Request:29450 and newAssetOId is 
+2014-12-06 17:24:04.2220 Name is Request:29450 and newAssetOId is 
+2014-12-06 17:24:05.0644 Name is Request:29450 and newAssetOId is 
+2014-12-06 17:24:47.7148 *****Setting Story Dependencies
+2014-12-06 17:25:06.0136 -> Imported 1111 stories.
+2014-12-06 17:25:06.0292 -> Imported 1111 Story custom fields.
+2014-12-06 17:39:10.3976 *********************************************************
+2014-12-06 17:39:10.4288 * VersionOne Data Migration Log
+2014-12-06 17:39:10.4288 * 12/6/2014 5:39:10 PM
+2014-12-06 17:39:10.4444 *********************************************************
+2014-12-06 17:39:10.4444 
+2014-12-06 17:39:10.4444 Initializing configurations.
+2014-12-06 17:39:10.7252 Verifying connections.
+2014-12-06 17:39:12.9248 -> Connection to staging database "V1Staging" verified.
+2014-12-06 17:39:13.6424 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 17:39:13.6424 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 17:39:13.6424 
+2014-12-06 17:39:13.6424 *** IMPORTING:
+2014-12-06 17:39:13.7672 Importing stories.
+2014-12-06 17:39:13.7672 -> Imported 0 stories.
+2014-12-06 17:39:24.9008 ERROR: Object reference not set to an instance of an object.
+2014-12-06 17:39:25.2128 
+2014-12-06 17:39:25.2128 Data migration terminated.
+2014-12-06 17:39:25.2128 
+2014-12-06 17:39:25.2128 
+2014-12-06 17:41:29.1704 *********************************************************
+2014-12-06 17:41:29.2016 * VersionOne Data Migration Log
+2014-12-06 17:41:29.2016 * 12/6/2014 5:41:29 PM
+2014-12-06 17:41:29.2172 *********************************************************
+2014-12-06 17:41:29.2172 
+2014-12-06 17:41:29.2172 Initializing configurations.
+2014-12-06 17:41:29.5136 Verifying connections.
+2014-12-06 17:41:31.6820 -> Connection to staging database "V1Staging" verified.
+2014-12-06 17:41:32.3528 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 17:41:32.4464 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 17:41:32.4464 
+2014-12-06 17:41:32.4464 *** IMPORTING:
+2014-12-06 17:41:32.5712 Importing stories.
+2014-12-06 17:41:32.5712 -> Imported 0 stories.
+2014-12-06 17:43:16.0578 *********************************************************
+2014-12-06 17:43:16.0890 * VersionOne Data Migration Log
+2014-12-06 17:43:16.0890 * 12/6/2014 5:43:16 PM
+2014-12-06 17:43:16.1046 *********************************************************
+2014-12-06 17:43:16.1046 
+2014-12-06 17:43:16.1046 Initializing configurations.
+2014-12-06 17:43:16.4166 Verifying connections.
+2014-12-06 17:43:18.6474 -> Connection to staging database "V1Staging" verified.
+2014-12-06 17:43:19.2558 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 17:43:19.2558 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 17:43:19.2714 
+2014-12-06 17:43:19.2714 *** IMPORTING:
+2014-12-06 17:43:19.3806 Importing stories.
+2014-12-06 17:43:19.3806 -> Imported 0 stories.
+2014-12-06 18:31:39.2336 *********************************************************
+2014-12-06 18:31:39.2648 * VersionOne Data Migration Log
+2014-12-06 18:31:39.2648 * 12/6/2014 6:31:39 PM
+2014-12-06 18:31:39.2804 *********************************************************
+2014-12-06 18:31:39.2804 
+2014-12-06 18:31:39.2804 Initializing configurations.
+2014-12-06 18:31:39.5300 Verifying connections.
+2014-12-06 18:31:41.6984 -> Connection to staging database "V1Staging" verified.
+2014-12-06 18:31:52.9148 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 18:31:52.9148 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 18:31:53.2424 
+2014-12-06 18:31:53.2424 *** IMPORTING:
+2014-12-06 18:31:53.4452 Importing stories.
+2014-12-06 18:31:53.4452 -> Imported 0 stories.
+2014-12-06 18:37:23.1618 *********************************************************
+2014-12-06 18:37:23.1930 * VersionOne Data Migration Log
+2014-12-06 18:37:23.1930 * 12/6/2014 6:37:23 PM
+2014-12-06 18:37:23.2086 *********************************************************
+2014-12-06 18:37:23.2086 
+2014-12-06 18:37:23.2086 Initializing configurations.
+2014-12-06 18:37:23.3022 Verifying connections.
+2014-12-06 18:37:23.6766 -> Connection to staging database "V1Staging" verified.
+2014-12-06 18:37:25.3770 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 18:37:25.3770 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 18:37:25.5018 
+2014-12-06 18:37:25.5018 *** IMPORTING:
+2014-12-06 18:37:25.7046 Importing stories.
+2014-12-06 18:37:25.7046 -> Imported 0 stories.
+2014-12-06 18:43:00.2730 *********************************************************
+2014-12-06 18:43:00.6942 * VersionOne Data Migration Log
+2014-12-06 18:43:00.6942 * 12/6/2014 6:43:00 PM
+2014-12-06 18:43:00.7098 *********************************************************
+2014-12-06 18:43:00.7098 
+2014-12-06 18:43:00.7098 Initializing configurations.
+2014-12-06 18:43:00.9750 Verifying connections.
+2014-12-06 18:43:13.9230 -> Connection to staging database "V1Staging" verified.
+2014-12-06 18:43:31.6134 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 18:43:31.6134 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 18:43:32.6586 
+2014-12-06 18:43:32.6586 *** IMPORTING:
+2014-12-06 18:43:32.9238 Importing stories.
+2014-12-06 18:43:32.9238 -> Imported 0 stories.
+2014-12-06 18:44:27.1038 *********************************************************
+2014-12-06 18:44:27.1350 * VersionOne Data Migration Log
+2014-12-06 18:44:27.1350 * 12/6/2014 6:44:27 PM
+2014-12-06 18:44:27.1506 *********************************************************
+2014-12-06 18:44:27.1506 
+2014-12-06 18:44:27.1506 Initializing configurations.
+2014-12-06 18:44:27.3690 Verifying connections.
+2014-12-06 18:44:29.1630 -> Connection to staging database "V1Staging" verified.
+2014-12-06 18:44:29.7558 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 18:44:29.7558 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 18:44:29.7558 
+2014-12-06 18:44:29.7714 *** IMPORTING:
+2014-12-06 18:44:29.8806 Importing stories.
+2014-12-06 18:44:29.8806 -> Imported 0 stories.
+2014-12-06 18:44:29.9898 ERROR: Object reference not set to an instance of an object.
+2014-12-06 18:44:29.9898 
+2014-12-06 18:44:29.9898 Data migration terminated.
+2014-12-06 18:44:29.9898 
+2014-12-06 18:44:29.9898 
+2014-12-06 23:47:16.4214 *********************************************************
+2014-12-06 23:47:16.4526 * VersionOne Data Migration Log
+2014-12-06 23:47:16.4526 * 12/6/2014 11:47:16 PM
+2014-12-06 23:47:16.4682 *********************************************************
+2014-12-06 23:47:16.4682 
+2014-12-06 23:47:16.4682 Initializing configurations.
+2014-12-06 23:47:16.7178 Verifying connections.
+2014-12-06 23:47:18.6990 -> Connection to staging database "V1Staging" verified.
+2014-12-06 23:47:30.2274 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 23:47:32.6610 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 23:47:32.9418 
+2014-12-06 23:47:32.9418 *** IMPORTING:
+2014-12-06 23:47:33.1446 Importing stories.
+2014-12-06 23:47:33.1602 -> Imported 0 stories.
+2014-12-06 23:47:33.1602 -> Imported 0 Story custom fields.
+2014-12-06 23:47:33.7218 ERROR: Object reference not set to an instance of an object.
+2014-12-06 23:47:33.7218 
+2014-12-06 23:47:33.7218 Data migration terminated.
+2014-12-06 23:47:33.7218 
+2014-12-06 23:47:33.7218 
+2014-12-06 23:48:26.6870 *********************************************************
+2014-12-06 23:48:26.7182 * VersionOne Data Migration Log
+2014-12-06 23:48:26.7182 * 12/6/2014 11:48:26 PM
+2014-12-06 23:48:26.7338 *********************************************************
+2014-12-06 23:48:26.7338 
+2014-12-06 23:48:26.7338 Initializing configurations.
+2014-12-06 23:48:27.0146 Verifying connections.
+2014-12-06 23:48:29.1518 -> Connection to staging database "V1Staging" verified.
+2014-12-06 23:48:29.7758 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 23:48:29.7758 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 23:48:29.7914 
+2014-12-06 23:48:29.7914 *** IMPORTING:
+2014-12-06 23:48:29.9162 Importing stories.
+2014-12-06 23:48:29.9162 -> Imported 0 stories.
+2014-12-06 23:49:34.7052 -> Imported 0 Story custom fields.
+2014-12-06 23:52:38.4290 *********************************************************
+2014-12-06 23:52:38.5730 * VersionOne Data Migration Log
+2014-12-06 23:52:38.5730 * 12/6/2014 11:52:38 PM
+2014-12-06 23:52:38.5730 *********************************************************
+2014-12-06 23:52:38.5886 
+2014-12-06 23:52:38.5886 Initializing configurations.
+2014-12-06 23:58:33.2218 *********************************************************
+2014-12-06 23:58:33.2998 * VersionOne Data Migration Log
+2014-12-06 23:58:33.2998 * 12/6/2014 11:58:33 PM
+2014-12-06 23:58:33.3154 *********************************************************
+2014-12-06 23:58:33.3154 
+2014-12-06 23:58:33.3154 Initializing configurations.
+2014-12-06 23:58:33.4870 Verifying connections.
+2014-12-06 23:58:35.4214 -> Connection to staging database "V1Staging" verified.
+2014-12-06 23:58:35.9986 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-06 23:58:35.9986 -> V1 target instance version: 14.3.2.6314.
+2014-12-06 23:58:36.0142 
+2014-12-06 23:58:36.0142 *** IMPORTING:
+2014-12-06 23:58:36.1234 Importing stories.
+2014-12-06 23:58:36.1234 -> Imported 0 stories.
+2014-12-06 23:58:54.1592 -> Imported 0 Story custom fields.

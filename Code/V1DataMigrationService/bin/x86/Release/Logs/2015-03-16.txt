@@ -1,0 +1,119 @@
+2015-03-16 21:21:43.0480 *********************************************************
+2015-03-16 21:21:43.0580 * VersionOne Data Migration Log
+2015-03-16 21:21:43.0580 * 3/16/2015 9:21:43 PM
+2015-03-16 21:21:43.0810 *********************************************************
+2015-03-16 21:21:43.0810 
+2015-03-16 21:21:43.0810 Initializing configurations.
+2015-03-16 21:21:43.1610 Verifying connections.
+2015-03-16 21:21:43.6790 -> Connection to staging database "V1Staging" verified.
+2015-03-16 21:22:14.0030 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2015-03-16 21:22:14.0030 -> V1 source instance version: 11.1.11.2269.
+2015-03-16 21:22:28.2970 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-16 21:22:28.2990 -> V1 target instance version: 14.3.5.6349.
+2015-03-16 21:22:28.4220 
+2015-03-16 21:22:28.4240 *** EXPORTING:
+2015-03-16 21:22:28.4580 Exporting conversations.
+2015-03-16 21:23:30.5390 -> Exported 690 conversations.
+2015-03-16 21:23:30.5390 
+2015-03-16 21:23:30.5390 Data migration complete!
+2015-03-16 21:23:30.5450 
+2015-03-16 21:23:30.5450 
+2015-03-16 21:43:39.5570 *********************************************************
+2015-03-16 21:43:39.6040 * VersionOne Data Migration Log
+2015-03-16 21:43:39.6040 * 3/16/2015 9:43:39 PM
+2015-03-16 21:43:39.6380 *********************************************************
+2015-03-16 21:43:39.6490 
+2015-03-16 21:43:39.6490 Initializing configurations.
+2015-03-16 21:43:39.7590 Verifying connections.
+2015-03-16 21:43:40.2720 -> Connection to staging database "V1Staging" verified.
+2015-03-16 21:44:00.5050 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-16 21:44:00.5210 -> V1 target instance version: 14.3.5.6349.
+2015-03-16 21:44:00.5930 
+2015-03-16 21:44:00.5930 *** IMPORTING:
+2015-03-16 21:44:00.8180 Importing conversations.
+2015-03-16 22:08:08.2460 *********************************************************
+2015-03-16 22:08:08.2880 * VersionOne Data Migration Log
+2015-03-16 22:08:08.2880 * 3/16/2015 10:08:08 PM
+2015-03-16 22:08:08.3060 *********************************************************
+2015-03-16 22:08:08.3060 
+2015-03-16 22:08:08.3260 Initializing configurations.
+2015-03-16 22:08:08.4000 Verifying connections.
+2015-03-16 22:08:08.7950 -> Connection to staging database "V1Staging" verified.
+2015-03-16 22:09:17.7480 -> Unable to connect to V1 source instance "http://localhost/AllyProduction".
+2015-03-16 22:09:17.7580 ERROR: Unknown AssetType: Member
+2015-03-16 22:09:17.7580 
+2015-03-16 22:09:17.7580 Data migration terminated.
+2015-03-16 22:09:17.7580 
+2015-03-16 22:09:17.7580 
+2015-03-16 22:41:11.9510 *********************************************************
+2015-03-16 22:41:11.9970 * VersionOne Data Migration Log
+2015-03-16 22:41:11.9970 * 3/16/2015 10:41:12 PM
+2015-03-16 22:41:12.0150 *********************************************************
+2015-03-16 22:41:12.0150 
+2015-03-16 22:41:12.0150 Initializing configurations.
+2015-03-16 22:41:12.1170 Verifying connections.
+2015-03-16 22:41:12.7140 -> Connection to staging database "V1Staging" verified.
+2015-03-16 22:41:27.3320 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-16 22:41:27.3320 -> V1 target instance version: 14.3.5.6349.
+2015-03-16 22:41:27.3950 
+2015-03-16 22:41:27.3950 *** IMPORTING:
+2015-03-16 22:41:27.4630 Importing conversations.
+2015-03-16 23:04:26.5270 -> Imported 0 conversations.
+2015-03-16 23:04:26.5350 
+2015-03-16 23:04:26.5500 Data migration complete!
+2015-03-16 23:04:26.5500 
+2015-03-16 23:04:26.5500 
+2015-03-16 23:23:14.4210 *********************************************************
+2015-03-16 23:23:14.4860 * VersionOne Data Migration Log
+2015-03-16 23:23:14.4860 * 3/16/2015 11:23:14 PM
+2015-03-16 23:23:14.5020 *********************************************************
+2015-03-16 23:23:14.5020 
+2015-03-16 23:23:14.5020 Initializing configurations.
+2015-03-16 23:23:14.6040 Verifying connections.
+2015-03-16 23:23:15.2170 -> Connection to staging database "V1Staging" verified.
+2015-03-16 23:23:16.8800 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-16 23:23:16.8800 -> V1 target instance version: 14.3.5.6349.
+2015-03-16 23:23:16.9350 
+2015-03-16 23:23:16.9350 *** IMPORTING:
+2015-03-16 23:23:16.9920 Importing conversations.
+2015-03-16 23:24:43.6790 -> Imported 0 conversations.
+2015-03-16 23:24:43.6870 
+2015-03-16 23:24:43.6870 Data migration complete!
+2015-03-16 23:24:43.7000 
+2015-03-16 23:24:43.7000 
+2015-03-16 23:32:14.1770 *********************************************************
+2015-03-16 23:32:14.2160 * VersionOne Data Migration Log
+2015-03-16 23:32:14.2160 * 3/16/2015 11:32:14 PM
+2015-03-16 23:32:14.2330 *********************************************************
+2015-03-16 23:32:14.2330 
+2015-03-16 23:32:14.2330 Initializing configurations.
+2015-03-16 23:32:14.3340 Verifying connections.
+2015-03-16 23:32:14.8570 -> Connection to staging database "V1Staging" verified.
+2015-03-16 23:32:16.2270 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-16 23:32:16.2280 -> V1 target instance version: 14.3.5.6349.
+2015-03-16 23:32:16.2650 
+2015-03-16 23:32:16.2650 *** IMPORTING:
+2015-03-16 23:32:16.3430 Importing conversations.
+2015-03-16 23:33:03.0840 -> Imported 0 conversations.
+2015-03-16 23:33:03.0840 
+2015-03-16 23:33:03.0900 Data migration complete!
+2015-03-16 23:33:03.0900 
+2015-03-16 23:33:03.0900 
+2015-03-16 23:39:45.4880 *********************************************************
+2015-03-16 23:39:45.5170 * VersionOne Data Migration Log
+2015-03-16 23:39:45.5170 * 3/16/2015 11:39:45 PM
+2015-03-16 23:39:45.5540 *********************************************************
+2015-03-16 23:39:45.5630 
+2015-03-16 23:39:45.5630 Initializing configurations.
+2015-03-16 23:39:45.6580 Verifying connections.
+2015-03-16 23:39:46.0130 -> Connection to staging database "V1Staging" verified.
+2015-03-16 23:39:46.8610 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-16 23:39:46.8610 -> V1 target instance version: 14.3.5.6349.
+2015-03-16 23:39:46.8960 
+2015-03-16 23:39:46.8960 *** IMPORTING:
+2015-03-16 23:39:46.9510 Importing conversations.
+2015-03-16 23:40:20.8690 -> Imported 0 conversations.
+2015-03-16 23:40:20.8690 
+2015-03-16 23:40:20.8790 Data migration complete!
+2015-03-16 23:40:20.8790 
+2015-03-16 23:40:20.8790 

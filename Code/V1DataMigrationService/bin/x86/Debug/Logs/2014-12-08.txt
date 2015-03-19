@@ -1,0 +1,988 @@
+2014-12-08 00:00:47.7524 *********************************************************
+2014-12-08 00:00:47.8148 * VersionOne Data Migration Log
+2014-12-08 00:00:47.8148 * 12/8/2014 12:00:47 AM
+2014-12-08 00:00:47.8304 *********************************************************
+2014-12-08 00:00:47.8304 
+2014-12-08 00:00:47.8304 Initializing configurations.
+2014-12-08 00:00:48.0800 Verifying connections.
+2014-12-08 00:01:02.0384 -> Connection to staging database "V1Staging" verified.
+2014-12-08 00:01:10.5092 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-12-08 00:01:10.5092 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 00:01:11.8508 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 00:01:11.8508 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 00:01:12.0224 
+2014-12-08 00:01:12.0224 *** EXPORTING:
+2014-12-08 00:01:12.2096 Exporting list types.
+2014-12-08 00:01:13.1300 -> Exported 90 list types.
+2014-12-08 00:01:13.1300 Exporting members.
+2014-12-08 00:01:13.2548 The TotalAvailable Members is 129 
+2014-12-08 00:01:13.4108 -> Exported 129 members.
+2014-12-08 00:01:13.4108 Exporting member groups.
+2014-12-08 00:01:13.4420 -> Exported 0 member groups.
+2014-12-08 00:01:13.4420 Exporting teams.
+2014-12-08 00:01:13.5044 -> Exported 5 teams.
+2014-12-08 00:01:13.5044 Exporting schedules.
+2014-12-08 00:01:13.5512 -> Exported 14 schedules.
+2014-12-08 00:01:13.5512 Exporting projects.
+2014-12-08 00:01:13.5512 Calling projects.Export
+2014-12-08 00:01:14.4560 assetTotal is 7 
+2014-12-08 00:01:15.6260 -> Exported 7 projects.
+2014-12-08 00:01:15.6260 Exporting programs.
+2014-12-08 00:01:15.8288 -> Exported 1 programs.
+2014-12-08 00:01:15.8288 Exporting iterations.
+2014-12-08 00:01:16.1720 -> Exported 205 iterations.
+2014-12-08 00:01:18.9176 Exporting goals.
+2014-12-08 00:01:19.0580 -> Exported 0 goals.
+2014-12-08 00:01:19.0580 Exporting feature groups.
+2014-12-08 00:01:19.6548 -> Exported 50 feature groups.
+2014-12-08 00:01:19.6548 Exporting requests.
+2014-12-08 00:01:21.8856 -> Exported 10 requests.
+2014-12-08 00:01:21.8856 Exporting issues.
+2014-12-08 00:01:22.3848 -> Exported 27 issues.
+2014-12-08 00:01:22.3848 Exporting epics.
+2014-12-08 00:01:22.4004 -> Exported 0 epics.
+2014-12-08 00:01:22.4004 Exporting stories.
+2014-12-08 00:01:31.7760 -> Exported 1118 stories.
+2014-12-08 00:01:33.8976 -> Exported 60 Story custom fields.
+2014-12-08 00:01:37.2204 -> Exported 1352 PrimaryWorkitem custom fields.
+2014-12-08 00:01:37.2204 Exporting defects.
+2014-12-08 00:01:40.4028 -> Exported 114 defects.
+2014-12-08 00:01:40.6212 -> Exported 0 Defects custom fields.
+2014-12-08 00:01:40.6212 Exporting tasks.
+2014-12-08 00:01:43.2420 -> Exported 146 tasks.
+2014-12-08 00:01:43.2576 Exporting tests.
+2014-12-08 00:01:43.6164 -> Exported 1 tests.
+2014-12-08 00:01:43.6164 Exporting links.
+2014-12-08 00:01:43.6632 -> Exported 11 links.
+2014-12-08 00:01:43.6632 Exporting conversations.
+2014-12-08 00:01:46.7832 -> Exported 681 conversations.
+2014-12-08 00:01:46.7832 Exporting actuals.
+2014-12-08 00:01:46.8924 -> Exported 0 actuals.
+2014-12-08 00:01:46.8924 Exporting attachments.
+2014-12-08 00:02:23.3546 -> Exported 2001 attachments.
+2014-12-08 00:02:23.3546 
+2014-12-08 00:02:23.3546 Data migration complete!
+2014-12-08 00:02:23.3546 
+2014-12-08 00:02:23.3546 
+2014-12-08 00:05:45.9070 *********************************************************
+2014-12-08 00:05:45.9382 * VersionOne Data Migration Log
+2014-12-08 00:05:45.9382 * 12/8/2014 12:05:45 AM
+2014-12-08 00:05:45.9538 *********************************************************
+2014-12-08 00:05:45.9538 
+2014-12-08 00:05:45.9538 Initializing configurations.
+2014-12-08 00:05:46.2346 Verifying connections.
+2014-12-08 00:05:48.4810 -> Connection to staging database "V1Staging" verified.
+2014-12-08 00:05:49.1206 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 00:05:49.1206 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 00:05:49.1362 
+2014-12-08 00:05:49.1362 *** IMPORTING:
+2014-12-08 00:05:49.3234 Importing list types.
+2014-12-08 00:05:57.1858 -> Imported 35 list types.
+2014-12-08 00:05:57.2014 -> Imported 0 ListTypes custom fields.
+2014-12-08 00:05:57.2014 Importing members.
+2014-12-08 00:06:08.6694 -> Imported 113 members.
+2014-12-08 00:06:08.6694 Importing member groups.
+2014-12-08 00:06:08.9346 -> Imported 0 member groups.
+2014-12-08 00:06:08.9346 Importing teams.
+2014-12-08 00:06:10.9938 -> Imported 4 teams.
+2014-12-08 00:06:10.9938 Importing schedules.
+2014-12-08 00:06:13.7706 -> Imported 14 schedules.
+2014-12-08 00:06:13.7706 Importing projects.
+2014-12-08 00:06:19.5114 -> Imported 7 projects.
+2014-12-08 00:06:19.5114 Importing programs.
+2014-12-08 00:06:21.7578 -> Imported 1 programs.
+2014-12-08 00:06:22.2454 Importing iterations.
+2014-12-08 00:06:41.3730 -> Imported 205 iterations.
+2014-12-08 00:06:41.3730 Importing goals.
+2014-12-08 00:06:41.6070 -> Imported 0 goals.
+2014-12-08 00:06:44.1498 Importing feature groups.
+2014-12-08 00:06:52.5114 -> Imported 50 feature groups.
+2014-12-08 00:06:52.5114 Importing requests.
+2014-12-08 00:06:55.6626 -> Imported 10 requests.
+2014-12-08 00:06:55.6626 Importing issues.
+2014-12-08 00:07:00.2646 -> Imported 27 issues.
+2014-12-08 00:07:00.2646 Importing epics.
+2014-12-08 00:07:03.5718 -> Imported 7 epics.
+2014-12-08 00:07:03.6966 Importing stories.
+2014-12-08 00:07:04.6014 Custom field Config is Custom_Legacy
+2014-12-08 00:07:04.6014 Custom Field Name is Custom_LegacyBacklogID
+2014-12-08 00:07:14.3086 Asset is AssetType'Story
+2014-12-08 00:08:20.9784 *****Setting Story Dependencies
+2014-12-08 00:08:35.8452 -> Imported 1111 stories.
+2014-12-08 00:09:11.7986 -> Imported 1225 Story custom fields.
+2014-12-08 00:09:11.7986 Importing defects.
+2014-12-08 00:09:22.8278 -> Imported 114 defects.
+2014-12-08 00:09:28.2878 -> Imported 126 defects custom fields.
+2014-12-08 00:09:28.2878 Importing tasks.
+2014-12-08 00:09:36.7118 -> Imported 146 tasks.
+2014-12-08 00:09:37.0862 Importing tests.
+2014-12-08 00:09:39.5062 -> Imported 1 tests.
+2014-12-08 00:09:39.5062 Importing links.
+2014-12-08 00:09:39.7246 -> Imported 5 links.
+2014-12-08 00:09:39.7246 Importing conversations.
+2014-12-08 00:11:59.5648 -> Imported 0 conversations.
+2014-12-08 00:11:59.5804 Importing actuals.
+2014-12-08 00:11:59.6740 -> Imported 0 actuals.
+2014-12-08 00:11:59.6740 Importing attachments.
+2014-12-08 00:14:15.1578 -> Imported 886 attachments.
+2014-12-08 00:14:15.1578 
+2014-12-08 00:14:15.1578 Data migration complete!
+2014-12-08 00:14:15.1578 
+2014-12-08 00:14:15.1578 
+2014-12-08 00:19:22.6956 *********************************************************
+2014-12-08 00:19:22.7386 * VersionOne Data Migration Log
+2014-12-08 00:19:22.7386 * 12/8/2014 12:19:22 AM
+2014-12-08 00:19:22.7606 *********************************************************
+2014-12-08 00:19:22.7636 
+2014-12-08 00:19:22.7636 Initializing configurations.
+2014-12-08 00:19:22.9674 Verifying connections.
+2014-12-08 00:19:24.7458 -> Connection to staging database "V1Staging" verified.
+2014-12-08 00:19:25.9626 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 00:19:25.9626 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 00:19:25.9938 
+2014-12-08 00:19:25.9938 *** CLOSING:
+2014-12-08 00:19:26.1186 Closing list types.
+2014-12-08 00:19:26.2434 -> Closed 0 list types.
+2014-12-08 00:19:26.2434 Closing members.
+2014-12-08 00:19:30.1318 -> Closed 48 members.
+2014-12-08 00:19:30.1318 Closing teams.
+2014-12-08 00:19:30.3658 -> Closed 5 teams.
+2014-12-08 00:19:30.3658 Closing goals.
+2014-12-08 00:19:30.3658 -> Closed 0 goals.
+2014-12-08 00:19:30.3658 Closing feature groups.
+2014-12-08 00:19:30.3814 -> Closed 0 feature groups.
+2014-12-08 00:19:30.3970 Closing requests.
+2014-12-08 00:19:30.4126 -> Closed 0 requests.
+2014-12-08 00:19:30.4126 Closing issues.
+2014-12-08 00:19:30.5530 -> Closed 3 issues.
+2014-12-08 00:19:30.5686 Closing tests.
+2014-12-08 00:19:30.6778 -> Closed 1 tests.
+2014-12-08 00:19:30.6778 Closing tasks.
+2014-12-08 00:19:34.2502 -> Closed 49 tasks.
+2014-12-08 00:19:41.0684 Closing defects.
+2014-12-08 00:19:45.1712 -> Closed 109 defects.
+2014-12-08 00:19:45.4364 Closing stories.
+2014-12-08 00:20:16.6414 -> Closed 876 stories.
+2014-12-08 00:20:16.6414 Closing epics.
+2014-12-08 00:20:17.4838 -> Closed 0 epics.
+2014-12-08 00:20:21.2434 Closing iterations.
+2014-12-08 00:20:26.8906 -> Closed 121 iterations.
+2014-12-08 00:20:26.8906 Closing schedules.
+2014-12-08 00:20:27.2962 -> Closed 0 schedules.
+2014-12-08 00:20:27.2962 Closing projects.
+2014-12-08 00:20:27.9046 -> Closed 0 projects.
+2014-12-08 00:20:27.9046 
+2014-12-08 00:20:27.9046 Data migration complete!
+2014-12-08 00:20:27.9046 
+2014-12-08 00:20:27.9046 
+2014-12-08 00:38:55.5580 *********************************************************
+2014-12-08 00:38:55.5892 * VersionOne Data Migration Log
+2014-12-08 00:38:55.5892 * 12/8/2014 12:38:55 AM
+2014-12-08 00:38:55.6048 *********************************************************
+2014-12-08 00:38:55.6048 
+2014-12-08 00:38:55.6048 Initializing configurations.
+2014-12-08 00:38:55.9324 Verifying connections.
+2014-12-08 00:38:58.3348 -> Connection to staging database "V1Staging" verified.
+2014-12-08 00:39:01.2676 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-12-08 00:39:01.2676 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 00:39:01.4860 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 00:39:01.4860 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 00:39:01.4860 
+2014-12-08 00:39:01.4860 *** EXPORTING:
+2014-12-08 00:39:01.5484 Exporting list types.
+2014-12-08 00:39:02.0476 -> Exported 90 list types.
+2014-12-08 00:39:02.0476 Exporting members.
+2014-12-08 00:39:02.1412 The TotalAvailable Members is 129 
+2014-12-08 00:39:02.7496 ERROR: Violation of PRIMARY KEY constraint 'PK_Members'. Cannot insert duplicate key in object 'dbo.Members'. The duplicate key value is (Member:20).
+The statement has been terminated.
+2014-12-08 00:39:02.7496 
+2014-12-08 00:39:02.7496 Data migration terminated.
+2014-12-08 00:39:02.7652 
+2014-12-08 00:39:02.7652 
+2014-12-08 00:44:29.7718 *********************************************************
+2014-12-08 00:44:29.7874 * VersionOne Data Migration Log
+2014-12-08 00:44:29.7874 * 12/8/2014 12:44:29 AM
+2014-12-08 00:44:29.8030 *********************************************************
+2014-12-08 00:44:29.8030 
+2014-12-08 00:44:29.8030 Initializing configurations.
+2014-12-08 00:44:30.0214 Verifying connections.
+2014-12-08 00:44:32.3770 -> Connection to staging database "V1Staging" verified.
+2014-12-08 00:44:33.0946 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2014-12-08 00:44:33.0946 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 00:44:34.4986 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 00:44:34.4986 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 00:44:34.8106 
+2014-12-08 00:44:34.8106 *** EXPORTING:
+2014-12-08 00:44:34.9354 Exporting list types.
+2014-12-08 00:44:36.5422 -> Exported 90 list types.
+2014-12-08 00:44:36.5422 Exporting members.
+2014-12-08 00:44:36.5890 The TotalAvailable Members is 129 
+2014-12-08 00:44:36.7762 -> Exported 129 members.
+2014-12-08 00:44:36.7762 Exporting member groups.
+2014-12-08 00:44:36.8074 -> Exported 0 member groups.
+2014-12-08 00:44:36.8074 Exporting teams.
+2014-12-08 00:44:36.8542 -> Exported 5 teams.
+2014-12-08 00:44:36.8542 Exporting schedules.
+2014-12-08 00:44:39.0850 -> Exported 14 schedules.
+2014-12-08 00:44:39.0850 Exporting projects.
+2014-12-08 00:44:39.0850 Calling projects.Export
+2014-12-08 00:44:39.3034 assetTotal is 31 
+2014-12-08 00:44:39.3658 -> Exported 31 projects.
+2014-12-08 00:44:39.3658 Exporting programs.
+2014-12-08 00:44:39.3814 -> Exported 1 programs.
+2014-12-08 00:44:39.3814 Exporting iterations.
+2014-12-08 00:44:39.6622 -> Exported 205 iterations.
+2014-12-08 00:44:39.6622 Exporting goals.
+2014-12-08 00:44:39.6934 -> Exported 0 goals.
+2014-12-08 00:44:39.6934 Exporting feature groups.
+2014-12-08 00:44:42.3454 -> Exported 124 feature groups.
+2014-12-08 00:44:42.3454 Exporting requests.
+2014-12-08 00:44:42.4078 -> Exported 0 requests.
+2014-12-08 00:44:42.4078 Exporting issues.
+2014-12-08 00:44:42.6106 -> Exported 5 issues.
+2014-12-08 00:44:42.6106 Exporting epics.
+2014-12-08 00:44:42.6106 -> Exported 0 epics.
+2014-12-08 00:44:42.6106 Exporting stories.
+2014-12-08 00:44:58.1456 -> Exported 2432 stories.
+2014-12-08 00:45:00.4076 -> Exported 60 Story custom fields.
+2014-12-08 00:45:03.5744 -> Exported 1352 PrimaryWorkitem custom fields.
+2014-12-08 00:45:04.7600 Exporting defects.
+2014-12-08 00:45:22.6874 -> Exported 2036 defects.
+2014-12-08 00:45:22.9058 -> Exported 0 Defects custom fields.
+2014-12-08 00:45:24.8402 Exporting tasks.
+2014-12-08 00:45:47.0530 -> Exported 7624 tasks.
+2014-12-08 00:45:47.0530 Exporting tests.
+2014-12-08 00:45:51.2636 -> Exported 76 tests.
+2014-12-08 00:45:51.2948 Exporting links.
+2014-12-08 00:45:51.3260 -> Exported 11 links.
+2014-12-08 00:45:51.3260 Exporting conversations.
+2014-12-08 00:45:54.4952 -> Exported 681 conversations.
+2014-12-08 00:45:54.4952 Exporting actuals.
+2014-12-08 00:45:54.5108 -> Exported 0 actuals.
+2014-12-08 00:45:54.5108 Exporting attachments.
+2014-12-08 00:46:37.6094 -> Exported 2001 attachments.
+2014-12-08 00:46:37.6094 
+2014-12-08 00:46:37.6094 Data migration complete!
+2014-12-08 00:46:37.6094 
+2014-12-08 00:46:37.6094 
+2014-12-08 00:49:24.1796 *********************************************************
+2014-12-08 00:49:24.2108 * VersionOne Data Migration Log
+2014-12-08 00:49:24.2108 * 12/8/2014 12:49:24 AM
+2014-12-08 00:49:24.2264 *********************************************************
+2014-12-08 00:49:24.2264 
+2014-12-08 00:49:24.2264 Initializing configurations.
+2014-12-08 00:49:24.5852 Verifying connections.
+2014-12-08 00:49:27.1748 -> Connection to staging database "V1Staging" verified.
+2014-12-08 00:49:27.8144 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 00:49:27.8144 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 00:49:27.8144 
+2014-12-08 00:49:27.8144 *** IMPORTING:
+2014-12-08 00:49:27.9080 Importing list types.
+2014-12-08 00:49:31.9952 -> Imported 0 list types.
+2014-12-08 00:49:31.9952 -> Imported 0 ListTypes custom fields.
+2014-12-08 00:49:31.9952 Importing members.
+2014-12-08 00:49:35.0684 -> Imported 0 members.
+2014-12-08 00:49:35.0684 Importing member groups.
+2014-12-08 00:49:35.0684 -> Imported 0 member groups.
+2014-12-08 00:49:35.0840 Importing teams.
+2014-12-08 00:49:35.1932 -> Imported 0 teams.
+2014-12-08 00:49:35.1932 Importing schedules.
+2014-12-08 00:49:37.8920 -> Imported 14 schedules.
+2014-12-08 00:49:37.8920 Importing projects.
+2014-12-08 00:50:00.7208 -> Imported 31 projects.
+2014-12-08 00:50:00.7208 Importing programs.
+2014-12-08 00:50:02.5304 -> Imported 0 programs.
+2014-12-08 00:50:02.5304 Importing iterations.
+2014-12-08 00:50:28.4928 -> Imported 205 iterations.
+2014-12-08 00:51:03.2058 Importing goals.
+2014-12-08 00:51:03.2370 -> Imported 0 goals.
+2014-12-08 00:51:03.2370 Importing feature groups.
+2014-12-08 00:51:24.4726 -> Imported 124 feature groups.
+2014-12-08 00:51:24.4726 Importing requests.
+2014-12-08 00:51:26.2042 -> Imported 0 requests.
+2014-12-08 00:51:26.2042 Importing issues.
+2014-12-08 00:51:27.2338 -> Imported 5 issues.
+2014-12-08 00:51:27.2338 Importing epics.
+2014-12-08 00:51:30.7594 -> Imported 9 epics.
+2014-12-08 00:51:30.7594 Importing stories.
+2014-12-08 00:51:30.7906 Custom field Config is Custom_Legacy
+2014-12-08 00:51:30.9154 Custom Field Name is Custom_LegacyBacklogID
+2014-12-08 00:52:02.6226 Asset is AssetType'Story
+2014-12-08 00:53:23.8824 Asset is AssetType'Story
+2014-12-08 00:55:21.4640 *****Setting Story Dependencies
+2014-12-08 00:56:08.7858 -> Imported 2423 stories.
+2014-12-08 00:56:14.2146 -> Imported 60 Story custom fields.
+2014-12-08 00:56:14.2146 Importing defects.
+2014-12-08 00:59:57.2962 -> Imported 2036 defects.
+2014-12-08 00:59:57.4366 -> Imported 0 defects custom fields.
+2014-12-08 00:59:57.4366 Importing tasks.
+2014-12-08 01:06:29.3948 -> Imported 7624 tasks.
+2014-12-08 01:06:29.3948 Importing tests.
+2014-12-08 01:06:36.3060 -> Imported 76 tests.
+2014-12-08 01:06:36.3060 Importing links.
+2014-12-08 01:06:38.9424 -> Imported 6 links.
+2014-12-08 01:06:38.9424 Importing conversations.
+2014-12-08 01:08:56.9454 -> Imported 0 conversations.
+2014-12-08 01:08:56.9454 Importing actuals.
+2014-12-08 01:08:57.0390 -> Imported 0 actuals.
+2014-12-08 01:08:57.0390 Importing attachments.
+2014-12-08 01:12:03.6644 -> Imported 1103 attachments.
+2014-12-08 01:12:03.6800 
+2014-12-08 01:12:03.6800 Data migration complete!
+2014-12-08 01:12:03.6800 
+2014-12-08 01:12:03.6800 
+2014-12-08 01:13:14.1256 *********************************************************
+2014-12-08 01:13:14.2348 * VersionOne Data Migration Log
+2014-12-08 01:13:14.2348 * 12/8/2014 1:13:14 AM
+2014-12-08 01:13:14.2504 *********************************************************
+2014-12-08 01:13:14.2504 
+2014-12-08 01:13:14.2504 Initializing configurations.
+2014-12-08 01:13:14.4220 Verifying connections.
+2014-12-08 01:13:16.6996 -> Connection to staging database "V1Staging" verified.
+2014-12-08 01:13:17.9320 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 01:13:17.9320 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 01:13:17.9476 
+2014-12-08 01:13:17.9476 *** CLOSING:
+2014-12-08 01:13:18.0100 Closing list types.
+2014-12-08 01:13:18.0724 -> Closed 0 list types.
+2014-12-08 01:13:18.0724 Closing members.
+2014-12-08 01:13:18.0880 -> Closed 0 members.
+2014-12-08 01:13:18.0880 Closing teams.
+2014-12-08 01:13:22.0660 -> Closed 5 teams.
+2014-12-08 01:13:22.0660 Closing goals.
+2014-12-08 01:13:22.0816 -> Closed 0 goals.
+2014-12-08 01:13:22.0816 Closing feature groups.
+2014-12-08 01:13:22.0972 -> Closed 0 feature groups.
+2014-12-08 01:13:22.0972 Closing requests.
+2014-12-08 01:13:22.1128 -> Closed 0 requests.
+2014-12-08 01:13:22.1128 Closing issues.
+2014-12-08 01:13:22.1284 -> Closed 0 issues.
+2014-12-08 01:13:22.1284 Closing tests.
+2014-12-08 01:13:26.0752 -> Closed 51 tests.
+2014-12-08 01:13:26.1064 Closing tasks.
+2014-12-08 01:17:13.8898 -> Closed 6757 tasks.
+2014-12-08 01:17:13.8898 Closing defects.
+2014-12-08 01:18:26.3024 -> Closed 1911 defects.
+2014-12-08 01:18:26.3024 Closing stories.
+2014-12-08 01:19:33.4180 -> Closed 1892 stories.
+2014-12-08 01:19:33.4180 Closing epics.
+2014-12-08 01:19:35.9452 -> Closed 1 epics.
+2014-12-08 01:19:35.9452 Closing iterations.
+2014-12-08 01:19:42.1696 -> Closed 121 iterations.
+2014-12-08 01:19:44.6188 
+2014-12-08 01:19:44.6188 Data migration complete!
+2014-12-08 01:19:44.6188 
+2014-12-08 01:19:44.6188 
+2014-12-08 01:25:36.5666 *********************************************************
+2014-12-08 01:25:36.5822 * VersionOne Data Migration Log
+2014-12-08 01:25:36.5822 * 12/8/2014 1:25:36 AM
+2014-12-08 01:25:36.5978 *********************************************************
+2014-12-08 01:25:36.5978 
+2014-12-08 01:25:36.5978 Initializing configurations.
+2014-12-08 01:25:36.7382 Verifying connections.
+2014-12-08 01:25:46.8794 -> Connection to staging database "V1Staging" verified.
+2014-12-08 01:25:50.5766 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 01:26:24.1478 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 01:26:26.3006 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 01:26:29.5610 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 01:26:29.7638 
+2014-12-08 01:26:29.7638 *** EXPORTING:
+2014-12-08 01:26:29.8886 Exporting list types.
+2014-12-08 01:30:40.5066 *********************************************************
+2014-12-08 01:30:40.5378 * VersionOne Data Migration Log
+2014-12-08 01:30:40.5378 * 12/8/2014 1:30:40 AM
+2014-12-08 01:30:40.5534 *********************************************************
+2014-12-08 01:30:40.5534 
+2014-12-08 01:30:40.5534 Initializing configurations.
+2014-12-08 01:30:40.6626 Verifying connections.
+2014-12-08 01:30:42.3474 -> Connection to staging database "V1Staging" verified.
+2014-12-08 01:30:43.7826 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 01:30:43.7826 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 01:30:44.2506 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 01:30:44.2506 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 01:30:44.2506 
+2014-12-08 01:30:44.2506 *** EXPORTING:
+2014-12-08 01:30:44.3910 Exporting list types.
+2014-12-08 01:30:48.5718 -> Exported 181 list types.
+2014-12-08 01:30:48.5718 Exporting members.
+2014-12-08 01:30:50.9274 The TotalAvailable Members is 131 
+2014-12-08 01:30:51.6138 -> Exported 131 members.
+2014-12-08 01:30:51.6138 Exporting member groups.
+2014-12-08 01:30:51.7230 -> Exported 8 member groups.
+2014-12-08 01:30:51.7230 Exporting teams.
+2014-12-08 01:30:53.9226 -> Exported 5 teams.
+2014-12-08 01:30:53.9226 Exporting schedules.
+2014-12-08 01:30:54.2814 -> Exported 53 schedules.
+2014-12-08 01:30:54.2814 Exporting projects.
+2014-12-08 01:30:54.2814 Calling projects.Export
+2014-12-08 01:30:54.9834 assetTotal is 70 
+2014-12-08 01:30:57.3702 -> Exported 70 projects.
+2014-12-08 01:30:57.3702 Exporting programs.
+2014-12-08 01:30:57.4170 -> Exported 0 programs.
+2014-12-08 01:30:57.4326 Exporting iterations.
+2014-12-08 01:31:02.2998 -> Exported 493 iterations.
+2014-12-08 01:31:02.2998 Exporting goals.
+2014-12-08 01:31:05.0610 -> Exported 3 goals.
+2014-12-08 01:31:05.0610 Exporting feature groups.
+2014-12-08 01:31:08.6022 -> Exported 32 feature groups.
+2014-12-08 01:31:09.4446 Exporting requests.
+2014-12-08 01:31:12.6738 -> Exported 2 requests.
+2014-12-08 01:31:14.1402 Exporting issues.
+2014-12-08 01:31:22.0338 -> Exported 424 issues.
+2014-12-08 01:31:22.0338 Exporting epics.
+2014-12-08 01:31:22.6422 -> Exported 0 epics.
+2014-12-08 01:31:22.6422 Exporting stories.
+2014-12-08 01:33:20.1726 -> Exported 4566 stories.
+2014-12-08 01:34:17.2998 ERROR: The remote server returned an error: (500) Internal Server Error.
+2014-12-08 01:34:17.3466 
+2014-12-08 01:34:17.4090 Data migration terminated.
+2014-12-08 01:34:17.4090 
+2014-12-08 01:34:17.4090 
+2014-12-08 01:46:20.1172 *********************************************************
+2014-12-08 01:46:20.5696 * VersionOne Data Migration Log
+2014-12-08 01:46:20.5696 * 12/8/2014 1:46:20 AM
+2014-12-08 01:46:20.5696 *********************************************************
+2014-12-08 01:46:20.5696 
+2014-12-08 01:46:20.5852 Initializing configurations.
+2014-12-08 01:46:20.8972 Verifying connections.
+2014-12-08 01:46:34.5316 -> Connection to staging database "V1Staging" verified.
+2014-12-08 01:46:50.7868 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 01:46:50.7868 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 01:47:02.4400 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 01:47:02.4400 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 01:47:02.7208 
+2014-12-08 01:47:02.7208 *** EXPORTING:
+2014-12-08 01:47:02.8924 Exporting list types.
+2014-12-08 01:47:10.1776 -> Exported 181 list types.
+2014-12-08 01:47:10.1776 Exporting members.
+2014-12-08 01:47:12.0652 The TotalAvailable Members is 131 
+2014-12-08 01:47:12.6736 -> Exported 131 members.
+2014-12-08 01:47:12.6736 Exporting member groups.
+2014-12-08 01:47:12.7828 -> Exported 8 member groups.
+2014-12-08 01:47:12.7828 Exporting teams.
+2014-12-08 01:47:12.8764 -> Exported 5 teams.
+2014-12-08 01:47:12.8764 Exporting schedules.
+2014-12-08 01:47:15.0292 -> Exported 53 schedules.
+2014-12-08 01:47:15.0292 Exporting projects.
+2014-12-08 01:47:15.0292 Calling projects.Export
+2014-12-08 01:47:15.5752 assetTotal is 70 
+2014-12-08 01:47:17.7124 -> Exported 70 projects.
+2014-12-08 01:47:17.7124 Exporting programs.
+2014-12-08 01:47:17.7748 -> Exported 0 programs.
+2014-12-08 01:47:17.7748 Exporting iterations.
+2014-12-08 01:47:21.7216 -> Exported 493 iterations.
+2014-12-08 01:47:21.7216 Exporting goals.
+2014-12-08 01:47:23.8276 -> Exported 3 goals.
+2014-12-08 01:47:23.8276 Exporting feature groups.
+2014-12-08 01:47:26.6980 -> Exported 32 feature groups.
+2014-12-08 01:47:26.6980 Exporting requests.
+2014-12-08 01:47:27.1972 -> Exported 2 requests.
+2014-12-08 01:47:27.1972 Exporting issues.
+2014-12-08 01:47:34.1236 -> Exported 424 issues.
+2014-12-08 01:47:34.1236 Exporting epics.
+2014-12-08 01:47:34.4980 -> Exported 0 epics.
+2014-12-08 01:47:34.4980 Exporting stories.
+2014-12-08 01:48:58.0828 -> Exported 4566 stories.
+2014-12-08 01:49:52.2616 ERROR: The remote server returned an error: (500) Internal Server Error.
+2014-12-08 01:49:52.3084 
+2014-12-08 01:49:52.3084 Data migration terminated.
+2014-12-08 01:49:52.3084 
+2014-12-08 01:49:52.3084 
+2014-12-08 01:57:42.6548 *********************************************************
+2014-12-08 01:57:42.6860 * VersionOne Data Migration Log
+2014-12-08 01:57:42.6860 * 12/8/2014 1:57:42 AM
+2014-12-08 01:57:42.7016 *********************************************************
+2014-12-08 01:57:42.7016 
+2014-12-08 01:57:42.7016 Initializing configurations.
+2014-12-08 01:57:43.1540 Verifying connections.
+2014-12-08 01:57:44.6984 -> Connection to staging database "V1Staging" verified.
+2014-12-08 01:57:45.3692 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 01:57:45.3692 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 01:57:45.5876 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 01:57:45.5876 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 01:57:45.5876 
+2014-12-08 01:57:45.5876 *** EXPORTING:
+2014-12-08 01:57:45.6656 Exporting list types.
+2014-12-08 01:57:47.7872 -> Exported 181 list types.
+2014-12-08 01:57:47.7872 Exporting members.
+2014-12-08 01:57:47.8340 The TotalAvailable Members is 131 
+2014-12-08 01:57:48.0056 -> Exported 131 members.
+2014-12-08 01:57:48.0056 Exporting member groups.
+2014-12-08 01:57:48.0368 -> Exported 8 member groups.
+2014-12-08 01:57:48.0368 Exporting teams.
+2014-12-08 01:57:48.0524 -> Exported 5 teams.
+2014-12-08 01:57:48.0524 Exporting schedules.
+2014-12-08 01:57:48.1304 -> Exported 53 schedules.
+2014-12-08 01:57:48.1304 Exporting projects.
+2014-12-08 01:57:48.1304 Calling projects.Export
+2014-12-08 01:57:48.2864 assetTotal is 70 
+2014-12-08 01:57:50.0024 -> Exported 70 projects.
+2014-12-08 01:57:50.0024 Exporting programs.
+2014-12-08 01:57:50.0180 -> Exported 0 programs.
+2014-12-08 01:57:50.0180 Exporting iterations.
+2014-12-08 01:57:50.4860 -> Exported 493 iterations.
+2014-12-08 01:57:50.4860 Exporting goals.
+2014-12-08 01:57:50.5172 -> Exported 3 goals.
+2014-12-08 01:57:50.5172 Exporting feature groups.
+2014-12-08 01:57:50.6264 -> Exported 32 feature groups.
+2014-12-08 01:57:50.6264 Exporting requests.
+2014-12-08 01:57:50.6576 -> Exported 2 requests.
+2014-12-08 01:57:50.6576 Exporting issues.
+2014-12-08 01:57:53.1536 -> Exported 424 issues.
+2014-12-08 01:57:53.1536 Exporting epics.
+2014-12-08 01:57:53.1536 -> Exported 0 epics.
+2014-12-08 01:57:53.1536 Exporting stories.
+2014-12-08 01:58:19.3928 -> Exported 4566 stories.
+2014-12-08 08:08:20.2152 *********************************************************
+2014-12-08 08:08:20.2464 * VersionOne Data Migration Log
+2014-12-08 08:08:20.2464 * 12/8/2014 8:08:20 AM
+2014-12-08 08:08:20.2620 *********************************************************
+2014-12-08 08:08:20.2620 
+2014-12-08 08:08:20.2620 Initializing configurations.
+2014-12-08 08:08:20.4024 Verifying connections.
+2014-12-08 08:08:21.8688 -> Connection to staging database "V1Staging" verified.
+2014-12-08 08:08:23.0856 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 08:08:23.0856 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 08:08:23.3196 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 08:08:23.3976 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 08:08:23.4132 
+2014-12-08 08:08:23.4132 *** EXPORTING:
+2014-12-08 08:08:23.4756 Exporting list types.
+2014-12-08 08:08:26.0496 -> Exported 181 list types.
+2014-12-08 08:08:26.0496 Exporting members.
+2014-12-08 08:08:26.1588 The TotalAvailable Members is 131 
+2014-12-08 08:08:26.4084 -> Exported 131 members.
+2014-12-08 08:08:26.4084 Exporting member groups.
+2014-12-08 08:08:26.4708 -> Exported 8 member groups.
+2014-12-08 08:08:26.4708 Exporting teams.
+2014-12-08 08:08:26.5176 -> Exported 5 teams.
+2014-12-08 08:08:26.5176 Exporting schedules.
+2014-12-08 08:08:26.6268 -> Exported 53 schedules.
+2014-12-08 08:08:26.6268 Exporting projects.
+2014-12-08 08:08:26.6268 Calling projects.Export
+2014-12-08 08:08:28.7640 assetTotal is 70 
+2014-12-08 08:08:28.9668 -> Exported 70 projects.
+2014-12-08 08:08:28.9668 Exporting programs.
+2014-12-08 08:08:29.0136 -> Exported 0 programs.
+2014-12-08 08:08:29.0136 Exporting iterations.
+2014-12-08 08:08:29.5908 -> Exported 493 iterations.
+2014-12-08 08:08:29.5908 Exporting goals.
+2014-12-08 08:08:31.5564 -> Exported 3 goals.
+2014-12-08 08:08:31.5564 Exporting feature groups.
+2014-12-08 08:08:32.4612 -> Exported 32 feature groups.
+2014-12-08 08:08:32.4612 Exporting requests.
+2014-12-08 08:08:34.5984 -> Exported 2 requests.
+2014-12-08 08:08:34.5984 Exporting issues.
+2014-12-08 08:08:38.2332 -> Exported 424 issues.
+2014-12-08 08:08:38.2332 Exporting epics.
+2014-12-08 08:08:38.2488 -> Exported 0 epics.
+2014-12-08 08:08:38.2488 Exporting stories.
+2014-12-08 08:09:14.9732 -> Exported 4566 stories.
+2014-12-08 08:24:00.6208 *********************************************************
+2014-12-08 08:24:00.6520 * VersionOne Data Migration Log
+2014-12-08 08:24:00.6520 * 12/8/2014 8:24:00 AM
+2014-12-08 08:24:00.6676 *********************************************************
+2014-12-08 08:24:00.6676 
+2014-12-08 08:24:00.6676 Initializing configurations.
+2014-12-08 08:24:01.1824 Verifying connections.
+2014-12-08 08:24:02.9452 -> Connection to staging database "V1Staging" verified.
+2014-12-08 08:24:03.5848 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 08:24:03.7564 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 08:24:05.5972 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 08:24:05.6128 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 08:24:05.6128 
+2014-12-08 08:24:05.6128 *** EXPORTING:
+2014-12-08 08:24:05.6752 Exporting list types.
+2014-12-08 08:24:06.1900 -> Exported 181 list types.
+2014-12-08 08:24:06.1900 Exporting members.
+2014-12-08 08:24:06.2368 The TotalAvailable Members is 131 
+2014-12-08 08:24:06.4396 -> Exported 131 members.
+2014-12-08 08:24:06.4396 Exporting member groups.
+2014-12-08 08:24:06.4552 -> Exported 8 member groups.
+2014-12-08 08:24:06.4552 Exporting teams.
+2014-12-08 08:24:06.4864 -> Exported 5 teams.
+2014-12-08 08:24:06.4864 Exporting schedules.
+2014-12-08 08:24:06.5644 -> Exported 53 schedules.
+2014-12-08 08:24:08.3740 Exporting projects.
+2014-12-08 08:24:08.3740 Calling projects.Export
+2014-12-08 08:24:08.5456 assetTotal is 70 
+2014-12-08 08:24:08.7172 -> Exported 70 projects.
+2014-12-08 08:24:08.7172 Exporting programs.
+2014-12-08 08:24:08.7172 -> Exported 0 programs.
+2014-12-08 08:24:08.7172 Exporting iterations.
+2014-12-08 08:24:09.2788 -> Exported 493 iterations.
+2014-12-08 08:24:09.2788 Exporting goals.
+2014-12-08 08:24:09.3256 -> Exported 3 goals.
+2014-12-08 08:24:09.3256 Exporting feature groups.
+2014-12-08 08:24:11.2444 -> Exported 32 feature groups.
+2014-12-08 08:24:11.2444 Exporting requests.
+2014-12-08 08:24:11.2912 -> Exported 2 requests.
+2014-12-08 08:24:11.2912 Exporting issues.
+2014-12-08 08:24:14.0992 -> Exported 424 issues.
+2014-12-08 08:24:15.0508 Exporting epics.
+2014-12-08 08:24:15.2380 -> Exported 0 epics.
+2014-12-08 08:24:15.2380 Exporting stories.
+2014-12-08 08:24:50.5372 -> Exported 4566 stories.
+2014-12-08 08:24:50.9428 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-08 08:24:52.5340 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-08 08:24:53.2516 The CustomField is Custom_Workstream and Type is Relation
+2014-12-08 08:24:57.8536 The CustomField is Custom_Ticket and Type is Text
+2014-12-08 08:24:59.6944 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-08 08:24:59.7568 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-08 08:25:03.6256 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-08 08:25:05.4196 The CustomField is Custom_Comments and Type is Text
+2014-12-08 08:25:05.7628 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-08 08:25:05.9344 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-08 08:25:06.0592 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-08 08:25:06.2620 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-08 08:25:08.4772 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-08 08:25:22.4120 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2014-12-08 08:25:23.0204 ERROR: The remote server returned an error: (500) Internal Server Error.
+2014-12-08 08:25:23.0204 
+2014-12-08 08:25:23.0204 Data migration terminated.
+2014-12-08 08:25:23.0204 
+2014-12-08 08:25:23.0204 
+2014-12-08 08:29:41.4424 *********************************************************
+2014-12-08 08:29:41.4736 * VersionOne Data Migration Log
+2014-12-08 08:29:41.4736 * 12/8/2014 8:29:41 AM
+2014-12-08 08:29:41.4892 *********************************************************
+2014-12-08 08:29:41.4892 
+2014-12-08 08:29:41.4892 Initializing configurations.
+2014-12-08 08:29:41.7388 Verifying connections.
+2014-12-08 08:29:43.5796 -> Connection to staging database "V1Staging" verified.
+2014-12-08 08:29:44.2504 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 08:29:44.2504 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 08:29:44.4688 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 08:29:44.4688 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 08:29:44.4688 
+2014-12-08 08:29:44.4688 *** EXPORTING:
+2014-12-08 08:29:44.5312 Exporting list types.
+2014-12-08 08:29:46.9648 -> Exported 181 list types.
+2014-12-08 08:29:46.9648 Exporting members.
+2014-12-08 08:29:47.0116 The TotalAvailable Members is 131 
+2014-12-08 08:29:47.1988 -> Exported 131 members.
+2014-12-08 08:29:47.1988 Exporting member groups.
+2014-12-08 08:29:47.2144 -> Exported 8 member groups.
+2014-12-08 08:29:47.2144 Exporting teams.
+2014-12-08 08:29:47.2456 -> Exported 5 teams.
+2014-12-08 08:29:47.2456 Exporting schedules.
+2014-12-08 08:29:47.3236 -> Exported 53 schedules.
+2014-12-08 08:29:47.3236 Exporting projects.
+2014-12-08 08:29:47.3236 Calling projects.Export
+2014-12-08 08:29:47.5420 assetTotal is 70 
+2014-12-08 08:29:49.2736 -> Exported 70 projects.
+2014-12-08 08:29:49.2736 Exporting programs.
+2014-12-08 08:29:49.2892 -> Exported 0 programs.
+2014-12-08 08:29:49.2892 Exporting iterations.
+2014-12-08 08:29:49.6636 -> Exported 493 iterations.
+2014-12-08 08:29:49.6636 Exporting goals.
+2014-12-08 08:29:49.6792 -> Exported 3 goals.
+2014-12-08 08:29:49.6792 Exporting feature groups.
+2014-12-08 08:29:49.8040 -> Exported 32 feature groups.
+2014-12-08 08:29:49.8508 Exporting requests.
+2014-12-08 08:29:49.8820 -> Exported 2 requests.
+2014-12-08 08:29:49.8820 Exporting issues.
+2014-12-08 08:29:52.7836 -> Exported 424 issues.
+2014-12-08 08:29:52.7836 Exporting epics.
+2014-12-08 08:29:52.7836 -> Exported 0 epics.
+2014-12-08 08:29:52.7836 Exporting stories.
+2014-12-08 08:30:17.9162 -> Exported 4566 stories.
+2014-12-08 08:30:18.4310 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-08 08:30:19.8872 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-08 08:30:20.6516 The CustomField is Custom_Workstream and Type is Relation
+2014-12-08 08:30:25.4564 The CustomField is Custom_Ticket and Type is Text
+2014-12-08 08:30:27.2660 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-08 08:30:27.3128 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-08 08:30:31.1192 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-08 08:30:32.9600 The CustomField is Custom_Comments and Type is Text
+2014-12-08 08:30:33.2564 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-08 08:30:33.4280 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-08 08:30:33.5684 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-08 08:30:33.7712 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-08 08:30:36.0176 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-08 08:30:49.8080 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2014-12-08 08:30:50.3540 ERROR: The remote server returned an error: (500) Internal Server Error.
+2014-12-08 08:30:50.3540 
+2014-12-08 08:30:50.3540 Data migration terminated.
+2014-12-08 08:30:50.3540 
+2014-12-08 08:30:50.3540 
+2014-12-08 08:35:02.7622 *********************************************************
+2014-12-08 08:35:02.7934 * VersionOne Data Migration Log
+2014-12-08 08:35:02.7934 * 12/8/2014 8:35:02 AM
+2014-12-08 08:35:02.8090 *********************************************************
+2014-12-08 08:35:02.8090 
+2014-12-08 08:35:02.8090 Initializing configurations.
+2014-12-08 08:35:03.1054 Verifying connections.
+2014-12-08 08:35:05.0866 -> Connection to staging database "V1Staging" verified.
+2014-12-08 08:35:05.7106 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 08:35:05.7106 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 08:35:05.9134 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 08:35:05.9290 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 08:35:05.9446 
+2014-12-08 08:35:05.9446 *** EXPORTING:
+2014-12-08 08:35:06.0070 Exporting list types.
+2014-12-08 08:35:08.3938 -> Exported 181 list types.
+2014-12-08 08:35:08.3938 Exporting members.
+2014-12-08 08:35:08.4406 The TotalAvailable Members is 131 
+2014-12-08 08:35:08.6122 -> Exported 131 members.
+2014-12-08 08:35:08.6122 Exporting member groups.
+2014-12-08 08:35:08.6434 -> Exported 8 member groups.
+2014-12-08 08:35:08.6434 Exporting teams.
+2014-12-08 08:35:08.6746 -> Exported 5 teams.
+2014-12-08 08:35:08.6746 Exporting schedules.
+2014-12-08 08:35:08.7526 -> Exported 53 schedules.
+2014-12-08 08:35:08.7526 Exporting projects.
+2014-12-08 08:35:08.7526 Calling projects.Export
+2014-12-08 08:35:09.4234 assetTotal is 70 
+2014-12-08 08:35:10.7182 -> Exported 70 projects.
+2014-12-08 08:35:10.7182 Exporting programs.
+2014-12-08 08:35:10.7338 -> Exported 0 programs.
+2014-12-08 08:35:10.7338 Exporting iterations.
+2014-12-08 08:35:11.1238 -> Exported 493 iterations.
+2014-12-08 08:35:11.1238 Exporting goals.
+2014-12-08 08:35:11.1550 -> Exported 3 goals.
+2014-12-08 08:35:11.1550 Exporting feature groups.
+2014-12-08 08:35:11.2798 -> Exported 32 feature groups.
+2014-12-08 08:35:11.2798 Exporting requests.
+2014-12-08 08:35:11.2954 -> Exported 2 requests.
+2014-12-08 08:35:11.2954 Exporting issues.
+2014-12-08 08:35:14.0566 -> Exported 424 issues.
+2014-12-08 08:35:14.0566 Exporting epics.
+2014-12-08 08:35:14.0566 -> Exported 0 epics.
+2014-12-08 08:35:14.0566 Exporting stories.
+2014-12-08 08:35:36.8074 -> Exported 4566 stories.
+2014-12-08 08:35:38.0242 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-08 08:35:38.8042 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-08 08:35:41.4562 The CustomField is Custom_Workstream and Type is Relation
+2014-12-08 08:35:46.1518 The CustomField is Custom_Ticket and Type is Text
+2014-12-08 08:35:48.0238 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-08 08:35:48.0706 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-08 08:35:52.1452 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-08 08:35:54.0484 The CustomField is Custom_Comments and Type is Text
+2014-12-08 08:35:54.3916 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-08 08:35:54.5632 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-08 08:35:54.7192 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-08 08:35:54.9220 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-08 08:35:57.2620 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-08 08:36:11.1304 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2014-12-08 08:36:11.1304 The CustomField is Custom_CRM_Object3 and Type is Text
+2014-12-08 08:36:13.5172 The CustomField is Custom_CRM_GapYesNo2 and Type is Text
+2014-12-08 08:36:15.6856 The CustomField is Custom_CRM_StoryStatus3 and Type is Relation
+2014-12-08 08:36:26.2508 The CustomField is Custom_CRM_RequirementType and Type is Relation
+2014-12-08 08:36:36.8744 The CustomField is Custom_CRM_IntegrationNeeded and Type is Relation
+2014-12-08 08:36:45.5168 The CustomField is Custom_CRM_Webservice2 and Type is LongText
+2014-12-08 08:36:45.9692 ERROR: The remote server returned an error: (500) Internal Server Error.
+2014-12-08 08:36:45.9692 
+2014-12-08 08:36:45.9848 Data migration terminated.
+2014-12-08 08:36:45.9848 
+2014-12-08 08:36:45.9848 
+2014-12-08 08:38:42.1858 *********************************************************
+2014-12-08 08:38:42.2170 * VersionOne Data Migration Log
+2014-12-08 08:38:42.2170 * 12/8/2014 8:38:42 AM
+2014-12-08 08:38:42.2326 *********************************************************
+2014-12-08 08:38:42.2326 
+2014-12-08 08:38:42.2326 Initializing configurations.
+2014-12-08 08:38:42.5602 Verifying connections.
+2014-12-08 08:38:44.8846 -> Connection to staging database "V1Staging" verified.
+2014-12-08 08:38:45.5086 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 08:38:45.5086 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 08:38:45.7270 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 08:38:45.7270 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 08:38:45.7582 
+2014-12-08 08:38:45.7582 *** EXPORTING:
+2014-12-08 08:38:45.8206 Exporting list types.
+2014-12-08 08:40:09.6842 *********************************************************
+2014-12-08 08:40:09.7154 * VersionOne Data Migration Log
+2014-12-08 08:40:09.7154 * 12/8/2014 8:40:09 AM
+2014-12-08 08:40:09.7310 *********************************************************
+2014-12-08 08:40:09.7310 
+2014-12-08 08:40:09.7310 Initializing configurations.
+2014-12-08 08:40:09.9806 Verifying connections.
+2014-12-08 08:40:12.6170 -> Connection to staging database "V1Staging" verified.
+2014-12-08 08:40:13.2254 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-12-08 08:40:13.2254 -> V1 source instance version: 11.1.11.2269.
+2014-12-08 08:40:13.4282 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 08:40:13.4282 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 08:40:13.4282 
+2014-12-08 08:40:13.4282 *** EXPORTING:
+2014-12-08 08:40:13.4906 Exporting list types.
+2014-12-08 08:40:16.1582 -> Exported 181 list types.
+2014-12-08 08:40:16.1582 Exporting members.
+2014-12-08 08:40:16.2050 The TotalAvailable Members is 131 
+2014-12-08 08:40:16.3922 -> Exported 131 members.
+2014-12-08 08:40:16.3922 Exporting member groups.
+2014-12-08 08:40:16.4234 -> Exported 8 member groups.
+2014-12-08 08:40:16.4234 Exporting teams.
+2014-12-08 08:40:16.4546 -> Exported 5 teams.
+2014-12-08 08:40:16.4546 Exporting schedules.
+2014-12-08 08:40:16.5326 -> Exported 53 schedules.
+2014-12-08 08:40:16.5326 Exporting projects.
+2014-12-08 08:40:16.5326 Calling projects.Export
+2014-12-08 08:40:16.6886 assetTotal is 70 
+2014-12-08 08:40:18.9818 -> Exported 70 projects.
+2014-12-08 08:40:18.9818 Exporting programs.
+2014-12-08 08:40:18.9818 -> Exported 0 programs.
+2014-12-08 08:40:18.9818 Exporting iterations.
+2014-12-08 08:40:19.3874 -> Exported 493 iterations.
+2014-12-08 08:40:19.3874 Exporting goals.
+2014-12-08 08:40:19.6058 -> Exported 3 goals.
+2014-12-08 08:40:19.6058 Exporting feature groups.
+2014-12-08 08:40:22.3826 -> Exported 32 feature groups.
+2014-12-08 08:40:22.3826 Exporting requests.
+2014-12-08 08:40:22.8194 -> Exported 2 requests.
+2014-12-08 08:40:22.8194 Exporting issues.
+2014-12-08 08:40:26.7682 -> Exported 424 issues.
+2014-12-08 08:40:26.7682 Exporting epics.
+2014-12-08 08:40:26.7682 -> Exported 0 epics.
+2014-12-08 08:40:26.7682 Exporting stories.
+2014-12-08 08:40:57.7482 -> Exported 4566 stories.
+2014-12-08 08:40:58.2630 The CustomField is Custom_ReleasePriority2 and Type is Text
+2014-12-08 08:41:00.0726 The CustomField is Custom_ChangeType and Type is Relation
+2014-12-08 08:41:00.8214 The CustomField is Custom_Workstream and Type is Relation
+2014-12-08 08:41:06.0630 The CustomField is Custom_Ticket and Type is Text
+2014-12-08 08:41:08.3250 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2014-12-08 08:41:08.3718 The CustomField is Custom_ImplementationTeam and Type is Relation
+2014-12-08 08:41:12.3342 The CustomField is Custom_CRApprovalDate and Type is Date
+2014-12-08 08:41:14.5650 The CustomField is Custom_Comments and Type is Text
+2014-12-08 08:41:14.8770 The CustomField is Custom_BusinessCase and Type is Text
+2014-12-08 08:41:15.0642 The CustomField is Custom_BusinessCaseType and Type is Relation
+2014-12-08 08:41:15.1734 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2014-12-08 08:41:15.3918 The CustomField is Custom_Reviewer2 and Type is Relation
+2014-12-08 08:41:18.1686 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2014-12-08 08:41:32.6162 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2014-12-08 08:41:32.6162 The CustomField is Custom_CRM_Object3 and Type is Text
+2014-12-08 08:41:35.4242 The CustomField is Custom_CRM_GapYesNo2 and Type is Text
+2014-12-08 08:41:38.3414 The CustomField is Custom_CRM_StoryStatus3 and Type is Relation
+2014-12-08 08:41:49.3706 The CustomField is Custom_CRM_RequirementType and Type is Relation
+2014-12-08 08:42:00.6222 The CustomField is Custom_CRM_IntegrationNeeded and Type is Relation
+2014-12-08 08:42:09.5766 The CustomField is Custom_CRM_Webservice2 and Type is LongText
+2014-12-08 08:42:09.5766 The CustomField is Custom_CRMPriority2 and Type is Numeric
+2014-12-08 08:42:12.2286 -> Exported 12997 Story custom fields.
+2014-12-08 08:42:12.2442 -> Exported 0 PrimaryWorkitem custom fields.
+2014-12-08 08:42:12.2442 Exporting defects.
+2014-12-08 08:42:16.3938 -> Exported 171 defects.
+2014-12-08 08:42:16.3938 -> Exported 0 Defects custom fields.
+2014-12-08 08:42:16.4094 Exporting tasks.
+2014-12-08 08:42:28.2030 -> Exported 2982 tasks.
+2014-12-08 08:42:28.2030 Exporting tests.
+2014-12-08 08:42:35.8470 -> Exported 1211 tests.
+2014-12-08 08:42:35.8470 Exporting links.
+2014-12-08 08:42:38.9202 -> Exported 988 links.
+2014-12-08 08:42:38.9514 Exporting conversations.
+2014-12-08 08:42:43.6626 -> Exported 1315 conversations.
+2014-12-08 08:42:43.6626 Exporting actuals.
+2014-12-08 08:42:50.2146 -> Exported 3134 actuals.
+2014-12-08 08:42:50.2146 Exporting attachments.
+2014-12-08 08:45:23.8614 -> Exported 4730 attachments.
+2014-12-08 08:45:23.8926 
+2014-12-08 08:45:23.8926 Data migration complete!
+2014-12-08 08:45:23.9082 
+2014-12-08 08:45:23.9082 
+2014-12-08 08:56:43.8820 *********************************************************
+2014-12-08 08:56:43.9132 * VersionOne Data Migration Log
+2014-12-08 08:56:43.9132 * 12/8/2014 8:56:43 AM
+2014-12-08 08:56:43.9288 *********************************************************
+2014-12-08 08:56:43.9288 
+2014-12-08 08:56:43.9288 Initializing configurations.
+2014-12-08 08:56:44.2098 Verifying connections.
+2014-12-08 08:56:44.7870 -> Connection to staging database "V1Staging" verified.
+2014-12-08 08:56:47.8134 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 08:56:47.8134 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 08:56:47.8290 
+2014-12-08 08:56:47.8290 *** IMPORTING:
+2014-12-08 08:56:47.9070 Importing list types.
+2014-12-08 08:57:07.9872 -> Imported 161 list types.
+2014-12-08 08:57:08.1120 -> Imported 0 ListTypes custom fields.
+2014-12-08 08:57:08.1120 Importing members.
+2014-12-08 08:57:20.5452 -> Imported 112 members.
+2014-12-08 08:57:20.5452 Importing member groups.
+2014-12-08 08:57:23.4780 -> Imported 8 member groups.
+2014-12-08 08:57:23.4780 Importing teams.
+2014-12-08 08:57:26.0520 -> Imported 5 teams.
+2014-12-08 08:57:26.0520 Importing schedules.
+2014-12-08 08:57:31.6056 -> Imported 53 schedules.
+2014-12-08 08:57:37.6272 Importing projects.
+2014-12-08 08:58:15.5100 -> Imported 70 projects.
+2014-12-08 08:58:15.5100 Importing programs.
+2014-12-08 08:58:15.5880 -> Imported 0 programs.
+2014-12-08 08:58:15.5880 Importing iterations.
+2014-12-08 08:59:10.3958 -> Imported 482 iterations.
+2014-12-08 08:59:10.3958 Importing goals.
+2014-12-08 08:59:12.7202 -> Imported 3 goals.
+2014-12-08 08:59:12.7358 Importing feature groups.
+2014-12-08 08:59:20.2082 -> Imported 32 feature groups.
+2014-12-08 08:59:23.4062 Importing requests.
+2014-12-08 08:59:25.6838 -> Imported 2 requests.
+2014-12-08 08:59:26.8694 Importing issues.
+2014-12-08 09:00:07.8546 -> Imported 424 issues.
+2014-12-08 09:00:07.8546 Importing epics.
+2014-12-08 09:00:48.0356 -> Imported 265 epics.
+2014-12-08 09:00:48.0356 Importing stories.
+2014-12-08 09:00:48.8156 Custom field Config is Custom_Legacy
+2014-12-08 09:00:48.8156 Custom Field Name is Custom_LegacyBacklogID
+2014-12-08 09:05:26.4750 Asset is AssetType'Story
+2014-12-08 09:06:44.2842 Asset is AssetType'Story
+2014-12-08 09:07:23.2736 *****Setting Story Dependencies
+2014-12-08 09:12:08.6716 -> Imported 4301 stories.
+2014-12-08 09:20:39.9898 -> Imported 12105 Story custom fields.
+2014-12-08 09:20:40.0054 Importing defects.
+2014-12-08 09:21:11.9466 -> Imported 171 defects.
+2014-12-08 09:21:19.1276 -> Imported 0 defects custom fields.
+2014-12-08 09:21:19.1276 Importing tasks.
+2014-12-08 09:24:02.1288 -> Imported 2954 tasks.
+2014-12-08 09:24:02.1288 Importing tests.
+2014-12-08 09:25:18.3498 -> Imported 1185 tests.
+2014-12-08 09:25:18.3498 Importing links.
+2014-12-08 09:25:49.4778 -> Imported 949 links.
+2014-12-08 09:25:49.4778 Importing conversations.
+2014-12-08 09:32:01.8696 -> Imported 0 conversations.
+2014-12-08 09:32:01.8696 Importing actuals.
+2014-12-08 09:33:27.5392 -> Imported 2149 actuals.
+2014-12-08 09:33:27.5392 Importing attachments.
+2014-12-08 09:56:49.4542 -> Imported 4358 attachments.
+2014-12-08 09:56:49.4698 
+2014-12-08 09:56:49.4698 Data migration complete!
+2014-12-08 09:56:49.4698 
+2014-12-08 09:56:49.4698 
+2014-12-08 10:00:48.0410 *********************************************************
+2014-12-08 10:00:48.0566 * VersionOne Data Migration Log
+2014-12-08 10:00:48.0566 * 12/8/2014 10:00:48 AM
+2014-12-08 10:00:48.0722 *********************************************************
+2014-12-08 10:00:48.0722 
+2014-12-08 10:00:48.0722 Initializing configurations.
+2014-12-08 10:00:48.3374 Verifying connections.
+2014-12-08 10:00:50.7554 -> Connection to staging database "V1Staging" verified.
+2014-12-08 10:00:54.2342 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-08 10:00:54.2498 -> V1 target instance version: 14.3.2.6314.
+2014-12-08 10:00:54.3434 
+2014-12-08 10:00:54.3434 *** CLOSING:
+2014-12-08 10:00:54.4214 Closing list types.
+2014-12-08 10:00:57.2606 -> Closed 4 list types.
+2014-12-08 10:00:57.2606 Closing members.
+2014-12-08 10:01:02.4896 -> Closed 65 members.
+2014-12-08 10:01:02.4896 Closing teams.
+2014-12-08 10:01:03.6752 -> Closed 0 teams.
+2014-12-08 10:01:03.6752 Closing goals.
+2014-12-08 10:01:04.4864 -> Closed 0 goals.
+2014-12-08 10:01:04.4864 Closing feature groups.
+2014-12-08 10:01:04.8764 -> Closed 1 feature groups.
+2014-12-08 10:01:04.8764 Closing requests.
+2014-12-08 10:01:05.0948 -> Closed 1 requests.
+2014-12-08 10:01:05.0948 Closing issues.
+2014-12-08 10:01:22.0208 -> Closed 362 issues.
+2014-12-08 10:01:22.0208 Closing tests.
+2014-12-08 10:02:01.9668 -> Closed 929 tests.
+2014-12-08 10:02:01.9668 Closing tasks.
+2014-12-08 10:03:47.3482 -> Closed 2588 tasks.
+2014-12-08 10:03:47.3482 Closing defects.
+2014-12-08 10:03:56.4450 -> Closed 160 defects.
+2014-12-08 10:03:56.4450 Closing stories.
+2014-12-08 10:05:36.7182 -> Closed 2051 stories.
+2014-12-08 10:05:36.7182 Closing epics.
+2014-12-08 10:05:39.1382 -> Closed 1 epics.
+2014-12-08 10:05:39.1382 Closing iterations.
+2014-12-08 10:05:54.4126 -> Closed 294 iterations.
+2014-12-08 10:05:58.7806 
+2014-12-08 10:05:58.7806 Data migration complete!
+2014-12-08 10:05:58.7806 
+2014-12-08 10:05:58.7806 

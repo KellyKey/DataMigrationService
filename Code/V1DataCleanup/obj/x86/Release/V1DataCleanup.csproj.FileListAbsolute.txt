@@ -1,0 +1,17 @@
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\V1DataCleanup.dll
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\V1DataCleanup.pdb
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\FSharp.Data.DesignTime.dll
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\FSharp.Data.dll
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\OAuth2Client.dll
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\V1DataCore.dll
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\VersionOne.SDK.APIClient.dll
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\FSharp.Core.dll
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\V1DataCore.pdb
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\FSharp.Data.pdb
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\FSharp.Data.xml
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\FSharp.Data.DesignTime.pdb
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\FSharp.Data.DesignTime.xml
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\OAuth2Client.xml
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Release\FSharp.Core.xml
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Release\V1DataCleanup.dll
+C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Release\V1DataCleanup.pdb

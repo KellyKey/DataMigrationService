@@ -1,0 +1,172 @@
+2015-03-18 18:18:04.4972 *********************************************************
+2015-03-18 18:18:04.5284 * VersionOne Data Migration Log
+2015-03-18 18:18:04.5284 * 3/18/2015 6:18:04 PM
+2015-03-18 18:18:04.5284 *********************************************************
+2015-03-18 18:18:04.5440 
+2015-03-18 18:18:04.5440 Initializing configurations.
+2015-03-18 18:18:04.6064 Verifying connections.
+2015-03-18 18:18:04.9496 -> Connection to staging database "V1Staging" verified.
+2015-03-18 18:18:07.1502 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-18 18:18:07.1502 -> V1 target instance version: 14.3.5.6349.
+2015-03-18 18:18:07.1970 
+2015-03-18 18:18:07.1970 *** IMPORTING:
+2015-03-18 18:18:07.4310 Importing epics.
+2015-03-18 18:18:07.8834 -> Imported 0 epics.
+2015-03-18 18:18:07.8834 Importing stories.
+2015-03-18 18:18:07.9146 Custom field Config is Custom_Legacy
+2015-03-18 18:18:07.9146 Custom Field Name is Custom_LegacyBacklogID
+2015-03-18 18:18:07.9302 *****Setting Story Dependencies
+2015-03-18 18:18:07.9302 -> Imported 0 stories.
+2015-03-18 18:18:08.0238 -> Imported 0 Story custom fields.
+2015-03-18 18:18:08.0238 
+2015-03-18 18:18:08.0238 Data migration complete!
+2015-03-18 18:18:08.0238 
+2015-03-18 18:18:08.0238 
+2015-03-18 18:19:03.1612 *********************************************************
+2015-03-18 18:19:03.1924 * VersionOne Data Migration Log
+2015-03-18 18:19:03.1924 * 3/18/2015 6:19:03 PM
+2015-03-18 18:19:03.2080 *********************************************************
+2015-03-18 18:19:03.2080 
+2015-03-18 18:19:03.2080 Initializing configurations.
+2015-03-18 18:19:03.2860 Verifying connections.
+2015-03-18 18:19:03.4796 -> Connection to staging database "V1Staging" verified.
+2015-03-18 18:19:16.7718 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2015-03-18 18:19:16.7718 -> V1 source instance version: 11.1.11.2269.
+2015-03-18 18:19:16.9122 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-18 18:19:16.9122 -> V1 target instance version: 14.3.5.6349.
+2015-03-18 18:19:16.9122 
+2015-03-18 18:19:16.9278 *** EXPORTING:
+2015-03-18 18:19:17.2398 Exporting epics.
+2015-03-18 18:19:17.2866 -> Exported 0 epics.
+2015-03-18 18:19:17.2866 Exporting stories.
+2015-03-18 18:20:17.6750 ERROR: The remote server returned an error: (500) Internal Server Error.
+2015-03-18 18:20:17.6750 
+2015-03-18 18:20:17.6750 Data migration terminated.
+2015-03-18 18:20:17.6750 
+2015-03-18 18:20:17.6750 
+2015-03-18 18:37:04.3336 *********************************************************
+2015-03-18 18:37:04.3960 * VersionOne Data Migration Log
+2015-03-18 18:37:04.3960 * 3/18/2015 6:37:04 PM
+2015-03-18 18:37:04.4116 *********************************************************
+2015-03-18 18:37:04.4116 
+2015-03-18 18:37:04.4116 Initializing configurations.
+2015-03-18 18:37:04.5052 Verifying connections.
+2015-03-18 18:37:04.9888 -> Connection to staging database "V1Staging" verified.
+2015-03-18 18:37:06.9232 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-18 18:37:06.9232 -> V1 source instance version: 11.1.11.2269.
+2015-03-18 18:37:07.8280 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-18 18:37:07.8280 -> V1 target instance version: 14.3.5.6349.
+2015-03-18 18:37:07.8436 
+2015-03-18 18:37:07.8436 *** EXPORTING:
+2015-03-18 18:37:07.9060 Exporting epics.
+2015-03-18 18:37:07.9528 -> Exported 0 epics.
+2015-03-18 18:37:07.9528 Exporting stories.
+2015-03-18 18:38:23.7144 -> Exported 4578 stories.
+2015-03-18 18:38:23.9484 The CustomField is Custom_ReleasePriority2 and Type is Text
+2015-03-18 18:39:02.3426 The CustomField is Custom_ChangeType and Type is Relation
+2015-03-18 18:39:14.5098 The CustomField is Custom_Workstream and Type is Relation
+2015-03-18 18:39:29.1798 The CustomField is Custom_Ticket and Type is Text
+2015-03-18 18:39:32.9082 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2015-03-18 18:39:37.2606 The CustomField is Custom_ImplementationTeam and Type is Relation
+2015-03-18 18:39:44.1588 The CustomField is Custom_CRApprovalDate and Type is Date
+2015-03-18 18:39:49.3244 The CustomField is Custom_Comments and Type is Text
+2015-03-18 18:39:56.5180 The CustomField is Custom_BusinessCase and Type is Text
+2015-03-18 18:40:54.1700 The CustomField is Custom_BusinessCaseType and Type is Relation
+2015-03-18 18:40:57.6976 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2015-03-18 18:41:00.8176 The CustomField is Custom_Reviewer2 and Type is Relation
+2015-03-18 18:41:03.4384 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2015-03-18 18:41:19.3076 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2015-03-18 18:42:16.8742 The CustomField is Custom_CRM_Object3 and Type is Text
+2015-03-18 18:42:25.4240 The CustomField is Custom_CRM_GapYesNo2 and Type is Text
+2015-03-18 18:42:27.6568 The CustomField is Custom_CRM_StoryStatus3 and Type is Relation
+2015-03-18 18:42:38.1556 The CustomField is Custom_CRM_RequirementType and Type is Relation
+2015-03-18 18:42:52.9308 The CustomField is Custom_CRM_IntegrationNeeded and Type is Relation
+2015-03-18 18:43:06.3020 The CustomField is Custom_CRM_Webservice2 and Type is LongText
+2015-03-18 18:43:32.0092 The CustomField is Custom_CRMPriority2 and Type is Numeric
+2015-03-18 18:43:45.7932 -> Exported 14649 Story custom fields.
+2015-03-18 18:43:45.8712 -> Exported 0 PrimaryWorkitem custom fields.
+2015-03-18 18:43:45.8868 
+2015-03-18 18:43:45.8868 Data migration complete!
+2015-03-18 18:43:45.9024 
+2015-03-18 18:43:45.9024 
+2015-03-18 21:05:58.1238 *********************************************************
+2015-03-18 21:05:58.1706 * VersionOne Data Migration Log
+2015-03-18 21:05:58.1706 * 3/18/2015 9:05:58 PM
+2015-03-18 21:05:58.1862 *********************************************************
+2015-03-18 21:05:58.2018 
+2015-03-18 21:05:58.2018 Initializing configurations.
+2015-03-18 21:05:58.2798 Verifying connections.
+2015-03-18 21:05:58.7030 -> Connection to staging database "V1Staging" verified.
+2015-03-18 21:06:13.6654 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-18 21:06:13.6654 -> V1 target instance version: 14.3.5.6349.
+2015-03-18 21:06:13.7434 
+2015-03-18 21:06:13.7434 *** IMPORTING:
+2015-03-18 21:06:13.7902 Importing epics.
+2015-03-18 21:06:18.6262 ERROR: Invalid OID token: 
+2015-03-18 21:06:18.6262 
+2015-03-18 21:06:18.6418 Data migration terminated.
+2015-03-18 21:06:18.6418 
+2015-03-18 21:06:18.6418 
+2015-03-18 21:14:16.3864 *********************************************************
+2015-03-18 21:14:16.5268 * VersionOne Data Migration Log
+2015-03-18 21:14:16.5268 * 3/18/2015 9:14:16 PM
+2015-03-18 21:14:16.5424 *********************************************************
+2015-03-18 21:14:16.5580 
+2015-03-18 21:14:16.5736 Initializing configurations.
+2015-03-18 21:14:16.6536 Verifying connections.
+2015-03-18 21:14:17.4908 -> Connection to staging database "V1Staging" verified.
+2015-03-18 21:14:34.1928 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-18 21:14:34.1928 -> V1 source instance version: 11.1.11.2269.
+2015-03-18 21:14:35.2400 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-18 21:14:35.2400 -> V1 target instance version: 14.3.5.6349.
+2015-03-18 21:14:35.2556 
+2015-03-18 21:14:35.2556 *** EXPORTING:
+2015-03-18 21:14:35.3024 Exporting epics.
+2015-03-18 21:14:35.3492 -> Exported 0 epics.
+2015-03-18 21:14:35.3648 Exporting stories.
+2015-03-18 21:15:48.2104 -> Exported 4578 stories.
+2015-03-18 21:15:48.4444 The CustomField is Custom_ReleasePriority2 and Type is Text
+2015-03-18 21:15:48.8032 The CustomField is Custom_ChangeType and Type is Relation
+2015-03-18 21:15:49.6310 The CustomField is Custom_Workstream and Type is Relation
+2015-03-18 21:15:52.7676 The CustomField is Custom_Ticket and Type is Text
+2015-03-18 21:15:52.9392 The CustomField is Custom_DesignSolutionApprovalDate and Type is Date
+2015-03-18 21:15:53.0952 The CustomField is Custom_ImplementationTeam and Type is Relation
+2015-03-18 21:15:55.1388 The CustomField is Custom_CRApprovalDate and Type is Date
+2015-03-18 21:15:55.1700 The CustomField is Custom_Comments and Type is Text
+2015-03-18 21:15:55.5756 The CustomField is Custom_BusinessCase and Type is Text
+2015-03-18 21:15:55.7940 The CustomField is Custom_BusinessCaseType and Type is Relation
+2015-03-18 21:15:55.9500 The CustomField is Custom_ImpactedStakeholders and Type is Text
+2015-03-18 21:15:56.2152 The CustomField is Custom_Reviewer2 and Type is Relation
+2015-03-18 21:15:56.7768 The CustomField is Custom_BusinessBenefit3 and Type is Relation
+2015-03-18 21:16:09.9452 The CustomField is Custom_CRM_ProposedApproach and Type is LongText
+2015-03-18 21:16:11.3336 The CustomField is Custom_CRM_Object3 and Type is Text
+2015-03-18 21:16:11.9576 The CustomField is Custom_CRM_GapYesNo2 and Type is Text
+2015-03-18 21:16:12.5036 The CustomField is Custom_CRM_StoryStatus3 and Type is Relation
+2015-03-18 21:16:22.0528 The CustomField is Custom_CRM_RequirementType and Type is Relation
+2015-03-18 21:16:31.1360 The CustomField is Custom_CRM_IntegrationNeeded and Type is Relation
+2015-03-18 21:16:38.0780 The CustomField is Custom_CRM_Webservice2 and Type is LongText
+2015-03-18 21:16:38.5304 The CustomField is Custom_CRMPriority2 and Type is Numeric
+2015-03-18 21:16:39.0920 -> Exported 14649 Story custom fields.
+2015-03-18 21:16:39.1076 -> Exported 0 PrimaryWorkitem custom fields.
+2015-03-18 21:16:39.1232 
+2015-03-18 21:16:39.1388 Data migration complete!
+2015-03-18 21:16:39.1544 
+2015-03-18 21:16:39.1544 
+2015-03-18 21:18:44.3736 *********************************************************
+2015-03-18 21:18:44.4516 * VersionOne Data Migration Log
+2015-03-18 21:18:44.4828 * 3/18/2015 9:18:44 PM
+2015-03-18 21:18:44.4984 *********************************************************
+2015-03-18 21:18:44.4984 
+2015-03-18 21:18:44.5140 Initializing configurations.
+2015-03-18 21:18:44.6388 Verifying connections.
+2015-03-18 21:18:45.1536 -> Connection to staging database "V1Staging" verified.
+2015-03-18 21:18:46.5420 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-18 21:18:46.5420 -> V1 target instance version: 14.3.5.6349.
+2015-03-18 21:18:46.6044 
+2015-03-18 21:18:46.6200 *** IMPORTING:
+2015-03-18 21:18:46.7136 Importing epics.
+2015-03-18 21:18:52.0976 ERROR: Invalid OID token: 
+2015-03-18 21:18:52.0976 
+2015-03-18 21:18:52.0976 Data migration terminated.
+2015-03-18 21:18:52.1132 
+2015-03-18 21:18:52.1132 

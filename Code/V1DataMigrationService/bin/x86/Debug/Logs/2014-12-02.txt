@@ -1,0 +1,505 @@
+2014-12-02 23:07:28.4676 *********************************************************
+2014-12-02 23:07:28.5300 * VersionOne Data Migration Log
+2014-12-02 23:07:28.5300 * 12/2/2014 11:07:28 PM
+2014-12-02 23:07:28.5456 *********************************************************
+2014-12-02 23:07:28.5456 
+2014-12-02 23:07:28.5456 Initializing configurations.
+2014-12-02 23:07:28.7640 Verifying connections.
+2014-12-02 23:07:43.1784 -> Connection to staging database "V1Staging" verified.
+2014-12-02 23:07:51.9144 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-02 23:07:51.9144 -> V1 target instance version: 14.3.2.6314.
+2014-12-02 23:07:52.4136 
+2014-12-02 23:07:52.4136 *** IMPORTING:
+2014-12-02 23:07:52.6632 Importing list types.
+2014-12-02 23:07:55.3464 -> Imported 0 list types.
+2014-12-02 23:07:55.3464 Importing members.
+2014-12-02 23:07:58.3572 -> Imported 0 members.
+2014-12-02 23:07:58.3572 Importing member groups.
+2014-12-02 23:07:58.3572 -> Imported 0 member groups.
+2014-12-02 23:07:58.3572 Importing teams.
+2014-12-02 23:07:58.4040 -> Imported 0 teams.
+2014-12-02 23:07:58.4040 Importing schedules.
+2014-12-02 23:08:01.8204 -> Imported 14 schedules.
+2014-12-02 23:08:01.8360 Importing projects.
+2014-12-02 23:08:03.4740 Name is Member:1019 and newAssetOId is Member:51016
+2014-12-02 23:08:03.4740 Adding Member:51016 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:03.5676 Name is Member:1577 and newAssetOId is Member:51039
+2014-12-02 23:08:03.5676 Adding Member:51039 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:03.8484 Name is Member:2057 and newAssetOId is Member:51063
+2014-12-02 23:08:03.8484 Adding Member:51063 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:03.9420 Name is Member:2186 and newAssetOId is Member:51065
+2014-12-02 23:08:03.9420 Adding Member:51065 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.0356 Name is Member:2506 and newAssetOId is Member:51077
+2014-12-02 23:08:04.0356 Adding Member:51077 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1136 Name is Member:2543 and newAssetOId is Member:51078
+2014-12-02 23:08:04.1136 Adding Member:51078 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1448 Name is Member:5026 and newAssetOId is Member:51102
+2014-12-02 23:08:04.1448 Adding Member:51102 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1448 Name is Member:11359 and newAssetOId is Member:51023
+2014-12-02 23:08:04.1448 Adding Member:51023 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1448 Name is Member:56892 and newAssetOId is Member:51107
+2014-12-02 23:08:04.1448 Adding Member:51107 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1448 Name is Member:56979 and newAssetOId is Member:51108
+2014-12-02 23:08:04.1448 Adding Member:51108 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1604 Name is Member:56997 and newAssetOId is Member:51109
+2014-12-02 23:08:04.1604 Adding Member:51109 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1604 Name is Member:58260 and newAssetOId is Member:23360
+2014-12-02 23:08:04.1604 Adding Member:23360 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1604 Name is Member:58818 and newAssetOId is Member:51113
+2014-12-02 23:08:04.1604 Adding Member:51113 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1604 Name is Member:59024 and newAssetOId is Member:51114
+2014-12-02 23:08:04.1760 Adding Member:51114 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1760 Name is Member:60299 and newAssetOId is Member:51116
+2014-12-02 23:08:04.1760 Adding Member:51116 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1760 Name is Member:62676 and newAssetOId is Member:51119
+2014-12-02 23:08:04.1760 Adding Member:51119 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1760 Name is Member:64198 and newAssetOId is Member:51120
+2014-12-02 23:08:04.1760 Adding Member:51120 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1916 Name is Member:68247 and newAssetOId is Member:23347
+2014-12-02 23:08:04.1916 Adding Member:23347 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1916 Name is Member:68248 and newAssetOId is Member:23348
+2014-12-02 23:08:04.1916 Adding Member:23348 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.1916 Name is Member:68249 and newAssetOId is Member:23349
+2014-12-02 23:08:04.1916 Adding Member:23349 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2072 Name is Member:68250 and newAssetOId is Member:23352
+2014-12-02 23:08:04.2072 Adding Member:23352 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2072 Name is Member:68251 and newAssetOId is Member:23354
+2014-12-02 23:08:04.2072 Adding Member:23354 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2072 Name is Member:68252 and newAssetOId is Member:23355
+2014-12-02 23:08:04.2072 Adding Member:23355 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2072 Name is Member:68253 and newAssetOId is Member:23356
+2014-12-02 23:08:04.2072 Adding Member:23356 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2228 Name is Member:68254 and newAssetOId is Member:23357
+2014-12-02 23:08:04.2228 Adding Member:23357 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2228 Name is Member:68255 and newAssetOId is Member:23362
+2014-12-02 23:08:04.2228 Adding Member:23362 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2384 Name is Member:68256 and newAssetOId is Member:23363
+2014-12-02 23:08:04.2384 Adding Member:23363 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2384 Name is Member:68257 and newAssetOId is Member:23351
+2014-12-02 23:08:04.2384 Adding Member:23351 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2384 Name is Member:68258 and newAssetOId is Member:23359
+2014-12-02 23:08:04.2540 Adding Member:23359 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2540 Name is Member:68450 and newAssetOId is Member:51125
+2014-12-02 23:08:04.2540 Adding Member:51125 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2540 Name is Member:69781 and newAssetOId is Member:23364
+2014-12-02 23:08:04.2540 Adding Member:23364 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2696 Name is Member:1014 and newAssetOId is Member:51014
+2014-12-02 23:08:04.2696 Adding Member:51014 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2696 Name is Member:1015 and newAssetOId is Member:51015
+2014-12-02 23:08:04.2696 Adding Member:51015 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2852 Name is Member:1021 and newAssetOId is Member:51017
+2014-12-02 23:08:04.2852 Adding Member:51017 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2852 Name is Member:2633 and newAssetOId is Member:51080
+2014-12-02 23:08:04.2852 Adding Member:51080 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.2852 Name is Member:2844 and newAssetOId is Member:51083
+2014-12-02 23:08:04.3008 Adding Member:51083 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3008 Name is Member:2876 and newAssetOId is Member:51087
+2014-12-02 23:08:04.3008 Adding Member:51087 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3008 Name is Member:3450 and newAssetOId is Member:51090
+2014-12-02 23:08:04.3008 Adding Member:51090 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3008 Name is Member:5057 and newAssetOId is Member:51103
+2014-12-02 23:08:04.3008 Adding Member:51103 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3164 Name is Member:5058 and newAssetOId is Member:51104
+2014-12-02 23:08:04.3164 Adding Member:51104 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3164 Name is Member:7097 and newAssetOId is Member:51134
+2014-12-02 23:08:04.3164 Adding Member:51134 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3164 Name is Member:10315 and newAssetOId is Member:51018
+2014-12-02 23:08:04.3164 Adding Member:51018 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3164 Name is Member:10486 and newAssetOId is Member:51020
+2014-12-02 23:08:04.3164 Adding Member:51020 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3320 Name is Member:11250 and newAssetOId is Member:51022
+2014-12-02 23:08:04.3320 Adding Member:51022 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3320 Name is Member:11599 and newAssetOId is Member:51024
+2014-12-02 23:08:04.3320 Adding Member:51024 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3320 Name is Member:12774 and newAssetOId is Member:51025
+2014-12-02 23:08:04.3320 Adding Member:51025 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3320 Name is Member:16137 and newAssetOId is Member:51047
+2014-12-02 23:08:04.3320 Adding Member:51047 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3476 Name is Member:16428 and newAssetOId is Member:51053
+2014-12-02 23:08:04.3476 Adding Member:51053 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3476 Name is Member:16900 and newAssetOId is Member:51056
+2014-12-02 23:08:04.3476 Adding Member:51056 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3476 Name is Member:18256 and newAssetOId is Member:51060
+2014-12-02 23:08:04.3476 Adding Member:51060 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3632 Name is Member:18257 and newAssetOId is Member:51061
+2014-12-02 23:08:04.3632 Adding Member:51061 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3632 Name is Member:20464 and newAssetOId is Member:51062
+2014-12-02 23:08:04.3632 Adding Member:51062 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3632 Name is Member:24322 and newAssetOId is Member:51071
+2014-12-02 23:08:04.3632 Adding Member:51071 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3632 Name is Member:24385 and newAssetOId is Member:51072
+2014-12-02 23:08:04.3632 Adding Member:51072 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3788 Name is Member:24482 and newAssetOId is Member:51073
+2014-12-02 23:08:04.3788 Adding Member:51073 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3788 Name is Member:24484 and newAssetOId is Member:51074
+2014-12-02 23:08:04.3788 Adding Member:51074 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3788 Name is Member:28746 and newAssetOId is Member:51085
+2014-12-02 23:08:04.3788 Adding Member:51085 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3788 Name is Member:28747 and newAssetOId is Member:51086
+2014-12-02 23:08:04.3788 Adding Member:51086 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3944 Name is Member:32194 and newAssetOId is Member:51088
+2014-12-02 23:08:04.3944 Adding Member:51088 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:04.3944 Name is Member:43623 and newAssetOId is Member:51092
+2014-12-02 23:08:04.3944 Adding Member:51092 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4208 Name is Member:1019 and newAssetOId is Member:51016
+2014-12-02 23:08:07.4208 Adding Member:51016 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4208 Name is Member:1577 and newAssetOId is Member:51039
+2014-12-02 23:08:07.4208 Adding Member:51039 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4208 Name is Member:2057 and newAssetOId is Member:51063
+2014-12-02 23:08:07.4208 Adding Member:51063 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4208 Name is Member:2186 and newAssetOId is Member:51065
+2014-12-02 23:08:07.4208 Adding Member:51065 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4208 Name is Member:2506 and newAssetOId is Member:51077
+2014-12-02 23:08:07.4364 Adding Member:51077 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4364 Name is Member:2543 and newAssetOId is Member:51078
+2014-12-02 23:08:07.4364 Adding Member:51078 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4364 Name is Member:5026 and newAssetOId is Member:51102
+2014-12-02 23:08:07.4364 Adding Member:51102 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4364 Name is Member:11359 and newAssetOId is Member:51023
+2014-12-02 23:08:07.4364 Adding Member:51023 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4520 Name is Member:56892 and newAssetOId is Member:51107
+2014-12-02 23:08:07.4520 Adding Member:51107 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4520 Name is Member:56979 and newAssetOId is Member:51108
+2014-12-02 23:08:07.4520 Adding Member:51108 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4520 Name is Member:56997 and newAssetOId is Member:51109
+2014-12-02 23:08:07.4520 Adding Member:51109 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4520 Name is Member:58260 and newAssetOId is Member:23360
+2014-12-02 23:08:07.4520 Adding Member:23360 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4676 Name is Member:58818 and newAssetOId is Member:51113
+2014-12-02 23:08:07.4676 Adding Member:51113 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4676 Name is Member:59024 and newAssetOId is Member:51114
+2014-12-02 23:08:07.4676 Adding Member:51114 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4676 Name is Member:60299 and newAssetOId is Member:51116
+2014-12-02 23:08:07.4676 Adding Member:51116 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4832 Name is Member:62676 and newAssetOId is Member:51119
+2014-12-02 23:08:07.4832 Adding Member:51119 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4832 Name is Member:64198 and newAssetOId is Member:51120
+2014-12-02 23:08:07.4832 Adding Member:51120 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4988 Name is Member:68247 and newAssetOId is Member:23347
+2014-12-02 23:08:07.4988 Adding Member:23347 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4988 Name is Member:68248 and newAssetOId is Member:23348
+2014-12-02 23:08:07.4988 Adding Member:23348 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4988 Name is Member:68249 and newAssetOId is Member:23349
+2014-12-02 23:08:07.4988 Adding Member:23349 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.4988 Name is Member:68250 and newAssetOId is Member:23352
+2014-12-02 23:08:07.5144 Adding Member:23352 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5144 Name is Member:68251 and newAssetOId is Member:23354
+2014-12-02 23:08:07.5144 Adding Member:23354 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5144 Name is Member:68252 and newAssetOId is Member:23355
+2014-12-02 23:08:07.5144 Adding Member:23355 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5144 Name is Member:68253 and newAssetOId is Member:23356
+2014-12-02 23:08:07.5300 Adding Member:23356 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5300 Name is Member:68254 and newAssetOId is Member:23357
+2014-12-02 23:08:07.5300 Adding Member:23357 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5300 Name is Member:68255 and newAssetOId is Member:23362
+2014-12-02 23:08:07.5300 Adding Member:23362 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5300 Name is Member:68256 and newAssetOId is Member:23363
+2014-12-02 23:08:07.5300 Adding Member:23363 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5456 Name is Member:68257 and newAssetOId is Member:23351
+2014-12-02 23:08:07.5456 Adding Member:23351 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5456 Name is Member:68258 and newAssetOId is Member:23359
+2014-12-02 23:08:07.5456 Adding Member:23359 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5612 Name is Member:68450 and newAssetOId is Member:51125
+2014-12-02 23:08:07.5612 Adding Member:51125 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5612 Name is Member:69781 and newAssetOId is Member:23364
+2014-12-02 23:08:07.5612 Adding Member:23364 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5612 Name is Member:1014 and newAssetOId is Member:51014
+2014-12-02 23:08:07.5612 Adding Member:51014 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5768 Name is Member:1015 and newAssetOId is Member:51015
+2014-12-02 23:08:07.5768 Adding Member:51015 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5768 Name is Member:1021 and newAssetOId is Member:51017
+2014-12-02 23:08:07.5768 Adding Member:51017 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5924 Name is Member:2633 and newAssetOId is Member:51080
+2014-12-02 23:08:07.5924 Adding Member:51080 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5924 Name is Member:2844 and newAssetOId is Member:51083
+2014-12-02 23:08:07.5924 Adding Member:51083 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.5924 Name is Member:2876 and newAssetOId is Member:51087
+2014-12-02 23:08:07.5924 Adding Member:51087 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6080 Name is Member:3450 and newAssetOId is Member:51090
+2014-12-02 23:08:07.6080 Adding Member:51090 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6080 Name is Member:5057 and newAssetOId is Member:51103
+2014-12-02 23:08:07.6080 Adding Member:51103 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6236 Name is Member:5058 and newAssetOId is Member:51104
+2014-12-02 23:08:07.6236 Adding Member:51104 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6236 Name is Member:7097 and newAssetOId is Member:51134
+2014-12-02 23:08:07.6236 Adding Member:51134 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6392 Name is Member:10315 and newAssetOId is Member:51018
+2014-12-02 23:08:07.6392 Adding Member:51018 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6392 Name is Member:10486 and newAssetOId is Member:51020
+2014-12-02 23:08:07.6392 Adding Member:51020 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6392 Name is Member:11250 and newAssetOId is Member:51022
+2014-12-02 23:08:07.6392 Adding Member:51022 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6548 Name is Member:11599 and newAssetOId is Member:51024
+2014-12-02 23:08:07.6548 Adding Member:51024 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6548 Name is Member:12774 and newAssetOId is Member:51025
+2014-12-02 23:08:07.6548 Adding Member:51025 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6704 Name is Member:16137 and newAssetOId is Member:51047
+2014-12-02 23:08:07.6704 Adding Member:51047 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6704 Name is Member:16428 and newAssetOId is Member:51053
+2014-12-02 23:08:07.6704 Adding Member:51053 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6704 Name is Member:16900 and newAssetOId is Member:51056
+2014-12-02 23:08:07.6704 Adding Member:51056 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6704 Name is Member:18256 and newAssetOId is Member:51060
+2014-12-02 23:08:07.6704 Adding Member:51060 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6860 Name is Member:18257 and newAssetOId is Member:51061
+2014-12-02 23:08:07.6860 Adding Member:51061 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6860 Name is Member:20464 and newAssetOId is Member:51062
+2014-12-02 23:08:07.6860 Adding Member:51062 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6860 Name is Member:24322 and newAssetOId is Member:51071
+2014-12-02 23:08:07.6860 Adding Member:51071 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.6860 Name is Member:24385 and newAssetOId is Member:51072
+2014-12-02 23:08:07.6860 Adding Member:51072 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.7016 Name is Member:24482 and newAssetOId is Member:51073
+2014-12-02 23:08:07.7016 Adding Member:51073 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.7016 Name is Member:24484 and newAssetOId is Member:51074
+2014-12-02 23:08:07.7016 Adding Member:51074 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.7016 Name is Member:28746 and newAssetOId is Member:51085
+2014-12-02 23:08:07.7016 Adding Member:51085 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.7172 Name is Member:28747 and newAssetOId is Member:51086
+2014-12-02 23:08:07.7172 Adding Member:51086 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.7172 Name is Member:32194 and newAssetOId is Member:51088
+2014-12-02 23:08:07.7172 Adding Member:51088 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:07.7172 Name is Member:43623 and newAssetOId is Member:51092
+2014-12-02 23:08:07.7172 Adding Member:51092 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.0448 Name is Member:1019 and newAssetOId is Member:51016
+2014-12-02 23:08:08.0448 Adding Member:51016 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.0448 Name is Member:1577 and newAssetOId is Member:51039
+2014-12-02 23:08:08.0448 Adding Member:51039 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.0604 Name is Member:2057 and newAssetOId is Member:51063
+2014-12-02 23:08:08.0604 Adding Member:51063 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.0604 Name is Member:2186 and newAssetOId is Member:51065
+2014-12-02 23:08:08.0604 Adding Member:51065 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.0604 Name is Member:2506 and newAssetOId is Member:51077
+2014-12-02 23:08:08.0604 Adding Member:51077 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.0760 Name is Member:2543 and newAssetOId is Member:51078
+2014-12-02 23:08:08.0760 Adding Member:51078 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.0916 Name is Member:5026 and newAssetOId is Member:51102
+2014-12-02 23:08:08.0916 Adding Member:51102 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.0916 Name is Member:11359 and newAssetOId is Member:51023
+2014-12-02 23:08:08.0916 Adding Member:51023 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1072 Name is Member:56892 and newAssetOId is Member:51107
+2014-12-02 23:08:08.1072 Adding Member:51107 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1072 Name is Member:56979 and newAssetOId is Member:51108
+2014-12-02 23:08:08.1072 Adding Member:51108 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1228 Name is Member:56997 and newAssetOId is Member:51109
+2014-12-02 23:08:08.1228 Adding Member:51109 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1384 Name is Member:58260 and newAssetOId is Member:23360
+2014-12-02 23:08:08.1384 Adding Member:23360 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1384 Name is Member:58818 and newAssetOId is Member:51113
+2014-12-02 23:08:08.1384 Adding Member:51113 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1540 Name is Member:59024 and newAssetOId is Member:51114
+2014-12-02 23:08:08.1540 Adding Member:51114 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1696 Name is Member:60299 and newAssetOId is Member:51116
+2014-12-02 23:08:08.1696 Adding Member:51116 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1696 Name is Member:62676 and newAssetOId is Member:51119
+2014-12-02 23:08:08.1696 Adding Member:51119 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1852 Name is Member:64198 and newAssetOId is Member:51120
+2014-12-02 23:08:08.1852 Adding Member:51120 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1852 Name is Member:68247 and newAssetOId is Member:23347
+2014-12-02 23:08:08.1852 Adding Member:23347 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1852 Name is Member:68248 and newAssetOId is Member:23348
+2014-12-02 23:08:08.1852 Adding Member:23348 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1852 Name is Member:68249 and newAssetOId is Member:23349
+2014-12-02 23:08:08.1852 Adding Member:23349 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1852 Name is Member:68250 and newAssetOId is Member:23352
+2014-12-02 23:08:08.1852 Adding Member:23352 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.1852 Name is Member:68251 and newAssetOId is Member:23354
+2014-12-02 23:08:08.1852 Adding Member:23354 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2008 Name is Member:68252 and newAssetOId is Member:23355
+2014-12-02 23:08:08.2008 Adding Member:23355 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2008 Name is Member:68253 and newAssetOId is Member:23356
+2014-12-02 23:08:08.2008 Adding Member:23356 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2008 Name is Member:68254 and newAssetOId is Member:23357
+2014-12-02 23:08:08.2008 Adding Member:23357 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2008 Name is Member:68255 and newAssetOId is Member:23362
+2014-12-02 23:08:08.2008 Adding Member:23362 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2164 Name is Member:68256 and newAssetOId is Member:23363
+2014-12-02 23:08:08.2164 Adding Member:23363 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2164 Name is Member:68257 and newAssetOId is Member:23351
+2014-12-02 23:08:08.2164 Adding Member:23351 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2164 Name is Member:68258 and newAssetOId is Member:23359
+2014-12-02 23:08:08.2164 Adding Member:23359 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2320 Name is Member:68450 and newAssetOId is Member:51125
+2014-12-02 23:08:08.2320 Adding Member:51125 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2320 Name is Member:69781 and newAssetOId is Member:23364
+2014-12-02 23:08:08.2320 Adding Member:23364 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2320 Name is Member:1014 and newAssetOId is Member:51014
+2014-12-02 23:08:08.2320 Adding Member:51014 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2476 Name is Member:1015 and newAssetOId is Member:51015
+2014-12-02 23:08:08.2476 Adding Member:51015 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2476 Name is Member:1021 and newAssetOId is Member:51017
+2014-12-02 23:08:08.2632 Adding Member:51017 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2632 Name is Member:2633 and newAssetOId is Member:51080
+2014-12-02 23:08:08.2632 Adding Member:51080 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2632 Name is Member:2844 and newAssetOId is Member:51083
+2014-12-02 23:08:08.2788 Adding Member:51083 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2788 Name is Member:2876 and newAssetOId is Member:51087
+2014-12-02 23:08:08.2788 Adding Member:51087 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2788 Name is Member:3450 and newAssetOId is Member:51090
+2014-12-02 23:08:08.2944 Adding Member:51090 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2944 Name is Member:5057 and newAssetOId is Member:51103
+2014-12-02 23:08:08.2944 Adding Member:51103 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.2944 Name is Member:5058 and newAssetOId is Member:51104
+2014-12-02 23:08:08.2944 Adding Member:51104 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.3100 Name is Member:7097 and newAssetOId is Member:51134
+2014-12-02 23:08:08.3100 Adding Member:51134 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.3100 Name is Member:10315 and newAssetOId is Member:51018
+2014-12-02 23:08:08.3100 Adding Member:51018 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.3256 Name is Member:10486 and newAssetOId is Member:51020
+2014-12-02 23:08:08.3256 Adding Member:51020 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.3256 Name is Member:11250 and newAssetOId is Member:51022
+2014-12-02 23:08:08.3256 Adding Member:51022 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.3256 Name is Member:11599 and newAssetOId is Member:51024
+2014-12-02 23:08:08.3256 Adding Member:51024 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.3256 Name is Member:12774 and newAssetOId is Member:51025
+2014-12-02 23:08:08.3256 Adding Member:51025 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.3256 Name is Member:16137 and newAssetOId is Member:51047
+2014-12-02 23:08:08.3412 Adding Member:51047 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.4660 Name is Member:16428 and newAssetOId is Member:51053
+2014-12-02 23:08:08.4660 Adding Member:51053 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.5596 Name is Member:16900 and newAssetOId is Member:51056
+2014-12-02 23:08:08.5596 Adding Member:51056 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.6376 Name is Member:18256 and newAssetOId is Member:51060
+2014-12-02 23:08:08.6376 Adding Member:51060 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.7312 Name is Member:18257 and newAssetOId is Member:51061
+2014-12-02 23:08:08.7312 Adding Member:51061 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.8092 Name is Member:20464 and newAssetOId is Member:51062
+2014-12-02 23:08:08.8092 Adding Member:51062 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.8872 Name is Member:24322 and newAssetOId is Member:51071
+2014-12-02 23:08:08.8872 Adding Member:51071 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:08.9496 Name is Member:24385 and newAssetOId is Member:51072
+2014-12-02 23:08:08.9496 Adding Member:51072 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:09.0432 Name is Member:24482 and newAssetOId is Member:51073
+2014-12-02 23:08:09.0432 Adding Member:51073 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:09.1212 Name is Member:24484 and newAssetOId is Member:51074
+2014-12-02 23:08:09.1212 Adding Member:51074 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:09.2460 Name is Member:28746 and newAssetOId is Member:51085
+2014-12-02 23:08:09.2460 Adding Member:51085 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:09.3240 Name is Member:28747 and newAssetOId is Member:51086
+2014-12-02 23:08:09.3240 Adding Member:51086 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:09.4020 Name is Member:32194 and newAssetOId is Member:51088
+2014-12-02 23:08:09.4020 Adding Member:51088 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:08:09.4800 Name is Member:43623 and newAssetOId is Member:51092
+2014-12-02 23:08:09.4800 Adding Member:51092 to VersionOne.SDK.APIClient.AttributeDefinition
+2014-12-02 23:09:47.6762 *********************************************************
+2014-12-02 23:09:47.7074 * VersionOne Data Migration Log
+2014-12-02 23:09:47.7074 * 12/2/2014 11:09:47 PM
+2014-12-02 23:09:47.7230 *********************************************************
+2014-12-02 23:09:47.7230 
+2014-12-02 23:09:47.7230 Initializing configurations.
+2014-12-02 23:09:48.0038 Verifying connections.
+2014-12-02 23:09:50.0474 -> Connection to staging database "V1Staging" verified.
+2014-12-02 23:09:50.8274 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-02 23:09:50.8274 -> V1 target instance version: 14.3.2.6314.
+2014-12-02 23:09:50.8274 
+2014-12-02 23:09:50.8274 *** IMPORTING:
+2014-12-02 23:09:50.9522 Importing stories.
+2014-12-02 23:09:50.9522 -> Imported 0 stories.
+2014-12-02 23:09:50.9678 -> Imported 0 story custom fields.
+2014-12-02 23:09:50.9834 Importing defects.
+2014-12-02 23:09:50.9834 -> Imported 0 defects.
+2014-12-02 23:09:50.9834 -> Imported 0 defects custom fields.
+2014-12-02 23:09:50.9834 
+2014-12-02 23:09:50.9834 Data migration complete!
+2014-12-02 23:09:50.9834 
+2014-12-02 23:09:50.9834 
+2014-12-02 23:10:29.9898 *********************************************************
+2014-12-02 23:10:30.0210 * VersionOne Data Migration Log
+2014-12-02 23:10:30.0210 * 12/2/2014 11:10:30 PM
+2014-12-02 23:10:30.0366 *********************************************************
+2014-12-02 23:10:30.0366 
+2014-12-02 23:10:30.0366 Initializing configurations.
+2014-12-02 23:10:30.3018 Verifying connections.
+2014-12-02 23:10:32.6730 -> Connection to staging database "V1Staging" verified.
+2014-12-02 23:10:33.2658 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-02 23:10:33.2658 -> V1 target instance version: 14.3.2.6314.
+2014-12-02 23:10:33.2658 
+2014-12-02 23:10:33.2658 *** IMPORTING:
+2014-12-02 23:10:33.3594 Importing stories.
+2014-12-02 23:10:33.3750 -> Imported 0 stories.
+2014-12-02 23:15:50.6868 *********************************************************
+2014-12-02 23:15:50.7180 * VersionOne Data Migration Log
+2014-12-02 23:15:50.7180 * 12/2/2014 11:15:50 PM
+2014-12-02 23:15:50.7336 *********************************************************
+2014-12-02 23:15:50.7336 
+2014-12-02 23:15:50.7336 Initializing configurations.
+2014-12-02 23:15:51.0144 Verifying connections.
+2014-12-02 23:15:53.3544 -> Connection to staging database "V1Staging" verified.
+2014-12-02 23:15:54.0096 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-02 23:15:54.0096 -> V1 target instance version: 14.3.2.6314.
+2014-12-02 23:15:54.0096 
+2014-12-02 23:15:54.0096 *** IMPORTING:
+2014-12-02 23:15:54.1344 Importing stories.
+2014-12-02 23:15:54.1344 -> Imported 0 stories.
+2014-12-02 23:15:54.1500 -> Imported 0 story custom fields.
+2014-12-02 23:15:54.1500 Importing defects.
+2014-12-02 23:15:54.1500 -> Imported 0 defects.
+2014-12-02 23:15:54.1500 -> Imported 0 defects custom fields.
+2014-12-02 23:15:54.1500 
+2014-12-02 23:15:54.1500 Data migration complete!
+2014-12-02 23:15:54.1500 
+2014-12-02 23:15:54.1500 
+2014-12-02 23:16:20.8624 *********************************************************
+2014-12-02 23:16:20.8936 * VersionOne Data Migration Log
+2014-12-02 23:16:20.8936 * 12/2/2014 11:16:20 PM
+2014-12-02 23:16:20.9092 *********************************************************
+2014-12-02 23:16:20.9092 
+2014-12-02 23:16:20.9092 Initializing configurations.
+2014-12-02 23:16:21.1588 Verifying connections.
+2014-12-02 23:16:23.4052 -> Connection to staging database "V1Staging" verified.
+2014-12-02 23:16:23.9980 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-02 23:16:24.0136 -> V1 target instance version: 14.3.2.6314.
+2014-12-02 23:16:24.0136 
+2014-12-02 23:16:24.0136 *** IMPORTING:
+2014-12-02 23:16:24.1228 Importing stories.
+2014-12-02 23:16:24.1228 -> Imported 0 stories.
+2014-12-02 23:39:47.0992 *********************************************************
+2014-12-02 23:39:47.1304 * VersionOne Data Migration Log
+2014-12-02 23:39:47.1304 * 12/2/2014 11:39:47 PM
+2014-12-02 23:39:47.1460 *********************************************************
+2014-12-02 23:39:47.1460 
+2014-12-02 23:39:47.1460 Initializing configurations.
+2014-12-02 23:39:47.2552 Verifying connections.
+2014-12-02 23:39:49.6888 -> Connection to staging database "V1Staging" verified.
+2014-12-02 23:39:50.4532 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-02 23:39:50.4532 -> V1 target instance version: 14.3.2.6314.
+2014-12-02 23:39:50.4532 
+2014-12-02 23:39:50.4532 *** IMPORTING:
+2014-12-02 23:39:50.5624 Importing stories.
+2014-12-02 23:39:50.5624 -> Imported 0 stories.
+2014-12-02 23:40:43.1218 -> Imported 0 story custom fields.
+2014-12-02 23:41:00.9108 Importing defects.
+2014-12-02 23:41:11.9108 -> Imported 0 defects.
+2014-12-02 23:42:34.3810 -> Imported 0 defects custom fields.
+2014-12-02 23:42:34.5058 
+2014-12-02 23:42:34.5058 Data migration complete!
+2014-12-02 23:42:34.5058 
+2014-12-02 23:42:34.5058 
+2014-12-02 23:50:22.5248 *********************************************************
+2014-12-02 23:50:22.5560 * VersionOne Data Migration Log
+2014-12-02 23:50:22.5560 * 12/2/2014 11:50:22 PM
+2014-12-02 23:50:22.5716 *********************************************************
+2014-12-02 23:50:22.5716 
+2014-12-02 23:50:22.5716 Initializing configurations.
+2014-12-02 23:50:22.8212 Verifying connections.
+2014-12-02 23:50:25.0832 -> Connection to staging database "V1Staging" verified.
+2014-12-02 23:50:25.7540 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-02 23:50:25.7540 -> V1 target instance version: 14.3.2.6314.
+2014-12-02 23:50:25.7540 
+2014-12-02 23:50:25.7540 *** IMPORTING:
+2014-12-02 23:50:25.8788 Importing stories.
+2014-12-02 23:50:25.8788 -> Imported 0 stories.
+2014-12-02 23:54:30.0734 *********************************************************
+2014-12-02 23:54:30.1046 * VersionOne Data Migration Log
+2014-12-02 23:54:30.1046 * 12/2/2014 11:54:30 PM
+2014-12-02 23:54:30.1202 *********************************************************
+2014-12-02 23:54:30.1202 
+2014-12-02 23:54:30.1202 Initializing configurations.
+2014-12-02 23:54:30.4010 Verifying connections.
+2014-12-02 23:54:32.6942 -> Connection to staging database "V1Staging" verified.
+2014-12-02 23:54:33.3182 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-12-02 23:54:33.3182 -> V1 target instance version: 14.3.2.6314.
+2014-12-02 23:54:33.3338 
+2014-12-02 23:54:33.3338 *** IMPORTING:
+2014-12-02 23:54:33.4586 Importing stories.
+2014-12-02 23:54:33.4586 -> Imported 0 stories.

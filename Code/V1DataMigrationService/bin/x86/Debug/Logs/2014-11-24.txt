@@ -1,0 +1,276 @@
+2014-11-24 17:10:25.7946 *********************************************************
+2014-11-24 17:10:25.9350 * VersionOne Data Migration Log
+2014-11-24 17:10:25.9350 * 11/24/2014 5:10:25 PM
+2014-11-24 17:10:25.9506 *********************************************************
+2014-11-24 17:10:25.9506 
+2014-11-24 17:10:25.9506 Initializing configurations.
+2014-11-24 17:10:27.3858 ERROR: Missing JiraConfiguration information in application config file.
+2014-11-24 17:10:27.3858 
+2014-11-24 17:10:27.3858 Data migration terminated.
+2014-11-24 17:10:27.3858 
+2014-11-24 17:10:27.3858 
+2014-11-24 17:31:53.2324 *********************************************************
+2014-11-24 17:31:53.8252 * VersionOne Data Migration Log
+2014-11-24 17:31:53.8252 * 11/24/2014 5:31:53 PM
+2014-11-24 17:31:53.8252 *********************************************************
+2014-11-24 17:31:53.8252 
+2014-11-24 17:31:53.8252 Initializing configurations.
+2014-11-24 17:31:55.2448 ERROR: Missing JiraConfiguration information in application config file.
+2014-11-24 17:31:55.2448 
+2014-11-24 17:31:55.2448 Data migration terminated.
+2014-11-24 17:31:55.2448 
+2014-11-24 17:31:55.2448 
+2014-11-24 17:33:32.0894 *********************************************************
+2014-11-24 17:33:32.1206 * VersionOne Data Migration Log
+2014-11-24 17:33:32.1206 * 11/24/2014 5:33:32 PM
+2014-11-24 17:33:32.1206 *********************************************************
+2014-11-24 17:33:32.1206 
+2014-11-24 17:33:32.1362 Initializing configurations.
+2014-11-24 17:33:33.6338 ERROR: Missing JiraConfiguration information in application config file.
+2014-11-24 17:33:33.6338 
+2014-11-24 17:33:33.6338 Data migration terminated.
+2014-11-24 17:33:33.6338 
+2014-11-24 17:33:33.6338 
+2014-11-24 18:00:45.6996 *********************************************************
+2014-11-24 18:00:45.7308 * VersionOne Data Migration Log
+2014-11-24 18:00:45.7308 * 11/24/2014 6:00:45 PM
+2014-11-24 18:00:45.7308 *********************************************************
+2014-11-24 18:00:45.7308 
+2014-11-24 18:00:45.7464 Initializing configurations.
+2014-11-24 18:00:45.9804 Verifying connections.
+2014-11-24 18:01:00.3012 -> Connection to staging database "V1Staging" verified.
+2014-11-24 18:01:26.5404 -> Unable to connect to V1 source instance "http://localhost/GMACRFC".
+2014-11-24 18:01:26.8056 ERROR: Unknown AssetType: Member
+2014-11-24 18:01:26.8212 
+2014-11-24 18:01:26.8212 Data migration terminated.
+2014-11-24 18:01:26.8212 
+2014-11-24 18:01:26.8212 
+2014-11-24 20:54:17.4808 *********************************************************
+2014-11-24 20:54:17.5120 * VersionOne Data Migration Log
+2014-11-24 20:54:17.5120 * 11/24/2014 8:54:17 PM
+2014-11-24 20:54:17.5276 *********************************************************
+2014-11-24 20:54:17.5276 
+2014-11-24 20:54:17.5276 Initializing configurations.
+2014-11-24 20:54:17.7616 Verifying connections.
+2014-11-24 20:54:19.8384 -> Connection to staging database "V1Staging" verified.
+2014-11-24 20:54:23.1248 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 20:54:23.1248 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 20:54:23.4368 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 20:54:23.4368 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 20:54:23.4524 
+2014-11-24 20:54:43.9032 *** EXPORTING:
+2014-11-24 20:55:22.0122 *********************************************************
+2014-11-24 20:55:22.0434 * VersionOne Data Migration Log
+2014-11-24 20:55:22.0434 * 11/24/2014 8:55:22 PM
+2014-11-24 20:55:22.0590 *********************************************************
+2014-11-24 20:55:22.0590 
+2014-11-24 20:55:22.0590 Initializing configurations.
+2014-11-24 20:55:22.3086 Verifying connections.
+2014-11-24 20:55:24.2274 -> Connection to staging database "V1Staging" verified.
+2014-11-24 20:55:24.8358 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 20:55:24.8358 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 20:55:25.0386 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 20:55:25.0386 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 20:55:25.0386 
+2014-11-24 20:55:25.0386 *** EXPORTING:
+2014-11-24 20:57:40.5020 *********************************************************
+2014-11-24 20:57:40.6892 * VersionOne Data Migration Log
+2014-11-24 20:57:40.6892 * 11/24/2014 8:57:40 PM
+2014-11-24 20:57:40.7048 *********************************************************
+2014-11-24 20:57:40.7048 
+2014-11-24 20:57:42.1088 Initializing configurations.
+2014-11-24 21:04:24.7982 *********************************************************
+2014-11-24 21:04:25.2350 * VersionOne Data Migration Log
+2014-11-24 21:04:25.2350 * 11/24/2014 9:04:25 PM
+2014-11-24 21:04:25.2506 *********************************************************
+2014-11-24 21:04:25.2506 
+2014-11-24 21:04:25.2506 Initializing configurations.
+2014-11-24 21:04:25.5158 Verifying connections.
+2014-11-24 21:04:39.0098 -> Connection to staging database "V1Staging" verified.
+2014-11-24 21:04:55.4054 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 21:04:55.4054 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 21:05:07.3862 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 21:05:07.3862 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 21:05:07.7762 
+2014-11-24 21:05:07.7762 *** EXPORTING:
+2014-11-24 21:05:50.2106 Exporting projects.
+2014-11-24 21:06:24.2186 Calling projects.Export
+2014-11-24 21:22:20.4630 *********************************************************
+2014-11-24 21:22:20.4942 * VersionOne Data Migration Log
+2014-11-24 21:22:20.4942 * 11/24/2014 9:22:20 PM
+2014-11-24 21:22:20.5098 *********************************************************
+2014-11-24 21:22:20.5098 
+2014-11-24 21:22:20.5098 Initializing configurations.
+2014-11-24 21:22:20.7750 Verifying connections.
+2014-11-24 21:22:22.9434 -> Connection to staging database "V1Staging" verified.
+2014-11-24 21:22:23.6142 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 21:22:23.6142 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 21:22:23.8170 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 21:22:23.8170 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 21:22:23.8170 
+2014-11-24 21:22:23.8170 *** EXPORTING:
+2014-11-24 21:22:31.8198 Exporting projects.
+2014-11-24 21:22:31.9446 Calling projects.Export
+2014-11-24 21:22:34.1442 assetTotal is 0 
+2014-11-24 21:22:34.1442 -> Exported 0 projects.
+2014-11-24 21:22:34.1442 
+2014-11-24 21:22:34.1442 Data migration complete!
+2014-11-24 21:22:34.1442 
+2014-11-24 21:22:34.1442 
+2014-11-24 21:41:17.1550 *********************************************************
+2014-11-24 21:41:17.1862 * VersionOne Data Migration Log
+2014-11-24 21:41:17.1862 * 11/24/2014 9:41:17 PM
+2014-11-24 21:41:17.1862 *********************************************************
+2014-11-24 21:41:17.1862 
+2014-11-24 21:41:17.1862 Initializing configurations.
+2014-11-24 21:41:17.4358 Verifying connections.
+2014-11-24 21:41:19.5886 -> Connection to staging database "V1Staging" verified.
+2014-11-24 21:41:20.2594 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 21:41:20.2594 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 21:41:20.4778 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 21:41:20.4778 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 21:41:20.4778 
+2014-11-24 21:41:20.4778 *** EXPORTING:
+2014-11-24 21:41:20.5558 Exporting projects.
+2014-11-24 21:41:20.5558 Calling projects.Export
+2014-11-24 21:41:20.5714 assetTotal is 0 
+2014-11-24 21:41:20.5714 -> Exported 0 projects.
+2014-11-24 21:41:20.5714 
+2014-11-24 21:41:20.5714 Data migration complete!
+2014-11-24 21:41:20.5714 
+2014-11-24 21:41:20.5714 
+2014-11-24 21:50:41.5864 *********************************************************
+2014-11-24 21:50:41.6074 * VersionOne Data Migration Log
+2014-11-24 21:50:41.6074 * 11/24/2014 9:50:41 PM
+2014-11-24 21:50:41.6214 *********************************************************
+2014-11-24 21:50:41.6214 
+2014-11-24 21:50:41.6214 Initializing configurations.
+2014-11-24 21:50:41.8444 Verifying connections.
+2014-11-24 21:50:43.7724 -> Connection to staging database "V1Staging" verified.
+2014-11-24 21:50:44.6274 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 21:50:44.6284 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 21:50:44.8184 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 21:50:44.8184 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 21:50:44.8184 
+2014-11-24 21:50:44.8184 *** EXPORTING:
+2014-11-24 21:50:44.8884 Exporting projects.
+2014-11-24 21:50:44.8884 Calling projects.Export
+2014-11-24 21:50:45.0554 assetTotal is 70 
+2014-11-24 21:50:49.1552 -> Exported 70 projects.
+2014-11-24 21:50:49.2020 
+2014-11-24 21:50:49.2020 Data migration complete!
+2014-11-24 21:50:49.2020 
+2014-11-24 21:50:49.2020 
+2014-11-24 22:15:55.2934 *********************************************************
+2014-11-24 22:15:55.3246 * VersionOne Data Migration Log
+2014-11-24 22:15:55.3246 * 11/24/2014 10:15:55 PM
+2014-11-24 22:15:55.3246 *********************************************************
+2014-11-24 22:15:55.3246 
+2014-11-24 22:15:55.3246 Initializing configurations.
+2014-11-24 22:15:55.5898 Verifying connections.
+2014-11-24 22:15:57.5866 -> Connection to staging database "V1Staging" verified.
+2014-11-24 22:16:06.4630 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 22:16:06.4630 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 22:16:17.1022 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 22:16:17.1022 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 22:16:17.3830 
+2014-11-24 22:16:17.3830 *** EXPORTING:
+2014-11-24 22:16:17.5546 Exporting projects.
+2014-11-24 22:16:17.5546 Calling projects.Export
+2014-11-24 22:16:18.7558 assetTotal is 70 
+2014-11-24 22:16:23.4046 -> Exported 70 projects.
+2014-11-24 22:16:23.4514 
+2014-11-24 22:16:23.4514 Data migration complete!
+2014-11-24 22:16:23.4514 
+2014-11-24 22:16:23.4514 
+2014-11-24 22:17:36.9320 *********************************************************
+2014-11-24 22:17:36.9632 * VersionOne Data Migration Log
+2014-11-24 22:17:36.9632 * 11/24/2014 10:17:36 PM
+2014-11-24 22:17:36.9788 *********************************************************
+2014-11-24 22:17:36.9788 
+2014-11-24 22:17:36.9788 Initializing configurations.
+2014-11-24 22:17:37.2284 Verifying connections.
+2014-11-24 22:17:39.3188 -> Connection to staging database "V1Staging" verified.
+2014-11-24 22:17:39.9584 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 22:17:39.9584 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 22:17:40.1612 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 22:17:40.1612 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 22:17:40.1612 
+2014-11-24 22:17:40.1612 *** EXPORTING:
+2014-11-24 22:17:40.2236 Exporting projects.
+2014-11-24 22:17:40.2236 Calling projects.Export
+2014-11-24 22:17:40.3016 assetTotal is 70 
+2014-11-24 22:17:40.9724 ERROR: Violation of PRIMARY KEY constraint 'PK_Projects'. Cannot insert duplicate key in object 'dbo.Projects'. The duplicate key value is (Scope:15251).
+The statement has been terminated.
+2014-11-24 22:17:42.3140 
+2014-11-24 22:17:42.3140 Data migration terminated.
+2014-11-24 22:17:42.3140 
+2014-11-24 22:17:42.3296 
+2014-11-24 22:18:54.8568 *********************************************************
+2014-11-24 22:18:54.8880 * VersionOne Data Migration Log
+2014-11-24 22:18:54.8880 * 11/24/2014 10:18:54 PM
+2014-11-24 22:18:54.9036 *********************************************************
+2014-11-24 22:18:54.9036 
+2014-11-24 22:18:54.9036 Initializing configurations.
+2014-11-24 22:18:55.1688 Verifying connections.
+2014-11-24 22:18:57.3840 -> Connection to staging database "V1Staging" verified.
+2014-11-24 22:18:58.0704 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 22:18:58.0704 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 22:18:58.2732 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 22:18:58.2888 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 22:18:58.2888 
+2014-11-24 22:18:58.2888 *** EXPORTING:
+2014-11-24 22:18:58.3512 Exporting projects.
+2014-11-24 22:18:58.3512 Calling projects.Export
+2014-11-24 22:18:58.3980 assetTotal is 70 
+2014-11-24 22:19:02.4852 -> Exported 70 projects.
+2014-11-24 22:19:02.5320 
+2014-11-24 22:19:02.5320 Data migration complete!
+2014-11-24 22:19:02.5320 
+2014-11-24 22:19:02.5320 
+2014-11-24 22:25:07.1396 *********************************************************
+2014-11-24 22:25:07.1708 * VersionOne Data Migration Log
+2014-11-24 22:25:07.1708 * 11/24/2014 10:25:07 PM
+2014-11-24 22:25:07.1864 *********************************************************
+2014-11-24 22:25:07.1864 
+2014-11-24 22:25:07.1864 Initializing configurations.
+2014-11-24 22:25:07.4360 Verifying connections.
+2014-11-24 22:25:09.6824 -> Connection to staging database "V1Staging" verified.
+2014-11-24 22:25:10.4000 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 22:25:10.4000 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 22:25:10.6184 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 22:25:10.6184 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 22:25:10.6184 
+2014-11-24 22:25:10.6184 *** EXPORTING:
+2014-11-24 22:25:10.6808 Exporting projects.
+2014-11-24 22:25:10.7432 Calling projects.Export
+2014-11-24 22:25:11.1956 assetTotal is 70 
+2014-11-24 22:25:11.8664 ERROR: Violation of PRIMARY KEY constraint 'PK_Projects'. Cannot insert duplicate key in object 'dbo.Projects'. The duplicate key value is (Scope:15251).
+The statement has been terminated.
+2014-11-24 22:25:11.8664 
+2014-11-24 22:25:11.8664 Data migration terminated.
+2014-11-24 22:25:11.8664 
+2014-11-24 22:25:11.8664 
+2014-11-24 22:27:31.3814 *********************************************************
+2014-11-24 22:27:31.4126 * VersionOne Data Migration Log
+2014-11-24 22:27:31.4126 * 11/24/2014 10:27:31 PM
+2014-11-24 22:27:31.4282 *********************************************************
+2014-11-24 22:27:31.4282 
+2014-11-24 22:27:31.4282 Initializing configurations.
+2014-11-24 22:27:31.6934 Verifying connections.
+2014-11-24 22:27:33.7682 -> Connection to staging database "V1Staging" verified.
+2014-11-24 22:27:34.4546 -> Connection to V1 source instance "http://localhost/GMACRFC" verified.
+2014-11-24 22:27:34.4702 -> V1 source instance version: 11.1.11.2269.
+2014-11-24 22:27:34.6886 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2014-11-24 22:27:34.6886 -> V1 target instance version: 14.3.2.6314.
+2014-11-24 22:27:34.6886 
+2014-11-24 22:27:34.6886 *** EXPORTING:
+2014-11-24 22:27:34.7666 Exporting projects.
+2014-11-24 22:27:34.7666 Calling projects.Export
+2014-11-24 22:27:34.8290 assetTotal is 70 
+2014-11-24 22:27:35.3594 ERROR: Violation of PRIMARY KEY constraint 'PK_Projects'. Cannot insert duplicate key in object 'dbo.Projects'. The duplicate key value is (Scope:15251).
+The statement has been terminated.
+2014-11-24 22:27:35.3594 
+2014-11-24 22:27:35.3594 Data migration terminated.
+2014-11-24 22:27:35.3594 
+2014-11-24 22:27:35.3594 

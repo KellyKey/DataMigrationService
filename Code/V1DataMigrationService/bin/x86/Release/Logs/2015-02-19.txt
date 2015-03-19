@@ -1,0 +1,20 @@
+2015-02-19 23:50:40.2634 *********************************************************
+2015-02-19 23:50:40.3258 * VersionOne Data Migration Log
+2015-02-19 23:50:40.3258 * 2/19/2015 11:50:40 PM
+2015-02-19 23:50:40.3414 *********************************************************
+2015-02-19 23:50:40.3414 
+2015-02-19 23:50:40.3414 Initializing configurations.
+2015-02-19 23:50:40.4506 Verifying connections.
+2015-02-19 23:50:42.1354 -> Connection to staging database "V1Staging" verified.
+2015-02-19 23:51:08.0470 -> Connection to V1 source instance "http://localhost/GMACERS" verified.
+2015-02-19 23:51:08.0470 -> V1 source instance version: 11.1.11.2269.
+2015-02-19 23:51:26.5954 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-02-19 23:51:26.5954 -> V1 target instance version: 14.3.5.6349.
+2015-02-19 23:51:26.9542 
+2015-02-19 23:51:26.9542 *** EXPORTING:
+2015-02-19 23:51:26.9542 Exporting links.
+2015-02-19 23:51:29.3566 -> Exported 15 links.
+2015-02-19 23:51:29.3566 
+2015-02-19 23:51:29.3722 Data migration complete!
+2015-02-19 23:51:29.3722 
+2015-02-19 23:51:29.3722 

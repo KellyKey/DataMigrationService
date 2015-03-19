@@ -1,0 +1,91 @@
+2014-12-19 20:37:03.8428 *********************************************************
+2014-12-19 20:37:03.9988 * VersionOne Data Migration Log
+2014-12-19 20:37:03.9988 * 12/19/2014 8:37:03 PM
+2014-12-19 20:37:04.0924 *********************************************************
+2014-12-19 20:37:04.1080 
+2014-12-19 20:37:04.1080 Initializing configurations.
+2014-12-19 20:37:04.3420 Verifying connections.
+2014-12-19 20:37:30.1569 -> Unable to connect to staging database "V1Staging".
+2014-12-19 20:37:30.6717 ERROR: Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=24800; handshake=2; 
+2014-12-19 20:37:30.6717 
+2014-12-19 20:37:30.6717 Data migration terminated.
+2014-12-19 20:37:30.6717 
+2014-12-19 20:37:30.6717 
+2014-12-19 20:38:14.5633 *********************************************************
+2014-12-19 20:38:14.5945 * VersionOne Data Migration Log
+2014-12-19 20:38:14.5945 * 12/19/2014 8:38:14 PM
+2014-12-19 20:38:14.6101 *********************************************************
+2014-12-19 20:38:14.6101 
+2014-12-19 20:38:14.6101 Initializing configurations.
+2014-12-19 20:38:14.7973 Verifying connections.
+2014-12-19 20:38:40.1785 -> Unable to connect to staging database "V1Staging".
+2014-12-19 20:38:40.4125 ERROR: Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=24253; handshake=0; 
+2014-12-19 20:38:40.4281 
+2014-12-19 20:38:40.4281 Data migration terminated.
+2014-12-19 20:38:40.4281 
+2014-12-19 20:38:40.4281 
+2014-12-19 20:39:42.6936 *********************************************************
+2014-12-19 20:39:42.7248 * VersionOne Data Migration Log
+2014-12-19 20:39:42.7248 * 12/19/2014 8:39:42 PM
+2014-12-19 20:39:42.7404 *********************************************************
+2014-12-19 20:39:42.7404 
+2014-12-19 20:39:42.7404 Initializing configurations.
+2014-12-19 20:39:42.9900 Verifying connections.
+2014-12-19 20:40:14.4471 -> Unable to connect to staging database "V1Staging".
+2014-12-19 20:40:14.7279 ERROR: Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=24284; handshake=0; 
+2014-12-19 20:40:17.0211 
+2014-12-19 20:40:17.0211 Data migration terminated.
+2014-12-19 20:40:17.0211 
+2014-12-19 20:40:17.0211 
+2014-12-19 20:42:56.0188 *********************************************************
+2014-12-19 20:42:56.0500 * VersionOne Data Migration Log
+2014-12-19 20:42:56.0500 * 12/19/2014 8:42:56 PM
+2014-12-19 20:42:56.0656 *********************************************************
+2014-12-19 20:42:56.0656 
+2014-12-19 20:42:56.0656 Initializing configurations.
+2014-12-19 20:42:56.6896 Verifying connections.
+2014-12-19 20:43:25.3936 -> Unable to connect to staging database "V1Staging".
+2014-12-19 20:43:25.9708 ERROR: Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=25519; handshake=0; 
+2014-12-19 20:43:25.9864 
+2014-12-19 20:43:25.9864 Data migration terminated.
+2014-12-19 20:43:25.9864 
+2014-12-19 20:43:25.9864 
+2014-12-19 20:50:57.6264 *********************************************************
+2014-12-19 20:50:57.6576 * VersionOne Data Migration Log
+2014-12-19 20:50:57.6576 * 12/19/2014 8:50:57 PM
+2014-12-19 20:50:57.6732 *********************************************************
+2014-12-19 20:50:57.6732 
+2014-12-19 20:50:57.6732 Initializing configurations.
+2014-12-19 20:50:57.9228 Verifying connections.
+2014-12-19 20:51:23.7408 -> Unable to connect to staging database "V1Staging".
+2014-12-19 20:51:23.9904 ERROR: Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=24767; handshake=0; 
+2014-12-19 20:51:25.3476 
+2014-12-19 20:51:25.3476 Data migration terminated.
+2014-12-19 20:51:25.3476 
+2014-12-19 20:51:25.3476 
+2014-12-19 21:11:47.2173 *********************************************************
+2014-12-19 21:11:47.2329 * VersionOne Data Migration Log
+2014-12-19 21:11:47.2329 * 12/19/2014 9:11:47 PM
+2014-12-19 21:11:47.2485 *********************************************************
+2014-12-19 21:11:47.2485 
+2014-12-19 21:11:47.2485 Initializing configurations.
+2014-12-19 21:11:47.6541 Verifying connections.
+2014-12-19 21:12:13.8933 -> Unable to connect to staging database "V1Staging".
+2014-12-19 21:12:14.1741 ERROR: Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=24479; handshake=0; 
+2014-12-19 21:12:14.1741 
+2014-12-19 21:12:14.1741 Data migration terminated.
+2014-12-19 21:12:14.1741 
+2014-12-19 21:12:14.1741 
+2014-12-19 21:15:37.5239 *********************************************************
+2014-12-19 21:15:37.5551 * VersionOne Data Migration Log
+2014-12-19 21:15:37.5551 * 12/19/2014 9:15:37 PM
+2014-12-19 21:15:37.5707 *********************************************************
+2014-12-19 21:15:37.5707 
+2014-12-19 21:15:37.5707 Initializing configurations.
+2014-12-19 21:15:37.8983 Verifying connections.
+2014-12-19 21:16:04.5119 -> Unable to connect to staging database "V1Staging".
+2014-12-19 21:16:04.7771 ERROR: Connection Timeout Expired.  The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement.  This could be because the pre-login handshake failed or the server was unable to respond back in time.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=24238; handshake=0; 
+2014-12-19 21:16:04.7771 
+2014-12-19 21:16:04.7771 Data migration terminated.
+2014-12-19 21:16:04.7771 
+2014-12-19 21:16:04.7771 

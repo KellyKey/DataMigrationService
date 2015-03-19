@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V1DataMigrationService", "V1DataMigrationService.csproj", "{BC49D0D5-09A0-413B-BAFD-120B5A6B45B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V1DataReader", "..\V1DataReader\V1DataReader.csproj", "{A0BD21AE-851F-42CE-8CE0-8D3A84E017B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "V1DataWriter", "V1DataWriter\V1DataWriter.csproj", "{6B23A903-0785-41B2-A8CC-849BD3E420C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC49D0D5-09A0-413B-BAFD-120B5A6B45B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC49D0D5-09A0-413B-BAFD-120B5A6B45B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC49D0D5-09A0-413B-BAFD-120B5A6B45B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC49D0D5-09A0-413B-BAFD-120B5A6B45B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0BD21AE-851F-42CE-8CE0-8D3A84E017B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0BD21AE-851F-42CE-8CE0-8D3A84E017B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0BD21AE-851F-42CE-8CE0-8D3A84E017B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0BD21AE-851F-42CE-8CE0-8D3A84E017B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B23A903-0785-41B2-A8CC-849BD3E420C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B23A903-0785-41B2-A8CC-849BD3E420C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B23A903-0785-41B2-A8CC-849BD3E420C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B23A903-0785-41B2-A8CC-849BD3E420C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
