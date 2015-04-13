@@ -12,6 +12,7 @@ namespace V1DataWriter
     public class ImportCustomFields : IImportAssets
     {
         private string _assetType;
+        private string _tableName;
 
         public ImportCustomFields(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations, string AssetType)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) 
@@ -32,8 +33,19 @@ namespace V1DataWriter
             }
             else
             {
-                MigrationConfiguration.AssetInfo assetInfo = _config.AssetsToMigrate.Find(i => i.Name == _assetType);
-                assetTypeInternalName = assetInfo.InternalName;
+                //This code doesn't work and needs to be fixed...For Now, just use the _assetType variable passed in
+                //MigrationConfiguration.AssetInfo assetInfo = _config.AssetsToMigrate.Find(i => i.Name == _assetType);
+                //assetTypeInternalName = assetInfo.InternalName;
+                assetTypeInternalName = _assetType;
+
+                if (_assetType == "Story")
+                {
+                    _tableName = "Stories";
+                }
+                else
+                {
+                    _tableName = _assetType + "s";
+                }
             }
 
 
@@ -42,7 +54,9 @@ namespace V1DataWriter
             int importCount = 0;
             foreach (MigrationConfiguration.CustomFieldInfo field in fields)
             {
-                SqlDataReader sdr = GetImportDataFromDBTableForCustomFields(_assetType, field.SourceName);
+                
+                
+                SqlDataReader sdr = GetImportDataFromDBTableForCustomFields(_tableName, field.SourceName);
                 while (sdr.Read())
                 {
                     //Get the asset from V1.
@@ -68,6 +82,9 @@ namespace V1DataWriter
                         asset.SetAttributeValue(customFieldAttribute, sdr["FieldValue"].ToString());
                     }
                     _dataAPI.Save(asset);
+                    
+                    UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "CustomField imported.");
+                    
                     importCount++;
                 }
                 sdr.Close();

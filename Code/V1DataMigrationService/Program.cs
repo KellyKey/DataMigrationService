@@ -152,7 +152,7 @@ namespace V1DataMigrationService
                             if (asset.EnableCustomFields == true)
                             {
                             //Need to Export Custom Fields
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "ListType");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} list type custom fields.", assetCount);
                             }
@@ -171,7 +171,7 @@ namespace V1DataMigrationService
                             if (asset.EnableCustomFields == true)
                             {
                                 //Need to Export Custom Fields
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Member");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} member custom fields.", assetCount);
                             }
@@ -221,7 +221,7 @@ namespace V1DataMigrationService
                             if (asset.EnableCustomFields == true)
                             {
                                 //Need to Export Custom Fields
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Scope");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} project custom fields.", assetCount);
                             }
@@ -288,7 +288,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Theme");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} feature group custom fields.", assetCount);
                             }
@@ -307,7 +307,7 @@ namespace V1DataMigrationService
                             if (asset.EnableCustomFields == true)
                             {
                                 //Need to Export Custom Fields
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Request");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} request custom fields.", assetCount);
                             }
@@ -326,7 +326,7 @@ namespace V1DataMigrationService
                             if (asset.EnableCustomFields == true)
                             {
                                 //Need to Export Custom Fields
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Issue");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} issue custom fields.", assetCount);
                             }
@@ -345,7 +345,7 @@ namespace V1DataMigrationService
                             if (asset.EnableCustomFields == true)
                             {
                                 //Need to Export Custom Fields
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Epic");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} epic custom fields.", assetCount);
                             }
@@ -389,7 +389,7 @@ namespace V1DataMigrationService
                             if (asset.EnableCustomFields == true)
                             {
                                 //ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Defects");
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Defect");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} Defects custom fields.", assetCount);
                             }
@@ -407,7 +407,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Task");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} Tasks custom fields.", assetCount);
                             }
@@ -438,7 +438,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Test");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} Tests custom fields.", assetCount);
                             }
@@ -520,7 +520,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "ListType");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} ListTypes custom fields.", assetCount);
                             }
@@ -535,15 +535,14 @@ namespace V1DataMigrationService
                             ImportMembers members = new ImportMembers(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
                             assetCount = members.Import();
                             _logger.Info("-> Imported {0} members.", assetCount);
-                        }
 
-                        if (asset.EnableCustomFields == true)
-                        {
-                            ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
-                            assetCount = custom.Import();
-                            _logger.Debug("-> Imported {0} member custom fields.", assetCount);
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Member");
+                                assetCount = custom.Import();
+                                _logger.Debug("-> Imported {0} member custom fields.", assetCount);
+                            }
                         }
-
                         break;
 
                     case "MemberGroups":
@@ -586,7 +585,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Scope");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} project custom fields.", assetCount);
                             }
@@ -639,7 +638,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Theme");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} feature group custom fields.", assetCount);
                             }
@@ -653,15 +652,15 @@ namespace V1DataMigrationService
                             ImportRequests requests = new ImportRequests(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
                             assetCount = requests.Import();
                             _logger.Info("-> Imported {0} requests.", assetCount);
-                        }
+                       
 
-                        if (asset.EnableCustomFields == true)
-                        {
-                            ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
-                            assetCount = custom.Import();
-                            _logger.Debug("-> Imported {0} request custom fields.", assetCount);
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Request");
+                                assetCount = custom.Import();
+                                _logger.Debug("-> Imported {0} request custom fields.", assetCount);
+                            }
                         }
-
                         break;
 
                     case "Issues":
@@ -671,15 +670,15 @@ namespace V1DataMigrationService
                             ImportIssues issues = new ImportIssues(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
                             assetCount = issues.Import();
                             _logger.Info("-> Imported {0} issues.", assetCount);
-                        }
+                        
 
-                        if (asset.EnableCustomFields == true)
-                        {
-                            ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
-                            assetCount = custom.Import();
-                            _logger.Debug("-> Imported {0} issue custom fields.", assetCount);
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Issue");
+                                assetCount = custom.Import();
+                                _logger.Debug("-> Imported {0} issue custom fields.", assetCount);
+                            }
                         }
-
                         break;
 
                     case "Epics":
@@ -692,7 +691,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Epic");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} epic custom fields.", assetCount);
                             }
@@ -709,7 +708,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Story");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} Story custom fields.", assetCount);
                             }
@@ -726,7 +725,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Defect");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} defects custom fields.", assetCount);
                             }
@@ -743,7 +742,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Task");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} task custom fields.", assetCount);
                             }
@@ -760,7 +759,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, asset.Name);
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Test");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} test custom fields.", assetCount);
                             }

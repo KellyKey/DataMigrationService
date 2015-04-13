@@ -1,0 +1,189 @@
+2015-04-02 12:45:08.0864 *********************************************************
+2015-04-02 12:45:08.1176 * VersionOne Data Migration Log
+2015-04-02 12:45:08.1176 * 4/2/2015 12:45:08 PM
+2015-04-02 12:45:08.1332 *********************************************************
+2015-04-02 12:45:08.1332 
+2015-04-02 12:45:08.1332 Initializing configurations.
+2015-04-02 12:45:08.2112 Verifying connections.
+2015-04-02 12:45:08.7104 -> Connection to staging database "V1Staging" verified.
+2015-04-02 12:45:10.2704 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-04-02 12:45:10.2860 -> V1 source instance version: 14.3.5.6349.
+2015-04-02 12:45:42.5810 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-02 12:45:42.5810 -> V1 target instance version: 14.3.5.6349.
+2015-04-02 12:45:42.5810 
+2015-04-02 12:45:42.5810 *** EXPORTING:
+2015-04-02 12:45:43.2362 Exporting epics.
+2015-04-02 12:45:46.5122 -> Exported 266 epics.
+2015-04-02 12:45:46.6682 The CustomField is Custom_TestApproved and Type is Boolean
+2015-04-02 12:45:46.7462 -> Exported 3 epic custom fields.
+2015-04-02 12:45:46.7462 
+2015-04-02 12:45:46.7462 Data migration complete!
+2015-04-02 12:45:46.7618 
+2015-04-02 12:45:46.7618 
+2015-04-02 13:04:54.2274 *********************************************************
+2015-04-02 13:04:54.2742 * VersionOne Data Migration Log
+2015-04-02 13:04:54.2742 * 4/2/2015 1:04:54 PM
+2015-04-02 13:04:54.2898 *********************************************************
+2015-04-02 13:04:54.2898 
+2015-04-02 13:04:54.2898 Initializing configurations.
+2015-04-02 13:04:54.3678 Verifying connections.
+2015-04-02 13:04:54.9450 -> Connection to staging database "V1Staging" verified.
+2015-04-02 13:04:55.8654 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-04-02 13:04:55.8654 -> V1 source instance version: 14.3.5.6349.
+2015-04-02 13:04:56.4114 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-02 13:04:56.4114 -> V1 target instance version: 14.3.5.6349.
+2015-04-02 13:04:56.4114 
+2015-04-02 13:04:56.4114 *** EXPORTING:
+2015-04-02 13:04:56.4894 Exporting list types.
+2015-04-02 13:04:57.9558 -> Exported 119 list types.
+2015-04-02 13:04:58.0182 -> Exported 0 list type custom fields.
+2015-04-02 13:04:58.0182 
+2015-04-02 13:04:58.0338 Data migration complete!
+2015-04-02 13:04:58.0338 
+2015-04-02 13:04:58.0338 
+2015-04-02 13:17:13.9188 *********************************************************
+2015-04-02 13:17:13.9812 * VersionOne Data Migration Log
+2015-04-02 13:17:13.9812 * 4/2/2015 1:17:13 PM
+2015-04-02 13:17:13.9968 *********************************************************
+2015-04-02 13:17:13.9968 
+2015-04-02 13:17:13.9968 Initializing configurations.
+2015-04-02 13:17:14.0904 Verifying connections.
+2015-04-02 13:17:14.5740 -> Connection to staging database "V1Staging" verified.
+2015-04-02 13:17:15.6504 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-02 13:17:15.6504 -> V1 target instance version: 14.3.5.6349.
+2015-04-02 13:17:15.6972 
+2015-04-02 13:17:15.6972 *** IMPORTING:
+2015-04-02 13:17:15.7284 Importing epics.
+2015-04-02 13:17:16.6176 ERROR: Incorrect syntax near 'System'.
+2015-04-02 13:17:16.6176 
+2015-04-02 13:17:16.6176 Data migration terminated.
+2015-04-02 13:17:16.6332 
+2015-04-02 13:17:16.6332 
+2015-04-02 13:21:41.8106 ERROR: Incorrect syntax near 'System'.
+2015-04-02 13:22:26.8050 *********************************************************
+2015-04-02 13:22:26.8362 * VersionOne Data Migration Log
+2015-04-02 13:22:26.8518 * 4/2/2015 1:22:26 PM
+2015-04-02 13:22:26.8674 *********************************************************
+2015-04-02 13:22:26.8674 
+2015-04-02 13:22:26.8674 Initializing configurations.
+2015-04-02 13:22:26.9610 Verifying connections.
+2015-04-02 13:22:27.2262 -> Connection to staging database "V1Staging" verified.
+2015-04-02 13:22:27.7722 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-02 13:22:27.7722 -> V1 target instance version: 14.3.5.6349.
+2015-04-02 13:22:27.7722 
+2015-04-02 13:22:27.7878 *** IMPORTING:
+2015-04-02 13:22:27.8970 Importing epics.
+2015-04-02 13:24:50.5926 ERROR: Incorrect syntax near 'System'.
+2015-04-02 13:24:50.5926 
+2015-04-02 13:24:50.6076 Data migration terminated.
+2015-04-02 13:24:50.6076 
+2015-04-02 13:24:50.6076 
+2015-04-02 13:26:20.3192 *********************************************************
+2015-04-02 13:26:20.3504 * VersionOne Data Migration Log
+2015-04-02 13:26:20.3660 * 4/2/2015 1:26:20 PM
+2015-04-02 13:26:20.3816 *********************************************************
+2015-04-02 13:26:20.3816 
+2015-04-02 13:26:20.3972 Initializing configurations.
+2015-04-02 13:26:20.4752 Verifying connections.
+2015-04-02 13:26:20.7716 -> Connection to staging database "V1Staging" verified.
+2015-04-02 13:26:21.3040 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-02 13:26:21.3040 -> V1 target instance version: 14.3.5.6349.
+2015-04-02 13:26:21.3196 
+2015-04-02 13:26:21.3196 *** IMPORTING:
+2015-04-02 13:26:21.4132 Importing list types.
+2015-04-02 13:26:24.5020 -> Imported 0 list types.
+2015-04-02 13:26:24.5020 -> Imported 0 ListTypes custom fields.
+2015-04-02 13:26:24.5020 Importing epics.
+2015-04-02 13:34:21.6574 -> Imported 266 epics.
+2015-04-02 13:34:23.7166 -> Imported 3 epic custom fields.
+2015-04-02 13:34:23.7166 
+2015-04-02 13:34:23.7322 Data migration complete!
+2015-04-02 13:34:23.7322 
+2015-04-02 13:34:23.7322 
+2015-04-02 14:24:57.4372 *********************************************************
+2015-04-02 14:24:57.4840 * VersionOne Data Migration Log
+2015-04-02 14:24:57.4996 * 4/2/2015 2:24:57 PM
+2015-04-02 14:24:57.4996 *********************************************************
+2015-04-02 14:24:57.5152 
+2015-04-02 14:24:57.5152 Initializing configurations.
+2015-04-02 14:24:57.5932 Verifying connections.
+2015-04-02 14:24:58.1236 -> Connection to staging database "V1Staging" verified.
+2015-04-02 14:24:59.1376 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-04-02 14:24:59.1376 -> V1 source instance version: 14.3.5.6349.
+2015-04-02 14:24:59.5276 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-02 14:24:59.5276 -> V1 target instance version: 14.3.5.6349.
+2015-04-02 14:24:59.5276 
+2015-04-02 14:24:59.5432 *** EXPORTING:
+2015-04-02 14:24:59.5900 Exporting members.
+2015-04-02 14:24:59.9956 The TotalAvailable Members is 131 
+2015-04-02 14:25:00.1672 ERROR: Violation of PRIMARY KEY constraint 'PK_Members'. Cannot insert duplicate key in object 'dbo.Members'. The duplicate key value is (Member:20).
+The statement has been terminated.
+2015-04-02 14:25:00.1672 
+2015-04-02 14:25:00.1672 Data migration terminated.
+2015-04-02 14:25:00.1828 
+2015-04-02 14:25:00.1828 
+2015-04-02 14:25:43.7704 *********************************************************
+2015-04-02 14:25:43.8016 * VersionOne Data Migration Log
+2015-04-02 14:25:43.8016 * 4/2/2015 2:25:43 PM
+2015-04-02 14:25:43.8172 *********************************************************
+2015-04-02 14:25:43.8172 
+2015-04-02 14:25:43.8328 Initializing configurations.
+2015-04-02 14:25:43.8796 Verifying connections.
+2015-04-02 14:25:44.0512 -> Connection to staging database "V1Staging" verified.
+2015-04-02 14:25:44.3476 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-04-02 14:25:44.3632 -> V1 source instance version: 14.3.5.6349.
+2015-04-02 14:25:44.4412 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-02 14:25:44.4412 -> V1 target instance version: 14.3.5.6349.
+2015-04-02 14:25:44.4412 
+2015-04-02 14:25:44.4412 *** EXPORTING:
+2015-04-02 14:25:44.5348 Exporting members.
+2015-04-02 14:25:44.7220 The TotalAvailable Members is 131 
+2015-04-02 14:25:45.0496 -> Exported 131 members.
+2015-04-02 14:25:45.1120 The CustomField is Custom_Real and Type is Boolean
+2015-04-02 14:25:45.1588 -> Exported 3 member custom fields.
+2015-04-02 14:25:45.1744 
+2015-04-02 14:25:45.1744 Data migration complete!
+2015-04-02 14:25:45.1900 
+2015-04-02 14:25:45.1900 
+2015-04-02 14:32:54.7320 *********************************************************
+2015-04-02 14:32:54.7944 * VersionOne Data Migration Log
+2015-04-02 14:32:54.7944 * 4/2/2015 2:32:54 PM
+2015-04-02 14:32:54.8100 *********************************************************
+2015-04-02 14:32:54.8100 
+2015-04-02 14:32:54.8256 Initializing configurations.
+2015-04-02 14:32:54.9192 Verifying connections.
+2015-04-02 14:32:55.4184 -> Connection to staging database "V1Staging" verified.
+2015-04-02 14:32:56.1360 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-04-02 14:32:56.1360 -> V1 source instance version: 14.3.5.6349.
+2015-04-02 14:32:56.4948 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-02 14:32:56.4948 -> V1 target instance version: 14.3.5.6349.
+2015-04-02 14:32:56.5104 
+2015-04-02 14:32:56.5104 *** EXPORTING:
+2015-04-02 14:32:56.5572 Exporting members.
+2015-04-02 14:32:56.8692 The TotalAvailable Members is 131 
+2015-04-02 14:32:57.1656 -> Exported 131 members.
+2015-04-02 14:32:57.2124 The CustomField is Custom_Real and Type is Boolean
+2015-04-02 14:32:57.2592 -> Exported 3 member custom fields.
+2015-04-02 14:32:57.2592 
+2015-04-02 14:32:57.2748 Data migration complete!
+2015-04-02 14:32:57.2748 
+2015-04-02 14:32:57.2748 
+2015-04-02 14:34:23.6414 *********************************************************
+2015-04-02 14:34:23.6726 * VersionOne Data Migration Log
+2015-04-02 14:34:23.6882 * 4/2/2015 2:34:23 PM
+2015-04-02 14:34:23.7038 *********************************************************
+2015-04-02 14:34:23.7038 
+2015-04-02 14:34:23.7194 Initializing configurations.
+2015-04-02 14:34:23.7974 Verifying connections.
+2015-04-02 14:34:24.0782 -> Connection to staging database "V1Staging" verified.
+2015-04-02 14:34:24.8114 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-02 14:34:24.8114 -> V1 target instance version: 14.3.5.6349.
+2015-04-02 14:34:24.8270 
+2015-04-02 14:34:24.8426 *** IMPORTING:
+2015-04-02 14:34:25.0766 Importing members.
+2015-04-02 14:34:26.1082 -> Imported 0 members.
+2015-04-02 14:34:26.5606 -> Imported 3 member custom fields.
+2015-04-02 14:34:26.5762 
+2015-04-02 14:34:26.5762 Data migration complete!
+2015-04-02 14:34:26.5762 
+2015-04-02 14:34:26.5918 

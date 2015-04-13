@@ -140,7 +140,7 @@ namespace V1DataWriter
                     if (String.IsNullOrEmpty(sdr["BlockingIssues"].ToString()) == false)
                     {
                         AddMultiValueRelation(assetType, asset, "BlockingIssues", sdr["BlockingIssues"].ToString());
-                        _logger.Info("Asset is {0}", assetType.DisplayName);
+                        //_logger.Info("Asset is {0}", assetType.DisplayName);
                     }
 
                     if (String.IsNullOrEmpty(sdr["Issues"].ToString()) == false)

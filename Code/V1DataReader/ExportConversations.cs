@@ -42,8 +42,18 @@ namespace V1DataReader
             IAttributeDefinition authorAttribute = assetType.GetAttributeDefinition("Author");
             query.Selection.Add(authorAttribute);
 
-            IAttributeDefinition conversationAttribute = assetType.GetAttributeDefinition("Conversation");
-            query.Selection.Add(conversationAttribute);
+            IAttributeDefinition conversationAttribute = null;
+            IAttributeDefinition beLongsToAttribute = null;
+            if (_metaAPI.Version.Major < 12)
+            {
+                conversationAttribute = assetType.GetAttributeDefinition("Conversation");
+                query.Selection.Add(conversationAttribute);
+            }
+            else
+            {
+                beLongsToAttribute = assetType.GetAttributeDefinition("BelongsTo");
+                query.Selection.Add(beLongsToAttribute);
+            }
 
             IAttributeDefinition inReplyToAttribute = assetType.GetAttributeDefinition("InReplyTo");
             query.Selection.Add(inReplyToAttribute);
@@ -86,9 +96,17 @@ namespace V1DataReader
 
                         if (_metaAPI.Version.Major < 12)
                             cmd.Parameters.AddWithValue("@BaseAssets", GetMultiRelationValues(asset.GetAttribute(baseAssetsAttribute)));
+                        
+                        if (_metaAPI.Version.Major < 12)
+                        {
+                            cmd.Parameters.AddWithValue("@Conversation", GetMultiRelationValues(asset.GetAttribute(conversationAttribute)));
+                        }
+                        else
+                        {
+                            cmd.Parameters.AddWithValue("@BelongsTo", GetSingleRelationValue(asset.GetAttribute(beLongsToAttribute)));
+                        }
 
                         cmd.Parameters.AddWithValue("@Author", GetSingleRelationValue(asset.GetAttribute(authorAttribute)));
-                        cmd.Parameters.AddWithValue("@Conversation", GetSingleRelationValue(asset.GetAttribute(conversationAttribute)));
                         cmd.Parameters.AddWithValue("@InReplyTo", GetSingleRelationValue(asset.GetAttribute(inReplyToAttribute)));
                         cmd.ExecuteNonQuery();
                     }
@@ -126,7 +144,16 @@ namespace V1DataReader
                 sb.Append("@BaseAssets,");
 
             sb.Append("@Author,");
-            sb.Append("@Conversation,");
+
+            if (_metaAPI.Version.Major < 12)
+            {
+                sb.Append("@Conversation,");
+            }
+            else 
+            {
+                sb.Append("@BelongsTo,");            
+            }
+
             sb.Append("@InReplyTo);");
             return sb.ToString();
         }

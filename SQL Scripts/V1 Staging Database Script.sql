@@ -37,7 +37,7 @@
 *	- 8/23/2013 AJB Added Index column to Conversations table to support Rally export.
 *	- 8/23/2013 AJB Added URL. AssetType columns to Attachments table to support Rally export.
 *	- 9/9/2013	AKB	Added spGetAttachmentsForRallyImport stored procedure.
-*
+*   - 4/3/2015  KPK Added PlannedStart and PlannedEnd to Epics table
 *******************************************************************************************************/
 
 USE master;
@@ -359,6 +359,8 @@ CREATE TABLE Epics (
 	Issues varchar(max),							--Multi-Relation to Issue
 	Category varchar(50),							--Relation to EpicCategory
 	Source varchar(50),								--Relation to StorySource
+	PlannedStart varchar(50),						--Text
+	PlannedEnd varchar(50),							--Text
 	Priority varchar(50),							--Relation to EpicPriority
 	CONSTRAINT [PK_Epics] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
@@ -607,6 +609,7 @@ CREATE TABLE Conversations (
 	BaseAssetType varchar(50),						--Base asset type
 	Author varchar(50),								--Relation to Member
 	Conversation varchar(50),						--Relation to Expression
+	NewConversationOID varchar(50),					--V1 asset OID assigned to the newly imported asset
 	InReplyTo varchar(50),							--Relation to Expression
 	[Index] int,									--Index number of conversation entry
 	CONSTRAINT [PK_Conversations] PRIMARY KEY CLUSTERED ([AssetOID] ASC)

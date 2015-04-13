@@ -1,0 +1,423 @@
+2015-04-03 14:48:24.4412 *********************************************************
+2015-04-03 14:48:24.4724 * VersionOne Data Migration Log
+2015-04-03 14:48:24.4880 * 4/3/2015 2:48:24 PM
+2015-04-03 14:48:24.5036 *********************************************************
+2015-04-03 14:48:24.5036 
+2015-04-03 14:48:24.5036 Initializing configurations.
+2015-04-03 14:48:24.5504 Verifying connections.
+2015-04-03 14:48:24.9092 -> Connection to staging database "V1Staging" verified.
+2015-04-03 14:48:36.9524 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-04-03 14:48:36.9524 -> V1 source instance version: 14.3.5.6349.
+2015-04-03 14:49:42.9872 -> Unable to connect to V1 source instance "http://localhost/AllyProduction".
+2015-04-03 14:49:43.0028 ERROR: Unknown AssetType: Member
+2015-04-03 14:49:43.0184 
+2015-04-03 14:49:43.0184 Data migration terminated.
+2015-04-03 14:49:43.0340 
+2015-04-03 14:49:43.0340 
+2015-04-03 14:52:24.0476 *********************************************************
+2015-04-03 14:52:24.0944 * VersionOne Data Migration Log
+2015-04-03 14:52:24.0944 * 4/3/2015 2:52:24 PM
+2015-04-03 14:52:24.1100 *********************************************************
+2015-04-03 14:52:24.1256 
+2015-04-03 14:52:24.1256 Initializing configurations.
+2015-04-03 14:52:24.1880 Verifying connections.
+2015-04-03 14:52:24.6092 -> Connection to staging database "V1Staging" verified.
+2015-04-03 14:52:25.3736 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-04-03 14:52:25.3736 -> V1 source instance version: 14.3.5.6349.
+2015-04-03 14:52:34.6556 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-03 14:52:34.6556 -> V1 target instance version: 14.3.5.6349.
+2015-04-03 14:52:34.6556 
+2015-04-03 14:52:34.6556 *** EXPORTING:
+2015-04-03 14:52:34.9520 Exporting conversations.
+2015-04-03 14:52:38.9924 -> Exported 1315 conversations.
+2015-04-03 14:52:38.9924 
+2015-04-03 14:52:38.9924 Data migration complete!
+2015-04-03 14:52:39.0080 
+2015-04-03 14:52:39.0080 
+2015-04-03 14:56:18.6000 *********************************************************
+2015-04-03 14:56:18.6468 * VersionOne Data Migration Log
+2015-04-03 14:56:18.6624 * 4/3/2015 2:56:18 PM
+2015-04-03 14:56:18.6780 *********************************************************
+2015-04-03 14:56:18.6780 
+2015-04-03 14:56:18.6936 Initializing configurations.
+2015-04-03 14:56:18.7716 Verifying connections.
+2015-04-03 14:56:19.1616 -> Connection to staging database "V1Staging" verified.
+2015-04-03 14:56:19.6764 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-04-03 14:56:19.6764 -> V1 source instance version: 14.3.5.6349.
+2015-04-03 14:56:19.7856 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-03 14:56:19.7856 -> V1 target instance version: 14.3.5.6349.
+2015-04-03 14:56:19.7856 
+2015-04-03 14:56:19.7856 *** EXPORTING:
+2015-04-03 14:56:19.9416 Exporting conversations.
+2015-04-03 14:56:23.1396 -> Exported 1315 conversations.
+2015-04-03 14:56:23.1396 
+2015-04-03 14:56:23.1396 Data migration complete!
+2015-04-03 14:56:23.1396 
+2015-04-03 14:56:23.1396 
+2015-04-03 15:15:13.7152 *********************************************************
+2015-04-03 15:15:13.7464 * VersionOne Data Migration Log
+2015-04-03 15:15:13.7464 * 4/3/2015 3:15:13 PM
+2015-04-03 15:15:13.7620 *********************************************************
+2015-04-03 15:15:13.7620 
+2015-04-03 15:15:13.7776 Initializing configurations.
+2015-04-03 15:15:13.8244 Verifying connections.
+2015-04-03 15:15:14.2300 -> Connection to staging database "V1Staging" verified.
+2015-04-03 15:15:14.9164 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-04-03 15:15:14.9164 -> V1 source instance version: 14.3.5.6349.
+2015-04-03 15:15:15.1660 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-03 15:15:15.1660 -> V1 target instance version: 14.3.5.6349.
+2015-04-03 15:15:15.1816 
+2015-04-03 15:15:15.1816 *** EXPORTING:
+2015-04-03 15:15:15.2284 Exporting epics.
+2015-04-03 15:15:18.0520 -> Exported 266 epics.
+2015-04-03 15:15:18.1456 The CustomField is Custom_TestApproved and Type is Boolean
+2015-04-03 15:15:18.2080 -> Exported 3 epic custom fields.
+2015-04-03 15:15:18.2080 Exporting defects.
+2015-04-03 15:15:20.5948 -> Exported 171 defects.
+2015-04-03 15:15:20.5948 -> Exported 0 Defects custom fields.
+2015-04-03 15:15:20.6104 Exporting tasks.
+2015-04-03 15:15:35.8516 -> Exported 2982 tasks.
+2015-04-03 15:15:35.8672 Exporting tests.
+2015-04-03 15:15:42.0760 -> Exported 1211 tests.
+2015-04-03 15:15:42.0760 Exporting conversations.
+2015-04-03 15:15:42.4348 ERROR: Violation of PRIMARY KEY constraint 'PK_Conversations'. Cannot insert duplicate key in object 'dbo.Conversations'. The duplicate key value is (Expression:1370).
+The statement has been terminated.
+2015-04-03 15:15:42.4348 
+2015-04-03 15:15:42.4348 Data migration terminated.
+2015-04-03 15:15:42.4504 
+2015-04-03 15:15:42.4504 
+2015-04-03 15:24:41.4758 *********************************************************
+2015-04-03 15:24:41.5226 * VersionOne Data Migration Log
+2015-04-03 15:24:41.5226 * 4/3/2015 3:24:41 PM
+2015-04-03 15:24:41.5382 *********************************************************
+2015-04-03 15:24:41.5382 
+2015-04-03 15:24:41.5382 Initializing configurations.
+2015-04-03 15:24:41.6318 Verifying connections.
+2015-04-03 15:24:41.9750 -> Connection to staging database "V1Staging" verified.
+2015-04-03 15:24:42.6146 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-03 15:24:42.6146 -> V1 target instance version: 14.3.5.6349.
+2015-04-03 15:24:42.6302 
+2015-04-03 15:24:42.6458 *** IMPORTING:
+2015-04-03 15:24:42.6770 Importing epics.
+2015-04-03 15:25:06.4796 -> Completed Importing 266 Epics.
+2015-04-03 15:25:06.6824 -> Set Parent for Epic:91208 Epic to .
+2015-04-03 15:25:06.6980 -> Set Parent for Epic:91209 Epic to .
+2015-04-03 15:25:06.7292 -> Set Parent for Epic:91210 Epic to .
+2015-04-03 15:25:06.7604 -> Set Parent for Epic:91212 Epic to .
+2015-04-03 15:25:06.8384 -> Set Parent for Epic:91213 Epic to .
+2015-04-03 15:25:06.9476 -> Set Parent for Epic:91214 Epic to .
+2015-04-03 15:25:06.9632 -> Set Parent for Epic:91215 Epic to .
+2015-04-03 15:25:07.0100 -> Set Parent for Epic:91216 Epic to Epic:91209.
+2015-04-03 15:25:07.0412 -> Set Parent for Epic:91217 Epic to Epic:91209.
+2015-04-03 15:25:07.0568 -> Set Parent for Epic:91218 Epic to Epic:91212.
+2015-04-03 15:25:07.0880 -> Set Parent for Epic:91211 Epic to Epic:91212.
+2015-04-03 15:25:07.1036 -> Set Parent for Epic:91219 Epic to .
+2015-04-03 15:25:07.2128 -> Set Parent for Epic:91220 Epic to .
+2015-04-03 15:25:07.3376 -> Set Parent for Epic:91222 Epic to .
+2015-04-03 15:25:07.3688 -> Set Parent for Epic:91223 Epic to .
+2015-04-03 15:25:07.3844 -> Set Parent for Epic:91224 Epic to Epic:91231.
+2015-04-03 15:25:07.4156 -> Set Parent for Epic:91225 Epic to Epic:91231.
+2015-04-03 15:25:07.4468 -> Set Parent for Epic:91226 Epic to Epic:91230.
+2015-04-03 15:25:07.4780 -> Set Parent for Epic:91230 Epic to .
+2015-04-03 15:25:07.4936 -> Set Parent for Epic:91231 Epic to .
+2015-04-03 15:25:07.5092 -> Set Parent for Epic:91232 Epic to Epic:91230.
+2015-04-03 15:25:07.5404 -> Set Parent for Epic:91233 Epic to Epic:91212.
+2015-04-03 15:25:07.5716 -> Set Parent for Epic:91234 Epic to .
+2015-04-03 15:25:07.6028 -> Set Parent for Epic:91229 Epic to Epic:91230.
+2015-04-03 15:25:07.6184 -> Set Parent for Epic:91236 Epic to .
+2015-04-03 15:25:07.6496 -> Set Parent for Epic:91235 Epic to Epic:91236.
+2015-04-03 15:25:07.6808 -> Set Parent for Epic:91228 Epic to .
+2015-04-03 15:25:07.6964 -> Set Parent for Epic:91237 Epic to .
+2015-04-03 15:25:07.7900 -> Set Parent for Epic:91221 Epic to Epic:91222.
+2015-04-03 15:25:07.8524 -> Set Parent for Epic:91238 Epic to .
+2015-04-03 15:25:07.8836 -> Set Parent for Epic:91239 Epic to .
+2015-04-03 15:25:07.9148 -> Set Parent for Epic:91240 Epic to .
+2015-04-03 15:25:07.9616 -> Set Parent for Epic:91241 Epic to .
+2015-04-03 15:25:07.9928 -> Set Parent for Epic:91242 Epic to .
+2015-04-03 15:25:08.0396 -> Set Parent for Epic:91244 Epic to .
+2015-04-03 15:25:08.1332 -> Set Parent for Epic:91243 Epic to Epic:91244.
+2015-04-03 15:25:08.2580 -> Set Parent for Epic:91245 Epic to .
+2015-04-03 15:25:08.3516 -> Set Parent for Epic:91246 Epic to Epic:91214.
+2015-04-03 15:25:08.4140 -> Set Parent for Epic:91247 Epic to .
+2015-04-03 15:25:08.4452 -> Set Parent for Epic:91227 Epic to Epic:91231.
+2015-04-03 15:25:08.4764 -> Set Parent for Epic:91248 Epic to .
+2015-04-03 15:25:08.4920 -> Set Parent for Epic:91250 Epic to .
+2015-04-03 15:25:08.5076 -> Set Parent for Epic:91249 Epic to Epic:91250.
+2015-04-03 15:25:08.5544 -> Set Parent for Epic:91251 Epic to .
+2015-04-03 15:25:08.6480 -> Set Parent for Epic:91252 Epic to .
+2015-04-03 15:25:08.6636 -> Set Parent for Epic:91253 Epic to .
+2015-04-03 15:25:08.6948 -> Set Parent for Epic:91254 Epic to .
+2015-04-03 15:25:08.7260 -> Set Parent for Epic:91255 Epic to .
+2015-04-03 15:25:08.7572 -> Set Parent for Epic:91256 Epic to .
+2015-04-03 15:25:08.7728 -> Set Parent for Epic:91257 Epic to .
+2015-04-03 15:25:08.8196 -> Set Parent for Epic:91258 Epic to .
+2015-04-03 15:25:08.8508 -> Set Parent for Epic:91259 Epic to .
+2015-04-03 15:25:08.8820 -> Set Parent for Epic:91260 Epic to .
+2015-04-03 15:25:08.9132 -> Set Parent for Epic:91261 Epic to .
+2015-04-03 15:25:08.9288 -> Set Parent for Epic:91262 Epic to .
+2015-04-03 15:25:08.9756 -> Set Parent for Epic:91263 Epic to .
+2015-04-03 15:25:09.0380 -> Set Parent for Epic:91264 Epic to .
+2015-04-03 15:25:09.1004 -> Set Parent for Epic:91265 Epic to .
+2015-04-03 15:25:09.1628 -> Set Parent for Epic:91266 Epic to .
+2015-04-03 15:25:09.2408 -> Set Parent for Epic:91267 Epic to .
+2015-04-03 15:25:09.3344 -> Set Parent for Epic:91268 Epic to .
+2015-04-03 15:25:09.4280 -> Set Parent for Epic:91269 Epic to .
+2015-04-03 15:25:09.5060 -> Set Parent for Epic:91270 Epic to .
+2015-04-03 15:25:09.6152 -> Set Parent for Epic:91271 Epic to .
+2015-04-03 15:25:09.6932 -> Set Parent for Epic:91272 Epic to .
+2015-04-03 15:25:09.7556 -> Set Parent for Epic:91273 Epic to .
+2015-04-03 15:25:09.8336 -> Set Parent for Epic:91274 Epic to .
+2015-04-03 15:25:09.8804 -> Set Parent for Epic:91275 Epic to .
+2015-04-03 15:25:09.9116 -> Set Parent for Epic:91276 Epic to .
+2015-04-03 15:25:09.9272 -> Set Parent for Epic:91277 Epic to .
+2015-04-03 15:25:09.9584 -> Set Parent for Epic:91278 Epic to .
+2015-04-03 15:25:10.0676 -> Set Parent for Epic:91279 Epic to .
+2015-04-03 15:25:10.1300 -> Set Parent for Epic:91280 Epic to .
+2015-04-03 15:25:10.2236 -> Set Parent for Epic:91281 Epic to .
+2015-04-03 15:25:10.3172 -> Set Parent for Epic:91282 Epic to .
+2015-04-03 15:25:10.3640 -> Set Parent for Epic:91283 Epic to .
+2015-04-03 15:25:10.4108 -> Set Parent for Epic:91284 Epic to .
+2015-04-03 15:25:10.4576 -> Set Parent for Epic:91285 Epic to .
+2015-04-03 15:25:10.4888 -> Set Parent for Epic:91286 Epic to .
+2015-04-03 15:25:10.5044 -> Set Parent for Epic:91287 Epic to .
+2015-04-03 15:25:10.5356 -> Set Parent for Epic:91288 Epic to .
+2015-04-03 15:25:10.5824 -> Set Parent for Epic:91289 Epic to .
+2015-04-03 15:25:10.7072 -> Set Parent for Epic:91290 Epic to .
+2015-04-03 15:25:10.7696 -> Set Parent for Epic:91291 Epic to .
+2015-04-03 15:25:10.7852 -> Set Parent for Epic:91292 Epic to .
+2015-04-03 15:25:10.8164 -> Set Parent for Epic:91293 Epic to .
+2015-04-03 15:25:10.8476 -> Set Parent for Epic:91294 Epic to .
+2015-04-03 15:25:10.8788 -> Set Parent for Epic:91295 Epic to .
+2015-04-03 15:25:10.9880 -> Set Parent for Epic:91296 Epic to .
+2015-04-03 15:25:11.0816 -> Set Parent for Epic:91297 Epic to .
+2015-04-03 15:25:11.0972 -> Set Parent for Epic:91298 Epic to .
+2015-04-03 15:25:11.1284 -> Set Parent for Epic:91299 Epic to .
+2015-04-03 15:25:11.2532 -> Set Parent for Epic:91300 Epic to .
+2015-04-03 15:25:11.3468 -> Set Parent for Epic:91301 Epic to .
+2015-04-03 15:25:11.3780 -> Set Parent for Epic:91302 Epic to .
+2015-04-03 15:25:11.9552 -> Set Parent for Epic:91303 Epic to .
+2015-04-03 15:25:11.9708 -> Set Parent for Epic:91304 Epic to .
+2015-04-03 15:25:12.0020 -> Set Parent for Epic:91305 Epic to .
+2015-04-03 15:25:12.0332 -> Set Parent for Epic:91306 Epic to .
+2015-04-03 15:25:12.0488 -> Set Parent for Epic:91307 Epic to .
+2015-04-03 15:25:12.0800 -> Set Parent for Epic:91308 Epic to .
+2015-04-03 15:25:12.1112 -> Set Parent for Epic:91309 Epic to .
+2015-04-03 15:25:12.1736 -> Set Parent for Epic:91310 Epic to .
+2015-04-03 15:25:12.1892 -> Set Parent for Epic:91311 Epic to .
+2015-04-03 15:25:12.2516 -> Set Parent for Epic:91312 Epic to .
+2015-04-03 15:25:12.2828 -> Set Parent for Epic:91313 Epic to .
+2015-04-03 15:25:12.2984 -> Set Parent for Epic:91314 Epic to .
+2015-04-03 15:25:12.3296 -> Set Parent for Epic:91315 Epic to .
+2015-04-03 15:25:12.3608 -> Set Parent for Epic:91316 Epic to .
+2015-04-03 15:25:12.3764 -> Set Parent for Epic:91317 Epic to .
+2015-04-03 15:25:12.4232 -> Set Parent for Epic:91318 Epic to .
+2015-04-03 15:25:12.4544 -> Set Parent for Epic:91319 Epic to .
+2015-04-03 15:25:12.5636 -> Set Parent for Epic:91320 Epic to .
+2015-04-03 15:25:12.6884 -> Set Parent for Epic:91321 Epic to .
+2015-04-03 15:25:12.7820 -> Set Parent for Epic:91322 Epic to .
+2015-04-03 15:25:12.8756 -> Set Parent for Epic:91323 Epic to .
+2015-04-03 15:25:12.9536 -> Set Parent for Epic:91324 Epic to .
+2015-04-03 15:25:13.0940 -> Set Parent for Epic:91325 Epic to .
+2015-04-03 15:25:13.1876 -> Set Parent for Epic:91326 Epic to .
+2015-04-03 15:25:13.2656 -> Set Parent for Epic:91327 Epic to .
+2015-04-03 15:25:13.3436 -> Set Parent for Epic:91328 Epic to .
+2015-04-03 15:25:13.4216 -> Set Parent for Epic:91329 Epic to .
+2015-04-03 15:25:13.4996 -> Set Parent for Epic:91330 Epic to .
+2015-04-03 15:25:13.5932 -> Set Parent for Epic:91331 Epic to .
+2015-04-03 15:25:13.6868 -> Set Parent for Epic:91332 Epic to .
+2015-04-03 15:25:13.8272 -> Set Parent for Epic:91333 Epic to .
+2015-04-03 15:25:13.8428 -> Set Parent for Epic:91334 Epic to .
+2015-04-03 15:25:13.8584 -> Set Parent for Epic:91335 Epic to .
+2015-04-03 15:25:13.8896 -> Set Parent for Epic:91336 Epic to .
+2015-04-03 15:25:13.9364 -> Set Parent for Epic:91337 Epic to .
+2015-04-03 15:25:14.0456 -> Set Parent for Epic:91338 Epic to .
+2015-04-03 15:25:14.1236 -> Set Parent for Epic:91339 Epic to .
+2015-04-03 15:25:14.2172 -> Set Parent for Epic:91340 Epic to .
+2015-04-03 15:25:14.2796 -> Set Parent for Epic:91341 Epic to .
+2015-04-03 15:25:14.3576 -> Set Parent for Epic:91342 Epic to .
+2015-04-03 15:25:14.3732 -> Set Parent for Epic:91343 Epic to .
+2015-04-03 15:25:14.4044 -> Set Parent for Epic:91344 Epic to .
+2015-04-03 15:25:14.4356 -> Set Parent for Epic:91345 Epic to .
+2015-04-03 15:25:14.4668 -> Set Parent for Epic:91349 Epic to .
+2015-04-03 15:25:14.5136 -> Set Parent for Epic:91346 Epic to Epic:91349.
+2015-04-03 15:25:14.5448 -> Set Parent for Epic:91347 Epic to Epic:91349.
+2015-04-03 15:25:14.5760 -> Set Parent for Epic:91350 Epic to .
+2015-04-03 15:25:14.6540 -> Set Parent for Epic:91351 Epic to .
+2015-04-03 15:25:14.7320 -> Set Parent for Epic:91352 Epic to .
+2015-04-03 15:25:14.8256 -> Set Parent for Epic:91353 Epic to .
+2015-04-03 15:25:14.9036 -> Set Parent for Epic:91354 Epic to .
+2015-04-03 15:25:14.9660 -> Set Parent for Epic:91355 Epic to .
+2015-04-03 15:25:15.0440 -> Set Parent for Epic:91356 Epic to .
+2015-04-03 15:25:15.0908 -> Set Parent for Epic:91357 Epic to .
+2015-04-03 15:25:15.1688 -> Set Parent for Epic:91358 Epic to .
+2015-04-03 15:25:15.2780 -> Set Parent for Epic:91359 Epic to .
+2015-04-03 15:25:15.2936 -> Set Parent for Epic:91360 Epic to .
+2015-04-03 15:25:15.3404 -> Set Parent for Epic:91361 Epic to .
+2015-04-03 15:25:15.3560 -> Set Parent for Epic:91362 Epic to .
+2015-04-03 15:25:15.3872 -> Set Parent for Epic:91363 Epic to .
+2015-04-03 15:25:15.4184 -> Set Parent for Epic:91364 Epic to .
+2015-04-03 15:25:15.4496 -> Set Parent for Epic:91365 Epic to .
+2015-04-03 15:25:15.4808 -> Set Parent for Epic:91366 Epic to .
+2015-04-03 15:25:15.5276 -> Set Parent for Epic:91367 Epic to .
+2015-04-03 15:25:15.5744 -> Set Parent for Epic:91368 Epic to .
+2015-04-03 15:25:15.6212 -> Set Parent for Epic:91369 Epic to .
+2015-04-03 15:25:15.6680 -> Set Parent for Epic:91370 Epic to Epic:91267.
+2015-04-03 15:25:15.6992 -> Set Parent for Epic:91371 Epic to .
+2015-04-03 15:25:15.7148 -> Set Parent for Epic:91372 Epic to .
+2015-04-03 15:25:15.7772 -> Set Parent for Epic:91373 Epic to .
+2015-04-03 15:25:15.8396 -> Set Parent for Epic:91374 Epic to .
+2015-04-03 15:25:15.8708 -> Set Parent for Epic:91375 Epic to .
+2015-04-03 15:25:15.9176 -> Set Parent for Epic:91376 Epic to .
+2015-04-03 15:25:15.9488 -> Set Parent for Epic:91377 Epic to .
+2015-04-03 15:25:15.9800 -> Set Parent for Epic:91378 Epic to .
+2015-04-03 15:25:16.0112 -> Set Parent for Epic:91379 Epic to .
+2015-04-03 15:25:16.0580 -> Set Parent for Epic:91380 Epic to .
+2015-04-03 15:25:16.1048 -> Set Parent for Epic:91381 Epic to .
+2015-04-03 15:25:16.1360 -> Set Parent for Epic:91382 Epic to .
+2015-04-03 15:25:16.1672 -> Set Parent for Epic:91383 Epic to .
+2015-04-03 15:25:16.1828 -> Set Parent for Epic:91384 Epic to .
+2015-04-03 15:25:16.2140 -> Set Parent for Epic:91385 Epic to .
+2015-04-03 15:25:16.2764 -> Set Parent for Epic:91386 Epic to .
+2015-04-03 15:25:16.2920 -> Set Parent for Epic:91387 Epic to .
+2015-04-03 15:25:16.3076 -> Set Parent for Epic:91388 Epic to .
+2015-04-03 15:25:16.3388 -> Set Parent for Epic:91389 Epic to .
+2015-04-03 15:25:16.4168 -> Set Parent for Epic:91390 Epic to .
+2015-04-03 15:25:16.4636 -> Set Parent for Epic:91391 Epic to .
+2015-04-03 15:25:16.5260 -> Set Parent for Epic:91392 Epic to .
+2015-04-03 15:25:16.5572 -> Set Parent for Epic:91393 Epic to .
+2015-04-03 15:25:16.6040 -> Set Parent for Epic:91394 Epic to .
+2015-04-03 15:25:16.6976 -> Set Parent for Epic:91395 Epic to .
+2015-04-03 15:25:16.7288 -> Set Parent for Epic:91396 Epic to .
+2015-04-03 15:25:16.7756 -> Set Parent for Epic:91397 Epic to .
+2015-04-03 15:25:16.8692 -> Set Parent for Epic:91398 Epic to .
+2015-04-03 15:25:17.0252 -> Set Parent for Epic:91399 Epic to .
+2015-04-03 15:25:17.0876 -> Set Parent for Epic:91400 Epic to .
+2015-04-03 15:25:17.4308 -> Set Parent for Epic:91401 Epic to .
+2015-04-03 15:25:17.5244 -> Set Parent for Epic:91402 Epic to .
+2015-04-03 15:25:17.8520 -> Set Parent for Epic:91403 Epic to .
+2015-04-03 15:25:17.9300 -> Set Parent for Epic:91404 Epic to .
+2015-04-03 15:25:18.0080 -> Set Parent for Epic:91405 Epic to .
+2015-04-03 15:25:18.0860 -> Set Parent for Epic:91406 Epic to .
+2015-04-03 15:25:18.1640 -> Set Parent for Epic:91407 Epic to .
+2015-04-03 15:25:18.3980 -> Set Parent for Epic:91408 Epic to .
+2015-04-03 15:25:18.4916 -> Set Parent for Epic:91409 Epic to .
+2015-04-03 15:25:18.5852 -> Set Parent for Epic:91410 Epic to .
+2015-04-03 15:25:18.6476 -> Set Parent for Epic:91411 Epic to .
+2015-04-03 15:25:18.7568 -> Set Parent for Epic:91412 Epic to .
+2015-04-03 15:25:18.8816 -> Set Parent for Epic:91413 Epic to .
+2015-04-03 15:25:18.9908 -> Set Parent for Epic:91414 Epic to .
+2015-04-03 15:25:19.1000 -> Set Parent for Epic:91415 Epic to .
+2015-04-03 15:25:19.1936 -> Set Parent for Epic:91416 Epic to .
+2015-04-03 15:25:19.2716 -> Set Parent for Epic:91417 Epic to .
+2015-04-03 15:25:19.3184 -> Set Parent for Epic:91418 Epic to .
+2015-04-03 15:25:19.5524 -> Set Parent for Epic:91419 Epic to .
+2015-04-03 15:25:19.7396 -> Set Parent for Epic:91348 Epic to Epic:91349.
+2015-04-03 15:25:19.8176 -> Set Parent for Epic:91420 Epic to .
+2015-04-03 15:25:19.8488 -> Set Parent for Epic:91421 Epic to .
+2015-04-03 15:25:19.8644 -> Set Parent for Epic:91422 Epic to .
+2015-04-03 15:25:19.9112 -> Set Parent for Epic:91423 Epic to .
+2015-04-03 15:25:19.9424 -> Set Parent for Epic:91424 Epic to .
+2015-04-03 15:25:19.9736 -> Set Parent for Epic:91425 Epic to .
+2015-04-03 15:25:20.0048 -> Set Parent for Epic:91426 Epic to .
+2015-04-03 15:25:20.0360 -> Set Parent for Epic:91427 Epic to .
+2015-04-03 15:25:20.0984 -> Set Parent for Epic:91428 Epic to .
+2015-04-03 15:25:20.1140 -> Set Parent for Epic:91429 Epic to .
+2015-04-03 15:25:20.1452 -> Set Parent for Epic:91430 Epic to .
+2015-04-03 15:25:20.1920 -> Set Parent for Epic:91431 Epic to .
+2015-04-03 15:25:20.2544 -> Set Parent for Epic:91432 Epic to .
+2015-04-03 15:25:20.3168 -> Set Parent for Epic:91433 Epic to .
+2015-04-03 15:25:20.3636 -> Set Parent for Epic:91434 Epic to .
+2015-04-03 15:25:20.3792 -> Set Parent for Epic:91435 Epic to .
+2015-04-03 15:25:20.4260 -> Set Parent for Epic:91436 Epic to .
+2015-04-03 15:25:20.4884 -> Set Parent for Epic:91437 Epic to .
+2015-04-03 15:25:20.5508 -> Set Parent for Epic:91438 Epic to .
+2015-04-03 15:25:20.6912 -> Set Parent for Epic:91439 Epic to .
+2015-04-03 15:25:20.7380 -> Set Parent for Epic:91441 Epic to .
+2015-04-03 15:25:20.8316 -> Set Parent for Epic:91440 Epic to Epic:91441.
+2015-04-03 15:25:20.8784 -> Set Parent for Epic:91442 Epic to .
+2015-04-03 15:25:20.8940 -> Set Parent for Epic:91443 Epic to .
+2015-04-03 15:25:20.9408 -> Set Parent for Epic:91444 Epic to .
+2015-04-03 15:25:20.9720 -> Set Parent for Epic:91445 Epic to .
+2015-04-03 15:25:21.0188 -> Set Parent for Epic:91446 Epic to .
+2015-04-03 15:25:21.0656 -> Set Parent for Epic:91447 Epic to .
+2015-04-03 15:25:21.0968 -> Set Parent for Epic:91448 Epic to .
+2015-04-03 15:25:21.1280 -> Set Parent for Epic:91449 Epic to .
+2015-04-03 15:25:21.1748 -> Set Parent for Epic:91450 Epic to .
+2015-04-03 15:25:21.2060 -> Set Parent for Epic:91451 Epic to .
+2015-04-03 15:25:21.2216 -> Set Parent for Epic:91452 Epic to .
+2015-04-03 15:25:21.2528 -> Set Parent for Epic:91453 Epic to .
+2015-04-03 15:25:21.2996 -> Set Parent for Epic:91454 Epic to .
+2015-04-03 15:25:21.3308 -> Set Parent for Epic:91455 Epic to Epic:91456.
+2015-04-03 15:25:21.3620 -> Set Parent for Epic:91456 Epic to .
+2015-04-03 15:25:21.4400 -> Set Parent for Epic:91457 Epic to .
+2015-04-03 15:25:21.4712 -> Set Parent for Epic:91458 Epic to .
+2015-04-03 15:25:21.5336 -> Set Parent for Epic:91459 Epic to .
+2015-04-03 15:25:21.5804 -> Set Parent for Epic:91460 Epic to .
+2015-04-03 15:25:21.7208 -> Set Parent for Epic:91461 Epic to .
+2015-04-03 15:25:21.8768 -> Set Parent for Epic:91462 Epic to .
+2015-04-03 15:25:21.9392 -> Set Parent for Epic:91463 Epic to .
+2015-04-03 15:25:22.0172 -> Set Parent for Epic:91464 Epic to .
+2015-04-03 15:25:22.0796 -> Set Parent for Epic:91465 Epic to .
+2015-04-03 15:25:22.1732 -> Set Parent for Epic:91466 Epic to .
+2015-04-03 15:25:22.2824 -> Set Parent for Epic:91467 Epic to .
+2015-04-03 15:25:22.3448 -> Set Parent for Epic:91469 Epic to .
+2015-04-03 15:25:22.3604 -> Set Parent for Epic:91468 Epic to Epic:91469.
+2015-04-03 15:25:22.3916 -> Set Parent for Epic:91470 Epic to .
+2015-04-03 15:25:22.4228 -> Set Parent for Epic:91471 Epic to .
+2015-04-03 15:25:22.4540 -> Set Parent for Epic:91472 Epic to .
+2015-04-03 15:25:22.5320 -> Set Parent for Epic:91473 Epic to .
+2015-04-03 15:25:22.5320 -> 266 Parents have been Set
+2015-04-03 15:25:22.5476 -> Imported 266 epics.
+2015-04-03 15:25:22.6724 -> Imported 3 epic custom fields.
+2015-04-03 15:25:22.6724 Importing stories.
+2015-04-03 15:25:22.9220 Custom field Config is Custom_Legacy
+2015-04-03 15:25:22.9220 Custom Field Name is Custom_LegacyBacklogID
+2015-04-03 15:36:38.0120 *****Setting Story Dependencies
+2015-04-03 15:37:16.8092 -> Imported 1359 stories.
+2015-04-03 15:37:17.1056 -> Imported 0 Story custom fields.
+2015-04-03 15:37:17.1056 Importing defects.
+2015-04-03 15:38:39.9416 ERROR: Invalid OID token: 
+2015-04-03 15:38:39.9416 
+2015-04-03 15:38:39.9416 Data migration terminated.
+2015-04-03 15:38:39.9572 
+2015-04-03 15:38:39.9572 
+2015-04-03 16:05:39.6240 *********************************************************
+2015-04-03 16:05:39.6708 * VersionOne Data Migration Log
+2015-04-03 16:05:39.6864 * 4/3/2015 4:05:39 PM
+2015-04-03 16:05:39.7176 *********************************************************
+2015-04-03 16:05:39.7176 
+2015-04-03 16:05:39.7176 Initializing configurations.
+2015-04-03 16:05:39.8112 Verifying connections.
+2015-04-03 16:05:40.3416 -> Connection to staging database "V1Staging" verified.
+2015-04-03 16:05:41.1996 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-03 16:05:41.1996 -> V1 target instance version: 14.3.5.6349.
+2015-04-03 16:05:41.2308 
+2015-04-03 16:05:41.2464 *** IMPORTING:
+2015-04-03 16:05:41.3088 Importing tasks.
+2015-04-03 16:10:09.5216 -> Imported 1637 tasks.
+2015-04-03 16:10:09.5528 Importing tests.
+2015-04-03 16:10:49.4238 -> Imported 592 tests.
+2015-04-03 16:10:49.4238 Importing conversations.
+2015-04-03 16:11:53.7898 ERROR: Bad Request: Expression:97069
+2015-04-03 16:11:53.7898 
+2015-04-03 16:11:53.8054 Data migration terminated.
+2015-04-03 16:11:53.8054 
+2015-04-03 16:11:53.8210 
+2015-04-03 16:28:19.3824 *********************************************************
+2015-04-03 16:28:19.4136 * VersionOne Data Migration Log
+2015-04-03 16:28:19.4292 * 4/3/2015 4:28:19 PM
+2015-04-03 16:28:19.4448 *********************************************************
+2015-04-03 16:28:19.4448 
+2015-04-03 16:28:19.4448 Initializing configurations.
+2015-04-03 16:28:19.5228 Verifying connections.
+2015-04-03 16:28:20.3496 -> Connection to staging database "V1Staging" verified.
+2015-04-03 16:28:21.1608 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-04-03 16:28:21.1608 -> V1 target instance version: 14.3.5.6349.
+2015-04-03 16:28:21.1920 
+2015-04-03 16:28:21.2076 *** IMPORTING:
+2015-04-03 16:28:21.2388 Importing conversations.
+2015-04-03 16:37:36.2148 ERROR: Bad Request: Expression:100459
+2015-04-03 16:37:36.2148 
+2015-04-03 16:37:36.2278 Data migration terminated.
+2015-04-03 16:37:36.2278 
+2015-04-03 16:37:36.2418 

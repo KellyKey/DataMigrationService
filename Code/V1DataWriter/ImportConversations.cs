@@ -42,8 +42,7 @@ namespace V1DataWriter
                     asset.SetAttributeValue(contentAttribute, sdr["Content"].ToString());
 
                     string memberOid = string.Empty;
-                    if (_config.V1Configurations.MigrateUnauthoredConversationsAsAdmin == true &&
-                        String.IsNullOrEmpty(sdr["Author"].ToString()))
+                    if (_config.V1Configurations.MigrateUnauthoredConversationsAsAdmin == true && String.IsNullOrEmpty(sdr["Author"].ToString()))
                         memberOid = "Member:20";
                     else
                         memberOid = GetNewAssetOIDFromDB(sdr["Author"].ToString(), "Members");
@@ -52,16 +51,34 @@ namespace V1DataWriter
                     asset.SetAttributeValue(authorAttribute, memberOid);
 
                     //NOTE: Only works with 13.2 or greater of VersionOne, should be able to remove for earlier versions
+
+                    //BelongsTo gets set for the 1st Conversation/Expression, After that, InReplyTo gets set and BelongsTo is "Related" into it automagicly
                     string belongsTo = string.Empty;
-                    IAttributeDefinition belongsToAttribute = assetType.GetAttributeDefinition("BelongsTo");
-                    asset.SetAttributeValue(belongsToAttribute, GetConversationBelongsTo(memberOid));
+                    //asset.SetAttributeValue(belongsToAttribute, GetConversationBelongsTo(memberOid, sdr["Conversation"].ToString(), sdr["NewConversatiionOID"].ToString()));
+                    if (String.IsNullOrEmpty(sdr["InReplyTo"].ToString()) == true)
+                    {
+                        IAttributeDefinition belongsToAttribute = assetType.GetAttributeDefinition("BelongsTo");
+                        belongsTo = GetConversationBelongsTo(memberOid, sdr);
+                        asset.SetAttributeValue(belongsToAttribute, belongsTo);
+                    }
+                    else
+                    {
+                        string inReplyTo = GetNewAssetOIDFromDB(sdr["InReplyTo"].ToString(), "Conversations");
+                        IAttributeDefinition inReplyToAttribute = assetType.GetAttributeDefinition("InReplyTo");
+                        asset.SetAttributeValue(inReplyToAttribute, inReplyTo);
+
+                    }
 
                     //NOTE: Need to switch on V1 version. Right now handles 11.3 to 11.4+. Used to be BaseAssets, is now Mentions.
                     //HACK: Modified to support Rally migration, needs refactoring.
                     if (String.IsNullOrEmpty(sdr["Mentions"].ToString()) == false)
                     {
-                        //AddMultiValueRelation(assetType, asset, "Mentions", sdr["BaseAssets"].ToString());
-                        AddRallyMentionsValue(assetType, asset, sdr["BaseAssetType"].ToString(), sdr["Mentions"].ToString());
+                        AddMultiValueRelation(assetType, asset, "Mentions", sdr["Mentions"].ToString());
+                        //AddRallyMentionsValue(assetType, asset, sdr["BaseAssetType"].ToString(), sdr["Mentions"].ToString());
+                    }
+                    else if (String.IsNullOrEmpty(sdr["BaseAssets"].ToString()) == false)
+                    {
+                        AddMultiValueRelation(assetType, asset, "Mentions", sdr["BaseAssets"].ToString());
                     }
 
                     _dataAPI.Save(asset);
@@ -84,26 +101,28 @@ namespace V1DataWriter
                 }
             }
             sdr.Close();
-            SetConversationDependencies();
+            //SetConversationDependencies();Not Needed since InReplyTo gets set automagically through DB Relation
             return importCount;
         }
 
         //NOTE: Conversations sproc currently uses BaseAsset, needs refactoring to use Mentions for later versions of V1.
         private void SetConversationDependencies()
         {
-            SqlDataReader sdr = GetImportDataFromSproc("spGetConversationsForImport");
-            //SqlDataReader sdr = GetImportDataFromDBTable("Conversations");
+            //SqlDataReader sdr = GetImportDataFromSproc("spGetConversationsForImport");
+            SqlDataReader sdr = GetImportDataFromDBTable("Conversations");
 
             while (sdr.Read())
             {
                 if (sdr["ImportStatus"].ToString() == ImportStatuses.FAILED.ToString()) continue;
+
+                if (String.IsNullOrEmpty(sdr["InReplyTo"].ToString()) == true) continue;
 
                 bool canSave = false;
 
                 IAssetType assetType = _metaAPI.GetAssetType("Expression");
                 Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
 
-                //string conversation = GetNewAssetOIDFromDB(sdr["Conversation"].ToString());
+                //string conversation = GetNewConversationOIDFromDB(sdr["Conversation"].ToString(), "Conversations");
                 //if (String.IsNullOrEmpty(conversation) == false)
                 //{
                 //    IAttributeDefinition conversationAttribute = assetType.GetAttributeDefinition("Conversation");
@@ -118,22 +137,48 @@ namespace V1DataWriter
                     asset.SetAttributeValue(inReplyToAttribute, inReplyTo);
                     canSave = true;
                 }
-                if (canSave == true) _dataAPI.Save(asset);
+                
+                try
+                { 
+                    if (canSave == true) _dataAPI.Save(asset);
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
             sdr.Close();
         }
 
-        private string GetConversationBelongsTo(string MemberOid)
+        //private string GetConversationBelongsTo(string MemberOid, string conversation, string newConversation)
+        private String GetConversationBelongsTo(string memberOID, SqlDataReader sdr)
         {
-            IAssetType assetType = _metaAPI.GetAssetType("Conversation");
-            Asset asset = _dataAPI.New(assetType, null);
 
-            IAttributeDefinition authoredAtAttribute = assetType.GetAttributeDefinition("Participants");
-            asset.AddAttributeValue(authoredAtAttribute, MemberOid);
+            string newConversationOID = GetNewConversationOIDFromDB(sdr["Conversation"].ToString(), "Conversations");
+            
+            if (String.IsNullOrEmpty(newConversationOID) == true)
+            {
+                IAssetType assetType = _metaAPI.GetAssetType("Conversation");
+                Asset newAsset = _dataAPI.New(assetType, null);
+                
+                IAttributeDefinition authoredAtAttribute = assetType.GetAttributeDefinition("Participants");
 
-            _dataAPI.Save(asset);
+                newAsset.AddAttributeValue(authoredAtAttribute, memberOID);
 
-            return asset.Oid.Momentless.ToString();
+                _dataAPI.Save(newAsset);
+
+                UpdateNewConversationOIDInDB("Conversations", sdr["AssetOid"].ToString(), newAsset.Oid.Momentless.ToString());
+                
+                return newAsset.Oid.Momentless.ToString();
+
+            }
+            else
+            {
+                //UpdateNewConversationOIDInDB("Conversations", sdr["AssetOid"].ToString(), newConversationOID);
+                //return newConversationOID;
+                return String.Empty;
+            }
+            
         }
     }
 }

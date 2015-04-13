@@ -241,6 +241,24 @@ namespace V1DataWriter
             }
         }
 
+        protected string GetNewConversationOIDFromDB(string CurrentAssetOID, string AssetType)
+        {
+
+            //var value;
+            if (String.IsNullOrEmpty(CurrentAssetOID) == false)
+            {
+                string SQL = "SELECT NewConversationOID FROM " + AssetType + " WHERE Conversation = '" + CurrentAssetOID + "';";
+                SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
+                var value = cmd.ExecuteScalar();
+                string result = (value == null) ? null : value.ToString();
+                return result;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         protected string GetNewEpicAssetOIDFromDB(string CurrentAssetOID)
         {
             if (String.IsNullOrEmpty(CurrentAssetOID) == false)
@@ -337,6 +355,19 @@ namespace V1DataWriter
             }
         }
 
+        protected void UpdateNewConversationOIDInDB(string Table, string AssetOID, string NewAssetOID)
+        {
+            string SQL = "UPDATE " + Table + " SET NewConversationOID = '" + NewAssetOID + "' WHERE AssetOID = '" + AssetOID + "';";
+
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = _sqlConn;
+                cmd.CommandText = SQL;
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+        }
+        
         protected void UpdateNewEpicAssetOIDInDB(string Table, string OldAssetOID, string NewAssetOID)
         {
             string SQL = "UPDATE " + Table + " SET NewEpicAssetOID = '" + NewAssetOID + "' WHERE AssetOID = '" + OldAssetOID + "';";
@@ -458,7 +489,10 @@ namespace V1DataWriter
 
         protected void AddMultiValueRelation(IAssetType assetType, Asset asset, string attributeName, string valueList)
         {
-            IAttributeDefinition customerAttribute = assetType.GetAttributeDefinition(attributeName);
+
+            //_logger.Info("Multi Value AttributeName is {0} ", attributeName);
+
+           IAttributeDefinition customerAttribute = assetType.GetAttributeDefinition(attributeName);
             string[] values = valueList.Split(';');
             foreach (string value in values)
             {
@@ -476,7 +510,6 @@ namespace V1DataWriter
                 }
 
                 string newAssetOID = GetNewAssetOIDFromDB(value);
-                //_logger.Info("Name is {0} and newAssetOId is {1}", value, newAssetOID);
 
                 if (String.IsNullOrEmpty(newAssetOID) == false)
                 {

@@ -35,6 +35,6 @@ C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\
 \\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\NLog.xml
 \\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\OAuth2Client.xml
 \\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\FSharp.Core.xml
-\\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.csprojResolveAssemblyReference.cache
 \\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.dll
 \\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.pdb
+\\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.csprojResolveAssemblyReference.cache

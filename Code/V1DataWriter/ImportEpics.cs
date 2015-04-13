@@ -6,11 +6,14 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
     public class ImportEpics : IImportAssets
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        
         public ImportEpics(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
@@ -28,6 +31,13 @@ namespace V1DataWriter
                     if (String.IsNullOrEmpty(sdr["Scope"].ToString()))
                     {
                         UpdateImportStatus("Epics", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Epic has no scope.");
+                        continue;
+                    }
+
+                    //SPECIAL CASE: Already has been processed in the DB 
+                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                    {
+                        UpdateImportStatus("Epics", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Already Processed.");
                         continue;
                     }
 
@@ -79,7 +89,8 @@ namespace V1DataWriter
                     else
                     {
                         //HACK: For Rally import, needs to be refactored.
-                        asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB("EpicStatus", sdr["Status"].ToString()));
+                        //asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB("EpicStatus", sdr["Status"].ToString()));
+                        asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
                     }
 
                     IAttributeDefinition swagAttribute = assetType.GetAttributeDefinition("Swag");
@@ -118,6 +129,12 @@ namespace V1DataWriter
                     else
                         asset.SetAttributeValue(sourceAttribute, GetNewListTypeAssetOIDFromDB(sdr["Source"].ToString()));
 
+                    IAttributeDefinition plannedStartAttribute = assetType.GetAttributeDefinition("PlannedStart");
+                    asset.SetAttributeValue(plannedStartAttribute, sdr["PlannedStart"].ToString());
+
+                    IAttributeDefinition plannedEndAttribute = assetType.GetAttributeDefinition("PlannedEnd");
+                    asset.SetAttributeValue(plannedEndAttribute, sdr["PlannedEnd"].ToString());
+
                     //SPECIAL CASE: Need to account for epic conversion.
                     IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
                     if (sdr["AssetOID"].ToString().Contains("Story"))
@@ -130,6 +147,7 @@ namespace V1DataWriter
                     }
 
                     _dataAPI.Save(asset);
+
                     string newAssetNumber = GetAssetNumberV1("Epic", asset.Oid.Momentless.ToString());
                     UpdateNewAssetOIDAndNumberInDB("Epics", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber);
                     UpdateImportStatus("Epics", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "Epic imported.");
@@ -149,6 +167,8 @@ namespace V1DataWriter
                 }
             }
             sdr.Close();
+            _logger.Info("-> Completed Importing {0} Epics.", importCount);
+
             SetParentEpics();
             return importCount;
         }
@@ -156,10 +176,14 @@ namespace V1DataWriter
         private void SetParentEpics()
         {
             SqlDataReader sdr = GetImportDataFromDBTable("Epics");
+            int setParentCount = 0;
+
             while (sdr.Read())
             {
                 IAssetType assetType = _metaAPI.GetAssetType("Epic");
                 Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+
+                string newSuperAssetOID = string.Empty;
 
                 //SPECIAL CASE: Need to account for epic conversion.
                 IAttributeDefinition parentAttribute = assetType.GetAttributeDefinition("Super");
@@ -169,11 +193,17 @@ namespace V1DataWriter
                 }
                 else
                 {
-                    asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(sdr["Super"].ToString(), "Epics"));
+                    newSuperAssetOID = GetNewAssetOIDFromDB(sdr["Super"].ToString(), "Epics");
+                    asset.SetAttributeValue(parentAttribute, newSuperAssetOID);
                 }
                 _dataAPI.Save(asset);
+                _logger.Info("-> Set Parent for {0} Epic to {1}.", sdr["NewAssetOID"].ToString(), newSuperAssetOID);
+                setParentCount++;
+
             }
             sdr.Close();
+            _logger.Info("-> {0} Parents have been Set", setParentCount);
+
         }
 
         public int CloseEpics()

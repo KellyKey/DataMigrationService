@@ -1,0 +1,312 @@
+2015-03-23 21:59:41.3321 *********************************************************
+2015-03-23 21:59:41.3477 * VersionOne Data Migration Log
+2015-03-23 21:59:41.3633 * 3/23/2015 9:59:41 PM
+2015-03-23 21:59:41.3633 *********************************************************
+2015-03-23 21:59:41.3633 
+2015-03-23 21:59:41.3633 Initializing configurations.
+2015-03-23 21:59:41.4257 Verifying connections.
+2015-03-23 21:59:41.7689 -> Connection to staging database "V1Staging" verified.
+2015-03-23 21:59:42.7049 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 21:59:42.7049 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 21:59:43.0949 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 21:59:43.0949 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 21:59:43.0949 
+2015-03-23 21:59:43.0949 *** EXPORTING:
+2015-03-23 21:59:43.1729 Exporting conversations.
+2015-03-23 21:59:43.4069 ERROR: Unknown AttributeDefinition: Expression.Conversation
+2015-03-23 21:59:43.4225 
+2015-03-23 21:59:43.4225 Data migration terminated.
+2015-03-23 21:59:43.4225 
+2015-03-23 21:59:43.4225 
+2015-03-23 22:04:36.1273 *********************************************************
+2015-03-23 22:04:36.1429 * VersionOne Data Migration Log
+2015-03-23 22:04:36.1585 * 3/23/2015 10:04:36 PM
+2015-03-23 22:04:36.1585 *********************************************************
+2015-03-23 22:04:36.1585 
+2015-03-23 22:04:36.1585 Initializing configurations.
+2015-03-23 22:04:36.2209 Verifying connections.
+2015-03-23 22:04:36.5485 -> Connection to staging database "V1Staging" verified.
+2015-03-23 22:04:37.0009 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 22:04:37.0009 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 22:04:37.0945 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 22:04:37.0945 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 22:04:37.0945 
+2015-03-23 22:04:37.0945 *** EXPORTING:
+2015-03-23 22:04:37.2037 Exporting conversations.
+2015-03-23 22:04:37.2817 ERROR: Unknown AttributeDefinition: Expression.Conversation
+2015-03-23 22:04:37.2817 
+2015-03-23 22:04:37.2817 Data migration terminated.
+2015-03-23 22:04:37.2817 
+2015-03-23 22:04:37.2817 
+2015-03-23 22:05:58.3129 *********************************************************
+2015-03-23 22:05:58.3285 * VersionOne Data Migration Log
+2015-03-23 22:05:58.3285 * 3/23/2015 10:05:58 PM
+2015-03-23 22:05:58.3441 *********************************************************
+2015-03-23 22:05:58.3441 
+2015-03-23 22:05:58.3441 Initializing configurations.
+2015-03-23 22:05:58.3909 Verifying connections.
+2015-03-23 22:05:58.5157 -> Connection to staging database "V1Staging" verified.
+2015-03-23 22:05:58.7809 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 22:05:58.7809 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 22:05:58.8589 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 22:05:58.8589 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 22:05:58.8589 
+2015-03-23 22:05:58.8745 *** EXPORTING:
+2015-03-23 22:05:58.9213 Exporting conversations.
+2015-03-23 22:08:53.7175 ERROR: Unknown AttributeDefinition: Expression.Conversation
+2015-03-23 22:08:56.4319 
+2015-03-23 22:08:57.3055 Data migration terminated.
+2015-03-23 22:08:58.1167 
+2015-03-23 22:08:59.3959 
+2015-03-23 22:20:39.7031 *********************************************************
+2015-03-23 22:20:39.7343 * VersionOne Data Migration Log
+2015-03-23 22:20:39.7499 * 3/23/2015 10:20:39 PM
+2015-03-23 22:20:39.7499 *********************************************************
+2015-03-23 22:20:39.7499 
+2015-03-23 22:20:39.7655 Initializing configurations.
+2015-03-23 22:20:39.8279 Verifying connections.
+2015-03-23 22:20:40.1555 -> Connection to staging database "V1Staging" verified.
+2015-03-23 22:20:40.7327 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 22:20:40.7327 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 22:20:40.8731 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 22:20:40.8731 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 22:20:40.8731 
+2015-03-23 22:20:40.8887 *** EXPORTING:
+2015-03-23 22:20:40.9667 Exporting conversations.
+2015-03-23 22:23:07.7605 ERROR: Invalid column name 'BelongsTo'.
+2015-03-23 22:23:07.7761 
+2015-03-23 22:23:07.7761 Data migration terminated.
+2015-03-23 22:23:07.7761 
+2015-03-23 22:23:07.7761 
+2015-03-23 22:28:44.9467 *********************************************************
+2015-03-23 22:28:44.9779 * VersionOne Data Migration Log
+2015-03-23 22:28:44.9779 * 3/23/2015 10:28:44 PM
+2015-03-23 22:28:44.9935 *********************************************************
+2015-03-23 22:28:44.9935 
+2015-03-23 22:28:44.9935 Initializing configurations.
+2015-03-23 22:28:45.0559 Verifying connections.
+2015-03-23 22:28:45.3367 -> Connection to staging database "V1Staging" verified.
+2015-03-23 22:28:45.9451 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 22:28:45.9607 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 22:28:46.1635 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 22:28:46.1635 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 22:28:46.1635 
+2015-03-23 22:28:46.1635 *** EXPORTING:
+2015-03-23 22:28:46.1947 Exporting conversations.
+2015-03-23 22:30:33.0905 ERROR: Must declare the scalar variable "@BelongsTo".
+2015-03-23 22:30:56.3813 
+2015-03-23 22:30:56.3969 Data migration terminated.
+2015-03-23 22:30:56.3969 
+2015-03-23 22:30:56.3969 
+2015-03-23 22:34:02.1505 *********************************************************
+2015-03-23 22:34:02.1661 * VersionOne Data Migration Log
+2015-03-23 22:34:02.1661 * 3/23/2015 10:34:02 PM
+2015-03-23 22:34:02.1817 *********************************************************
+2015-03-23 22:34:02.1817 
+2015-03-23 22:34:02.1817 Initializing configurations.
+2015-03-23 22:34:02.2285 Verifying connections.
+2015-03-23 22:34:02.4625 -> Connection to staging database "V1Staging" verified.
+2015-03-23 22:34:02.8369 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 22:34:02.8369 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 22:34:02.9617 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 22:34:02.9617 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 22:34:02.9617 
+2015-03-23 22:34:02.9773 *** EXPORTING:
+2015-03-23 22:34:03.0397 Exporting conversations.
+2015-03-23 22:34:10.5991 -> Exported 1315 conversations.
+2015-03-23 22:34:10.5991 
+2015-03-23 22:34:10.5991 Data migration complete!
+2015-03-23 22:34:10.6147 
+2015-03-23 22:34:10.6147 
+2015-03-23 22:41:42.5373 *********************************************************
+2015-03-23 22:41:42.5563 * VersionOne Data Migration Log
+2015-03-23 22:41:42.5563 * 3/23/2015 10:41:42 PM
+2015-03-23 22:41:42.5713 *********************************************************
+2015-03-23 22:41:42.5713 
+2015-03-23 22:41:42.5713 Initializing configurations.
+2015-03-23 22:41:42.6393 Verifying connections.
+2015-03-23 22:41:42.8533 -> Connection to staging database "V1Staging" verified.
+2015-03-23 22:41:43.2353 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 22:41:43.2363 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 22:41:43.3253 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 22:41:43.3253 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 22:41:43.3313 
+2015-03-23 22:41:43.3313 *** EXPORTING:
+2015-03-23 22:41:43.3653 Exporting conversations.
+2015-03-23 22:41:43.8103 ERROR: Violation of PRIMARY KEY constraint 'PK_Conversations'. Cannot insert duplicate key in object 'dbo.Conversations'. The duplicate key value is (Expression:1370).
+The statement has been terminated.
+2015-03-23 22:41:43.8103 
+2015-03-23 22:41:43.8153 Data migration terminated.
+2015-03-23 22:41:43.8153 
+2015-03-23 22:41:43.8153 
+2015-03-23 22:43:11.3855 *********************************************************
+2015-03-23 22:43:11.4011 * VersionOne Data Migration Log
+2015-03-23 22:43:11.4011 * 3/23/2015 10:43:11 PM
+2015-03-23 22:43:11.4323 *********************************************************
+2015-03-23 22:43:11.4323 
+2015-03-23 22:43:11.4479 Initializing configurations.
+2015-03-23 22:43:11.5103 Verifying connections.
+2015-03-23 22:43:11.6975 -> Connection to staging database "V1Staging" verified.
+2015-03-23 22:43:12.8675 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 22:43:12.8675 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 22:43:14.1467 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 22:43:14.1467 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 22:43:14.1467 
+2015-03-23 22:43:14.1623 *** EXPORTING:
+2015-03-23 22:43:14.2559 Exporting conversations.
+2015-03-23 22:43:21.9155 -> Exported 1315 conversations.
+2015-03-23 22:43:21.9155 
+2015-03-23 22:43:21.9311 Data migration complete!
+2015-03-23 22:43:21.9311 
+2015-03-23 22:43:21.9311 
+2015-03-23 22:48:54.1573 *********************************************************
+2015-03-23 22:48:54.1885 * VersionOne Data Migration Log
+2015-03-23 22:48:54.2041 * 3/23/2015 10:48:54 PM
+2015-03-23 22:48:54.2041 *********************************************************
+2015-03-23 22:48:54.2197 
+2015-03-23 22:48:54.2197 Initializing configurations.
+2015-03-23 22:48:54.3133 Verifying connections.
+2015-03-23 22:48:54.5785 -> Connection to staging database "V1Staging" verified.
+2015-03-23 22:48:55.1089 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 22:48:55.1089 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 22:48:55.1401 
+2015-03-23 22:48:55.1401 *** IMPORTING:
+2015-03-23 22:48:55.1869 Importing conversations.
+2015-03-23 22:54:31.1953 -> Imported 670 conversations.
+2015-03-23 22:54:31.1953 
+2015-03-23 22:54:31.1953 Data migration complete!
+2015-03-23 22:54:31.1953 
+2015-03-23 22:54:31.1953 
+2015-03-23 23:13:42.0632 *********************************************************
+2015-03-23 23:13:42.0944 * VersionOne Data Migration Log
+2015-03-23 23:13:42.0944 * 3/23/2015 11:13:42 PM
+2015-03-23 23:13:42.1100 *********************************************************
+2015-03-23 23:13:42.1100 
+2015-03-23 23:13:42.1256 Initializing configurations.
+2015-03-23 23:13:42.2192 Verifying connections.
+2015-03-23 23:13:42.5936 -> Connection to staging database "V1Staging" verified.
+2015-03-23 23:13:43.4828 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 23:13:43.4828 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 23:13:44.4500 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 23:13:44.4500 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 23:13:44.4656 
+2015-03-23 23:13:44.4656 *** EXPORTING:
+2015-03-23 23:13:44.4968 Exporting epics.
+2015-03-23 23:14:44.9936 ERROR: The remote server returned an error: (500) Internal Server Error.
+2015-03-23 23:14:44.9936 
+2015-03-23 23:14:44.9936 Data migration terminated.
+2015-03-23 23:14:45.0092 
+2015-03-23 23:14:45.0092 
+2015-03-23 23:19:39.0278 *********************************************************
+2015-03-23 23:19:39.0746 * VersionOne Data Migration Log
+2015-03-23 23:19:39.0746 * 3/23/2015 11:19:39 PM
+2015-03-23 23:19:39.0902 *********************************************************
+2015-03-23 23:19:39.0902 
+2015-03-23 23:19:39.1058 Initializing configurations.
+2015-03-23 23:19:39.1682 Verifying connections.
+2015-03-23 23:19:39.4958 -> Connection to staging database "V1Staging" verified.
+2015-03-23 23:19:40.2914 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 23:19:40.2914 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 23:19:40.4474 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 23:19:40.4474 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 23:19:40.4474 
+2015-03-23 23:19:40.4474 *** EXPORTING:
+2015-03-23 23:19:40.5410 Exporting epics.
+2015-03-23 23:22:21.6650 -> Exported 265 epics.
+2015-03-23 23:24:10.8692 -> Exported 0 epic custom fields.
+2015-03-23 23:24:10.8848 Exporting stories.
+2015-03-23 23:25:45.7328 ERROR: The remote server returned an error: (500) Internal Server Error.
+2015-03-23 23:25:45.7484 
+2015-03-23 23:25:45.7484 Data migration terminated.
+2015-03-23 23:25:45.7484 
+2015-03-23 23:25:45.7640 
+2015-03-23 23:33:53.5824 *********************************************************
+2015-03-23 23:33:53.6136 * VersionOne Data Migration Log
+2015-03-23 23:33:53.6136 * 3/23/2015 11:33:53 PM
+2015-03-23 23:33:53.6292 *********************************************************
+2015-03-23 23:33:53.6292 
+2015-03-23 23:33:53.6448 Initializing configurations.
+2015-03-23 23:33:53.7228 Verifying connections.
+2015-03-23 23:33:54.0192 -> Connection to staging database "V1Staging" verified.
+2015-03-23 23:33:54.8154 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 23:33:54.8154 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 23:33:55.1730 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 23:33:55.1730 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 23:33:55.1730 
+2015-03-23 23:33:55.1730 *** EXPORTING:
+2015-03-23 23:33:55.2042 Exporting epics.
+2015-03-23 23:33:56.7798 ERROR: Violation of PRIMARY KEY constraint 'PK_Epics'. Cannot insert duplicate key in object 'dbo.Epics'. The duplicate key value is (Epic:53821).
+The statement has been terminated.
+2015-03-23 23:33:56.7954 
+2015-03-23 23:33:56.7954 Data migration terminated.
+2015-03-23 23:33:56.7954 
+2015-03-23 23:33:56.7954 
+2015-03-23 23:35:45.3528 *********************************************************
+2015-03-23 23:35:45.3684 * VersionOne Data Migration Log
+2015-03-23 23:35:45.3840 * 3/23/2015 11:35:45 PM
+2015-03-23 23:35:45.3996 *********************************************************
+2015-03-23 23:35:45.3996 
+2015-03-23 23:35:45.4152 Initializing configurations.
+2015-03-23 23:35:45.4932 Verifying connections.
+2015-03-23 23:35:45.6960 -> Connection to staging database "V1Staging" verified.
+2015-03-23 23:35:46.2108 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 23:35:46.2108 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 23:35:46.9284 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 23:35:46.9284 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 23:35:46.9284 
+2015-03-23 23:35:46.9440 *** EXPORTING:
+2015-03-23 23:35:46.9596 Exporting epics.
+2015-03-23 23:36:47.2536 ERROR: The remote server returned an error: (500) Internal Server Error.
+2015-03-23 23:36:47.2536 
+2015-03-23 23:36:47.2536 Data migration terminated.
+2015-03-23 23:36:47.2692 
+2015-03-23 23:36:47.2692 
+2015-03-23 23:37:21.4758 *********************************************************
+2015-03-23 23:37:21.4914 * VersionOne Data Migration Log
+2015-03-23 23:37:21.5070 * 3/23/2015 11:37:21 PM
+2015-03-23 23:37:21.5226 *********************************************************
+2015-03-23 23:37:21.5382 
+2015-03-23 23:37:21.5382 Initializing configurations.
+2015-03-23 23:37:21.6318 Verifying connections.
+2015-03-23 23:37:21.7566 -> Connection to staging database "V1Staging" verified.
+2015-03-23 23:37:22.4898 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 23:37:22.4898 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 23:37:22.6614 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 23:37:22.6614 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 23:37:22.6614 
+2015-03-23 23:37:22.6770 *** EXPORTING:
+2015-03-23 23:37:22.7550 Exporting epics.
+2015-03-23 23:37:24.8142 -> Exported 265 epics.
+2015-03-23 23:37:24.9234 The CustomField is Custom_TestApproved and Type is Boolean
+2015-03-23 23:37:25.0326 -> Exported 3 epic custom fields.
+2015-03-23 23:37:25.0482 Exporting stories.
+2015-03-23 23:37:36.7950 ERROR: Violation of PRIMARY KEY constraint 'PK_Stories'. Cannot insert duplicate key in object 'dbo.Stories'. The duplicate key value is (Story:15335).
+The statement has been terminated.
+2015-03-23 23:37:36.8106 
+2015-03-23 23:37:36.8106 Data migration terminated.
+2015-03-23 23:37:36.8106 
+2015-03-23 23:37:36.8262 
+2015-03-23 23:43:06.5250 *********************************************************
+2015-03-23 23:43:06.5562 * VersionOne Data Migration Log
+2015-03-23 23:43:06.5562 * 3/23/2015 11:43:06 PM
+2015-03-23 23:43:06.5718 *********************************************************
+2015-03-23 23:43:06.5718 
+2015-03-23 23:43:06.5874 Initializing configurations.
+2015-03-23 23:43:06.6654 Verifying connections.
+2015-03-23 23:43:06.8682 -> Connection to staging database "V1Staging" verified.
+2015-03-23 23:43:07.4766 -> Connection to V1 source instance "http://localhost/gmacrfc" verified.
+2015-03-23 23:43:07.4922 -> V1 source instance version: 14.3.5.6349.
+2015-03-23 23:43:07.6950 -> Connection to V1 target instance "http://localhost/AllyProduction" verified.
+2015-03-23 23:43:07.6950 -> V1 target instance version: 14.3.5.6349.
+2015-03-23 23:43:07.6950 
+2015-03-23 23:43:07.6950 *** EXPORTING:
+2015-03-23 23:43:07.7418 Exporting epics.
+2015-03-23 23:43:09.9726 -> Exported 265 epics.
+2015-03-23 23:43:10.0506 The CustomField is Custom_TestApproved and Type is Boolean
+2015-03-23 23:43:10.0974 -> Exported 3 epic custom fields.
+2015-03-23 23:43:10.0974 Exporting stories.
+2015-03-23 23:44:24.4158 ERROR: The remote server returned an error: (500) Internal Server Error.
+2015-03-23 23:44:24.4158 
+2015-03-23 23:44:24.4314 Data migration terminated.
+2015-03-23 23:44:24.4314 
+2015-03-23 23:44:24.4470 
