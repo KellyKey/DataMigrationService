@@ -11,7 +11,7 @@ namespace V1DataReader
 {
     public class ExportSchedules : IExportAssets
     {
-        public ExportSchedules(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ExportSchedules(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()

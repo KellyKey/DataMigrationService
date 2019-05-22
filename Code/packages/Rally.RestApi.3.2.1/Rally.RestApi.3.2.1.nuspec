@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Rally.RestApi</id>
+    <version>3.2.1</version>
+    <title>CA Agile Central Rest API for .NET</title>
+    <authors>CA Technologies</authors>
+    <owners>CA Technologies</owners>
+    <licenseUrl>https://raw.githubusercontent.com/RallyTools/RallyRestToolkitFor.NET/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/RallyTools/RallyRestToolkitFor.NET</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A .Net 4.0 Toolkit for Accessing CA Agile Central's Webservice API</description>
+    <summary />
+    <releaseNotes>Release 3.2.1</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Rally CAAgileCentral</tags>
+  </metadata>
+</package>

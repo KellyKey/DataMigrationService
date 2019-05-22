@@ -6,12 +6,15 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
     public class ImportRegressionTests : IImportAssets
     {
-        public ImportRegressionTests(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        
+        public ImportRegressionTests(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
@@ -47,7 +50,7 @@ namespace V1DataWriter
                     asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
 
                     IAttributeDefinition scopeAttribute = assetType.GetAttributeDefinition("Scope");
-                    asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString(), "Projects"));
+                    asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString(), "Scope"));
 
                     if (String.IsNullOrEmpty(sdr["Owners"].ToString()) == false)
                     {
@@ -71,13 +74,13 @@ namespace V1DataWriter
 
                     //HACK: For Rally import, needs to be refactored.
                     IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
-                    //asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
-                    asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB("RegressionTestStatus", sdr["Status"].ToString()));
+                    asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
+                    //asset.SetAttributeValue(statusAttribute, GetStatusAssetOID(sdr["Status"].ToString()));
 
                     //HACK: For Rally import, needs to be refactored.
                     IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Category");
-                    //asset.SetAttributeValue(categoryAttribute, GetNewListTypeAssetOIDFromDB(sdr["Category"].ToString()));
-                    asset.SetAttributeValue(categoryAttribute, GetNewListTypeAssetOIDFromDB("TestCategory", sdr["Category"].ToString()));
+                    asset.SetAttributeValue(categoryAttribute, GetNewListTypeAssetOIDFromDB(sdr["Category"].ToString()));
+                    //asset.SetAttributeValue(categoryAttribute, GetCategoryAssetOID(sdr["Category"].ToString()));
 
                     _dataAPI.Save(asset);
 
@@ -85,12 +88,16 @@ namespace V1DataWriter
                     UpdateNewAssetOIDAndNumberInDB("RegressionTests", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber);
                     UpdateImportStatus("RegressionTests", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "RegressionTest imported.");
                     importCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
+
                 }
                 catch (Exception ex)
                 {
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("RegressionTests", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
+
                         continue;
                     }
                     else
@@ -102,6 +109,56 @@ namespace V1DataWriter
             sdr.Close();
             return importCount;
         }
+
+        private string GetStatusAssetOID(string regressionTestStatus)
+        {
+            if (regressionTestStatus == "Pass")
+            {
+                return "RegressionTestStatus:6896";  //Passed
+            }
+            else if (regressionTestStatus == "Fail")
+            {
+                return "RegressionTestStatus:6897";  //Failed
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        private string GetCategoryAssetOID(string testCategory)
+        {
+            if (testCategory == "Performance")
+            {
+                return "TestCategory:114";
+            }
+            else if (testCategory == "Usability")
+            {
+                return "TestCategory:115";
+            }
+            else if (testCategory == "Functional")
+            {
+                return "TestCategory:116";
+            }
+            else if (testCategory == "Regression")
+            {
+                return "TestCategory:3442";
+            }
+            else if (testCategory == "Acceptance")
+            {
+                return "TestCategory:3443";
+            }
+            else if (testCategory == "User Interface")
+            {
+                return "TestCategory:3444";
+            }
+            else
+            {
+                return "TestCategory:3442";
+            }
+        }
+
 
         public int CloseRegressionTests()
         {

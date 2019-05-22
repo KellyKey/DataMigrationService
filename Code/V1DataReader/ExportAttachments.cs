@@ -12,9 +12,9 @@ namespace V1DataReader
 {
     public class ExportAttachments : IExportAssets
     {
-        private V1APIConnector _imageConnector;
+        private V1Connector _imageConnector;
 
-        public ExportAttachments(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, V1APIConnector ImageConnector, MigrationConfiguration Configurations)
+        public ExportAttachments(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, V1Connector ImageConnector, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) 
         {
             _imageConnector = ImageConnector;
@@ -85,7 +85,7 @@ namespace V1DataReader
                         cmd.CommandType = System.Data.CommandType.Text;
                         cmd.Parameters.AddWithValue("@AssetOID", asset.Oid.ToString());
                         cmd.Parameters.AddWithValue("@Name", name);
-                        cmd.Parameters.AddWithValue("@Content", GetAttachmentValue(asset.Oid.Key.ToString()));
+                        cmd.Parameters.AddWithValue("@Content", GetAttachmentValue(asset.Oid));
                         cmd.Parameters.AddWithValue("@ContentType", GetScalerValue(asset.GetAttribute(contentTypeAttribute)));
                         cmd.Parameters.AddWithValue("@FileName", GetScalerValue(asset.GetAttribute(fileNameAttribute)));
                         cmd.Parameters.AddWithValue("@Description", description);
@@ -100,13 +100,17 @@ namespace V1DataReader
             return assetCounter;
         }
 
-        private byte[] GetAttachmentValue(string AttachmentID)
+        private byte[] GetAttachmentValue(Oid attachmentID)
         {
             MemoryStream memoryStream = new MemoryStream();
             if (_config.V1Configurations.MigrateAttachmentBinaries == true)
             {
-                Attachments attachment = new Attachments(_imageConnector);
-                using (Stream blob = attachment.GetReadStream(AttachmentID))
+                //Attachments attachment = new Attachments(_imageConnector);
+                
+                //using (Stream blob = attachment.GetReadStream(AttachmentID))
+                Services attachmentService = new Services(_imageConnector);
+                //Oid attachmentID = new Oid(attachmentType, Convert.ToInt64(AttachmentID));
+                using (Stream blob = attachmentService.GetAttachment(attachmentID))
                 {
                     blob.CopyTo(memoryStream);
                 }

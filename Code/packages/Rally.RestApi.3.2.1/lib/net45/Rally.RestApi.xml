@@ -1,0 +1,2266 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rally.RestApi</name>
+    </assembly>
+    <members>
+        <member name="T:Rally.RestApi.Auth.ApiAuthManager">
+            <summary>
+            A authentication manager for a manually implemented authentication.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowTitle">
+            <summary>
+            The text for the login window title.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowHeaderLabelText">
+            <summary>
+            The text for the header label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowCredentialsTabText">
+            <summary>
+            The text for the credentials tab in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowRallyServerTabText">
+            <summary>
+            The text for the rally server tab in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowProxyServerTabText">
+            <summary>
+            The text for the proxy tab in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowUserNameLabelText">
+            <summary>
+            The text for the user name label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowPwdLabelText">
+            <summary>
+            The text for the password label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowConnectionTypeText">
+            <summary>
+            The text for the connection type label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowServerLabelText">
+            <summary>
+            The text for the server label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowTrustAllCertificatesText">
+            <summary>
+            The text for the trust all certificates label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowProxyServerLabelText">
+            <summary>
+            The text for the proxy server label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowProxyUserNameLabelText">
+            <summary>
+            The text for the proxy username label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowProxyPwdLabelText">
+            <summary>
+            The text for the proxy password label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowSsoInProgressText">
+            <summary>
+            The text for the sso in progress label in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowLoginText">
+            <summary>
+            The text for the login button in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowLogoutText">
+            <summary>
+            The text for the logout button in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowCancelText">
+            <summary>
+            The text for the cancel button in the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowDefaultServer">
+            <summary>
+            The default server for the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginWindowDefaultProxyServer">
+            <summary>
+            The default proxy server for the login window.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginFailureServerEmpty">
+            <summary>
+            The error message to show when a login failure occured due to the server field being empty.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginFailureLoginEmpty">
+            <summary>
+            The error message to show when a login failure occured due to the credentials being empty.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginFailureBadServer">
+            <summary>
+            The error message to show when a login failure occured due to the server not being reachable.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginFailureCredentials">
+            <summary>
+            The error message to show when a login failure occured due to bad credentials.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginFailureBadConnection">
+            <summary>
+            The error message to show when we failed to connect to a server or proxy.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginFailureProxyCredentials">
+            <summary>
+            The error message to show when a login failure occured due to bad proxy credentials.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginFailureUnknown">
+            <summary>
+            The error message to show when an unknown login failure occured.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.Api">
+            <summary>
+            The API that is linked to this authorization manager.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.LoginDetails">
+            <summary>
+            The details for the user who is logging in using this auth manager.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.IsUiSupported">
+            <summary>
+            Is the UI supported?
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.AuthenticationStateChange">
+            <summary>
+            Notifies that SSO authentication has completed.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.ApiAuthManager.SsoAuthenticationComplete">
+            <summary>
+            Notifies that SSO authentication has completed.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.#ctor(System.Boolean,System.String,System.String,Rally.RestApi.Auth.IEncryptionRoutines,System.String,Rally.RestApi.TraceFieldEnum)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="isUiSupported">Does this authentication manager support a UI?</param>
+            <param name="applicationToken">An application token to be used as the file name to store data as (no extension needed). Each 
+            consuming application should use a unique name in order to ensure that the user credentials are not 
+            overwritten by other applications. An exception will be thrown elsewhere if this is not a valid file name.</param>
+            <param name="encryptionKey">The encryption key, or salt, to be used for any encryption routines. This salt 
+            should be different for each user, and not the same for everyone consuming the same application. Only used 
+            for UI support.</param>
+            <param name="encryptionRoutines">The encryption routines to use for encryption/decryption of data. Only used for UI support.</param>
+            <param name="webServiceVersion">The version of the WSAPI API to use.</param>
+            <param name="traceInfo">Controls diagnostic trace information being logged</param>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.AutoAuthenticate(System.Boolean)">
+            <summary>
+            Auto authenticates the user if there are saved credentials.
+            </summary>
+            <param name="allowSsoForautoAuthenticate">Is SSO authentication allowed for auto-authentication? 
+            This may open a web browser UI.</param>
+            <returns>The current state of the authentication process. <see cref="T:Rally.RestApi.RallyRestApi.AuthenticationResult"/></returns>
+            <example>
+            <code language="C#">
+            RallyRestApi.AuthenticationResult result = authMgr.AutoAuthenticate(false);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.Configure(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Uri,System.String,System.String,System.String,System.String,System.Uri,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Configures the authorization manger.
+            </summary>
+            <param name="loginWindowTitle">The title to be used for the login window.</param>
+            <param name="loginWindowHeaderLabelText">The header title to be used for the login window.</param>
+            <param name="loginWindowCredentialsTabText">The credentials tab text to be used for the login window.</param>
+            <param name="loginWindowUserNameLabelText">The user name label to be used for the login window.</param>
+            <param name="loginWindowPwdLabelText">The password label to be used for the login window.</param>
+            <param name="loginWindowServerTabText">The server tab label to be used for the login window.</param>
+            <param name="loginWindowConnectionTypeText">The connection type label to be used for the login window.</param>
+            <param name="loginWindowServerLabelText">The server label to be used for the login window.</param>
+            <param name="loginWindowTrustAllCertificatesText">The trust all certificates label to be used for the login window.</param>
+            <param name="loginWindowDefaultServer">The default server to be used for the login window.</param>
+            <param name="loginWindowProxyServerTabText">The proxy tab label to be used for the login window.</param>
+            <param name="loginWindowProxyServerLabelText">The proxy server label to be used for the login window.</param>
+            <param name="loginWindowProxyUserNameLabelText">The proxy user name label to be used for the login window.</param>
+            <param name="loginWindowProxyPwdLabelText">The proxy password label to be used for the login window.</param>
+            <param name="loginWindowDefaultProxyServer">The default proxy server to be used for the login window.</param>
+            <param name="loginWindowSsoInProgressText">The SSO in progress label to be used for the login window.</param>
+            <param name="loginWindowLoginButtonText">The login button text to be used for the login window.</param>
+            <param name="loginWindowLogoutButtonText">The logout button text to be used for the login window.</param>
+            <param name="loginWindowCancelButtonText">The cancel button text to be used for the login window.</param>
+            <param name="loginFailureBadServer">The error message to be used for when the server is bad (can't connect).</param>
+            <param name="loginFailureCredentials">The error message to be used for when the credentials to Rally are bad.</param>
+            <param name="loginFailureLoginEmpty">The error message to be used for when the login input field is left empty.</param>
+            <param name="loginFailureServerEmpty">The error message to be used for when the server input field is left empty.</param>
+            <param name="loginFailureProxyCredentials">The error message to be used for bad proxy credentials.</param>
+            <param name="loginFailureBadConnection">The error message to be used for bad connection login failures.</param>
+            <param name="loginFailureUnknown">The error message to be used for unknown login failures.</param>
+            <example>
+            <para>Configures labels for UI. These are global and used by the authentication manager to build their UI.</para>
+            <para>If this is not called, the default labels will be used. In this sample we are changing a label and the default server URL.</para>
+            <code language="C#">
+            ApiAuthManager.Configure(loginWindowServerLabelText: "My Updated Server Label", loginWindowDefaultServer: new Uri("http://onprem-url"));
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.ShowUserLoginWindow(Rally.RestApi.Auth.AuthenticationStateChange,Rally.RestApi.Auth.SsoAuthenticationComplete)">
+            <summary>
+            Authenticates the user against Rally. This must be called from the UI thread.
+            </summary>
+            <param name="authenticationStateChange">The delegate to call when an authentication state change occurs.</param>
+            <param name="ssoAuthenticationComplete">The delegate to call when an authentication state change occurs due to SSO.</param>
+            <example>
+            Opening the login window and passing the two delegates to it.
+            <code language="C#">
+            authMgr.ShowUserLoginWindow(authenticationStateChange, ssoAuthenticationComplete);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.ShowUserLoginWindowInternal">
+            <summary>
+            Opens the window that displays the SSO URL to the user.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.OpenSsoPage(System.Uri)">
+            <summary>
+            Opens the specified SSO URL to the user.
+            </summary>
+            <param name="ssoUrl">The Uri that the user was redirected to in order to perform their SSO authentication.</param>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.OpenSsoPageInternal(System.Uri)">
+            <summary>
+            Opens the window that displays the SSO URL to the user.
+            </summary>
+            <param name="ssoUrl">The URL for the SSO page to be opened.</param>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.ReportSsoResults(System.Boolean,System.String,System.String)">
+            <summary>
+            Reports the results of an SSO action.
+            </summary>
+            <param name="success">Was SSO authentication completed successfully?</param>
+            <param name="rallyServer">The server that the ZSessionID is for.</param>
+            <param name="zSessionID">The zSessionID that was returned from Rally.</param>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.NotifyLoginWindowSsoComplete(Rally.RestApi.RallyRestApi.AuthenticationResult,Rally.RestApi.RallyRestApi)">
+            <summary>
+            Notifies the login window that SSO has been completed.
+            </summary>
+            <param name="authenticationResult">The current state of the authentication process. <see cref="T:Rally.RestApi.RallyRestApi.AuthenticationResult"/></param>
+            <param name="api">The API that was authenticated against.</param>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.DeleteCachedLoginDetailsFromDisk">
+            <summary>
+            Deletes any cached login credentials from disk.
+            </summary>
+            <returns>If the files were successfully deleted or not.</returns>
+            <example>
+            <code language="C#">
+            bool success = authMgr.DeleteCachedLoginDetailsFromDisk();
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.PerformAuthenticationCheck(System.String@,System.Boolean)">
+            <summary>
+            Performs an authentication check against an identity provider (IDP Initiated).
+            </summary>
+            <param name="errorMessage">The error message or any that was generated by the authentication check.</param>
+            <param name="allowSso">Is SSO allowed for this authentication check?</param>
+            <returns>The current state of the authentication process. <see cref="T:Rally.RestApi.RallyRestApi.AuthenticationResult"/></returns>
+            <example>
+            <code language="C#">
+            RallyRestApi.AuthenticationResult result = PerformAuthenticationCheck(out errorMessage);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.PerformAuthenticationCheckAgainstRally(System.String@,System.Boolean)">
+            <summary>
+            Performs an authentication check against Rally with the specified credentials
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.PerformAuthenticationCheckAgainstIdp(System.String@)">
+            <summary>
+            Performs an authentication check against an identity provider (IDP Initiated).
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.GetProxy(System.String@)">
+            <summary>
+            Creates the web proxy object.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiAuthManager.PerformLogoutFromRally">
+            <summary>
+            Performs an logout from Rally.
+            </summary>
+            <example>
+            <code language="C#">
+            authMgr.PerformLogoutFromRally();
+            </code>
+            </example>
+        </member>
+        <member name="T:Rally.RestApi.Auth.AuthenticationStateChange">
+            <summary>
+            A delegate to indicate that the authentication state (logged in, logged out, pending SSO) has changed.
+            </summary>
+            <param name="authenticationResult">The status of authentication.</param>
+            <param name="api">The authenticated API that can be used for the user who logged in.</param>
+        </member>
+        <member name="T:Rally.RestApi.Auth.SsoAuthenticationComplete">
+            <summary>
+            A delegate to indicate that SSO authentication has completed.
+            </summary>
+            <param name="authenticationResult">The status of authentication.</param>
+            <param name="api">The authenticated API that can be used for the user who logged in.</param>
+        </member>
+        <member name="T:Rally.RestApi.Auth.ApiConsoleAuthManager">
+            <summary>
+            A authentication manager for a manually implemented authentication.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiConsoleAuthManager.#ctor(System.String,Rally.RestApi.TraceFieldEnum)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="webServiceVersion">The version of the WSAPI API to use.</param>
+            <param name="traceInfo">Controls diagnostic trace information being logged</param>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiConsoleAuthManager.ShowUserLoginWindowInternal">
+            <summary>
+            Opens the window that displays the SSO URL to the user.
+            </summary>
+            <exception cref="T:System.NotImplementedException">This method is not supported for this authentication manager.</exception>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiConsoleAuthManager.OpenSsoPageInternal(System.Uri)">
+            <summary>
+            Opens the window that displays the SSO URL to the user.
+            </summary>
+            <param name="ssoUrl">The URL for the SSO page to be opened.</param>
+            <exception cref="T:System.NotImplementedException">This method is not supported for this authentication manager.</exception>
+        </member>
+        <member name="M:Rally.RestApi.Auth.ApiConsoleAuthManager.NotifyLoginWindowSsoComplete(Rally.RestApi.RallyRestApi.AuthenticationResult,Rally.RestApi.RallyRestApi)">
+            <summary>
+            Notifies the login window that SSO has been completed.
+            </summary>
+            <param name="authenticationResult">The current state of the authentication process. <see cref="T:Rally.RestApi.RallyRestApi.AuthenticationResult"/></param>
+            <param name="api">The API that was authenticated against.</param>
+            <exception cref="T:System.NotImplementedException">This method is not supported for this authentication manager.</exception>
+        </member>
+        <member name="T:Rally.RestApi.Auth.IEncryptionRoutines">
+            <summary>
+            An interface for encrypting and decrypting passwords.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.IEncryptionRoutines.EncryptString(System.String,System.String)">
+            <summary>
+            Encrypts a string using the provided key string as a salting token.
+            </summary>
+            <param name="keyString">The key string, or salt, to use when encrypting.</param>
+            <param name="textToEncrypt">The text to be encrypted.</param>
+            <returns>The encrypted string.</returns>
+        </member>
+        <member name="M:Rally.RestApi.Auth.IEncryptionRoutines.DecryptString(System.String,System.String)">
+            <summary>
+            Decrypts a string using the provided key string as a decryption token.
+            </summary>
+            <param name="keyString">The key string, or salt, to use when decrypting.</param>
+            <param name="textToDecrypt">The text to be decrypted.</param>
+            <returns>The decrypted string.</returns>
+        </member>
+        <member name="T:Rally.RestApi.Auth.LoginDetails">
+            <summary>
+            A class for storing a users login details.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.LoginDetails.RallyServer">
+            <summary>
+            The URL for the Rally Server that we are connecting to.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.LoginDetails.Username">
+            <summary>
+            The Rally username that we are connecting as.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.LoginDetails.ZSessionID">
+            <summary>
+            The ZSessionID for this user.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.LoginDetails.ProxyServer">
+            <summary>
+            Proxy server url
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.LoginDetails.ProxyUsername">
+            <summary>
+            Proxy server user name
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.LoginDetails.IdpServer">
+            <summary>
+            The URL for the IDP Server that we are connecting to (IDP based connections only).
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.LoginDetails.ConnectionType">
+            <summary>
+            ConnectionType enum value determining SSO auth type
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Auth.LoginDetails.TrustAllCertificates">
+            <summary>
+            Should all certificates be trusted?
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.LoginDetails.#ctor(Rally.RestApi.Auth.ApiAuthManager)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="authMgr">The authorization manager that owns these login details.</param>
+        </member>
+        <member name="M:Rally.RestApi.Auth.LoginDetails.SetPassword(System.String)">
+            <summary>
+            Sets the password with encryption for this user.
+            </summary>
+            <param name="password">The password to set.</param>
+        </member>
+        <member name="M:Rally.RestApi.Auth.LoginDetails.GetPassword">
+            <summary>
+            Gets the decrypted password for this user.
+            </summary>
+            <returns>The password after it was decrypted.</returns>
+        </member>
+        <member name="M:Rally.RestApi.Auth.LoginDetails.SetProxyPassword(System.String)">
+            <summary>
+            Sets the proxy password with encryption for this user.
+            </summary>
+            <param name="password">The password to set.</param>
+        </member>
+        <member name="M:Rally.RestApi.Auth.LoginDetails.GetProxyPassword">
+            <summary>
+            Gets the decrypted proxy password for this user.
+            </summary>
+            <returns>The password after it was decrypted.</returns>
+        </member>
+        <member name="M:Rally.RestApi.Auth.LoginDetails.DeleteCachedLoginDetailsFromDisk">
+            <summary>
+            Deletes any cached login credentials from disk.
+            </summary>
+            <returns>If the files were successfully deleted or not.</returns>
+        </member>
+        <member name="M:Rally.RestApi.Auth.LoginDetails.GetChildNodeValue(System.Xml.XmlNodeList,System.String)">
+            <summary>
+            Gets the value from a child node.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.LoginDetails.AddChildNode(System.Xml.XmlElement,System.String,System.String)">
+            <summary>
+            Adds a child node to a parent node.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Auth.LoginDetails.RedirectIfIdpPointsAtLoginSso(System.String)">
+            <summary>
+            HACK: Redirect to custom SSO page if attempting to connect to /login/sso
+            This workaround is for internet explorer 7 compatability due to excel and VSP
+            relying on IE7 as its embedded browser
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rally.RestApi.Connection.AuthorizationType">
+            <summary>
+            The types of authorization that are available.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Connection.AuthorizationType.Basic">
+            <summary>
+            Basic authorization where the user provides a username and password.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Connection.AuthorizationType.ApiKey">
+            <summary>
+            Authentication using an API Key.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Connection.AuthorizationType.ZSessionID">
+            <summary>
+            Authentication using a ZSessionID.
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.Connection.ConnectionInfo">
+            <summary>
+            An object for tracking connection information.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.AuthType">
+            <summary>
+            The authorization type for this connection.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.SecurityToken">
+            <summary>
+            The security token for this connection.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.ApiKey">
+            <summary>
+            The API Key for this connection.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.ZSessionID">
+            <summary>
+            The ZSessionID for this connection.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.Server">
+            <summary>
+            The server this connection is to.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.IdpServer">
+            <summary>
+            The IDP server to use for authentication.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.UserName">
+            <summary>
+            The username for this connection.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.Password">
+            <summary>
+            The password for this connection.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.Proxy">
+            <summary>
+            The proxy server to use for this connection.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Connection.ConnectionInfo.Port">
+            <summary>
+            The port we are connecting to.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Connection.ConnectionInfo.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.Connection.ConnectionType">
+            <summary>
+            3 types of connection types
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Connection.ConnectionType.BasicAuth">
+            <summary>
+            Basic authorization where the user provides a username and password.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Connection.ConnectionType.SpBasedSso">
+            <summary>
+            Service provider based connection.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Connection.ConnectionType.IdpBasedSso">
+            <summary>
+            Identity provider based connection.
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">
+            <summary>
+            An exception that indicates that we failed to deserialize JSON returned from Rally.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson.JsonData">
+            <summary>
+            The JSON data that was returned from Rally.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson.#ctor(System.Exception,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+            <param name="jsonData">The JSON data that was returned from Rally.</param>
+        </member>
+        <member name="T:Rally.RestApi.Exceptions.RallyUnavailableException">
+            <summary>
+            An exception indicating that Rally is temporarily off-line and returned an HTML error page.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Exceptions.RallyUnavailableException.ErrorMessage">
+            <summary>
+            The error message from Rally
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Exceptions.RallyUnavailableException.#ctor(System.Exception,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="innerException">The exception that is the cause of the current exception.</param>
+            <param name="errorMessage">The HTML error message that was returned from Rally.</param>
+        </member>
+        <member name="T:Rally.RestApi.Response.AttachmentResult">
+            <summary>
+            A result containing the contents of an attachment.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.AttachmentResult.FileContents">
+            <summary>
+            The file contents that were downloaded.
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.Response.CacheableQueryResult">
+            <summary>
+            This class represents the result of a query operation
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.CacheableQueryResult.IsCachedResult">
+            <summary>
+            Is this result a cached result? If not, it contains updated data.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Response.CacheableQueryResult.#ctor(Rally.RestApi.Json.DynamicJsonObject,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="obj">The data that was returned for the query against Rally.</param>
+            <param name="isCachedResult">Is this a cached response?</param>
+        </member>
+        <member name="T:Rally.RestApi.Response.OperationResult">
+            <summary>
+            This class represents the result of
+            an operation against the WSAPI.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.OperationResult.Object">
+            <summary>
+            The object manipulated.  This will be populated for creates and updates.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.OperationResult.Results">
+            <summary>
+            The objects manipulated.  This will be populated for collection adds.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.OperationResult.Errors">
+            <summary>
+            A list of any errors that occurred during the request
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.OperationResult.Warnings">
+            <summary>
+            A list of any warnings that occurred during the request
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.OperationResult.Success">
+            <summary>
+            Whether the request was successful or not
+            Returns true if Errors is empty
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Response.OperationResult.#ctor">
+            <summary>
+            Create a new empty OperationResult
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.Response.CreateResult">
+            <summary>
+            Object returned from a create opreration
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Response.CreateResult.#ctor">
+            <summary>
+            Create a new empty CreateResult
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.CreateResult.Reference">
+            <summary>
+            The ref of the created item
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.Response.QueryResult">
+            <summary>
+            This class represents the result
+            of a query operation
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Response.QueryResult.#ctor(Rally.RestApi.Json.DynamicJsonObject)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="obj">The data that was returned for the query against Rally.</param>
+        </member>
+        <member name="P:Rally.RestApi.Response.QueryResult.TotalResultCount">
+            <summary>
+            The total number of results
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.QueryResult.StartIndex">
+            <summary>
+            The start index of this result set
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Response.QueryResult.Results">
+            <summary>
+            The results of the query
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.TraceFieldEnum">
+            <summary>
+            Diagnostic trace settings
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.TraceFieldEnum.None">
+            <summary>
+            No trace
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.TraceFieldEnum.Data">
+            <summary>
+            Includes Request/Response Data
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.TraceFieldEnum.Headers">
+            <summary>
+            Include Request/Response Headers
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.TraceFieldEnum.Cookies">
+            <summary>
+            Include Before/After Cookies
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.TraceHelper">
+            <summary>
+            Helper class for logging diagnostic trace messages
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.TraceHelper.TraceFields">
+            <summary>
+            Variable controlling level of Trace output
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.TraceHelper.TraceMessage(System.String,System.Object[])">
+            <summary>
+            Log a Trace message
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.TraceHelper.TraceHttpMessage(System.String,System.DateTime,System.Uri,System.String,System.Object,System.String)">
+            <summary>
+            Log a Http Trace message
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.TraceHelper.TraceHttpMessage(System.String,System.DateTime,System.Uri,System.String,System.String,System.Object,System.String,System.String)">
+            <summary>
+            Log a Http Trace message
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.TraceHelper.TraceHttpMessage(System.String,System.DateTime,System.Uri,System.Object,System.String,System.String,System.Object,System.String,System.String)">
+            <summary>
+            Log a Http Trace message
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Web.CookieAwareCacheableWebClient.fileDirectory">
+            <summary>
+            The file location where data is stored.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Web.CookieAwareCacheableWebClient.DownloadCacheableResult(System.String,System.Boolean@)">
+            <summary>
+            Downloads the requested resource as a System.String. The resource to download is 
+            specified as a System.String containing the URI.
+            </summary>
+            <param name="address">A System.String containing the URI to download.</param>
+            <param name="isCachedResult">If the returned result was a cached result.</param>
+            <returns>A System.String containing the requested resource.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.Web.CookieAwareCacheableWebClient.DownloadCacheableResult(System.Uri,System.Boolean@)">
+            <summary>
+            Downloads the requested resource as a System.String. The resource to 
+            download is specified as a System.Uri.
+            </summary>
+            <param name="address">A System.Uri object containing the URI to download.</param>
+            <param name="isCachedResult">If the returned result was a cached result.</param>
+            <returns>A System.String containing the requested resource.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.Web.CookieAwareCacheableWebClient.ClearOldCacheFilesFromDisk(System.Boolean)">
+            <summary>
+            Deletes all cache files older than 14 days.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Web.CookieAwareCacheableWebClient.GetFileLocation(System.String)">
+            <summary>
+            Gets the file location to save to within the data cache.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Web.CookieAwareCacheableWebClient.ComputeHash(System.String)">
+            <summary>Generates a hash for the given plain text value and returns a base64-encoded result.</summary>
+            <param name="textToHash">Plaintext value to be hashed.</param>
+        </member>
+        <member name="M:Rally.RestApi.Web.CookieAwareCacheableWebClient.SerializeData(Rally.RestApi.Web.CookieAwareCacheableWebClient.CachedResult)">
+            <summary>
+            Serializes data to be sent across the wire.
+            <para>Serialization errors of lists may be caused by a missing constructor with the following signature:
+            public [CLASS NAME](SerializationInfo info, StreamingContext context)
+            </para>
+            </summary>
+            <param name="obj">The object to serialize.</param>
+            <returns>The serialized data.</returns>
+        </member>
+        <member name="M:Rally.RestApi.Web.CookieAwareCacheableWebClient.DeserializeData(System.Byte[])">
+            <summary>
+            Deserializes the data from the service back into its original object type.
+            <para>Deserialization errors of lists may be caused by a missing constructor with the following signature:
+            public [CLASS NAME](SerializationInfo info, StreamingContext context)
+            </para>
+            </summary>
+            <param name="serializedData">The serialized data.</param>
+            <returns>The deserialized object.</returns>
+        </member>
+        <member name="M:Rally.RestApi.Web.HttpService.#ctor(Rally.RestApi.Auth.ApiAuthManager,Rally.RestApi.Connection.ConnectionInfo)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="authManager">The authorization manager to use.</param>
+            <param name="connectionInfo">Connection Information</param>
+        </member>
+        <member name="M:Rally.RestApi.Web.HttpService.GetCacheable(System.Uri,System.Boolean@,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Gets a cacheable response.
+            </summary>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.Web.HttpService.PerformSsoAuthentication">
+            <summary>
+            Performs SSO Authentication
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rally.RestApi.Json.DynamicJsonObject">
+            <summary>
+            Representation of a Rally object
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.ToDictionary">
+            <summary>
+            Convert this object to a dictionary.
+            </summary>
+            <returns>this object as a dictionary</returns>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Create a new object from the specified dictionary
+            </summary>
+            <param name="dictionary">A dictionary of members and values
+            with which to initialize this object</param>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.#ctor">
+            <summary>
+            Create a new empty object
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            Try to get the specified member
+            </summary>
+            <param name="binder">The member to get</param>
+            <param name="result">The value</param>
+            <returns>true if successful, false otherwise</returns>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.GetMember(System.String)">
+            <summary>
+            Get the value of the specified member
+            Equivalent to using [name].
+            </summary>
+            <param name="name">The specified member</param>
+            <returns>The value of the specified member</returns>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.FormatSetValue(System.Object)">
+            <summary>
+            Format the specified value into a type
+            that is compatible with DynamicJsonObject
+            </summary>
+            <param name="value">The value to be formatted</param>
+            <returns>The formatted item</returns>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">
+            <summary>
+            Attempt to the specified member's value
+            </summary>
+            <param name="binder">The member</param>
+            <param name="value">The value</param>
+            <returns>true if successful, false otherwise</returns>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.SetMember(System.String,System.Object)">
+            <summary>
+            Set the specified member's value.
+            Equivalent to using [name] = value.
+            </summary>
+            <param name="name">The member</param>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.IsNumeric(System.Object)">
+            <summary>
+            Determine if the specified expression is numeric
+            </summary>
+            <param name="expression">The expression to be evaluated</param>
+            <returns>true if numeric, false otherwise</returns>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.GetHashCode">
+            <summary>
+            Get the hash code for this object
+            </summary>
+            <returns>The hash code for this object</returns>
+        </member>
+        <member name="P:Rally.RestApi.Json.DynamicJsonObject.Item(System.String)">
+            <summary>
+            Get the value of the specified member
+            </summary>
+            <param name="key">The member to retrieve</param>
+            <returns>The value of the specified member</returns>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.HasMember(System.String)">
+            <summary>
+            Determine if this object contains the specified member
+            </summary>
+            <param name="key">The member to search for</param>
+            <returns>true if it is present, false otherwise</returns>
+        </member>
+        <member name="P:Rally.RestApi.Json.DynamicJsonObject.Fields">
+            <summary>
+            Get the members contained in this object.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonObject.Equals(System.Object)">
+            <summary>
+            Return whether this object equals the specified object
+            </summary>
+            <param name="obj">The object to compare</param>
+            <returns>true if equal, false otherwise</returns>
+        </member>
+        <member name="T:Rally.RestApi.Json.DynamicJsonSerializer">
+            <summary>
+            A class for serializing/deserizalizing dynamic JSON objects.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonSerializer.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonSerializer.Deserialize(System.String)">
+            <summary>
+            Deserializes a JSON data string into a dynamic JSON Object.
+            </summary>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonSerializer.Serialize(Rally.RestApi.Json.DynamicJsonObject)">
+            <summary>
+            Serializes a dynamic JSON Object into a string.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Json.DynamicJsonSerializer.SerializeDictionary(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Serializes a dictionary into a string.
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.Query">
+            <summary>
+            This class represents a filter
+            for query operations.
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.Query.Operator">
+            <summary>
+            The available query operators
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.Operator.Equals">
+            <summary>
+            =
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.Operator.DoesNotEqual">
+            <summary>
+            !=
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.Operator.Contains">
+            <summary>
+            contains
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.Operator.DoesNotContain">
+            <summary>
+            !contains
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.Operator.LessThan">
+            <summary>
+            <![CDATA[<]]>
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.Operator.LessThanOrEqualTo">
+            <summary>
+            <![CDATA[<=]]>
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.Operator.GreaterThan">
+            <summary>
+            <![CDATA[>]]>
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.Operator.GreaterThanOrEqualTo">
+            <summary>
+            <![CDATA[>=]]>
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.Query.ClauseOperator">
+            <summary>
+            An enumeration of the available operators
+            to join query clauses
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.ClauseOperator.And">
+            <summary>
+            AND
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.Query.ClauseOperator.Or">
+            <summary>
+            OR
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Query.Attribute">
+            <summary>
+            The attribute to filter by
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Query.QueryOperator">
+            <summary>
+            The filter operator
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Query.Value">
+            <summary>
+            The value to be filtered on
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Query.QueryClause">
+            <summary>
+            Get the string representation of this query
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Query.#ctor">
+            <summary>
+            Create a new empty query
+            </summary>
+            <example>
+            This constructor can be used if you want to build your query on your own.
+            <code language="C#">
+            Query query = new Query();
+            query.Attribute = "Name";
+            query.QueryOperator = Query.Operator.Contains;
+            query.Value = "My Item";
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.#ctor(System.String,Rally.RestApi.Query.Operator,System.String)">
+            <summary>
+            Create a new query built from the specified
+            attribute, operator and value
+            </summary>
+            <param name="attribute">The attribute to be filtered by</param>
+            <param name="op">The filter operator</param>
+            <param name="value">The value to be filtered on</param>
+            <example>
+            <code language="C#">
+            Query query = new Query("Name", Query.Operator.Contains, "My Item");
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.#ctor(System.String)">
+            <summary>
+            Create a new query from the specified string.
+            </summary>
+            <param name="queryClause">The query string</param>
+            <example>
+            <code language="C#">
+            Query query = new Query("(Iteration.StartDate > Today+3)");
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.Join(Rally.RestApi.Query,Rally.RestApi.Query,Rally.RestApi.Query.ClauseOperator)">
+            <summary>
+            Join the two specified queries with the specified operator
+            </summary>
+            <param name="a">The first query to be joined</param>
+            <param name="b">The second query to be joined</param>
+            <param name="op">The operator</param>
+            <returns>The joined query</returns>
+        </member>
+        <member name="M:Rally.RestApi.Query.GetOperator(Rally.RestApi.Query.Operator)">
+            <summary>
+            Get the string version of the specified operator
+            </summary>
+            <param name="op">The operator to translate</param>
+            <returns>The string version of the specified operator</returns>
+            <example>
+            <code language="C#">
+            string operatorValue = Query.GetOperator(Query.Operator.Contains);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.GetOperator(System.String)">
+            <summary>
+            Parse the specified string operator into
+            a value of the Operator enum.
+            </summary>
+            <param name="op">The operator to translate</param>
+            <returns>The matching Operator value</returns>
+            <example>
+            <code language="C#">
+            Query.Operator operatorValue = Query.GetOperator("equals");
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.And(Rally.RestApi.Query)">
+            <summary>
+            Join the specified query to this query
+            using the AND operator.
+            </summary>
+            <param name="q">The query to be joined</param>
+            <returns>The joined query</returns>
+            <example>
+            <code language="C#">
+            Query query = new Query("Release.Name", Query.Operator.Equals, "My Release");
+            Query finalQuery = query.And(new Query("Iteration.Name", Query.Operator.Equals, "My Iteration"));
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.And(Rally.RestApi.Query[])">
+            <summary>
+            Join the specified queries using the AND operator
+            </summary>
+            <param name="queries">The queries to be joined</param>
+            <returns>The joined query</returns>
+            <example>
+            <code language="C#">
+            Query query = Query.And(new Query("Release.Name", Query.Operator.Equals, "My Release"),
+                                    new Query("Iteration.Name", Query.Operator.Equals, "My Iteration")
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.Or(Rally.RestApi.Query)">
+            <summary>
+            Join the specified query to this query
+            using the OR operator.
+            </summary>
+            <param name="q">The query to be joined</param>
+            <returns>The joined query</returns>
+            <example>
+            <code language="C#">
+            Query query = new Query("Release.Name", Query.Operator.Equals, "My Release");
+            Query finalQuery = query.Or(new Query("Iteration.Name", Query.Operator.Equals, "My Iteration"));
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.Or(Rally.RestApi.Query[])">
+            <summary>
+            Join the specified queries using the OR operator
+            </summary>
+            <param name="queries">The queries to be joined</param>
+            <returns>The joined query</returns>
+            <example>
+            <code language="C#">
+            Query query = Query.Or(new Query("Release.Name", Query.Operator.Equals, "My Release"),
+                                   new Query("Iteration.Name", Query.Operator.Equals, "My Iteration")
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.Parse(System.String)">
+            <summary>
+            Parse the specified string into a query
+            </summary>
+            <param name="query">The query string to be parsed</param>
+            <returns>A query object, or null if the string could not be parsed</returns>
+            <example>
+            <code language="C#">
+            Query query = Query.Parse("(Name = Value)");
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.TryParseQueryOperator(System.String,Rally.RestApi.Query.Operator@)">
+            <summary>
+            Tries to get the operator based upon the operator query string
+            </summary>
+            <param name="operatorString">The string to parse.</param>
+            <param name="queryOperator">The operator that was found.</param>
+            <returns>If the parsing was successful. If not, the operator is set to Equals.</returns>
+            <example>
+            string operatorValue = "!=";
+            Query.Operator foundQueryOperator;
+            if (Query.TryParseQueryOperator(operatorValue, out foundQueryOperator))
+            {
+            // Do work
+            }
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Query.ToString">
+            <summary>
+            Same as QueryClause
+            </summary>
+            <returns>The string representation of the query</returns>
+        </member>
+        <member name="T:Rally.RestApi.Ref">
+            <summary>
+            The Ref class contains a set of utility methods
+            for working with refs.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Ref.IsRef(System.String)">
+            <summary>
+            Determine whether the specified string is a reference
+            </summary>
+            <param name="reference">the ref to test</param>
+            <returns>true if a ref, false otherwise</returns>
+            <example>
+            <code language="C#">
+            bool isValid;
+            isValid = Ref.IsRef("http://rally1.rallydev.com/slm/webservice/1.32/defect/1234.js");
+            // isValid is true
+            
+            
+            isValid = Ref.IsRef("https://rally1.rallydev.com/slm/webservice/1.32/defect/abc.js");
+            // isValid is false
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Ref.GetRelativeRef(System.String)">
+            <summary>
+            Get a relative ref from the specified ref.
+            All server information will be stripped before being returned.
+            </summary>
+            <param name="reference">The absolute ref to be made relative</param>
+            <returns>The relative version of the specified absolute ref</returns>
+            <example>
+            <code language="C#">
+            string fullyQualifiedRef = "https://rally1.rallydev.com/slm/webservice/v2.0/portfolioitem/feature/1234";
+            string relativeRef = Ref.GetRelativeRef(fullyQualifiedRef);
+            
+            // returns "/portfolioitem/feature/1234"
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Ref.GetTypeFromRef(System.String)">
+            <summary>
+            Get the type from the specified ref
+            </summary>
+            <param name="reference">The ref to get the type from</param>
+            <returns>The type of the specified ref</returns>
+            <example>
+            <code language="C#">
+            string fullyQualifiedRef = "https://rally1.rallydev.com/slm/webservice/v2.0/user/1234";
+            string relativeRef = Ref.GetTypeFromRef(fullyQualifiedRef);
+            
+            // returns "user"
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Ref.GetOidFromRef(System.String)">
+            <summary>
+            Get the object id from the specified ref
+            </summary>
+            <param name="reference">The ref to get the object id from</param>
+            <returns>The object id of the specified ref</returns>
+            <example>
+            <code language="C#">
+            string fullyQualifiedRef = "https://rally1.rallydev.com/slm/webservice/v2.0/user/1234";
+            string relativeRef = Ref.GetOidFromRef(fullyQualifiedRef);
+            
+            // returns "1234"
+            </code>
+            </example>
+        </member>
+        <member name="T:Rally.RestApi.RallyRestApi">
+            <summary>
+            The main interface to the Rally REST API
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.SECURITY_ENDPOINT">
+            <summary>
+            The endpoint for getting a CSRF token. This has custom logic in HttpService for SSO users.
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.RallyRestApi.AuthenticationResult">
+            <summary>
+            Enumeration of the different authentication results that may occur.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.AuthenticationResult.NotAuthorized">
+            <summary>
+            The user is not authorized.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.AuthenticationResult.PendingSSO">
+            <summary>
+            The user needs to perform SSO authentication.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.AuthenticationResult.Authenticated">
+            <summary>
+            The user is authenticated.
+            </summary>
+        </member>
+        <member name="T:Rally.RestApi.RallyRestApi.HeaderType">
+            <summary>
+            Enumeration of the valid HTTP headers that
+            may be passed on REST requests
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.HeaderType.Operation">
+            <summary>
+            X-RallyIntegrationOperation
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.HeaderType.Guid">
+            <summary>
+            X-Trace-Id
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.HeaderType.Library">
+            <summary>
+            X-RallyIntegrationLibrary
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.HeaderType.Name">
+            <summary>
+            X-RallyIntegrationName
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.HeaderType.Vendor">
+            <summary>
+            X-RallyIntegrationVendor
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.HeaderType.Version">
+            <summary>
+            X-RallyIntegrationVersion
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.ZSessionID">
+            <summary>
+            The identifier for the authentication cookie used by Rally.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.MAX_THREADS_ALLOWED">
+            <summary>
+            The maximum number of threads allowed when performing parallel operations.
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.DEFAULT_WSAPI_VERSION">
+            <summary>
+            The default WSAPI version to use
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.DEFAULT_TRACE_FIELDS">
+            <summary>
+            The default Trace fields
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.DEFAULT_SERVER">
+            <summary>
+            The default server to use: (https://rally1.rallydev.com)
+            </summary>
+        </member>
+        <member name="F:Rally.RestApi.RallyRestApi.AUTH_ERROR">
+            <summary>
+            /// The default auth arror
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.RallyRestApi.Headers">
+            <summary>
+            The HTTP headers to be included on all REST requests
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.RallyRestApi.AuthenticationState">
+            <summary>
+            The state of authentication for this API instance.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.RallyRestApi.ConnectionInfo">
+            <summary>
+            The connection info thsi API is using.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.RallyRestApi.WsapiVersion">
+            <summary>
+            The WSAPI version we are talking to.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.RallyRestApi.IsWsapi2">
+            <summary>
+            Is this connection using WSAPI 2?
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.RallyRestApi.WebServiceUrl">
+            <summary>
+            The full WSAPI url
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.#ctor(Rally.RestApi.Auth.ApiAuthManager,System.String,System.Int32,Rally.RestApi.TraceFieldEnum)">
+            <summary>
+            Construct a new RallyRestApi configured to work with the specified WSAPI version
+            </summary>
+            <param name="authManger">The authorization manager to use when authentication requires it. If no driver is 
+            provided a console authentication manager will be used which does not allow SSO authentication.</param>
+            <param name="webServiceVersion">The WSAPI version to use (defaults to DEFAULT_WSAPI_VERSION)</param>
+            <param name="maxRetries">Requests will be attempted a number of times (defaults to 3)</param>
+            <param name="traceInfo">Controls diagnostic trace information being logged</param>
+            <example>
+            For a console application, no authentication manager is needed as shown in this example.
+            <code language="C#">
+            RallyRestApi restApi = new RallyRestApi();
+            </code>
+            For UI applications, an authentication manager must be provided. The authentication providers will 
+            configure the API and create the linkages as part of the constructor. Please see the documentation for 
+            the RestApiAuthMgrWpf and RestApiAuthMgrWinforms for more information.
+            <code language="C#">
+            // You must define your own private application token. This ensures that your login details are not overwritten by someone else.
+            string applicationToken = "RallyRestAPISample";
+            // You must set a user specific salt for encryption.
+            string encryptionKey = "UserSpecificSaltForEncryption";
+            // You must define your own encryption routines.
+            IEncryptionRoutines encryptionUtilities = new EncryptionUtilities();
+            
+            // Instantiate authorization manager
+            wpfAuthMgr = new RestApiAuthMgrWpf(applicationToken, encryptionKey, encryptionUtilities);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.AuthenticateWithZSessionID(System.String,System.String,System.String,System.Net.WebProxy,System.Boolean)">
+            <summary>
+            Authenticates against Rally with the specified credentials
+            </summary>
+            <param name="userName">The user name to be used for access</param>
+            <param name="zSessionID">The ZSessionID to be used for access. This would have been provided by Rally on a previous call.</param>
+            <param name="rallyServer">The Rally server to use (defaults to DEFAULT_SERVER)</param>
+            <param name="proxy">Optional proxy configuration</param>
+            <param name="allowSSO">Is SSO authentication allowed for this call? It can be useful to disable this during startup processes.</param>
+            <returns>An <see cref="T:Rally.RestApi.RallyRestApi.AuthenticationResult"/> that indicates the current state of the authentication process.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            RallyRestApi restApi = new RallyRestApi();
+            WebProxy myProxy = new WebProxy();
+            restApi.AuthenticateWithZSessionID("myuser@company.com", "zSessionID", proxy: myProxy);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.AuthenticateWithApiKey(System.String,System.String,System.Net.WebProxy)">
+            <summary>
+            Authenticates against Rally with the specified credentials
+            </summary>
+            <param name="apiKey">The API key to be used for access</param>
+            <param name="rallyServer">The Rally server to use (defaults to DEFAULT_SERVER)</param>
+            <param name="proxy">Optional proxy configuration</param>
+            <returns>An <see cref="T:Rally.RestApi.RallyRestApi.AuthenticationResult"/> that indicates the current state of the authentication process.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            RallyRestApi restApi = new RallyRestApi();
+            WebProxy myProxy = new WebProxy();
+            restApi.AuthenticateWithApiKey("ApiKeyFromRally", proxy: myProxy);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.AuthenticateWithApiKey(System.String,System.Uri,System.Net.WebProxy)">
+            <summary>
+            Authenticates against Rally with the specified credentials
+            </summary>
+            <param name="apiKey">The API key to be used for access</param>
+            <param name="serverUrl">The Rally server to use (defaults to DEFAULT_SERVER)</param>
+            <param name="proxy">Optional proxy configuration</param>
+            <returns>The current state of the authentication process. <see cref="T:Rally.RestApi.RallyRestApi.AuthenticationResult"/></returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            RallyRestApi restApi = new RallyRestApi();
+            WebProxy myProxy = new WebProxy();
+            restApi.AuthenticateWithApiKey("ApiKeyFromRally", new Uri("https://myserverurl"), proxy: myProxy);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Authenticate(System.String,System.String,System.String,System.Net.WebProxy,System.Boolean)">
+            <summary>
+            Authenticates against Rally with the specified credentials
+            </summary>
+            <param name="username">The user name to be used for access</param>
+            <param name="password">The password to be used for access</param>
+            <param name="rallyServer">The Rally server to use (defaults to DEFAULT_SERVER)</param>
+            <param name="proxy">Optional proxy configuration</param>
+            <param name="allowSSO">Is SSO authentication allowed for this call? It can be useful to disable this during startup processes.</param>
+            <returns>The current state of the authentication process. <see cref="T:Rally.RestApi.RallyRestApi.AuthenticationResult"/></returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            RallyRestApi restApi = new RallyRestApi();
+            WebProxy myProxy = new WebProxy();
+            restApi.Authenticate("myuser@company.com", "password", proxy: myProxy);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Authenticate(System.String,System.String,System.Uri,System.Net.WebProxy,System.Boolean)">
+            <summary>
+            Authenticates against Rally with the specified credentials
+            </summary>
+            <param name="username">The user name to be used for access</param>
+            <param name="password">The password to be used for access</param>
+            <param name="serverUrl">The Rally server to use (defaults to DEFAULT_SERVER)</param>
+            <param name="proxy">Optional proxy configuration</param>
+            <param name="allowSSO">Is SSO authentication allowed for this call? It can be useful to disable this during startup processes.</param>
+            <returns>The current state of the authentication process. <see cref="T:Rally.RestApi.RallyRestApi.AuthenticationResult"/></returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            RallyRestApi restApi = new RallyRestApi();
+            WebProxy myProxy = new WebProxy();
+            restApi.Authenticate("myuser@company.com", "password", new Uri("https://myserverurl"), proxy: myProxy);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.AuthenticateWithConnectionInfo(Rally.RestApi.Connection.ConnectionInfo,System.Boolean)">
+            <summary>
+            Authenticates against Rally with the specified credentials
+            </summary>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.CreateIdpAuthentication(System.Uri,System.Net.WebProxy)">
+            <summary>
+            Configures authentication to run against an IDP.
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Logout">
+            <summary>
+            Logs this API out from any connection to Rally and clears the authentication configuration.
+            </summary>
+            <example>
+            <code language="C#">
+            RallyRestApi restApi = new RallyRestApi();
+            WebProxy myProxy = new WebProxy();
+            restApi.AuthenticateWithZSessionID("myuser@company.com", "zSessionID", proxy: myProxy);
+            
+            restApi.Logout();
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.SetDefaultConnectionLimit(System.UInt16)">
+            <summary>
+            Sets the default maximum concurrent connection limit for this application.
+            <note>This will affect all connections that use Service Point.</note>
+            </summary>
+            <param name="maxConnections">The maximum number of concurrent connections. Allowed values are between 1 and 25.</param>
+            <example>
+            <code language="C#">
+            RallyRestApi.SetDefaultConnectionLimit(10);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Post(System.String,Rally.RestApi.Json.DynamicJsonObject)">
+            <summary>
+            Performs a post of data to the provided URI.
+            </summary>
+            <param name="relativeUri">The relative URI to post the data to.</param>
+            <param name="data">The data to submit to Rally.</param>
+            <returns>A <see cref="T:Rally.RestApi.Json.DynamicJsonObject"/> with information on the response from Rally.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            DynamicJsonObject data = objectToPost;
+            restApi.Post("defect/12345", data)
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.DoDelete(System.Uri,System.Boolean)">
+            <summary>
+            Performs a delete action.
+            </summary>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Query(Rally.RestApi.Request)">
+            <summary>
+            Perform a read against the WSAPI operation based
+            on the data in the specified request
+            </summary>
+            <param name="request">The request configuration</param>
+            <returns>A <see cref="T:Rally.RestApi.Json.DynamicJsonObject"/> with the response from Rally.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            // Build request
+            Request request = new Request("defect");
+            request.Fetch = new List&lt;string&gt;() { "Name", "Description", "FormattedID" };
+            
+            request.Query = new Query("Name", Query.Operator.Equals, "My Defect").And(new Query("State", Query.Operator.Equals, "Submitted"));
+            
+            // Make request and process results 
+            QueryResult queryResult = restApi.Query(request);
+            foreach (var result in queryResult.Results)
+            {
+            	string itemName = result["Name"];
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetCurrentUser(System.String[])">
+            <summary>
+            Get the current user
+            </summary>
+            <param name="fetchedFields">The fields that should be retrieved for the user.
+            If no fields are specified, a * wild card will be used.</param>
+            <returns>A <see cref="T:Rally.RestApi.Json.DynamicJsonObject"/> that contains the currently logged in user.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            DynamicJsonObject user = restApi.GetCurrentUser("Name", "FormattedID");
+            string user = user["Name"];
+            string userID = user["FormattedID"];
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetSubscription(System.String[])">
+            <summary>
+            Get the current subscription
+            </summary>
+            <param name="fetchedFields">An optional list of fields to be fetched</param>
+            <returns>A <see cref="T:Rally.RestApi.Json.DynamicJsonObject"/> that contains the currently logged in user.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            DynamicJsonObject subscription = restApi.GetSubscription("Name", "FormattedID");
+            string subscriptionName = subscription["Name"];
+            string subscriptionFormattedID = subscription["FormattedID"];
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetByReference(System.String,System.Int64,System.String[])">
+            <summary>
+            Get the object described by the specified type and object id.
+            </summary>
+            <param name="typePath">the type</param>
+            <param name="oid">the object id</param>
+            <param name="fetchedFields">the list of object fields to be fetched</param>
+            <returns>A <see cref="T:Rally.RestApi.Json.DynamicJsonObject"/> containing the requested object.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <exception cref="T:System.InvalidOperationException">Occurs if authentication is not completed prior to calling this method.</exception>
+            <example>
+            <code language="C#">
+            DynamicJsonObject item = restApi.GetByReference("defect", 12345, "Name", "FormattedID");
+            string itemName = item["Name"];
+            string itemFormattedID = item["FormattedID"];
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetByReference(System.String,System.String[])">
+            <summary>
+            Get the object described by the specified reference.
+            </summary>
+            <param name="aRef">the reference</param>
+            <param name="fetchedFields">the list of object fields to be fetched</param>
+            <returns>A <see cref="T:Rally.RestApi.Json.DynamicJsonObject"/> containing the requested object.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <exception cref="T:System.InvalidOperationException">Occurs if authentication is not completed prior to calling this method.</exception>
+            <exception cref="T:System.ArgumentNullException">Occurs if the passed in aRef parameter is null.</exception>
+            <example>
+            <code language="C#">
+            string aRef = "https://preview.rallydev.com/slm/webservice/v2.0/defect/12345.js"
+            DynamicJsonObject item = restApi.GetByReference(aRef, "Name", "FormattedID");
+            string itemName = item["Name"];
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetByReferenceAndWorkspace(System.String,System.String,System.String[])">
+            <summary>
+            Get the object described by the specified reference scoped to the provided workspace.
+            </summary>
+            <param name="aRef">the reference</param>
+            <param name="workspaceRef">workspace scope</param>
+            <param name="fetchedFields">the list of object fields to be fetched</param>
+            <returns>A <see cref="T:Rally.RestApi.Json.DynamicJsonObject"/> containing the requested object.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            string aRef = "https://preview.rallydev.com/slm/webservice/v2.0/defect/12345.js"
+            string workspaceRef = "/workspace/12345678910";
+            DynamicJsonObject item = restApi.GetByReference(aRef, workspaceRef, "Name", "FormattedID");
+            string itemName = item["Name"];
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Delete(System.String,System.String,System.Int64)">
+             <summary>
+             Delete the object described by the specified type and object id.
+             </summary>
+             <param name="workspaceRef">the workspace from which the object will be deleted.  Null means that the server will pick a workspace.</param>
+             <param name="typePath">the type</param>
+             <param name="oid">the object id</param>
+             <returns>An OperationResult with information on the status of the request</returns>
+             <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+             <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+             <example>
+             <code language="C#">
+             string workspaceRef = "/workspace/12345678910";
+             long objectID = 12345678912L;
+             OperationResult deleteResult = restApi.Delete(workspaceRef, "Defect", objectID);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Delete(System.String,System.Int64)">
+            <summary>
+            Delete the object described by the specified type and object id.
+            </summary>
+            <param name="typePath">the type</param>
+            <param name="oid">the object id</param>
+            <returns>An OperationResult with information on the status of the request</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            long objectID = 12345678912L;
+            OperationResult deleteResult = restApi.Delete("Defect", objectID);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Delete(System.String)">
+             <summary>
+             Delete the object described by the specified reference.
+             </summary>
+             <param name="aRef">the reference</param>
+             <returns>An OperationResult with information on the status of the request</returns>
+             <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+             <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+             <example>
+             <code language="C#">
+             string objectRef = "/defect/12345678912";
+             OperationResult deleteResult = restApi.Delete(objectRef);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Delete(System.String,System.String)">
+             <summary>
+             Delete the object described by the specified reference.
+             </summary>
+             <param name="workspaceRef">the workspace from which the object will be deleted.  Null means that the server will pick a workspace.</param>
+             <param name="aRef">the reference</param>
+             <returns>An OperationResult with information on the status of the request</returns>
+             <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+             <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+             <example>
+             <code language="C#">
+             string workspaceRef = "/workspace/12345678910";;
+             string objectRef = "/defect/12345678912";
+             OperationResult deleteResult = restApi.Delete(workspaceRef, objectRef);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Create(System.String,Rally.RestApi.Json.DynamicJsonObject)">
+            <summary>
+            Create an object of the specified type from the specified object
+            </summary>
+            <param name="typePath">the type to be created</param>
+            <param name="obj">the object to be created</param>
+            <returns>A <see cref="T:Rally.RestApi.Response.CreateResult"/> with information on the status of the request</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            DynamicJsonObject toCreate = new DynamicJsonObject();
+            toCreate["Name"] = "My Defect";
+            CreateResult createResult = restApi.Create("defect", toCreate);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Create(System.String,System.String,Rally.RestApi.Json.DynamicJsonObject)">
+            <summary>
+            Create an object of the specified type from the specified object
+            </summary>
+            <param name="workspaceRef">the workspace into which the object should be created.  Null means that the server will pick a workspace.</param>
+            <param name="typePath">the type to be created</param>
+            <param name="obj">the object to be created</param>
+            <returns>A <see cref="T:Rally.RestApi.Response.CreateResult"/> with information on the status of the request</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            string workspaceRef = "/workspace/12345678910";
+            DynamicJsonObject toCreate = new DynamicJsonObject();
+            toCreate["Name"] = "My Defect";
+            CreateResult createResult = restApi.Create(workspaceRef, "defect", toCreate);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Create(System.String,Rally.RestApi.Json.DynamicJsonObject,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Create an object of the specified type from the specified object
+            </summary>
+            <param name="typePath">the type to be created</param>
+            <param name="obj">the object to be created</param>
+            <param name="parameters">additional parameters to include in the create request</param>
+            <returns>A <see cref="T:Rally.RestApi.Response.CreateResult"/> with information on the status of the request</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            string workspaceRef = "/workspace/12345678910";
+            DynamicJsonObject toCreate = new DynamicJsonObject();
+            toCreate["Name"] = "My Defect";
+            NameValueCollection parameters = new NameValueCollection();
+            parameters["rankAbove"] = "/defect/12345";
+            CreateResult createResult = restApi.Create("defect", toCreate, parameters);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Update(System.String,Rally.RestApi.Json.DynamicJsonObject)">
+            <summary>
+            Update the item described by the specified reference with
+            the fields of the specified object
+            </summary>
+            <param name="reference">the reference to be updated</param>
+            <param name="obj">the object fields to update</param>
+            <returns>An <see cref="T:Rally.RestApi.Response.OperationResult"/> describing the status of the request</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            string rallyRef = "https://preview.rallydev.com/slm/webservice/1.40/defect/12345.js";
+            DynamicJsonObject toUpdate = new DynamicJsonObject(); 
+            toUpdate["Description"] = "This is my defect."; 
+            OperationResult updateResult = restApi.Update(rallyRef, toUpdate);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Update(System.String,Rally.RestApi.Json.DynamicJsonObject,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Update the item described by the specified reference with
+            the fields of the specified object
+            </summary>
+            <param name="reference">the reference to be updated</param>
+            <param name="obj">the object fields to update</param>
+            <param name="parameters">additional query string parameters to be included on the request</param>
+            <returns>An <see cref="T:Rally.RestApi.Response.OperationResult"/> describing the status of the request</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            string rallyRef = "https://preview.rallydev.com/slm/webservice/1.40/defect/12345.js";
+            DynamicJsonObject toUpdate = new DynamicJsonObject(); 
+            toUpdate["Description"] = "This is my defect."; 
+            NameValueCollection parameters = new NameValueCollection();
+            parameters["rankAbove"] = "/defect/23456";
+            OperationResult updateResult = restApi.Update(rallyRef, toUpdate, parameters);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Update(System.String,System.String,Rally.RestApi.Json.DynamicJsonObject)">
+            <summary>
+            Update the item described by the specified type and object id with
+            the fields of the specified object
+            </summary>
+            <param name="typePath">the type of the item to be updated</param>
+            <param name="oid">the object id of the item to be updated</param>
+            <param name="obj">the object fields to update</param>
+            <returns>An <see cref="T:Rally.RestApi.Response.OperationResult"/> describing the status of the request</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            DynamicJsonObject toUpdate = new DynamicJsonObject(); 
+            toUpdate["Description"] = "This is my defect."; 
+            OperationResult updateResult = restApi.Update("defect", "12345", toUpdate);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.Update(System.String,System.String,Rally.RestApi.Json.DynamicJsonObject,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Update the item described by the specified type and object id with
+            the fields of the specified object
+            </summary>
+            <param name="typePath">the type of the item to be updated</param>
+            <param name="oid">the object id of the item to be updated</param>
+            <param name="obj">the object fields to update</param>
+            <param name="parameters">additional query string parameters to be include on the request</param>
+            <returns>An <see cref="T:Rally.RestApi.Response.OperationResult"/> describing the status of the request</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            DynamicJsonObject toUpdate = new DynamicJsonObject(); 
+            toUpdate["Description"] = "This is my defect."; 
+            NameValueCollection parameters = new NameValueCollection();
+            parameters["rankAbove"] = "/defect/23456";
+            OperationResult updateResult = restApi.Update("defect", "12345", toUpdate, parameters);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.AddToCollection(System.String,System.String,System.Collections.Generic.List{Rally.RestApi.Json.DynamicJsonObject},System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Add items to a collection
+            </summary>
+            <param name="itemRef">The ref of the object to update e.g. /defect/12345</param>
+            <param name="collectionName">The name of the collection to be updated e.g. Tasks</param>
+            <param name="items">The items to add.  These can be references to existing objects or new objects to be created.</param>
+            <param name="parameters">additional query string parameters to be included on the request</param>
+            <returns>An <see cref="T:Rally.RestApi.Response.OperationResult"/> describing the status of the request</returns>
+            <example>
+            <code language="C#">
+            DynamicJsonObject existingTask = new DynamicJsonObject(); 
+            existingTask["_ref"] = "/task/23456";
+            DynamicJsonObject newTask = new DynamicJsonObject();
+            newTask["Name"] = "New Task";
+            NameValueCollection parameters = new NameValueCollection();
+            parameters["fetch"] = "FormattedID";
+            List{DynamicJsonObject} newItems = new List{DynamicJsonObject}() { existingTask, newTask };
+            OperationResult updateResult = restApi.AddToCollection("/defect/12345", "Tasks", newTasks, parameters);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.RemoveFromCollection(System.String,System.String,System.Collections.Generic.List{Rally.RestApi.Json.DynamicJsonObject},System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Remove items from a collection
+            </summary>
+            <param name="itemRef">The ref of the object to update e.g. /defect/12345</param>
+            <param name="collectionName">The name of the collection to be updated e.g. Tasks</param>
+            <param name="items">The items to remove.</param>
+            <param name="parameters">additional query string parameters to be included on the request</param>
+            <returns>An <see cref="T:Rally.RestApi.Response.OperationResult"/> describing the status of the request</returns>
+            <example>
+            <code language="C#">
+            DynamicJsonObject existingTask = new DynamicJsonObject(); 
+            existingTask["_ref"] = "/task/23456";
+            NameValueCollection parameters = new NameValueCollection();
+            List{DynamicJsonObject} itemsToRemove = new List{DynamicJsonObject}() { existingTask };
+            OperationResult updateResult = restApi.RemoveFromCollection("/defect/12345", "Tasks", itemsToRemove, parameters);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetAllowedAttributeValues(System.String,System.String)">
+            <summary>
+            Get the allowed values for the specified type and attribute
+            </summary>
+            <param name="typePath">the type</param>
+            <param name="attributeName">the attribute to retrieve allowed values for</param>
+            <returns>Returns a <see cref="T:Rally.RestApi.Json.DynamicJsonObject"/> containing the allowed values for the specified type and attribute.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            DynamicJsonObject allowedValues = restApi.GetAllowedAttributeValues("defect", "severity");
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetTypes(System.String)">
+            <summary>
+            <para><b>Unsupported - DO NOT USE</b></para>
+            Get the attribute definitions for the specified project or workspace (part of the query string).
+            <note>This uses an unpublished/unsupported endpoint and should NOT be used by non-Rally applications. 
+            This endpoint may alter behavior at any point in time.</note>
+            </summary>
+            <param name="queryString">The query string to get types for</param>
+            <returns>The type definitions for the specified query</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <para><b>Unsupported - DO NOT USE</b></para>
+            <note>This uses an unpublished/unsupported endpoint and should NOT be used by non-Rally applications. 
+            This endpoint may alter behavior at any point in time.</note>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetAttributesByType(System.String)">
+            <summary>
+            Get the attribute definitions for the specified type
+            </summary>
+            <param name="type">The type to get attributes for</param>
+            <returns>Returns a <see cref="T:Rally.RestApi.Response.QueryResult"/> object containing the attribute definitions for the specified type.</returns>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+            <example>
+            <code language="C#">
+            DynamicJsonObject allowedValues = restApi.GetAllowedAttributeValues("defect", "severity");
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.DownloadAttachment(System.String)">
+            <summary>
+            Downloads an attachment from Rally.
+            </summary>
+            <param name="relativeUrl">The relative URL to the attachment.</param>
+            <returns>The result of the request.</returns>
+            <example>
+            <code language="C#">
+            string relativeUrl = "/slm/attachment/12345678900/image_file_name.jpg"
+            AttachmentResult attachmentResult = DownloadAttachment(relativeUrl);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.DoGetCacheable(System.Uri,System.Boolean@)">
+            <summary>
+            Gets a cacheable response.
+            </summary>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.DoGetAsPost(Rally.RestApi.Request,System.Boolean,System.Int32)">
+            <summary>
+            Performs get as a post action.
+            </summary>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.DoGet(System.Uri,System.Boolean,System.Int32)">
+            <summary>
+            Performs a get action.
+            </summary>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.DoPost(System.Uri,Rally.RestApi.Json.DynamicJsonObject,System.Boolean,System.Int32)">
+            <summary>
+            Performs a post action.  If first action fails there will occur up to 10 retries each backing off an incrementing number of seconds (wait 1 second, retry, wait 2 seconds, retry, etc).
+            
+            </summary>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetSecurityToken">
+            <summary>
+            Gets a security token from Rally.
+            </summary>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyUnavailableException">Rally returned an HTML page. This usually occurs when Rally is off-line. Please check the ErrorMessage property for more information.</exception>
+            <exception cref="T:Rally.RestApi.Exceptions.RallyFailedToDeserializeJson">The JSON returned by Rally was not able to be deserialized. Please check the JsonData property for what was returned by Rally.</exception>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetFullyQualifiedUri(System.String)">
+            <summary>
+            Ensure the specified ref is fully qualified with the full WSAPI URL
+            </summary>
+            <param name="aRef">A Rally object ref</param>
+            <returns>The fully qualified ref</returns>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetFullyQualifiedRef(System.String)">
+            <summary>
+            Ensure the specified ref is fully qualified with the full WSAPI URL
+            </summary>
+            <param name="aRef">A Rally object ref</param>
+            <returns>The fully qualified ref</returns>
+        </member>
+        <member name="M:Rally.RestApi.RallyRestApi.GetFullyQualifiedV2xSchemaUri(System.String)">
+            <summary>
+            Ensure the specified ref is fully qualified with the full WSAPI URL
+            </summary>
+            <param name="aRef">A Rally object ref</param>
+            <returns>The fully qualified ref</returns>
+        </member>
+        <member name="T:Rally.RestApi.Request">
+            <summary>
+            Represents a request to be sent to Rally
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Request.#ctor(System.String)">
+            <summary>
+            Create a new Request with the specified artifact type
+            </summary>
+            <param name="artifactName">The Rally artifact type being requested</param>
+            <example>
+            <code>
+            Request request = new Request("PortfolioItem/Feature");
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Request.#ctor(Rally.RestApi.Json.DynamicJsonObject)">
+            <summary>
+            Create a new Request for the specified collection. (ie Defect.Tasks)
+            The collection should have a _ref property.
+            </summary>
+            <param name="collection">The object containing the collection ref</param>
+            <example>
+            <code>
+            DynamicJsonObject collection = new DynamicJsonObject();
+            collection["_ref"] = "/hierarchicalrequirement/12345/defect.js";
+            Request request = new Request(collection);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Request.#ctor">
+            <summary>
+            Create a new empty Request.
+            </summary>
+            <example>
+            <code>
+            Request request = new Request();
+            </code>
+            </example>
+        </member>
+        <member name="F:Rally.RestApi.Request.MAX_PAGE_SIZE">
+            <summary>
+            The maximum page size (200).
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.Limit">
+            <summary>
+            An upper bound on the total results to be returned.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.ArtifactName">
+            <summary>
+            The name of the artifact that will be queried
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.PageSize">
+            <summary>
+            Page size for results. Must be between 1 and MAX_PAGE_SIZE, default is MAX_PAGE_SIZE. 
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.Fetch">
+            <summary>
+            A list of attributes to be returned in the result set.
+            If null or empty true will be used.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.UseShallowFetch">
+            <summary>
+            Using ShallowFetch will only fetch the fields listed in the [] on the related items rather than fetching all fields on all objects.
+            An example of the param is: shallowFetch=Name,WorkProduct[Name;FormattedID]
+            The Fetch attributes will be treated as a shallow fetch if this is set to true.
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.Query">
+            <summary>
+            A filter query to be applied to results before being returned
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.ProjectScopeUp">
+            <summary>
+            Default is the user's default from Rally. In addition to the specified project, include projects above the specified one. 
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.ProjectScopeDown">
+            <summary>
+            Default is the user's default from Rally. In addition to the specified project, include child projects below the specified one. 
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.Start">
+            <summary>
+            Start index (1-based) for queries. The default is 1. 
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.Workspace">
+            <summary>
+            The ref for the workspace that you want the results from
+            <example>
+            /workspace/12345
+            </example>
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.Project">
+            <summary>
+            The ref for the project that you want the results from
+            <example>
+            /project/12345
+            </example>
+            </summary>
+        </member>
+        <member name="P:Rally.RestApi.Request.Order">
+            <summary>
+             A sort string. 
+             <example>ObjectId Desc</example>
+             <example>FormattedId</example>
+            </summary>
+        </member>
+        <member name="M:Rally.RestApi.Request.AddParameter(System.String,System.String)">
+            <summary>
+            Ability to add parameters other than the ones explicitly exposed.
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+            <returns>true if added. false if the key already existed</returns>
+        </member>
+        <member name="M:Rally.RestApi.Request.BuildQueryString">
+            <summary>
+            Create a query string from this request.
+            </summary>
+            <returns>A query string representation of this request</returns>
+        </member>
+        <member name="M:Rally.RestApi.Request.CreateFromUrl(System.String)">
+            <summary>
+            Create a request object from a url string.
+            </summary>
+            <param name="url">the url we are creating from</param>
+            <returns>A request object that represents the reference string.</returns>
+            <example>
+            <code>
+            string url = "https://rally1.rallydev.com/slm/webservice/v2.0/hierarchicalrequirement/12345/defect.js?pagesize=172&amp;fetch=Name&amp;order=ObjectID&amp;start=57";
+            Request request = Request.CreateFromUrl(url);
+            </code>
+            </example>
+        </member>
+        <member name="M:Rally.RestApi.Request.Clone">
+            <summary>
+            Perform a deep clone of this request and all its parameters.
+            </summary>
+            <returns>The clone request</returns>
+            <example>
+            <code>
+            Request request = new Request("Defect");
+            request.Fetch = new List&lt;string&gt;() { "Name", "FormattedID" };
+            
+            Request clonedRequest = request.Clone();
+            </code>
+            </example>
+        </member>
+    </members>
+</doc>

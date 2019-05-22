@@ -11,12 +11,12 @@ namespace V1DataReader
 {
     abstract public class IExportAssets
     {
-        protected MetaModel _metaAPI;
+        protected IMetaModel _metaAPI;
         protected Services _dataAPI;
         protected SqlConnection _sqlConn;
         protected MigrationConfiguration _config;
 
-        public IExportAssets(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public IExportAssets(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
         {
             _sqlConn = sqlConn;
             _metaAPI = MetaAPI;
@@ -62,7 +62,8 @@ namespace V1DataReader
             if (attribute.Value != null && attribute.Value.ToString() != "NULL")
                 return attribute.Value.ToString();
             else
-                return DBNull.Value;
+                //return DBNull.Value;
+                return "Scope:0";
         }
 
         protected Object GetSingleListValue(VersionOne.SDK.APIClient.Attribute attribute)

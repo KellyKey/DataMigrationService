@@ -15,7 +15,7 @@ namespace V1DataWriter
 
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public ImportMembers(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ImportMembers(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
@@ -99,12 +99,15 @@ namespace V1DataWriter
                     //_logger.Info("Reached this point");
                     UpdateNewAssetOIDAndStatus("Members", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Member imported.");
                     importCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
+
                 }
                 catch (Exception ex)
                 {
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Members", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
                         continue;
                     }
                     else

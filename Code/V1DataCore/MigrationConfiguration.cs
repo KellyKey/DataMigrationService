@@ -14,6 +14,7 @@ namespace V1DataCore
             public string Url { get; set; }
             public string Username { get; set; }
             public string Password { get; set; }
+            public string AccessToken { get; set; }
             public string Project { get; set; }
             public string AuthenticationType { get; set; }
         }
@@ -29,6 +30,7 @@ namespace V1DataCore
             public string ReleaseExportFilePrefix { get; set; }
             public string IterationExportFilePrefix { get; set; }
             public string EpicExportFilePrefix { get; set; }
+            public string PortfolioExportFilePrefix { get; set; }
             public string StoryExportFilePrefix { get; set; }
             public string DefectExportFilePrefix { get; set; }
             public string TaskExportFilePrefix { get; set; }
@@ -36,7 +38,9 @@ namespace V1DataCore
             public string RegressionTestExportFilePrefix { get; set; }
             public string TestStepExportFilePrefix { get; set; }
             public string ConversationExportFilePrefix { get; set; }
+            public string AttachmentExportFilePrefix { get; set; }
             public string OrphanedTestProject { get; set; }
+            public string OrphanTasksDefaultStory { get; set; }
         }
 
         public struct JiraConfigurationInfo
@@ -128,6 +132,7 @@ namespace V1DataCore
                                Url = item.Element("Url").Value,
                                Username = string.IsNullOrEmpty(item.Element("Username").Value) ? string.Empty : item.Element("Username").Value,
                                Password = string.IsNullOrEmpty(item.Element("Password").Value) ? string.Empty : item.Element("Password").Value,
+                               AccessToken = string.IsNullOrEmpty(item.Element("AccessToken").Value) ? string.Empty : item.Element("AccessToken").Value,
                                Project = string.IsNullOrEmpty(item.Element("Project").Value) ? string.Empty : item.Element("Project").Value,
                                AuthenticationType = string.IsNullOrEmpty(item.Attribute("authenticationType").Value) ? string.Empty : item.Attribute("authenticationType").Value
                            };
@@ -146,6 +151,7 @@ namespace V1DataCore
                                Url = item.Element("Url").Value,
                                Username = string.IsNullOrEmpty(item.Element("Username").Value) ? string.Empty : item.Element("Username").Value,
                                Password = string.IsNullOrEmpty(item.Element("Password").Value) ? string.Empty : item.Element("Password").Value,
+                               AccessToken = string.IsNullOrEmpty(item.Element("AccessToken").Value) ? string.Empty : item.Element("AccessToken").Value,
                                Project = string.IsNullOrEmpty(item.Element("Project").Value) ? string.Empty : item.Element("Project").Value,
                                AuthenticationType = string.IsNullOrEmpty(item.Attribute("authenticationType").Value) ? string.Empty : item.Attribute("authenticationType").Value
                            };
@@ -186,6 +192,7 @@ namespace V1DataCore
                                 ReleaseExportFilePrefix = item.Element("releaseExportFilePrefix").Value,
                                 IterationExportFilePrefix = item.Element("iterationExportFilePrefix").Value,
                                 EpicExportFilePrefix = item.Element("epicExportFilePrefix").Value,
+                                PortfolioExportFilePrefix = item.Element("PortfolioExportFilePrefix").Value,
                                 StoryExportFilePrefix = item.Element("storyExportFilePrefix").Value,
                                 DefectExportFilePrefix = item.Element("defectExportFilePrefix").Value,
                                 TaskExportFilePrefix = item.Element("taskExportFilePrefix").Value,
@@ -193,7 +200,9 @@ namespace V1DataCore
                                 RegressionTestExportFilePrefix = item.Element("regressiontestExportFilePrefix").Value,
                                 TestStepExportFilePrefix = item.Element("teststepExportFilePrefix").Value,
                                 ConversationExportFilePrefix = item.Element("conversationExportFilePrefix").Value,
-                                OrphanedTestProject = item.Element("orphanedTestProject").Value
+                                AttachmentExportFilePrefix = item.Element("attachmentExportFilePrefix").Value,
+                                OrphanedTestProject = item.Element("orphanedTestProject").Value,
+                                OrphanTasksDefaultStory = item.Element("orphanTasksDefaultStory").Value
                               };
             RallySourceConnection = rallySource.First();
 
@@ -286,8 +295,8 @@ namespace V1DataCore
             // **********************************
             var customFieldData = from item in xmlDoc.Descendants("customField")
                                   select item;
-            if (customFieldData.Count() == 0)
-                throw new ConfigurationErrorsException("Missing custom fields to migrate information in application config file.");
+            //if (customFieldData.Count() == 0)
+              //  throw new ConfigurationErrorsException("Missing custom fields to migrate information in application config file.");
 
             foreach (var customField in customFieldData)
             {

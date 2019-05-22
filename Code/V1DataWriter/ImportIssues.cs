@@ -11,7 +11,7 @@ namespace V1DataWriter
 {
     public class ImportIssues : IImportAssets
     {
-        public ImportIssues(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ImportIssues(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
@@ -28,6 +28,13 @@ namespace V1DataWriter
                     if (String.IsNullOrEmpty(sdr["Scope"].ToString()))
                     {
                         UpdateImportStatus("Issues", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Issue has no scope.");
+                        continue;
+                    }
+
+                    //SPECIAL CASE: Issue already has been Imported.
+                    if (sdr["ImportStatus"].ToString().Equals("IMPORTED"))
+                    {
+                        //UpdateImportStatus("Issues", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Issue has no scope.");
                         continue;
                     }
 

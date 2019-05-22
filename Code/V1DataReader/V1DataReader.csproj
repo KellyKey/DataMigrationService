@@ -69,17 +69,14 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FSharp.Data">
-      <HintPath>..\packages\FSharp.Data.1.1.10\lib\net40\FSharp.Data.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="FSharp.Data.DesignTime">
-      <HintPath>..\packages\FSharp.Data.1.1.10\lib\net40\FSharp.Data.DesignTime.dll</HintPath>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
-    </Reference>
-    <Reference Include="OAuth2Client">
-      <HintPath>..\packages\OAuth2Client.1.6.0.2560\lib\net45\OAuth2Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -88,8 +85,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="VersionOne.SDK.APIClient">
-      <HintPath>..\packages\VersionOne.SDK.APIClient.14.1.1.290\lib\net45\VersionOne.SDK.APIClient.dll</HintPath>
+    <Reference Include="VersionOne.SDK.APIClient, Version=15.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\VersionOne.SDK.APIClient.15.2.3.0\lib\net451\VersionOne.SDK.APIClient.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -97,9 +95,11 @@
     <Compile Include="ExportAttachments.cs" />
     <Compile Include="ExportConversations.cs" />
     <Compile Include="ExportCustomFields.cs" />
+    <Compile Include="ExportEmbeddedImages.cs" />
     <Compile Include="ExportLinks.cs" />
     <Compile Include="ExportListTypes.cs" />
     <Compile Include="ExportManager.cs" />
+    <Compile Include="ExportRegressionTests.cs" />
     <Compile Include="ExportTasks.cs" />
     <Compile Include="ExportTests.cs" />
     <Compile Include="ExportUtils.cs" />

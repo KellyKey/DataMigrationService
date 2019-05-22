@@ -11,7 +11,7 @@ namespace V1DataReader
 {
     public class ExportRequests : IExportAssets
     {
-        public ExportRequests(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ExportRequests(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
@@ -32,7 +32,7 @@ namespace V1DataReader
             query.Selection.Add(scopeAttribute);
 
             IAttributeDefinition epicsAttribute = null;
-            if (_metaAPI.Version.Major > 11)
+            if (true)
             {
                 epicsAttribute = assetType.GetAttributeDefinition("Epics.ID");
                 query.Selection.Add(epicsAttribute);

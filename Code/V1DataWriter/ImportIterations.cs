@@ -6,12 +6,15 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
     public class ImportIterations : IImportAssets
     {
-        public ImportIterations(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        
+        public ImportIterations(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
@@ -31,13 +34,16 @@ namespace V1DataWriter
                         continue;
                     }
 
+                    string sprintName = sdr["Name"].ToString();
+                    
                     //DUPLICATE CHECK: Check for existing sprint by name (and schedule).
-                    string currentAssetOID = CheckForDuplicateIterationByName(sdr["Schedule"].ToString(), sdr["Name"].ToString());
+                    string currentAssetOID = CheckForDuplicateIterationByName(sdr["Schedule"].ToString(), sprintName);
                     if (string.IsNullOrEmpty(currentAssetOID) == false)
                     {
-                        UpdateNewAssetOIDAndStatus("Iterations", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate iteration, matched on name.");
-                        ActivateIteration(sdr["AssetState"].ToString(), currentAssetOID);
-                        continue;
+                        //UpdateNewAssetOIDAndStatus("Iterations", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate iteration, matched on name.");
+                        //ActivateIteration(sdr["AssetState"].ToString(), currentAssetOID);
+                        sprintName = sdr["Schedule"].ToString() + " - " + sdr["Name"].ToString();
+                        //continue;
                     }
 
                     //DUPLICATE CHECK: Check for existing sprint by begin date (and schedule) as the name did not match.
@@ -54,7 +60,7 @@ namespace V1DataWriter
                     Asset asset = _dataAPI.New(assetType, null);
 
                     IAttributeDefinition fullNameAttribute = assetType.GetAttributeDefinition("Name");
-                    asset.SetAttributeValue(fullNameAttribute, sdr["Name"].ToString().Trim());
+                    asset.SetAttributeValue(fullNameAttribute, sprintName);
 
                     if (String.IsNullOrEmpty(customV1IDFieldName) == false)
                     {
@@ -103,12 +109,14 @@ namespace V1DataWriter
 
                     UpdateNewAssetOIDAndStatus("Iterations", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Iteration imported.");
                     importCount++;
-                }
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
+               }
                 catch (Exception ex)
                 {
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Iterations", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Iteration failed to import.");
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
                         continue;
                     }
                     else
@@ -140,15 +148,24 @@ namespace V1DataWriter
         public int CloseIterations()
         {
             SqlDataReader sdr = GetImportDataFromDBTableForClosing("Iterations");
-            int assetCount = 0;
-            while (sdr.Read())
-            {
-                Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
-                ExecuteOperationInV1("Timebox.Close", asset.Oid);
-                assetCount++;
-            }
-            sdr.Close();
-            return assetCount;
+            int assetCount = 0;   
+
+                while (sdr.Read())
+                {
+                    try
+                    {
+                        Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                        ExecuteOperationInV1("Timebox.Close", asset.Oid);
+                        assetCount++;
+                    }
+                    catch(Exception ex)
+                    {
+                        continue;
+                    }
+                }
+           
+                sdr.Close();
+                return assetCount;
         }
 
     }

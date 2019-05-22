@@ -15,12 +15,12 @@ namespace V1DataReader
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         
-        public ExportEpics(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ExportEpics(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
         {
-            if (_metaAPI.Version.Major > 11)
+            if (true)
             {
                 return ExportEpicsFromEpics();
             }
@@ -98,11 +98,11 @@ namespace V1DataReader
             IAttributeDefinition sourceAttribute = assetType.GetAttributeDefinition("Source");
             query.Selection.Add(sourceAttribute);
 
-            IAttributeDefinition plannedStartAttribute = assetType.GetAttributeDefinition("PlannedStart");
-            query.Selection.Add(plannedStartAttribute);
+            //IAttributeDefinition plannedStartAttribute = assetType.GetAttributeDefinition("PlannedStart");
+            //query.Selection.Add(plannedStartAttribute);
 
-            IAttributeDefinition plannedEndAttribute = assetType.GetAttributeDefinition("PlannedEnd");
-            query.Selection.Add(plannedEndAttribute);
+            //IAttributeDefinition plannedEndAttribute = assetType.GetAttributeDefinition("PlannedEnd");
+            //query.Selection.Add(plannedEndAttribute);
 
             IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
             query.Selection.Add(priorityAttribute);
@@ -184,8 +184,8 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Issues", GetMultiRelationValues(asset.GetAttribute(issuesAttribute)));
                         cmd.Parameters.AddWithValue("@Category", GetSingleRelationValue(asset.GetAttribute(categoryAttribute)));
                         cmd.Parameters.AddWithValue("@Source", GetSingleRelationValue(asset.GetAttribute(sourceAttribute)));
-                        cmd.Parameters.AddWithValue("@PlannedStart", GetScalerValue(asset.GetAttribute(plannedStartAttribute)));
-                        cmd.Parameters.AddWithValue("@PlannedEnd", GetScalerValue(asset.GetAttribute(plannedEndAttribute)));
+                        //cmd.Parameters.AddWithValue("@PlannedStart", GetScalerValue(asset.GetAttribute(plannedStartAttribute)));
+                        //cmd.Parameters.AddWithValue("@PlannedEnd", GetScalerValue(asset.GetAttribute(plannedEndAttribute)));
                         cmd.Parameters.AddWithValue("@Priority", GetSingleRelationValue(asset.GetAttribute(priorityAttribute)));
                         cmd.ExecuteNonQuery();
                     }
@@ -223,8 +223,8 @@ namespace V1DataReader
             sb.Append("Issues,");
             sb.Append("Category,");
             sb.Append("Source,");
-            sb.Append("PlannedStart,");
-            sb.Append("PlannedEnd,");
+            //sb.Append("PlannedStart,");
+            //sb.Append("PlannedEnd,");
             sb.Append("Priority) ");
             sb.Append("VALUES (");
             sb.Append("@AssetOID,");
@@ -248,8 +248,8 @@ namespace V1DataReader
             sb.Append("@Issues,");
             sb.Append("@Category,");
             sb.Append("@Source,");
-            sb.Append("@PlannedStart,");
-            sb.Append("@PlannedEnd,");
+            //sb.Append("@PlannedStart,");
+            //sb.Append("@PlannedEnd,");
             sb.Append("@Priority);");
             return sb.ToString();
         }

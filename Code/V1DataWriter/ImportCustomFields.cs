@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
@@ -13,8 +14,9 @@ namespace V1DataWriter
     {
         private string _assetType;
         private string _tableName;
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public ImportCustomFields(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations, string AssetType)
+        public ImportCustomFields(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations, string AssetType)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) 
         {
             _assetType = AssetType;
@@ -59,33 +61,56 @@ namespace V1DataWriter
                 SqlDataReader sdr = GetImportDataFromDBTableForCustomFields(_tableName, field.SourceName);
                 while (sdr.Read())
                 {
-                    //Get the asset from V1.
-                    IAssetType assetType = _metaAPI.GetAssetType(assetTypeInternalName);
-                    Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
-
-                    //Set the custom field value and save it.
-                    IAttributeDefinition customFieldAttribute = assetType.GetAttributeDefinition(field.TargetName);
-                    if (field.DataType == "Relation")
+                 
+                    try
                     {
-                        string listTypeOID = GetCustomListTypeAssetOIDFromV1(field.RelationName, sdr["FieldValue"].ToString());
-                        if (String.IsNullOrEmpty(listTypeOID) == false)
+                        //Get the asset from V1.
+                        IAssetType assetType = _metaAPI.GetAssetType(assetTypeInternalName);
+                        Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                        _logger.Info("Asset: " + sdr["NewAssetOID"].ToString() + " Working... ");
+
+                        //Set the custom field value and save it.
+                        IAttributeDefinition customFieldAttribute = assetType.GetAttributeDefinition(field.TargetName);
+                        if (field.DataType == "Relation")
                         {
-                            asset.SetAttributeValue(customFieldAttribute, listTypeOID);
+                            string listTypeOID = GetCustomListTypeAssetOIDFromV1(field.RelationName, sdr["FieldValue"].ToString());
+                            if (String.IsNullOrEmpty(listTypeOID) == false)
+                            {
+                                asset.SetAttributeValue(customFieldAttribute, listTypeOID);
+                            }
+                            else
+                            {
+                                continue;
+                            }
                         }
                         else
                         {
+                            asset.SetAttributeValue(customFieldAttribute, sdr["FieldValue"].ToString());
+                        }
+                        _dataAPI.Save(asset);
+                    
+                        UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "CustomField imported.");
+
+                        importCount++;
+                        _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (_config.V1Configurations.LogExceptions == true)
+                        {
+                            string error = ex.Message.Replace("'", ":");
+                            UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, error);
+                            _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
+
                             continue;
                         }
+                        else
+                        {
+                            throw ex;
+                        }
                     }
-                    else
-                    {
-                        asset.SetAttributeValue(customFieldAttribute, sdr["FieldValue"].ToString());
-                    }
-                    _dataAPI.Save(asset);
-                    
-                    UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "CustomField imported.");
-                    
-                    importCount++;
+
                 }
                 sdr.Close();
             }

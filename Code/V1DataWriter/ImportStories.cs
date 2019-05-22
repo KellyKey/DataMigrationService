@@ -13,18 +13,20 @@ namespace V1DataWriter
     public class ImportStories : IImportAssets
     {
 
-        
+        private V1Connector _imageConnector;
         private static Logger _logger = LogManager.GetCurrentClassLogger();
-
         
-        public ImportStories(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
-            : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
+        public ImportStories(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, V1Connector ImageConnector, MigrationConfiguration Configurations)
+            : base(sqlConn, MetaAPI, DataAPI, Configurations)
+        {
+            _imageConnector = ImageConnector;
+        }
 
         public override int Import()
         {
-            string customV1IDFieldName = GetV1IDCustomFieldName("Story");
-            _logger.Info("Custom field Config is {0}", _config.V1Configurations.CustomV1IDField);
-            _logger.Info("Custom Field Name is {0}", customV1IDFieldName);
+            //string customV1IDFieldName = GetV1IDCustomFieldName("Story");
+            //_logger.Info("Custom field Config is {0}", _config.V1Configurations.CustomV1IDField);
+            //_logger.Info("Custom Field Name is {0}", customV1IDFieldName);
 
             SqlDataReader sdr = GetImportDataFromDBTableWithOrder("Stories");
 
@@ -36,6 +38,11 @@ namespace V1DataWriter
             {
                 try
                 {
+                    //string importStatus = sdr["ImportStatus"].ToString();
+
+                    //if (importStatus == "IMPORTED")
+                    //    continue;
+
                     //SPECIAL CASE: No assigned scope, fail to import.
                     if (String.IsNullOrEmpty(sdr["Scope"].ToString()))
                     {
@@ -46,20 +53,21 @@ namespace V1DataWriter
                     IAssetType assetType = _metaAPI.GetAssetType("Story");
                     Asset asset = _dataAPI.New(assetType, null);
 
-                    if (String.IsNullOrEmpty(customV1IDFieldName) == false)
-                    {
-                        IAttributeDefinition customV1IDAttribute = assetType.GetAttributeDefinition(customV1IDFieldName);
-                        asset.SetAttributeValue(customV1IDAttribute, sdr["AssetNumber"].ToString());
-                    }
+                    //if (String.IsNullOrEmpty(customV1IDFieldName) == false)
+                    //{
+                    //    IAttributeDefinition customV1IDAttribute = assetType.GetAttributeDefinition(customV1IDFieldName);
+                    //    asset.SetAttributeValue(customV1IDAttribute, sdr["AssetNumber"].ToString());
+                    //}
 
                     IAttributeDefinition fullNameAttribute = assetType.GetAttributeDefinition("Name");
                     asset.SetAttributeValue(fullNameAttribute, AddV1IDToTitle(sdr["Name"].ToString(), sdr["AssetNumber"].ToString()));
+                    //asset.SetAttributeValue(fullNameAttribute, sdr["Name"].ToString());
 
                     IAttributeDefinition descAttribute = assetType.GetAttributeDefinition("Description");
                     asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
 
                     IAttributeDefinition iterationAttribute = assetType.GetAttributeDefinition("Timebox");
-                    asset.SetAttributeValue(iterationAttribute, GetNewAssetOIDFromDB(sdr["Timebox"].ToString(), "Iterations"));
+                    asset.SetAttributeValue(iterationAttribute, GetNewAssetOIDFromDB(sdr["Timebox"].ToString(), "Timebox"));
 
                     IAttributeDefinition customerAttribute = assetType.GetAttributeDefinition("Customer");
                     asset.SetAttributeValue(customerAttribute, GetNewAssetOIDFromDB(sdr["Customer"].ToString()));
@@ -106,7 +114,9 @@ namespace V1DataWriter
                     asset.SetAttributeValue(valueAttribute, sdr["Value"].ToString());
 
                     IAttributeDefinition scopeAttribute = assetType.GetAttributeDefinition("Scope");
-                    asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString(), "Projects"));
+                    //asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString(), "Scope"));
+                    asset.SetAttributeValue(scopeAttribute, sdr["Scope"].ToString());
+                    //asset.SetAttributeValue(scopeAttribute, _config.JiraConfiguration.ProjectName);
 
                     IAttributeDefinition riskAttribute = assetType.GetAttributeDefinition("Risk");
                     asset.SetAttributeValue(riskAttribute, GetNewListTypeAssetOIDFromDB(sdr["Risk"].ToString()));
@@ -119,11 +129,12 @@ namespace V1DataWriter
 
                     IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
                     asset.SetAttributeValue(priorityAttribute, GetNewListTypeAssetOIDFromDB(sdr["Priority"].ToString()));
+                    //asset.SetAttributeValue(priorityAttribute, "WorkitemPriority:140");
 
                     IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
                     asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
                     //HACK: For Rally import, needs to be refactored.
-                    //asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB("StoryStatus", sdr["Status"].ToString()));
+                    //asset.SetAttributeValue(statusAttribute, GetStatusAssetOID(sdr["Status"].ToString()));
 
                     IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Category");
                     asset.SetAttributeValue(categoryAttribute, GetNewListTypeAssetOIDFromDB(sdr["Category"].ToString()));
@@ -153,7 +164,6 @@ namespace V1DataWriter
 
                     _dataAPI.Save(asset);
 
-
                     if (sdr["AssetState"].ToString() == "Template")
                     {
                         ExecuteOperationInV1("Story.MakeTemplate", asset.Oid);
@@ -164,7 +174,15 @@ namespace V1DataWriter
                     UpdateAssetRecordWithNumber("Stories", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber, ImportStatuses.IMPORTED, "Story imported.");
                     importCount++;
 
-                    //_logger.Info("Story is {0} and the Count is {1}", newAssetNumber, importCount);
+                    //Get Any EmbeddedImages for the Description Field
+                    SqlDataReader sdrEmbeddedImages = GetDataFromDB("EmbeddedImages", sdr["AssetOID"].ToString());
+                    while (sdrEmbeddedImages.Read())
+                    {
+                        UploadEmbeddedImageContent(asset, (byte[])sdrEmbeddedImages["Content"], _imageConnector);
+                    }
+
+
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
 
                 }
                 catch (Exception ex)
@@ -173,7 +191,7 @@ namespace V1DataWriter
                     {
                         string error = ex.Message.Replace("'", ":");
                         UpdateImportStatus("Stories", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, error);
-                        //_logger.Info("Story is {0} ", sdr["AssetOID"].ToString());
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
 
                         continue;
                     }
@@ -188,6 +206,51 @@ namespace V1DataWriter
             return importCount;
         }
 
+        //Updated for Rally Migration
+        //Updated for Jira       
+        
+        private string GetStatusAssetOID(string storyStatus)
+        {
+            if(storyStatus == "In-Progress" && storyStatus == "In Development" && storyStatus == "Development" && storyStatus == "In Code Review" && storyStatus == "To Be Approved"
+                && storyStatus == "Ready for Test" && storyStatus == "In Test" && storyStatus == "In Testing")
+            {
+                //StoryStatus:InProgress StoryStatus:134
+                
+                return "StoryStatus:134";
+            }
+            else if (storyStatus == "Deferred" && storyStatus == "Backlog" && storyStatus == "To Do" && storyStatus == "Open" && storyStatus == "Blocked")
+            {
+                //StoryStatus:Reopened StoryStatus:9192
+                //StoryStatus:Open StoryStatus:9191
+                return "StoryStatus:9191";
+            }
+            else if (storyStatus == "Completed" && storyStatus == "Accepted" && storyStatus == "READY TO DEPLOY")
+            {
+                //StoryStatus:Completed StoryStatus:9193
+                return "StoryStatus:9193";
+            }
+            else if (storyStatus == "Accepted" && storyStatus == "READY TO DEPLOY")
+            {
+                //StoryStatus:Resolved StoryStatus:9194
+                return "StoryStatus:9194";
+            }
+            else if (storyStatus == "Deployed")
+            {
+                //StoryStatus:Closed StoryStatus:9195
+                return "StoryStatus:9195";
+            }
+            else if (storyStatus == "StoryStatus:2515")
+            {
+                //StoryStatus:Closed StoryStatus:9195
+                return "StoryStatus:2933";
+            }
+
+            else
+            {
+                return "StoryStatus:9191";
+            }
+        }
+        
         private void SetStoryDependencies()
         {
             _logger.Info("*****Setting Story Dependencies");

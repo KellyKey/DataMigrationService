@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
 using NLog;
@@ -15,7 +16,7 @@ namespace V1DataWriter
 
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         
-        protected MetaModel _metaAPI;
+        protected IMetaModel _metaAPI;
         protected Services _dataAPI;
         protected SqlConnection _sqlConn;
         protected MigrationConfiguration _config;
@@ -28,7 +29,7 @@ namespace V1DataWriter
             UPDATED
         }
 
-        public IImportAssets(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public IImportAssets(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
         {
             _sqlConn = sqlConn;
             _metaAPI = MetaAPI;
@@ -46,7 +47,8 @@ namespace V1DataWriter
          **************************************************************************************/
         protected SqlDataReader GetImportDataFromDBTable(string TableName)
         {
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK);";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'SKIPPED';";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
             return sdr;
@@ -82,7 +84,9 @@ namespace V1DataWriter
 
         protected SqlDataReader GetImportDataFromDBTableWithOrder(string TableName)
         {
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY [Order] ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Failed' ORDER BY [Order] ASC;";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY AssetOID ASC;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
             return sdr;
@@ -112,6 +116,7 @@ namespace V1DataWriter
             sb.Append("ON a.AssetOID = b.AssetOID ");
             sb.Append("WHERE a.FieldName = '" + FieldName + "' " );
             sb.Append("AND b.ImportStatus <> 'FAILED';");
+            //sb.Append("AND b.ImportStatus = 'FAILED';");
 
             SqlCommand cmd = new SqlCommand(sb.ToString(), _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -225,11 +230,13 @@ namespace V1DataWriter
 
         protected string GetNewAssetOIDFromDB(string CurrentAssetOID, string AssetType)
         {
-            
+
+            string assetName = GetTableNameForAsset(CurrentAssetOID);
+
             //var value;
             if (String.IsNullOrEmpty(CurrentAssetOID) == false)
             {
-                string SQL = "SELECT NewAssetOID FROM " + AssetType + " WHERE AssetOID = '" + CurrentAssetOID + "';";
+                string SQL = "SELECT NewAssetOID FROM " + assetName + " WHERE AssetOID = '" + CurrentAssetOID + "';";
                 SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
                 var value = cmd.ExecuteScalar();
                 string result = (value == null) ? null : value.ToString();
@@ -410,16 +417,18 @@ namespace V1DataWriter
 
         protected void UpdateImportStatus(string Table, string AssetOID, ImportStatuses ImportStatus, string ImportDetail)
         {
-            //_logger.Info("Status: {0} Message is {1}", AssetOID, ImportDetail);
+            _logger.Info("Status: {0} Message is {1}", AssetOID, ImportDetail);
             
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE " + Table + " ");
             sb.Append("SET ImportStatus = '" + ImportStatus.ToString() + "', ");
             sb.Append("ImportDetails = '" + ImportDetail + "' ");
-            sb.Append("WHERE AssetOID = '" + AssetOID + "';");
+            sb.Append("WHERE AssetOID = '" + AssetOID + "' ");
+            sb.Append("OPTION (OPTIMIZE FOR UNKNOWN);");
 
             using (SqlCommand cmd = new SqlCommand(sb.ToString(), _sqlConn))
             {
+                cmd.CommandTimeout = 120;
                 cmd.ExecuteNonQuery();
             }
         }
@@ -711,6 +720,77 @@ namespace V1DataWriter
 
             return tableName;
         }
+
+        protected SqlDataReader GetDataFromDB(string lookupTable, string assetOID)
+        {
+            if (String.IsNullOrEmpty(assetOID) == false)
+            {
+                string SQL = "SELECT * FROM " + lookupTable + " WHERE Asset = '" + assetOID + "';";
+                SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
+                return cmd.ExecuteReader();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        protected void UploadEmbeddedImageContent(Asset newAsset, byte[] FileContent, V1Connector _imageConnector)
+        {
+            //Create a new story.
+            //var storyType = services.Meta.GetAssetType("Story");
+            //var newStory = services.New(storyType, services.GetOid("Scope:0"));
+            //var nameAttribute = storyType.GetAttributeDefinition("Name");
+            //var descriptionAttribute = storyType.GetAttributeDefinition("Description");
+            //var name = string.Format("Story with an embedded image");
+            //newStory.SetAttributeValue(nameAttribute, name);
+            //services.Save(newStory);
+            //Oid storyOID = newStory.Oid;
+
+            ////Create an embedded image.
+            //string file = @"C:\Temp\versionone.jpg";
+            //Oid embeddedImageOid = services.SaveEmbeddedImage(file, newStory);
+            //var embeddedImageTag = string.Format("<p>Here's an embedded image:</p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOid.Key, embeddedImageOid.Momentless);
+            //newStory.SetAttributeValue(descriptionAttribute, embeddedImageTag);
+            //services.Save(newStory);
+
+            string filePath = @"C:\Windows\Temp\TempImage.jpg";
+
+            try
+            {
+                File.WriteAllBytes(filePath, FileContent);
+                Services services = new Services(_imageConnector);
+                //var storyType = services.Meta.GetAssetType("Story");
+                //var newStory = services.New(storyType, services.GetOid("Scope:7795"));
+                //var nameAttribute = storyType.GetAttributeDefinition("Name");
+                //var descriptionAttribute = storyType.GetAttributeDefinition("Description");
+                //var name = string.Format("Story: Another embedded image demo");
+                //newAsset.SetAttributeValue(descriptionAttribute, string.Format("<p>Image<p>"));
+                //services.Save(newAsset);
+                //Console.Write(newAsset.GetAttribute(nameAttribute));
+                //Console.Write(newAsset.GetAttribute(descriptionAttribute));
+                //var oidTypeID = newAsset.Oid.ToString();
+                Oid storyOID = newAsset.Oid.Momentless;
+
+                Oid embeddedImageOID = services.SaveEmbeddedImage(filePath, newAsset);
+                //var embeddedImageTag = string.Format("<p>Here's a migrated embedded image:</p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOID.Key, embeddedImageOID.Momentless);
+                //var storyType = services.Meta.GetAssetType("Story");
+                // IAttributeDefinition descFieldAttribute = storyType.GetAttributeDefinition("Description");
+                //newAsset.SetAttributeValue(descriptionAttribute, embeddedImageTag);
+                //services.Save(newAsset);
+                _logger.Info("-> Imported {0} embedded image", embeddedImageOID.Token);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                File.Delete(filePath);
+            }
+        }
+
 
     }
 }

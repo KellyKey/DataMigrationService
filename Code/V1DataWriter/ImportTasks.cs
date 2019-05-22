@@ -6,12 +6,15 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
     public class ImportTasks : IImportAssets
     {
-        public ImportTasks(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        private static Logger _logger = LogManager.GetCurrentClassLogger();      
+        
+        public ImportTasks(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
@@ -138,6 +141,9 @@ namespace V1DataWriter
                     string newAssetNumber = GetAssetNumberV1("Task", asset.Oid.Momentless.ToString());
                     UpdateAssetRecordWithNumber("Tasks", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber, ImportStatuses.IMPORTED, "Task imported.");
                     importCount++;
+
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
+
                 }
                 catch (Exception ex)
                 {
@@ -145,6 +151,8 @@ namespace V1DataWriter
                     {
                         string error = ex.Message.Replace("'", ":");
                         UpdateImportStatus("Tasks", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, error);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
+                        
                         continue;
                     }
                     else
@@ -155,6 +163,42 @@ namespace V1DataWriter
             }
             sdr.Close();
             return importCount;
+        }
+
+        private string GetStatusAssetOID(string storyStatus)
+        {
+            if (storyStatus == "In-Progress" && storyStatus == "In Development" && storyStatus == "Development" && storyStatus == "In Code Review" && storyStatus == "To Be Approved"
+                && storyStatus == "Ready for Test" && storyStatus == "In Test" && storyStatus == "In Testing")
+            {
+                //StoryStatus:InProgress StoryStatus:134
+
+                return "StoryStatus:134";
+            }
+            else if (storyStatus == "Deferred" && storyStatus == "Backlog" && storyStatus == "To Do" && storyStatus == "Open" && storyStatus == "Blocked")
+            {
+                //StoryStatus:Reopened StoryStatus:9192
+                //StoryStatus:Open StoryStatus:9191
+                return "StoryStatus:9191";
+            }
+            else if (storyStatus == "Completed" && storyStatus == "Accepted" && storyStatus == "READY TO DEPLOY")
+            {
+                //StoryStatus:Completed StoryStatus:9193
+                return "StoryStatus:9193";
+            }
+            else if (storyStatus == "Accepted" && storyStatus == "READY TO DEPLOY")
+            {
+                //StoryStatus:Resolved StoryStatus:9194
+                return "StoryStatus:9194";
+            }
+            else if (storyStatus == "Deployed")
+            {
+                //StoryStatus:Closed StoryStatus:9195
+                return "StoryStatus:9195";
+            }
+            else
+            {
+                return "StoryStatus:9191";
+            }
         }
 
         public int CloseTasks()

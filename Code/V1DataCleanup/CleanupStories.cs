@@ -11,7 +11,7 @@ namespace V1DataCleanup
 {
     public class CleanupStories : ICleanup
     {
-        public CleanupStories(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public CleanupStories(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override void Cleanup()

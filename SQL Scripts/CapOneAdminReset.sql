@@ -6,7 +6,7 @@
  */
 
 declare @saveChanges bit; 
-set @saveChanges = 1
+set @saveChanges = 0
 
 declare @error int, @rowcount varchar(20)
 set nocount on; begin tran; save tran TX

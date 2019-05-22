@@ -11,7 +11,7 @@ namespace V1DataReader
 {
     public class ExportTeams : IExportAssets
     {
-        public ExportTeams(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ExportTeams(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()

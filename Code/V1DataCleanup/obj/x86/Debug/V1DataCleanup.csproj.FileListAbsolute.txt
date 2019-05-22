@@ -16,3 +16,27 @@ C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\
 C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.dll
 C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.pdb
 C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\V1DataCleanup.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\V1DataCleanup.pdb
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\log4net.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\Newtonsoft.Json.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\V1DataCore.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\VersionOne.SDK.APIClient.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\V1DataCore.pdb
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\log4net.xml
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\Newtonsoft.Json.xml
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.pdb
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\V1DataCleanup.dll
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\V1DataCleanup.pdb
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\log4net.dll
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\Newtonsoft.Json.dll
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\V1DataCore.dll
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\VersionOne.SDK.APIClient.dll
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\V1DataCore.pdb
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\log4net.xml
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\bin\x86\Debug\Newtonsoft.Json.xml
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.dll
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Tools\DataMigrationService\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.pdb

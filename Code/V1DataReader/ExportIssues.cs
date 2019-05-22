@@ -14,7 +14,7 @@ namespace V1DataReader
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         
-        public ExportIssues(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ExportIssues(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
@@ -81,7 +81,7 @@ namespace V1DataReader
             IAttributeDefinition blockedEpicsAttribute = null;
             IAttributeDefinition epicsAttribute = null;
             
-            if (_metaAPI.Version.Major > 11)
+            if (true)
             {
                 retrospectivesAttribute = assetType.GetAttributeDefinition("Retrospectives.ID");
                 query.Selection.Add(retrospectivesAttribute);

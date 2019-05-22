@@ -11,7 +11,7 @@ namespace V1DataCleanup
 {
     public class CleanupRegressionTests : ICleanup
     {
-        public CleanupRegressionTests(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public CleanupRegressionTests(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override void Cleanup()

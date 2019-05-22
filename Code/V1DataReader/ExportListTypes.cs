@@ -11,7 +11,7 @@ namespace V1DataReader
 {
     public class ExportListTypes : IExportAssets
     {
-        public ExportListTypes(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
+        public ExportListTypes(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
         {

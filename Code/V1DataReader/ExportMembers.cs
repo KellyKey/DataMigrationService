@@ -14,7 +14,7 @@ namespace V1DataReader
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         
-        public ExportMembers(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ExportMembers(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
@@ -54,15 +54,15 @@ namespace V1DataReader
 
             //SPECIAL CASE: sendConversationEmailsAttribute attribute only exists in V1 12 and later.
             IAttributeDefinition sendConversationEmailsAttribute = null;
-            IAttributeDefinition IsCollaboratorAttribute = null;
+            //IAttributeDefinition IsCollaboratorAttribute = null;
 
-            if (_metaAPI.Version.Major > 11)
+            if (true)
             {
                 sendConversationEmailsAttribute = assetType.GetAttributeDefinition("SendConversationEmails");
                 query.Selection.Add(sendConversationEmailsAttribute);
 
-                IsCollaboratorAttribute = assetType.GetAttributeDefinition("IsCollaborator");
-                query.Selection.Add(IsCollaboratorAttribute);
+                //IsCollaboratorAttribute = assetType.GetAttributeDefinition("IsCollaborator");
+                //query.Selection.Add(IsCollaboratorAttribute);
             }
 
             string SQL = BuildMemberInsertStatement();

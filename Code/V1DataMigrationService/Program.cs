@@ -11,6 +11,7 @@ using V1DataReader;
 using V1DataCore;
 using V1DataCleanup;
 //using RallyDataReader;
+//using JiraReaderService;
 
 namespace V1DataMigrationService
 {
@@ -21,17 +22,17 @@ namespace V1DataMigrationService
         private static SqlConnection _sqlConn;
 
         //Source API connectors.
-        private static V1APIConnector _sourceMetaConnector;
-        private static V1APIConnector _sourceDataConnector;
-        private static V1APIConnector _sourceImageConnector;
-        private static MetaModel _sourceMetaAPI;
+        //private static V1Connector _sourceMetaConnector;
+        private static V1Connector _sourceDataConnector;
+        private static V1Connector _sourceImageConnector;
+        private static IMetaModel _sourceMetaAPI;
         private static Services _sourceDataAPI;
 
         //Target API connectors.
-        private static V1APIConnector _targetMetaConnector;
-        private static V1APIConnector _targetDataConnector;
-        private static V1APIConnector _targetImageConnector;
-        private static MetaModel _targetMetaAPI;
+        //private static V1Connector _targetMetaConnector;
+        private static V1Connector _targetDataConnector;
+        private static V1Connector _targetImageConnector;
+        private static IMetaModel _targetMetaAPI;
         private static Services _targetDataAPI;
 
         static void Main(string[] args)
@@ -48,9 +49,13 @@ namespace V1DataMigrationService
                 if (_config.V1Configurations.PerformExport == true && _config.V1Configurations.SourceConnectionToUse == "VersionOne") 
                     VerifyV1SourceConnection();
 
-                //if (_config.V1Configurations.PerformImport == true || _config.V1Configurations.PerformClose == true || _config.V1Configurations.PerformCleanup) 
+                if (_config.V1Configurations.PerformImport == true || _config.V1Configurations.PerformClose == true || _config.V1Configurations.PerformCleanup) 
                     VerifyV1TargetConnection();
                 _logger.Info("");
+
+
+                //Used to delete any bad imports 
+                //purgeBadImports("Attachment", 12105, 12194);
 
                 //Export from source system to staging database.
                 if (_config.V1Configurations.PerformExport == true)
@@ -145,13 +150,16 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting list types.");
+                            //For V1 Migrations
                             ExportListTypes listTypes = new ExportListTypes(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportListTypes listTypes = new ExportListTypes(_sqlConn, _config);
                             assetCount = listTypes.Export();
                             _logger.Info("-> Exported {0} list types.", assetCount);
 
                             if (asset.EnableCustomFields == true)
                             {
-                            //Need to Export Custom Fields
+                                //Need to Export Custom Fields
                                 ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "ListType");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} list type custom fields.", assetCount);
@@ -164,7 +172,10 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting members.");
+                            //For V1 Migrations
                             ExportMembers members = new ExportMembers(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportMembers members = new ExportMembers(_sqlConn, _config);
                             assetCount = members.Export();
                             _logger.Info("-> Exported {0} members.", assetCount);
 
@@ -179,16 +190,18 @@ namespace V1DataMigrationService
                         }
                         break;
 
+                    //For V1 Migrations
                     case "MemberGroups":
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting member groups.");
-                            ExportMemberGroups memberGroups = new ExportMemberGroups(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
-                            assetCount = memberGroups.Export();
+                            //ExportMemberGroups memberGroups = new ExportMemberGroups(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //assetCount = memberGroups.Export();
                             _logger.Info("-> Exported {0} member groups.", assetCount);
                         }
                         break;
 
+                    //For V1 Migrations
                     case "Teams":
                         if (asset.Enabled == true)
                         {
@@ -203,7 +216,10 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting schedules.");
+                            //For V1 Migrations
                             ExportSchedules schedules = new ExportSchedules(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally Migrations
+                            //ExportSchedules schedules = new ExportSchedules(_sqlConn, _config);
                             assetCount = schedules.Export();
                             _logger.Info("-> Exported {0} schedules.", assetCount);
                         }
@@ -213,7 +229,10 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting projects.");
+                            //For V1 Migrations
                             ExportProjects projects = new ExportProjects(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportProjects projects = new ExportProjects(_sqlConn, _config);
                             _logger.Info("Calling projects.Export");
                             assetCount = projects.Export();
                             _logger.Info("-> Exported {0} projects.", assetCount);
@@ -229,25 +248,29 @@ namespace V1DataMigrationService
                         }
                         break;
 
-                    //For Rally Data Reader
-                    /*
-                    case "Releases":
-                        if (asset.Enabled == true)
-                        {
-                            _logger.Info("Exporting releases.");
-                            ExportReleases releases = new ExportReleases(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
-                            assetCount = releases.Export();
-                            _logger.Info("-> Exported {0} releases.", assetCount);
+                    //For Rally Data Reader                    
+                    //case "Releases":
+                    //    if (asset.Enabled == true)
+                    //    {
+                    //        _logger.Info("Exporting releases.");
+                    //        For Rally Migrations
+                    //        ExportReleases releases = new ExportReleases(_sqlConn, _config);
+                    //        assetCount = releases.Export();
+                    //        _logger.Info("-> Exported {0} releases.", assetCount);
 
-                            //Can create schedules only after projects/releases have been exported.
-                            _logger.Info("Exporting schedules.");
-                            ExportSchedules schedules = new ExportSchedules(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
-                            assetCount = schedules.Export();
-                            _logger.Info("-> Exported {0} schedules.", assetCount);
-                        }
-                        break;
-                     */
+                    //        Can create schedules only after projects/releases have been exported.
+                    //        _logger.Info("Exporting schedules.");
+                    //        For V1 Migrations
+                    //        ExportSchedules schedules = new ExportSchedules(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                    //        For Rally Migrations
+                    //        ExportSchedules schedules = new ExportSchedules(_sqlConn, _config);
+                    //        assetCount = schedules.Export();
+                    //        _logger.Info("-> Exported {0} schedules.", assetCount);
+                    //    }
+                    //    break;
 
+
+                    //For V1 Migrations
                     case "Programs":
                         if (asset.Enabled == true)
                         {
@@ -262,12 +285,16 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting iterations.");
+                            //For V1 Migrations
                             ExportIterations iterations = new ExportIterations(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportIterations iterations = new ExportIterations(_sqlConn, _config);
                             assetCount = iterations.Export();
                             _logger.Info("-> Exported {0} iterations.", assetCount);
                         }
                         break;
 
+                    //For V1 Migrations
                     case "Goals":
                         if (asset.Enabled == true)
                         {
@@ -278,6 +305,7 @@ namespace V1DataMigrationService
                         }
                         break;
 
+                    //For V1 Migrations
                     case "FeatureGroups":
                         if (asset.Enabled == true)
                         {
@@ -295,6 +323,7 @@ namespace V1DataMigrationService
                         }
                         break;
 
+                    //For V1 Migrations
                     case "Requests":
                         if (asset.Enabled == true)
                         {
@@ -302,7 +331,7 @@ namespace V1DataMigrationService
                             ExportRequests requests = new ExportRequests(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
                             assetCount = requests.Export();
                             _logger.Info("-> Exported {0} requests.", assetCount);
-                       
+
 
                             if (asset.EnableCustomFields == true)
                             {
@@ -314,6 +343,7 @@ namespace V1DataMigrationService
                         }
                         break;
 
+                    //For V1 Migrations
                     case "Issues":
                         if (asset.Enabled == true)
                         {
@@ -321,7 +351,7 @@ namespace V1DataMigrationService
                             ExportIssues issues = new ExportIssues(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
                             assetCount = issues.Export();
                             _logger.Info("-> Exported {0} issues.", assetCount);
-                        
+
 
                             if (asset.EnableCustomFields == true)
                             {
@@ -337,10 +367,13 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting epics.");
+                            //For V1 Migrations
                             ExportEpics epics = new ExportEpics(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportEpics epics = new ExportEpics(_sqlConn, _config);
                             assetCount = epics.Export();
                             _logger.Info("-> Exported {0} epics.", assetCount);
-                        
+
 
                             if (asset.EnableCustomFields == true)
                             {
@@ -356,7 +389,10 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting stories.");
+                            //For V1 Migrations
                             ExportStories stories = new ExportStories(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportStories stories = new ExportStories(_sqlConn, _config);
                             assetCount = stories.Export();
                             _logger.Info("-> Exported {0} stories.", assetCount);
 
@@ -369,10 +405,10 @@ namespace V1DataMigrationService
 
                                 //Need to Export the PrimaryWorkitems which will get fields configured for Story, Defect, and TestSets all in one run
                                 //Do not need to run it again in Defects and TestSets
-                                custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "PrimaryWorkitem");
-                                assetCount = custom.Export();
-                                _logger.Debug("-> Exported {0} PrimaryWorkitem custom fields.", assetCount);
-                            
+                                //custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "PrimaryWorkitem");
+                                //assetCount = custom.Export();
+                                //_logger.Debug("-> Exported {0} PrimaryWorkitem custom fields.", assetCount);
+
                             }
 
                         }
@@ -382,7 +418,10 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting defects.");
+                            //For V1 Migrations
                             ExportDefects defects = new ExportDefects(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportDefects defects = new ExportDefects(_sqlConn, _config);
                             assetCount = defects.Export();
                             _logger.Info("-> Exported {0} defects.", assetCount);
 
@@ -401,7 +440,10 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting tasks.");
+                            //For V1 Migrations
                             ExportTasks tasks = new ExportTasks(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportTasks tasks = new ExportTasks(_sqlConn, _config);
                             assetCount = tasks.Export();
                             _logger.Info("-> Exported {0} tasks.", assetCount);
 
@@ -415,24 +457,26 @@ namespace V1DataMigrationService
                         }
                         break;
 
-                    //For Rally Data Reader
-                    /*
-                    case "TestSteps":
-                        if (asset.Enabled == true)
-                        {
-                            _logger.Info("Exporting test steps.");
-                            ExportTestSteps teststeps = new ExportTestSteps(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
-                            assetCount = teststeps.Export();
-                            _logger.Info("-> Exported {0} test steps.", assetCount);
-                        }
-                        break;
-                     */
+                    //For Rally Data Reader                    
+                    //case "TestSteps":
+                    //    if (asset.Enabled == true)
+                    //    {
+                    //        _logger.Info("Exporting test steps.");
+                    //        ExportTestSteps teststeps = new ExportTestSteps(_sqlConn, _config);
+                    //        assetCount = teststeps.Export();
+                    //        _logger.Info("-> Exported {0} test steps.", assetCount);
+                    //    }
+                    //    break;
+                     
 
                     case "Tests":
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting tests.");
+                            //For V1 Migrations
                             ExportTests tests = new ExportTests(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportTests tests = new ExportTests(_sqlConn, _config);
                             assetCount = tests.Export();
                             _logger.Info("-> Exported {0} tests.", assetCount);
 
@@ -446,20 +490,22 @@ namespace V1DataMigrationService
                         }
                         break;
 
-                    //For Rally Data Reader
-                    /*
-                    case "RegressionTests":
+                        
+                        case "RegressionTests":
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting regression tests.");
+                            //For V1 Migrations
                             ExportRegressionTests regressionTests = new ExportRegressionTests(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportRegressionTests regressionTests = new ExportRegressionTests(_sqlConn, _config);
                             assetCount = regressionTests.Export();
                             _logger.Info("-> Exported {0} regression tests.", assetCount);
                         }
                         break;
-                     */
 
-                    case "Actuals":
+                        //For V1 Migrations
+                        case "Actuals":
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting actuals.");
@@ -469,7 +515,8 @@ namespace V1DataMigrationService
                         }
                         break;
 
-                    case "Links":
+                        //For V1 Migrations
+                        case "Links":
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting links.");
@@ -483,7 +530,10 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting conversations.");
+                            //For V1 Migrations
                             ExportConversations conversations = new ExportConversations(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally Migrations
+                            //ExportConversations conversations = new ExportConversations(_sqlConn, _config);
                             assetCount = conversations.Export();
                             _logger.Info("-> Exported {0} conversations.", assetCount);
                         }
@@ -493,11 +543,26 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting attachments.");
+                            //For V1 Migrations
                             ExportAttachments attachments = new ExportAttachments(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _sourceImageConnector, _config);
+                            //For Rally Migrations
+                            //ExportAttachments attachments = new ExportAttachments(_sqlConn, _config);
                             assetCount = attachments.Export();
                             _logger.Info("-> Exported {0} attachments.", assetCount);
                         }
                         break;
+
+                    case "EmbeddedImages":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Exporting embeddedimages.");
+                            //For V1 Migrations
+                            ExportEmbeddedImages embeddedimages = new ExportEmbeddedImages(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _sourceImageConnector, _config);
+                            assetCount = embeddedimages.Export();
+                            _logger.Info("-> Exported {0} embeddedimages.", assetCount);
+                        }
+                        break;
+
 
                 }
             }
@@ -702,7 +767,7 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Importing stories.");
-                            ImportStories stories = new ImportStories(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                            ImportStories stories = new ImportStories(_sqlConn, _targetMetaAPI, _targetDataAPI, _targetImageConnector, _config);
                             assetCount = stories.Import();
                             _logger.Info("-> Imported {0} stories.", assetCount);
 
@@ -835,6 +900,18 @@ namespace V1DataMigrationService
                         }
                         break;
 
+                    case "EmbeddedImages":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Importing embeddedimages.");
+                            //For V1 Migrations
+                            ImportEmbeddedImages embeddedimages = new ImportEmbeddedImages(_sqlConn, _targetMetaAPI, _targetDataAPI, _targetImageConnector, _config);
+                            assetCount = embeddedimages.Import();
+                            _logger.Info("-> Imported {0} embeddedimages.", assetCount);
+                        }
+                        break;
+
+
                     default:
                         break;
                 }
@@ -936,7 +1013,7 @@ namespace V1DataMigrationService
             if (_config.AssetsToMigrate.Find(i => i.Name == "Stories").Enabled == true)
             {
                 _logger.Info("Closing stories.");
-                ImportStories stories = new ImportStories(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                ImportStories stories = new ImportStories(_sqlConn, _targetMetaAPI, _targetDataAPI, _targetImageConnector, _config);
                 assetCount = stories.CloseStories();
                 _logger.Info("-> Closed {0} stories.", assetCount);
             }
@@ -994,17 +1071,41 @@ namespace V1DataMigrationService
         {
             try
             {
-                _sourceMetaConnector = new V1APIConnector(_config.V1SourceConnection.Url + "/meta.v1/");
+                //_sourceMetaConnector = new V1Connector(_config.V1SourceConnection.Url + "/meta.v1/");
+                //Use Services.Meta since 15.00 API
 
                 if (_config.V1SourceConnection.AuthenticationType == "standard")
                 {
-                    _sourceDataConnector = new V1APIConnector(_config.V1SourceConnection.Url + "/rest-1.v1/", _config.V1SourceConnection.Username, _config.V1SourceConnection.Password, false);
-                    _sourceImageConnector = new V1APIConnector(_config.V1SourceConnection.Url + "/attachment.img/", _config.V1SourceConnection.Username, _config.V1SourceConnection.Password, false);
+                    _sourceDataConnector = V1Connector
+                        .WithInstanceUrl(_config.V1SourceConnection.Url)
+                        .WithUserAgentHeader("V1DataMigration", "1.0")
+                        .WithUsernameAndPassword(_config.V1SourceConnection.Username, _config.V1SourceConnection.Password)
+                        .Build();
+
+                    _sourceImageConnector = _sourceDataConnector;
+
                 }
                 else if (_config.V1SourceConnection.AuthenticationType == "windows")
                 {
-                    _sourceDataConnector = new V1APIConnector(_config.V1SourceConnection.Url + "/rest-1.v1/", _config.V1SourceConnection.Username, _config.V1SourceConnection.Password, true);
-                    _sourceImageConnector = new V1APIConnector(_config.V1SourceConnection.Url + "/attachment.img/", _config.V1SourceConnection.Username, _config.V1SourceConnection.Password, true);
+                    _sourceDataConnector = V1Connector
+                        .WithInstanceUrl(_config.V1SourceConnection.Url)
+                        .WithUserAgentHeader("V1DataMigration", "1.0")
+                        .WithWindowsIntegrated(_config.V1SourceConnection.Username, _config.V1SourceConnection.Password)
+                        .Build();
+                    
+                    _sourceImageConnector = _sourceDataConnector;
+                
+                }
+                else if (_config.V1SourceConnection.AuthenticationType == "accessToken")
+                {
+                    _sourceDataConnector = V1Connector
+                        .WithInstanceUrl(_config.V1SourceConnection.Url)
+                        .WithUserAgentHeader("V1DataMigration", "1.0")
+                        .WithAccessToken(_config.V1SourceConnection.AccessToken)
+                        .Build();
+
+                    _sourceImageConnector = _sourceDataConnector;
+
                 }
                 else if (_config.V1SourceConnection.AuthenticationType == "oauth")
                 {
@@ -1015,22 +1116,38 @@ namespace V1DataMigrationService
                     throw new Exception("Unable to determine the V1SourceConnection authentication type in the config file. Value used must be standard|windows|oauth.");
                 }
 
-                _sourceMetaAPI = new MetaModel(_sourceMetaConnector);
-                _sourceDataAPI = new Services(_sourceMetaAPI, _sourceDataConnector);
+                _sourceDataAPI = new Services(_sourceDataConnector);
+                _sourceMetaAPI = _sourceDataAPI.Meta;
+                
+                _logger.Info("Test - Testing URI - Pulling Meta");
+                _logger.Info("Test - Meta Data is:  " + _sourceMetaAPI.ToString());
+                IAssetType scopeType = _sourceMetaAPI.GetAssetType("Scope");
+                _logger.Info("Test - Testing URI - SUCCESS");
 
-                IAssetType assetType = _sourceMetaAPI.GetAssetType("Member");
-                Query query = new Query(assetType);
-                IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Username");
-                query.Selection.Add(nameAttribute);
-                FilterTerm idFilter = new FilterTerm(nameAttribute);
-                idFilter.Equal(_config.V1SourceConnection.Username);
-                query.Filter = idFilter;
-                QueryResult result = _sourceDataAPI.Retrieve(query);
-                if (result.TotalAvaliable > 0)
+
+                _logger.Info("Test - Testing Token - Pulling Data");
+                Oid projectId = _sourceDataAPI.GetOid("Scope:0");
+                IAssetType defectType = _sourceMetaAPI.GetAssetType("Defect");
+                Asset NewScope = _sourceDataAPI.New(defectType, projectId);
+
+                _logger.Info("Test - Testing Token - SUCCESS");
+
+
+                //Oid loggedInOid = _sourceDataAPI.LoggedIn;
+
+                //IAssetType assetType = _sourceMetaAPI.GetAssetType("Member");
+                //Query query = new Query(assetType);
+                //IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Username");
+                //query.Selection.Add(nameAttribute);
+                //FilterTerm idFilter = new FilterTerm(nameAttribute);
+                //idFilter.Equal(_config.V1SourceConnection.Username);
+                //query.Filter = idFilter;
+                //QueryResult result = _sourceDataAPI.Retrieve(query);
+                if (NewScope != null)
                 {
                     _logger.Info("-> Connection to V1 source instance \"{0}\" verified.", _config.V1SourceConnection.Url);
-                    _logger.Debug("-> V1 source instance version: {0}.", _sourceMetaAPI.Version.ToString());
-                    MigrationStats.WriteStat(_sqlConn, "Source API Version", _sourceMetaAPI.Version.ToString());
+                    _logger.Debug("-> V1 source instance version: {0}.", _sourceDataAPI.Meta.ToString());
+                    MigrationStats.WriteStat(_sqlConn, "Source API Version", _sourceDataAPI.Meta.ToString());
                 }
                 else
                 {
@@ -1044,22 +1161,63 @@ namespace V1DataMigrationService
             }
         }
 
-        //Verifies the connection to the V1 source instance.
+        //Verifies the connection to the V1 target instance.
         private static void VerifyV1TargetConnection()
         {
             try
             {
-                _targetMetaConnector = new V1APIConnector(_config.V1TargetConnection.Url + "/meta.v1/");
+                //_targetMetaConnector = new V1Connector(_config.V1TargetConnection.Url + "/meta.v1/");
+                //Use Services.Meta since 15.00 API
 
                 if (_config.V1TargetConnection.AuthenticationType == "standard")
                 {
-                    _targetDataConnector = new V1APIConnector(_config.V1TargetConnection.Url + "/rest-1.v1/", _config.V1TargetConnection.Username, _config.V1TargetConnection.Password, false);
-                    _targetImageConnector = new V1APIConnector(_config.V1TargetConnection.Url + "/attachment.img/", _config.V1TargetConnection.Username, _config.V1TargetConnection.Password, false);
+                    _targetDataConnector = V1Connector
+                        .WithInstanceUrl(_config.V1TargetConnection.Url)
+                        .WithUserAgentHeader("V1DataMigration", "1.0")
+                        .WithUsernameAndPassword(_config.V1TargetConnection.Username, _config.V1TargetConnection.Password)
+                        .Build();
+
+                    //Version 15.1 upgrade...no need for .UseEndpoint
+                    _targetImageConnector = _targetDataConnector;
+
+                    //_targetDataConnector = new V1Connector(_config.V1TargetConnection.Url + "/rest-1.v1/", _config.V1TargetConnection.Username, _config.V1TargetConnection.Password, false);
+                    //_targetDataConnector = new V1Connector(_config.V1TargetConnection.Url + "/attachment.img/", _config.V1TargetConnection.Username, _config.V1TargetConnection.Password, false);
                 }
                 else if (_config.V1TargetConnection.AuthenticationType == "windows")
                 {
-                    _targetDataConnector = new V1APIConnector(_config.V1TargetConnection.Url + "/rest-1.v1/", _config.V1TargetConnection.Username, _config.V1TargetConnection.Password, true);
-                    _targetImageConnector = new V1APIConnector(_config.V1TargetConnection.Url + "/attachment.img/", _config.V1TargetConnection.Username, _config.V1TargetConnection.Password, true);
+                    //ProxyProvider proxyProvider = new ProxyProvider(new Uri("proxyURL"), "proxyUsername", "proxyPassword");
+                    
+                    _targetDataConnector = V1Connector
+                        .WithInstanceUrl(_config.V1TargetConnection.Url)
+                        .WithUserAgentHeader("V1DataMigration", "1.0")
+                        .WithWindowsIntegrated(_config.V1TargetConnection.Username, _config.V1TargetConnection.Password)
+                        //.WithProxy(proxyProvider);
+                        .Build();
+
+                    //Version 15.1 upgrade...no need for .UseEndpoint
+                    _targetImageConnector = _targetDataConnector;
+
+
+                    //_targetDataConnector = new V1Connector(_config.V1TargetConnection.Url + "/rest-1.v1/", _config.V1TargetConnection.Username, _config.V1TargetConnection.Password, true);
+                    //_targetDataConnector = new V1Connector(_config.V1TargetConnection.Url + "/attachment.img/", _config.V1TargetConnection.Username, _config.V1TargetConnection.Password, true);
+                }
+                else if (_config.V1TargetConnection.AuthenticationType == "accessToken")
+                {
+                    _targetDataConnector = V1Connector
+                        .WithInstanceUrl(_config.V1TargetConnection.Url)
+                        .WithUserAgentHeader("V1DataMigration", "1.0")
+                        .WithAccessToken(_config.V1TargetConnection.AccessToken.Trim())
+                        .Build();
+
+                    //Version 15.1 upgrade...no need for .UseEndpoint
+                    _targetImageConnector = _targetDataConnector;
+
+                    //_targetImageConnector = V1Connector
+                    //    .WithInstanceUrl(_config.V1SourceConnection.Url)
+                    //    .WithUserAgentHeader("V1DataMigration", "1.0")
+                    //    .WithAccessToken(_config.V1SourceConnection.AccessToken)
+                    //    .UseEndpoint("attachment.img")
+                    //    .Build();
                 }
                 else if (_config.V1TargetConnection.AuthenticationType == "oauth")
                 {
@@ -1070,8 +1228,8 @@ namespace V1DataMigrationService
                     throw new Exception("Unable to determine the V1TargetConnection authentication type in the config file. Value used must be standard|windows|oauth.");
                 }
 
-                _targetMetaAPI = new MetaModel(_targetMetaConnector);
-                _targetDataAPI = new Services(_targetMetaAPI, _targetDataConnector);
+                _targetDataAPI = new Services(_targetDataConnector);
+                _targetMetaAPI = _targetDataAPI.Meta;
 
                 IAssetType assetType = _targetMetaAPI.GetAssetType("Member");
                 Query query = new Query(assetType);
@@ -1084,8 +1242,8 @@ namespace V1DataMigrationService
                 if (result.TotalAvaliable > 0)
                 {
                     _logger.Info("-> Connection to V1 target instance \"{0}\" verified.", _config.V1TargetConnection.Url);
-                    _logger.Debug("-> V1 target instance version: {0}.", _targetMetaAPI.Version.ToString());
-                    MigrationStats.WriteStat(_sqlConn, "Target API Version", _targetMetaAPI.Version.ToString());
+                    _logger.Debug("-> V1 target instance version: {0}.", _targetDataAPI.Meta.ToString());
+                    MigrationStats.WriteStat(_sqlConn, "Target API Version", _targetDataAPI.Meta.ToString());
                 }
                 else
                 {
@@ -1094,7 +1252,7 @@ namespace V1DataMigrationService
             }
             catch (Exception ex)
             {
-                _logger.Error("-> Unable to connect to V1 source instance \"{0}\".", _config.V1TargetConnection.Url);
+                _logger.Error("-> Unable to connect to V1 target instance \"{0}\".", _config.V1TargetConnection.Url);
                 throw ex;
             }
         }
@@ -1124,5 +1282,30 @@ namespace V1DataMigrationService
                 throw ex;
             }
         }
+
+        //Verifies the connection to the SQL Server staging database.
+        private static void purgeBadImports(string assetType, int startValue, int endValue)
+        {
+            
+            for(int x = startValue;x <= endValue; x++)
+            {
+                IAssetType xAssetType = _targetMetaAPI.GetAssetType(assetType);
+                IOperation deleteOperation = _targetDataAPI.Meta.GetOperation(assetType + ".Delete");
+                Oid xOid = new Oid(xAssetType,x, 0);
+                Oid deletedID = _targetDataAPI.ExecuteOperation(deleteOperation, xOid);
+
+                try
+                {
+                    Query query = new Query(deletedID.Momentless);
+                    _targetDataAPI.Retrieve(query);
+                    _logger.Info("{0} has been deleted: {1}", assetType, deletedID.Momentless);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error("{0} has been deleted: {1}", assetType, deletedID.Momentless);
+                } 
+            }
+        }
+
     }
 }

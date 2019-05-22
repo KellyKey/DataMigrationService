@@ -6,12 +6,15 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
     public class ImportConversations : IImportAssets
     {
-        public ImportConversations(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) 
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
+        public ImportConversations(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
@@ -20,7 +23,7 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTable("Conversations");
 
             int importCount = 0;
-                       
+
             while (sdr.Read())
             {
                 try
@@ -31,6 +34,16 @@ namespace V1DataWriter
                         UpdateImportStatus("Conversations", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Conversation author attribute is required.");
                         continue;
                     }
+
+                    //CHECK DATA:  Conversation must be authored by a Member in the Staging DB             
+                    if (_config.V1Configurations.MigrateUnauthoredConversationsAsAdmin == false && String.IsNullOrEmpty(sdr["Author"].ToString()) == false)
+                    {
+                        string memberNewOid = string.Empty;
+                        memberNewOid = GetNewAssetOIDFromDB(sdr["Author"].ToString(), "Members");
+                    }
+
+
+
 
                     IAssetType assetType = _metaAPI.GetAssetType("Expression");
                     Asset asset = _dataAPI.New(assetType, null);
@@ -43,9 +56,15 @@ namespace V1DataWriter
 
                     string memberOid = string.Empty;
                     if (_config.V1Configurations.MigrateUnauthoredConversationsAsAdmin == true && String.IsNullOrEmpty(sdr["Author"].ToString()))
+                    {
                         memberOid = "Member:20";
+                    }
                     else
+                    {
                         memberOid = GetNewAssetOIDFromDB(sdr["Author"].ToString(), "Members");
+                        if (String.IsNullOrEmpty(memberOid) == true)
+                            continue;
+                    }
 
                     IAttributeDefinition authorAttribute = assetType.GetAttributeDefinition("Author");
                     asset.SetAttributeValue(authorAttribute, memberOid);
@@ -63,7 +82,7 @@ namespace V1DataWriter
                     }
                     else
                     {
-                        string inReplyTo = GetNewAssetOIDFromDB(sdr["InReplyTo"].ToString(), "Conversations");
+                        string inReplyTo = GetNewAssetOIDFromDB(sdr["InReplyTo"].ToString(), "Expression");
                         IAttributeDefinition inReplyToAttribute = assetType.GetAttributeDefinition("InReplyTo");
                         asset.SetAttributeValue(inReplyToAttribute, inReplyTo);
 
@@ -86,12 +105,16 @@ namespace V1DataWriter
                     UpdateNewAssetOIDInDB("Conversations", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString());
                     UpdateImportStatus("Conversations", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "Conversation imported.");
                     importCount++;
+
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
                 }
                 catch (Exception ex)
                 {
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Conversations", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
+
                         continue;
                     }
                     else
@@ -137,12 +160,12 @@ namespace V1DataWriter
                     asset.SetAttributeValue(inReplyToAttribute, inReplyTo);
                     canSave = true;
                 }
-                
+
                 try
-                { 
+                {
                     if (canSave == true) _dataAPI.Save(asset);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
 
                 }
@@ -155,12 +178,12 @@ namespace V1DataWriter
         {
 
             string newConversationOID = GetNewConversationOIDFromDB(sdr["Conversation"].ToString(), "Conversations");
-            
+
             if (String.IsNullOrEmpty(newConversationOID) == true)
             {
                 IAssetType assetType = _metaAPI.GetAssetType("Conversation");
                 Asset newAsset = _dataAPI.New(assetType, null);
-                
+
                 IAttributeDefinition authoredAtAttribute = assetType.GetAttributeDefinition("Participants");
 
                 newAsset.AddAttributeValue(authoredAtAttribute, memberOID);
@@ -168,17 +191,17 @@ namespace V1DataWriter
                 _dataAPI.Save(newAsset);
 
                 UpdateNewConversationOIDInDB("Conversations", sdr["AssetOid"].ToString(), newAsset.Oid.Momentless.ToString());
-                
+
                 return newAsset.Oid.Momentless.ToString();
 
             }
             else
             {
-                //UpdateNewConversationOIDInDB("Conversations", sdr["AssetOid"].ToString(), newConversationOID);
-                //return newConversationOID;
-                return String.Empty;
+                UpdateNewConversationOIDInDB("Conversations", sdr["AssetOid"].ToString(), newConversationOID);
+                return newConversationOID;
+                //return String.Empty;
             }
-            
+
         }
     }
 }

@@ -11,12 +11,12 @@ namespace V1DataCleanup
 {
     abstract public class ICleanup
     {
-        protected MetaModel _metaAPI;
+        protected IMetaModel _metaAPI;
         protected Services _dataAPI;
         protected SqlConnection _sqlConn;
         protected MigrationConfiguration _config;
 
-        public ICleanup(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ICleanup(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
         {
             _sqlConn = sqlConn;
             _metaAPI = MetaAPI;

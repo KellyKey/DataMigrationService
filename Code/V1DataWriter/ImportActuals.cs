@@ -6,12 +6,15 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
     public class ImportActuals : IImportAssets
     {
-        public ImportActuals(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) 
+        private static Logger _logger = LogManager.GetCurrentClassLogger();      
+        
+        public ImportActuals(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) 
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
@@ -61,12 +64,16 @@ namespace V1DataWriter
                     _dataAPI.Save(asset);
                     UpdateNewAssetOIDAndStatus("Actuals", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Actual imported.");
                     importCount++;
+
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
                 }
                 catch (Exception ex)
                 {
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Actuals", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
+
                         continue;
                     }
                     else

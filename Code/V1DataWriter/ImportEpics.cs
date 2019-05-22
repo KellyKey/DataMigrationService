@@ -14,7 +14,7 @@ namespace V1DataWriter
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         
-        public ImportEpics(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ImportEpics(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
@@ -78,7 +78,8 @@ namespace V1DataWriter
                     asset.SetAttributeValue(referenceAttribute, sdr["Reference"].ToString());
 
                     IAttributeDefinition scopeAttribute = assetType.GetAttributeDefinition("Scope");
-                    asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString(), "Projects"));
+                    asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString(), "Scope"));
+                    //asset.SetAttributeValue(scopeAttribute, _config.JiraConfiguration.ProjectName);
 
                     //SPECIAL CASE: Need to account for epic conversion.
                     IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
@@ -197,7 +198,7 @@ namespace V1DataWriter
                     asset.SetAttributeValue(parentAttribute, newSuperAssetOID);
                 }
                 _dataAPI.Save(asset);
-                _logger.Info("-> Set Parent for {0} Epic to {1}.", sdr["NewAssetOID"].ToString(), newSuperAssetOID);
+                //_logger.Info("-> Set Parent for {0} Epic to {1}.", sdr["NewAssetOID"].ToString(), newSuperAssetOID);
                 setParentCount++;
 
             }
@@ -212,9 +213,25 @@ namespace V1DataWriter
             int assetCount = 0;
             while (sdr.Read())
             {
-                Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
-                ExecuteOperationInV1("Epic.Inactivate", asset.Oid);
-                assetCount++;
+                try
+                {
+                    Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                    ExecuteOperationInV1("Epic.Inactivate", asset.Oid);
+                    assetCount++;
+                }
+                catch(Exception ex)
+                {
+                    if (ex.Message == "Object reference not set to an instance of an object.")
+                    {
+                        UpdateImportStatus("Epics", sdr["AssetOID"].ToString(), ImportStatuses.SKIPPED, ex.Message);
+                        continue;
+                    }
+                    else
+                    {
+                        throw ex;
+                    }
+
+                }
             }
             sdr.Close();
             return assetCount;

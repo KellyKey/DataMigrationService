@@ -11,7 +11,7 @@ namespace V1DataWriter
 {
     public class ImportPrograms : IImportAssets
     {
-        public ImportPrograms(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ImportPrograms(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()

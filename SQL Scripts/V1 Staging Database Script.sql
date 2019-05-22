@@ -38,6 +38,7 @@
 *	- 8/23/2013 AJB Added URL. AssetType columns to Attachments table to support Rally export.
 *	- 9/9/2013	AKB	Added spGetAttachmentsForRallyImport stored procedure.
 *   - 4/3/2015  KPK Added PlannedStart and PlannedEnd to Epics table
+*	- 12/6/2018 KPK Added TaggedWith to Epic, Story, Defect, Test, Task, RegressionTest
 *******************************************************************************************************/
 
 USE master;
@@ -362,6 +363,7 @@ CREATE TABLE Epics (
 	PlannedStart varchar(50),						--Text
 	PlannedEnd varchar(50),							--Text
 	Priority varchar(50),							--Relation to EpicPriority
+	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_Epics] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -408,6 +410,7 @@ CREATE TABLE Stories (
 	BlockingIssues varchar(max),					--Multi-Relation to Issue
 	Issues varchar(max),							--Multi-Relation to Issue
 	Benefits varchar(max),							--LongText
+	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_Stories] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -454,6 +457,7 @@ CREATE TABLE Defects (
 	Requests varchar(max),							--Multi-Relation to Request
 	BlockingIssues varchar(max),					--Multi-Relation to Issue
 	Issues varchar(max),							--Multi-Relation to Issue
+	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_Defects] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -483,6 +487,7 @@ CREATE TABLE Tasks (
 	Status varchar(50),								--Relation to TaskStatus
 	Parent varchar(50),								--Relation to PrimaryWorkitem
 	ParentType varchar(50),							--Parent asset type
+	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_Tasks] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -511,7 +516,7 @@ CREATE TABLE RegressionTests (
 	Category varchar(50),							--Relation to TestCategory
 	GeneratedFrom varchar(50),						--Relation to RegressionTest
 	RegressionSuites varchar(max),					--Multi-Relation to RegressionSuites
-	Tags varchar(max)								--Text
+	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_RegressionTests] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -545,6 +550,7 @@ CREATE TABLE Tests (
 	Parent varchar(50),								--Relation to Workitem
 	ParentType varchar(50),							--Parent asset type
 	GeneratedFrom varchar(50),						--Relation to RegressionTest
+	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_Tests] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO

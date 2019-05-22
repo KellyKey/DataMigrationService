@@ -11,7 +11,7 @@ namespace V1DataReader
 {
     public class ExportConversations : IExportAssets
     {
-        public ExportConversations(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ExportConversations(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
@@ -33,7 +33,7 @@ namespace V1DataReader
 
             //SPECIAL CASE: BaseAssets attribute only exists in V1 11.3 and earlier.
             IAttributeDefinition baseAssetsAttribute = null;
-            if (_metaAPI.Version.Major < 12)
+            if (false)
             {
                 baseAssetsAttribute = assetType.GetAttributeDefinition("BaseAssets.ID");
                 query.Selection.Add(baseAssetsAttribute);
@@ -44,7 +44,8 @@ namespace V1DataReader
 
             IAttributeDefinition conversationAttribute = null;
             IAttributeDefinition beLongsToAttribute = null;
-            if (_metaAPI.Version.Major < 12)
+            //if (_metaAPI.Version.Major < 12)
+             if (  false )
             {
                 conversationAttribute = assetType.GetAttributeDefinition("Conversation");
                 query.Selection.Add(conversationAttribute);
@@ -94,10 +95,10 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Content", content);
                         cmd.Parameters.AddWithValue("@Mentions", GetMultiRelationValues(asset.GetAttribute(mentionsAttribute)));
 
-                        if (_metaAPI.Version.Major < 12)
+                        if (false)
                             cmd.Parameters.AddWithValue("@BaseAssets", GetMultiRelationValues(asset.GetAttribute(baseAssetsAttribute)));
-                        
-                        if (_metaAPI.Version.Major < 12)
+
+                        if (false)
                         {
                             cmd.Parameters.AddWithValue("@Conversation", GetMultiRelationValues(asset.GetAttribute(conversationAttribute)));
                         }
@@ -127,7 +128,7 @@ namespace V1DataReader
             sb.Append("Content,");
             sb.Append("Mentions,");
 
-            if (_metaAPI.Version.Major < 12)
+            if (false)
                 sb.Append("BaseAssets,");
 
             sb.Append("Author,");
@@ -140,12 +141,12 @@ namespace V1DataReader
             sb.Append("@Content,");
             sb.Append("@Mentions,");
 
-            if (_metaAPI.Version.Major < 12)
+            if (false)
                 sb.Append("@BaseAssets,");
 
             sb.Append("@Author,");
 
-            if (_metaAPI.Version.Major < 12)
+            if (false)
             {
                 sb.Append("@Conversation,");
             }

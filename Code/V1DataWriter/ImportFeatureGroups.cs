@@ -15,7 +15,7 @@ namespace V1DataWriter
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
         
-        public ImportFeatureGroups(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ImportFeatureGroups(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()

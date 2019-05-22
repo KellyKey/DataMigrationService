@@ -16,7 +16,7 @@ namespace V1DataReader
         private string _InternalAssetType;
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public ExportCustomFields(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations, string InternalAssetType)
+        public ExportCustomFields(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations, string InternalAssetType)
             : base(sqlConn, MetaAPI, DataAPI, Configurations)
         {
             _InternalAssetType = InternalAssetType;

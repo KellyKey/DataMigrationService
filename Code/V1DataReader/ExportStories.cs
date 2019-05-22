@@ -11,7 +11,7 @@ namespace V1DataReader
 {
     public class ExportStories : IExportAssets
     {
-        public ExportStories(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ExportStories(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
@@ -122,7 +122,7 @@ namespace V1DataReader
             query.Selection.Add(benefitsAttribute);
 
             IAttributeDefinition subStateAttribute = null;
-            if (_metaAPI.Version.Major < 12)
+            if (false)
             {
                 subStateAttribute = assetType.GetAttributeDefinition("SubState");
                 query.Selection.Add(subStateAttribute);
@@ -206,7 +206,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@AssetState", CheckStoryState(asset.GetAttribute(assetStateAttribute)));
                         cmd.Parameters.AddWithValue("@AssetNumber", GetScalerValue(asset.GetAttribute(assetNumberAttribute)));
 
-                        if (_metaAPI.Version.Major < 12)
+                        if (false)
                             cmd.Parameters.AddWithValue("@SubState", GetScalerValue(asset.GetAttribute(subStateAttribute)));
 
                         cmd.Parameters.AddWithValue("@Timebox", GetSingleRelationValue(asset.GetAttribute(timeboxAttribute)));
@@ -291,7 +291,7 @@ namespace V1DataReader
             sb.Append("AssetState,");
             sb.Append("AssetNumber,");
 
-            if (_metaAPI.Version.Major < 12)
+            if (false)
                 sb.Append("SubState,");
 
             sb.Append("Timebox,");
@@ -331,7 +331,7 @@ namespace V1DataReader
             sb.Append("@AssetState,");
             sb.Append("@AssetNumber,");
 
-            if (_metaAPI.Version.Major < 12)
+            if (false)
                 sb.Append("@SubState,");
 
             sb.Append("@Timebox,");

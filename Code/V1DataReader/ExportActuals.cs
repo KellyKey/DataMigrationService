@@ -12,7 +12,7 @@ namespace V1DataReader
     public class ExportActuals : IExportAssets
     {
 
-        public ExportActuals(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) 
+        public ExportActuals(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) 
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()

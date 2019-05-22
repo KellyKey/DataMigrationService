@@ -38,3 +38,17 @@ C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\
 \\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.dll
 \\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.pdb
 \\psf\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\V1DataReader.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\V1DataReader.pdb
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\NLog.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\V1DataCore.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\VersionOne.SDK.APIClient.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\V1DataCore.pdb
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\NLog.xml
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.csprojResolveAssemblyReference.cache
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\obj\x86\Release\V1DataReader.pdb
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\log4net.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\Newtonsoft.Json.dll
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\log4net.xml
+\\Mac\Home\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\V1DataReader\bin\x86\Release\Newtonsoft.Json.xml

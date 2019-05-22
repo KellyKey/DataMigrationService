@@ -6,12 +6,15 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
     public class ImportTests : IImportAssets
     {
-        public ImportTests(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+        
+        public ImportTests(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
@@ -32,11 +35,18 @@ namespace V1DataWriter
                     }
 
                     //CHECK DATA: Test must have a parent.
-                    if (String.IsNullOrEmpty(sdr["Parent"].ToString()))
+                    //if (String.IsNullOrEmpty(sdr["Parent"].ToString()))
+                    //{
+                    //    UpdateImportStatus("Tests", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Test parent attribute is required.");
+                    //    continue;
+                    //}
+
+                    //SPECIAL CASE: Do not import if ImportStatus is IMPORTED
+                    if (sdr["ImportStatus"].ToString() == "IMPORTED")
                     {
-                        UpdateImportStatus("Tests", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Test parent attribute is required.");
                         continue;
                     }
+
 
                     IAssetType assetType = _metaAPI.GetAssetType("Test");
                     Asset asset = _dataAPI.New(assetType, null);
@@ -94,44 +104,55 @@ namespace V1DataWriter
                     asset.SetAttributeValue(expectedResultsAttribute, sdr["ExpectedResults"].ToString());
 
                     IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
-                    asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
+                    //asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
                     //HACK: For Rally import, needs to be refactored.
-                    //asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB("TestStatus", sdr["Status"].ToString()));
+                    asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB("TestStatus", sdr["Status"].ToString()));
 
                     IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Category");
-                    asset.SetAttributeValue(categoryAttribute, GetNewListTypeAssetOIDFromDB(sdr["Category"].ToString()));
+                    //asset.SetAttributeValue(categoryAttribute, GetNewListTypeAssetOIDFromDB(sdr["Category"].ToString()));
                     //HACK: For Rally import, needs to be refactored.
-                    //asset.SetAttributeValue(categoryAttribute, GetNewListTypeAssetOIDFromDB("TestCategory", sdr["Category"].ToString()));
+                    asset.SetAttributeValue(categoryAttribute, GetNewListTypeAssetOIDFromDB("TestCategory", sdr["Category"].ToString()));
 
-                    //HACK: For Rally import, needs to be refactored.
-                    IAttributeDefinition parentAttribute = assetType.GetAttributeDefinition("Parent");
-                    if (String.IsNullOrEmpty(sdr["ParentType"].ToString()) == true)
-                        asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(sdr["Parent"].ToString()));
+                    //Fix the Orphan Parent due to VersionOne not allowing it.  Set it to the Default Story
+                    String parentValue = null;
+                    String parentType = null;
+
+                    if (String.IsNullOrEmpty(sdr["Parent"].ToString()) == true)
+                    {
+                        parentValue = _config.RallySourceConnection.OrphanTasksDefaultStory;
+                        parentType = "Story";
+                    }
                     else
                     {
-                        string newAssetOID = null;
-                        if (sdr["ParentType"].ToString() == "Story")
+                        parentValue = sdr["Parent"].ToString();
+                    }
+
+                    IAttributeDefinition parentAttribute = assetType.GetAttributeDefinition("Parent");
+                    if (String.IsNullOrEmpty(parentType) == true)
+                    {
+                        if (GetNewAssetOIDFromDB(parentValue, "Story") != null)
                         {
-                            newAssetOID = GetNewAssetOIDFromDB(sdr["Parent"].ToString(), "Stories");
-                            if (String.IsNullOrEmpty(newAssetOID) == false)
-                                asset.SetAttributeValue(parentAttribute, newAssetOID);
-                            else
-                            {
-                                newAssetOID = GetNewAssetOIDFromDB(sdr["Parent"].ToString(), "Epics");
-                                if (String.IsNullOrEmpty(newAssetOID) == false)
-                                    asset.SetAttributeValue(parentAttribute, newAssetOID);
-                                else
-                                    throw new Exception("Import failed. Parent could not be found.");
-                            }
+                            asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(parentValue, "Story"));
+                        }
+                        else if (GetNewAssetOIDFromDB(parentValue, "Defect") != null)
+                        {
+                            asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(parentValue, "Defect"));
                         }
                         else
                         {
-                            newAssetOID = GetNewAssetOIDFromDB(sdr["Parent"].ToString(), "Defects");
-                            if (String.IsNullOrEmpty(newAssetOID) == false)
-                                asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(sdr["Parent"].ToString(), "Defects"));
-                            else
-                                throw new Exception("Import failed. Parent defect could not be found.");
+                            parentValue = _config.RallySourceConnection.OrphanTasksDefaultStory;
+                            asset.SetAttributeValue(parentAttribute, parentValue);
                         }
+                    }
+                    else
+                    {
+                        //string newAssetOID = null;
+                        //    if (sdr["ParentType"].ToString() == "Story")
+                        //    {
+                        //newAssetOID = GetNewAssetOIDFromDB(parentValue, "Stories");
+                        //        if (String.IsNullOrEmpty(newAssetOID) == false)
+                        asset.SetAttributeValue(parentAttribute, parentValue);
+
                     }
 
                     _dataAPI.Save(asset);
@@ -140,12 +161,15 @@ namespace V1DataWriter
                     UpdateNewAssetOIDAndNumberInDB("Tests", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber);
                     UpdateImportStatus("Tests", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "Test imported.");
                     importCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
+
                 }
                 catch (Exception ex)
                 {
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Tests", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
                         continue;
                     }
                     else

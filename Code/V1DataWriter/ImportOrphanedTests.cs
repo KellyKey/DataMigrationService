@@ -12,7 +12,7 @@ namespace V1DataWriter
     //NOTE: Class used for Tripwire Rally export to import tests with no parent as regression tests to a single project.
     public class ImportOrphanedTests : IImportAssets
     {
-        public ImportOrphanedTests(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ImportOrphanedTests(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()

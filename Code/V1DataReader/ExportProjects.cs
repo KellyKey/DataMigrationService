@@ -15,7 +15,7 @@ namespace V1DataReader
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         
-        public ExportProjects(SqlConnection sqlConn, MetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) 
+        public ExportProjects(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) 
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
@@ -62,7 +62,7 @@ namespace V1DataReader
 
             //SPECIAL CASE: Reference attribute only exists in V1 12 and later.
             IAttributeDefinition referenceAttribute = null;
-            if (_metaAPI.Version.Major > 11)
+            if (true)
             {
                 referenceAttribute = assetType.GetAttributeDefinition("Reference");
                 query.Selection.Add(referenceAttribute);
