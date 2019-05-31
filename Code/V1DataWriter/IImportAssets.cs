@@ -725,7 +725,7 @@ namespace V1DataWriter
         {
             if (String.IsNullOrEmpty(assetOID) == false)
             {
-                string SQL = "SELECT * FROM " + lookupTable + " WHERE Asset = '" + assetOID + "';";
+                string SQL = "SELECT * FROM " + lookupTable + " WHERE Asset = '" + assetOID + "' and ImportStatus = '';";
                 SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
                 return cmd.ExecuteReader();
             }
@@ -736,43 +736,66 @@ namespace V1DataWriter
         }
 
 
-        protected void UploadEmbeddedImageContent(Asset newAsset, byte[] FileContent, V1Connector _imageConnector)
+        protected void UploadEmbeddedImageContent(ref Asset newAsset, Oid newAssetOid, byte[] FileContent, V1Connector _imageConnector)
         {
+            Services services = new Services(_imageConnector);
+
             //Create a new story.
-            //var storyType = services.Meta.GetAssetType("Story");
+            var storyType = services.Meta.GetAssetType("Story");
             //var newStory = services.New(storyType, services.GetOid("Scope:0"));
             //var nameAttribute = storyType.GetAttributeDefinition("Name");
-            //var descriptionAttribute = storyType.GetAttributeDefinition("Description");
+            var descriptionAttribute = storyType.GetAttributeDefinition("Description");
+            newAsset.SetAttributeValue(descriptionAttribute, "Testing Description Assignment");
+            Console.WriteLine(newAsset.Oid);
             //var name = string.Format("Story with an embedded image");
             //newStory.SetAttributeValue(nameAttribute, name);
-            //services.Save(newStory);
+            IAssetType typeOfAsset = newAsset.AssetType;
+            Console.WriteLine("The Type is: " + newAsset.Attributes.ToString());
+            services.Save(newAsset);
             //Oid storyOID = newStory.Oid;
 
             ////Create an embedded image.
+            string filePath = @"C:\Windows\Temp\TempImage.png";
+             File.WriteAllBytes(filePath, FileContent);
             //string file = @"C:\Temp\versionone.jpg";
-            //Oid embeddedImageOid = services.SaveEmbeddedImage(file, newStory);
-            //var embeddedImageTag = string.Format("<p>Here's an embedded image:</p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOid.Key, embeddedImageOid.Momentless);
-            //newStory.SetAttributeValue(descriptionAttribute, embeddedImageTag);
-            //services.Save(newStory);
+            Oid embeddedImageOid = services.SaveEmbeddedImage(filePath, newAsset);
+            var embeddedImageTag = string.Format("<p>Here's an embedded image:</p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOid.Key, embeddedImageOid.Momentless);
+            newAsset.SetAttributeValue(descriptionAttribute, embeddedImageTag);
+            services.Save(newAsset);
 
-            string filePath = @"C:\Windows\Temp\TempImage.jpg";
 
             try
             {
-                File.WriteAllBytes(filePath, FileContent);
-                Services services = new Services(_imageConnector);
+
+
+
+                //Create a new embeddedImage
+                //var embeddedImageType = services.Meta.GetAssetType("EmbeddedImage");
+                //var newEmbeddedImage = services.New(embeddedImageType, null);
+                //IAttributeDefinition assetAttribute = embeddedImageType.GetAttributeDefinition("Asset");
+                //newEmbeddedImage.SetAttributeValue(assetAttribute, newAsset.Oid.Momentless);
+                //IAttributeDefinition contentAttribute = embeddedImageType.GetAttributeDefinition("Content");
+                //newEmbeddedImage.SetAttributeValue(contentAttribute, FileContent);
+                //IAttributeDefinition contentTypeAttribute = embeddedImageType.GetAttributeDefinition("Asset");
+                //newEmbeddedImage.SetAttributeValue(contentTypeAttribute, "image/png");
+
+                //services.Save(newEmbeddedImage);
+                //Oid storyOID = newEmbeddedImage.Oid;
+
+
                 //var storyType = services.Meta.GetAssetType("Story");
-                //var newStory = services.New(storyType, services.GetOid("Scope:7795"));
+                //var newStory = services.New(storyType, services.GetOid("Scope:536868"));
                 //var nameAttribute = storyType.GetAttributeDefinition("Name");
                 //var descriptionAttribute = storyType.GetAttributeDefinition("Description");
-                //var name = string.Format("Story: Another embedded image demo");
+                //var name = string.Format("Story: Another embedded image demo 1");
                 //newAsset.SetAttributeValue(descriptionAttribute, string.Format("<p>Image<p>"));
                 //services.Save(newAsset);
                 //Console.Write(newAsset.GetAttribute(nameAttribute));
                 //Console.Write(newAsset.GetAttribute(descriptionAttribute));
                 //var oidTypeID = newAsset.Oid.ToString();
-                Oid storyOID = newAsset.Oid.Momentless;
+                //Oid storyOID = newAsset.Oid.Momentless;
 
+                //Oid embeddedImageOID = services.SaveEmbeddedImage(filePath, newAsset);
                 Oid embeddedImageOID = services.SaveEmbeddedImage(filePath, newAsset);
                 //var embeddedImageTag = string.Format("<p>Here's a migrated embedded image:</p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOID.Key, embeddedImageOID.Momentless);
                 //var storyType = services.Meta.GetAssetType("Story");

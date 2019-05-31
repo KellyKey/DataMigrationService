@@ -114,7 +114,7 @@ namespace V1DataReader
 
                     if (attributeType == "Relation")
                     {
-                        cmd.Parameters.AddWithValue("@FieldValue", GetSingleListValue(asset.GetAttribute(nameAttribute)));
+                        cmd.Parameters.AddWithValue("@FieldValue", GetMultiRelationValues(asset.GetAttribute(nameAttribute)));
                     }
                     else
                     {

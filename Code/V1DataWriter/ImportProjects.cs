@@ -23,111 +23,144 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTable("Projects");
 
             int importCount = 0;
-            //while (sdr.Read())
-            //{
-            //    try
-            //    {
-                    
-            //        //SPECIAL CASE: Do not import Scope:0 (System (All Projects)).
-            //        if (sdr["AssetOID"].ToString() == "Scope:0")
-            //        {
-            //            UpdateNewAssetOIDAndStatus("Projects", sdr["AssetOID"].ToString(), sdr["AssetOID"].ToString(), ImportStatuses.SKIPPED, "System project (scope:0) cannot be imported.");
-            //            continue;
-            //        }
+            while (sdr.Read())
+            {
+                try
+                {
 
-            //        //SPECIAL CASE: Do not import if ImportStatus is IMPORTED
-            //        //if (sdr["ImportStatus"].ToString() == "IMPORTED")
-            //        //{
-            //        //    continue;
-            //        //}
+                    //SPECIAL CASE: Do not import Scope:0 (System (All Projects)).
+                    if (sdr["AssetOID"].ToString() == "Scope:0")
+                    {
+                        UpdateNewAssetOIDAndStatus("Projects", sdr["AssetOID"].ToString(), sdr["AssetOID"].ToString(), ImportStatuses.SKIPPED, "System project (scope:0) cannot be imported.");
+                        continue;
+                    }
 
-            //        //SPECIAL CASE: If MergeRootProjects config options is "true" and the current project is the source root project, the root becomes the target project.
-            //        IAssetType assetType = _metaAPI.GetAssetType("Scope");
-            //        Asset asset = null;
-            //        IAttributeDefinition parentAttribute = null;
-            //        IAttributeDefinition fullNameAttribute = null;
-            //        if (_config.V1Configurations.MergeRootProjects == true && sdr["AssetOID"].ToString() == _config.V1SourceConnection.Project)
-            //        {
-            //            asset = GetAssetFromV1(_config.V1TargetConnection.Project);
-            //        }
-            //        else
-            //        {
-            //            asset = _dataAPI.New(assetType, null);
+                    //SPECIAL CASE: Do not import if ImportStatus is IMPORTED
+                    //if (sdr["ImportStatus"].ToString() == "IMPORTED")
+                    //{
+                    //    continue;
+                    //}
 
-            //            fullNameAttribute = assetType.GetAttributeDefinition("Name");
-            //            asset.SetAttributeValue(fullNameAttribute, sdr["Name"].ToString());
+                    //SPECIAL CASE: If MergeRootProjects config options is "true" and the current project is the source root project, the root becomes the target project.
+                    IAssetType assetType = _metaAPI.GetAssetType("Scope");
+                    Asset asset = null;
+                    IAttributeDefinition parentAttribute = null;
+                    IAttributeDefinition fullNameAttribute = null;
+                    if (_config.V1Configurations.MergeRootProjects == true && sdr["AssetOID"].ToString() == _config.V1SourceConnection.Project)
+                    {
+                        asset = GetAssetFromV1(_config.V1TargetConnection.Project);
+                    }
+                    else
+                    {
+                        asset = _dataAPI.New(assetType, null);
 
-            //            //NOTE: All sub-projects are intially assigned to the parent scope. They will be reassigned later.
-            //            parentAttribute = assetType.GetAttributeDefinition("Parent");
-            //            asset.SetAttributeValue(parentAttribute, _config.V1TargetConnection.Project);
-            //        }
+                        fullNameAttribute = assetType.GetAttributeDefinition("Name");
+                        asset.SetAttributeValue(fullNameAttribute, sdr["Name"].ToString());
 
-            //        if (String.IsNullOrEmpty(customV1IDFieldName) == false)
-            //        {
-            //            IAttributeDefinition customV1IDAttribute = assetType.GetAttributeDefinition(customV1IDFieldName);
-            //            asset.SetAttributeValue(customV1IDAttribute, sdr["AssetOID"].ToString());
-            //        }
+                        //NOTE: All sub-projects are intially assigned to the parent scope. They will be reassigned later.
+                        parentAttribute = assetType.GetAttributeDefinition("Parent");
+                        asset.SetAttributeValue(parentAttribute, _config.V1TargetConnection.Project);
+                    }
 
-            //        IAttributeDefinition descAttribute = assetType.GetAttributeDefinition("Description");
-            //        asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
+                    if (String.IsNullOrEmpty(customV1IDFieldName) == false)
+                    {
+                        IAttributeDefinition customV1IDAttribute = assetType.GetAttributeDefinition(customV1IDFieldName);
+                        asset.SetAttributeValue(customV1IDAttribute, sdr["AssetOID"].ToString());
+                    }
 
-            //        IAttributeDefinition scheduleAttribute = assetType.GetAttributeDefinition("Schedule");
-            //        asset.SetAttributeValue(scheduleAttribute, GetNewAssetOIDFromDB(sdr["Schedule"].ToString(), "Schedules"));
-                    
-            //        IAttributeDefinition ownerAttribute = assetType.GetAttributeDefinition("Owner");
-            //        //if the original Owner is not available, assign to the Admin Member 20
-            //        string result = GetNewAssetOIDFromDB(sdr["Owner"].ToString(), "Members");
-            //        //result = String.Empty;
-            //        if (string.IsNullOrEmpty(result) == false)
-            //        {
-            //             asset.SetAttributeValue(ownerAttribute, result);
-            //        }
-            //        else
-            //        {
-            //            asset.SetAttributeValue(ownerAttribute, "Member:20");
+                    IAttributeDefinition descAttribute = assetType.GetAttributeDefinition("Description");
+                    asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
 
-            //        }
-                    
-            //        IAttributeDefinition beginDateAttribute = assetType.GetAttributeDefinition("BeginDate");
-            //        asset.SetAttributeValue(beginDateAttribute, sdr["BeginDate"].ToString());
+                    IAttributeDefinition scheduleAttribute = assetType.GetAttributeDefinition("Schedule");
+                    asset.SetAttributeValue(scheduleAttribute, GetNewAssetOIDFromDB(sdr["Schedule"].ToString(), "Schedules"));
 
-            //        IAttributeDefinition endDateAttribute = assetType.GetAttributeDefinition("EndDate");
-            //        asset.SetAttributeValue(endDateAttribute, sdr["EndDate"].ToString());
+                    IAttributeDefinition ownerAttribute = assetType.GetAttributeDefinition("Owner");
+                    //if the original Owner is not available, assign to the Admin Member 20
+                    string result = GetNewAssetOIDFromDB(sdr["Owner"].ToString(), "Members");
+                    //result = String.Empty;
+                    if (string.IsNullOrEmpty(result) == false)
+                    {
+                        asset.SetAttributeValue(ownerAttribute, result);
+                    }
+                    else
+                    {
+                        asset.SetAttributeValue(ownerAttribute, "Member:20");
 
-            //        IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
-            //        asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
+                    }
 
-            //        IAttributeDefinition referenceAttribute = assetType.GetAttributeDefinition("Reference");
-            //        asset.SetAttributeValue(referenceAttribute, sdr["Reference"].ToString());
+                    IAttributeDefinition beginDateAttribute = assetType.GetAttributeDefinition("BeginDate");
+                    asset.SetAttributeValue(beginDateAttribute, sdr["BeginDate"].ToString());
 
-            //        if (_config.V1Configurations.MigrateProjectMembership == true)
-            //        {
-            //            if (String.IsNullOrEmpty(sdr["Members"].ToString()) == false)
-            //            {
-            //                AddMultiValueRelation(assetType, asset, "Members", sdr["Members"].ToString());
-            //            }
-            //        }
+                    IAttributeDefinition endDateAttribute = assetType.GetAttributeDefinition("EndDate");
+                    asset.SetAttributeValue(endDateAttribute, sdr["EndDate"].ToString());
 
-            //        _dataAPI.Save(asset);
-            //        UpdateNewAssetOIDAndStatus("Projects", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Project imported.");
-            //        importCount++;
-            //        _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
+                    IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
+                    asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
 
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        if (_config.V1Configurations.LogExceptions == true)
-            //        {
-            //            UpdateImportStatus("Projects", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
-            //            _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
-            //            continue;
-            //        }
-            //        else
-            //        {
-            //            throw ex;
-            //        }
-            //    }
-            //}
+                    IAttributeDefinition referenceAttribute = assetType.GetAttributeDefinition("Reference");
+                    asset.SetAttributeValue(referenceAttribute, sdr["Reference"].ToString());
+
+                    if (_config.V1Configurations.MigrateProjectMembership == true)
+                    {
+                        if (String.IsNullOrEmpty(sdr["Members"].ToString()) == false)
+                        {
+                            AddMultiValueRelation(assetType, asset, "Members", sdr["Members"].ToString());
+                        }
+                    }
+
+                    _dataAPI.Save(asset);
+                    UpdateNewAssetOIDAndStatus("Projects", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Project imported.");
+                    importCount++;
+
+                    //Get Any EmbeddedImages for the Description Field
+                    int[] imgIDLocation = new int[10];
+                    int imageCounter = 0;
+
+                    SqlDataReader sdrEmbeddedImages = GetDataFromDB("EmbeddedImages", sdr["AssetOID"].ToString());
+                    while (sdrEmbeddedImages.Read())
+                    {
+                        //UploadEmbeddedImageContent(ref asset, asset.Oid,(byte[])sdrEmbeddedImages["Content"], _imageConnector);
+
+                        ////Create an embedded image.
+                        string filePath = @"C:\Windows\Temp\TempImage.png";
+                        System.IO.File.WriteAllBytes(filePath, (byte[])sdrEmbeddedImages["Content"]);
+                        //string file = @"C:\Temp\versionone.jpg";
+                        Oid embeddedImageOid = _dataAPI.SaveEmbeddedImage(filePath, asset);
+
+                        string currentDescription = sdr["Description"].ToString();
+                        imgIDLocation[imageCounter] = currentDescription.IndexOf(".img/", 0, currentDescription.Length);
+                        string firstDescriptionPart = currentDescription.Substring(0, imgIDLocation[imageCounter] + 5);
+                        string secondDescriptionPart = currentDescription.Substring(imgIDLocation[imageCounter] + 5);
+                        imgIDLocation[imageCounter] = secondDescriptionPart.IndexOf(">", 0, secondDescriptionPart.Length);
+                        string newSecondDescriptionPart = secondDescriptionPart.Substring(imgIDLocation[imageCounter]);
+
+                        string embeddedImageTag = string.Format(" {0} alt=\"\" data-oid=\"{1}\" {2}", firstDescriptionPart + embeddedImageOid.Key + "\"", embeddedImageOid.Momentless, newSecondDescriptionPart);
+                        //var embeddedImageTag = string.Format("<p></p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOid.Key, embeddedImageOid.Momentless);
+                        asset.SetAttributeValue(descAttribute, embeddedImageTag);
+                        _dataAPI.Save(asset);
+
+                        UpdateNewAssetOIDAndStatus("EmbeddedImages", sdrEmbeddedImages["AssetOID"].ToString(), embeddedImageOid.Momentless.ToString(), ImportStatuses.IMPORTED, "EmbeddedImage imported.");
+
+                        imageCounter++;
+                    }
+
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
+
+                }
+                catch (Exception ex)
+                {
+                    if (_config.V1Configurations.LogExceptions == true)
+                    {
+                        UpdateImportStatus("Projects", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
+                        continue;
+                    }
+                    else
+                    {
+                        throw ex;
+                    }
+                }
+            }
             sdr.Close();
             SetParentProjects();
             return importCount;
