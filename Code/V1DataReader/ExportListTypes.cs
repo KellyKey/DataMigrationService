@@ -11,17 +11,23 @@ namespace V1DataReader
 {
     public class ExportListTypes : IExportAssets
     {
+        private string listTypeName = string.Empty;
         public ExportListTypes(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
         {
             int listTypeCount = 0;
+            IAttributeDefinition teamAttribute = null;
+            string listTypeName = string.Empty;
+
             string SQL = BuildListTypeInsertStatement();
 
             foreach (MigrationConfiguration.ListTypeInfo listType in _config.ListTypesToMigrate)
             {
                 if (listType.Enabled == true)
                 {
+
+                    listTypeName = listType.Name;
                     IAssetType assetType = _metaAPI.GetAssetType(listType.Name);
                     Query query = new Query(assetType);
 
@@ -30,6 +36,13 @@ namespace V1DataReader
 
                     IAttributeDefinition assetStateAttribute = assetType.GetAttributeDefinition("AssetState");
                     query.Selection.Add(assetStateAttribute);
+
+                    //Supports Team Process Status Changes
+                    if (listType.Name.Equals("StoryStatus"))
+                    {
+                        teamAttribute = assetType.GetAttributeDefinition("Team");
+                        query.Selection.Add(teamAttribute);
+                    }
 
                     IAttributeDefinition descriptionAttribute = assetType.GetAttributeDefinition("Description");
                     query.Selection.Add(descriptionAttribute);
@@ -47,6 +60,10 @@ namespace V1DataReader
                             cmd.Parameters.AddWithValue("@AssetType", listType.Name);
                             cmd.Parameters.AddWithValue("@AssetState", GetScalerValue(asset.GetAttribute(assetStateAttribute)));
                             cmd.Parameters.AddWithValue("@Description", GetScalerValue(asset.GetAttribute(descriptionAttribute)));
+                            if (listType.Name.Equals("StoryStatus"))
+                            {
+                                cmd.Parameters.AddWithValue("@Team", GetSingleRelationValue(asset.GetAttribute(teamAttribute)));
+                            }
                             cmd.Parameters.AddWithValue("@Name", GetScalerValue(asset.GetAttribute(nameAttribute)));
                             cmd.ExecuteNonQuery();
                         }
@@ -65,12 +82,20 @@ namespace V1DataReader
             sb.Append("AssetType,");
             sb.Append("AssetState,");
             sb.Append("Description,");
+            if (listTypeName.Equals("StoryStatus"))
+            {
+                sb.Append("Team,");
+            }
             sb.Append("Name) ");
             sb.Append("VALUES (");
             sb.Append("@AssetOID,");
             sb.Append("@AssetType,");
             sb.Append("@AssetState,");
             sb.Append("@Description,");
+            if (listTypeName.Equals("StoryStatus"))
+            {
+                sb.Append("@Team,");
+            }
             sb.Append("@Name);");
             return sb.ToString();
         }
