@@ -98,11 +98,17 @@ namespace V1DataReader
             IAttributeDefinition sourceAttribute = assetType.GetAttributeDefinition("Source");
             query.Selection.Add(sourceAttribute);
 
-            //IAttributeDefinition plannedStartAttribute = assetType.GetAttributeDefinition("PlannedStart");
-            //query.Selection.Add(plannedStartAttribute);
+            IAttributeDefinition dependenciesAttribute = assetType.GetAttributeDefinition("Dependencies.ID");
+            query.Selection.Add(dependenciesAttribute);
 
-            //IAttributeDefinition plannedEndAttribute = assetType.GetAttributeDefinition("PlannedEnd");
-            //query.Selection.Add(plannedEndAttribute);
+            IAttributeDefinition dependantsAttribute = assetType.GetAttributeDefinition("Dependants.ID");
+            query.Selection.Add(dependantsAttribute);
+
+            IAttributeDefinition plannedStartAttribute = assetType.GetAttributeDefinition("PlannedStart");
+            query.Selection.Add(plannedStartAttribute);
+
+            IAttributeDefinition plannedEndAttribute = assetType.GetAttributeDefinition("PlannedEnd");
+            query.Selection.Add(plannedEndAttribute);
 
             IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
             query.Selection.Add(priorityAttribute);
@@ -188,8 +194,10 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Issues", GetMultiRelationValues(asset.GetAttribute(issuesAttribute)));
                         cmd.Parameters.AddWithValue("@Category", GetSingleRelationValue(asset.GetAttribute(categoryAttribute)));
                         cmd.Parameters.AddWithValue("@Source", GetSingleRelationValue(asset.GetAttribute(sourceAttribute)));
-                        //cmd.Parameters.AddWithValue("@PlannedStart", GetScalerValue(asset.GetAttribute(plannedStartAttribute)));
-                        //cmd.Parameters.AddWithValue("@PlannedEnd", GetScalerValue(asset.GetAttribute(plannedEndAttribute)));
+                        cmd.Parameters.AddWithValue("@Dependencies", GetMultiRelationValues(asset.GetAttribute(dependenciesAttribute)));
+                        cmd.Parameters.AddWithValue("@Dependants", GetMultiRelationValues(asset.GetAttribute(dependantsAttribute)));
+                        cmd.Parameters.AddWithValue("@PlannedStart", GetScalerValue(asset.GetAttribute(plannedStartAttribute)));
+                        cmd.Parameters.AddWithValue("@PlannedEnd", GetScalerValue(asset.GetAttribute(plannedEndAttribute)));
                         cmd.Parameters.AddWithValue("@Priority", GetSingleRelationValue(asset.GetAttribute(priorityAttribute)));
                         cmd.ExecuteNonQuery();
                     }
@@ -256,8 +264,10 @@ namespace V1DataReader
             sb.Append("Issues,");
             sb.Append("Category,");
             sb.Append("Source,");
-            //sb.Append("PlannedStart,");
-            //sb.Append("PlannedEnd,");
+            sb.Append("Dependencies,");
+            sb.Append("Dependants,");
+            sb.Append("PlannedStart,");
+            sb.Append("PlannedEnd,");
             sb.Append("Priority) ");
             sb.Append("VALUES (");
             sb.Append("@AssetOID,");
@@ -282,120 +292,13 @@ namespace V1DataReader
             sb.Append("@Issues,");
             sb.Append("@Category,");
             sb.Append("@Source,");
-            //sb.Append("@PlannedStart,");
-            //sb.Append("@PlannedEnd,");
+            sb.Append("@Dependencies,");
+            sb.Append("@Dependants,");
+            sb.Append("@PlannedStart,");
+            sb.Append("@PlannedEnd,");
             sb.Append("@Priority);");
             return sb.ToString();
         }
 
-        //Moved the control of versions less than 12 to ExportStories based on GRASP Pattern:Information Expert 
-        //private int ExportEpicsFromStories()
-        //{
-        //    int recordCount = 0;
-        //    using (SqlCommand cmd = new SqlCommand())
-        //    {
-        //        cmd.Connection = _sqlConn;
-        //        cmd.CommandText = "SELECT * FROM Stories WHERE AssetState = '208';";
-        //        cmd.CommandType = CommandType.Text;
-        //        SqlDataReader sdr = cmd.ExecuteReader();
-
-        //        string SQL = BuildEpicInsertStatement();
-        //        while (sdr.Read())
-        //        {
-        //            using (SqlCommand cmdInsert = new SqlCommand())
-        //            {
-        //                cmdInsert.Connection = _sqlConn;
-        //                cmdInsert.CommandText = SQL;
-        //                cmdInsert.CommandType = CommandType.Text;
-        //                cmdInsert.Parameters.AddWithValue("@AssetOID", sdr["AssetOID"]);
-        //                cmdInsert.Parameters.AddWithValue("@AssetState", sdr["SubState"]);
-        //                cmdInsert.Parameters.AddWithValue("@AssetNumber", sdr["AssetNumber"]);
-        //                cmdInsert.Parameters.AddWithValue("@Owners", sdr["Owners"]);
-        //                cmdInsert.Parameters.AddWithValue("@Goals", sdr["Goals"]);
-        //                cmdInsert.Parameters.AddWithValue("@Super", sdr["Super"]);
-        //                cmdInsert.Parameters.AddWithValue("@Risk", DBNull.Value); //Does not mean the same when going from story to epic.
-        //                cmdInsert.Parameters.AddWithValue("@Requests", sdr["Requests"]);
-
-        //                string dependency = string.Empty;
-        //                string dependant = string.Empty;
-                        
-        //                if(sdr["Dependencies"].ToString() != string.Empty)
-        //                {
-        //                    string[] depList = sdr["Dependencies"].ToString().Split(';');
-
-        //                    foreach (string dl in depList)
-        //                    {
-        //                        string nextValue = GetStoryNumber(dl);
-        //                        dependency += nextValue + ", ";
-        //                    }
-        //                }
-
-        //                if (sdr["Dependants"].ToString() != string.Empty)
-        //                {
-        //                    string[] depList = sdr["Dependants"].ToString().Split(';');
-
-        //                    foreach (string dl in depList)
-        //                    {
-        //                        string nextValue = GetStoryNumber(dl);
-        //                        dependant += nextValue + ", ";
-        //                    }
-        //                }
-
-        //                //cmdInsert.Parameters.AddWithValue("@Description", sdr["Description"]);
-        //                cmdInsert.Parameters.AddWithValue("@Description", sdr["Description"].ToString() + " UpStream Dependencies - " + dependency + " DownStream Dependants - " + dependant);
-        //                cmdInsert.Parameters.AddWithValue("@Name", sdr["Name"]);
-        //                cmdInsert.Parameters.AddWithValue("@Reference", sdr["Reference"]);
-        //                cmdInsert.Parameters.AddWithValue("@Scope", sdr["Scope"]);
-        //                cmdInsert.Parameters.AddWithValue("@Status", sdr["Status"]);
-        //                cmdInsert.Parameters.AddWithValue("@Swag", sdr["Estimate"]);
-        //                cmdInsert.Parameters.AddWithValue("@RequestedBy", sdr["RequestedBy"]);
-        //                cmdInsert.Parameters.AddWithValue("@Value", sdr["Value"]);
-        //                cmdInsert.Parameters.AddWithValue("@Order", sdr["Order"]);
-        //                cmdInsert.Parameters.AddWithValue("@BlockingIssues", sdr["BlockingIssues"]);
-        //                cmdInsert.Parameters.AddWithValue("@Issues", sdr["Issues"]);
-        //                cmdInsert.Parameters.AddWithValue("@Category", sdr["Category"]);
-        //                cmdInsert.Parameters.AddWithValue("@Source", sdr["Source"]);
-        //                cmdInsert.Parameters.AddWithValue("@Priority", sdr["Priority"]);
-        //                cmdInsert.ExecuteNonQuery();
-        //                recordCount++;
-        //            }
-        //        }
-        //    }
-        //    DeleteEpicStories();
-        //    return recordCount; ;
-        //}
-
-        //private void DeleteEpicStories()
-        //{
-        //    using (SqlCommand cmd = new SqlCommand())
-        //    {
-        //        cmd.Connection = _sqlConn;
-        //        cmd.CommandText = "DELETE FROM Stories WHERE AssetState = '208';";
-        //        cmd.CommandType = System.Data.CommandType.Text;
-        //        cmd.ExecuteNonQuery();
-        //    }
-        //}
-
-        //private string GetStoryNumber(string depOid)
-        //{
-        //    IAssetType assetType = _metaAPI.GetAssetType("Story");
-        //    Query query = new Query(assetType);
-
-        //    IAttributeDefinition numberAttribute = assetType.GetAttributeDefinition("Number");
-        //    query.Selection.Add(numberAttribute);
-
-        //    //Filter on Story OID
-        //    IAttributeDefinition assetIDAttribute = assetType.GetAttributeDefinition("ID");
-        //    FilterTerm term = new FilterTerm(assetIDAttribute);
-        //    term.Equal(depOid);
-        //    query.Filter = term;
-
-        //    QueryResult result = _dataAPI.Retrieve(query);
-
-        //    Asset asset = result.Assets[0];
-        //    string attributeName = GetScalerValue(asset.GetAttribute(numberAttribute)).ToString();
-        //    return attributeName;
-        
-        //}
     }
 }
