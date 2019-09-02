@@ -20,7 +20,7 @@ namespace V1DataWriter
 
         public override int Import()
         {
-            //MigrationConfiguration.AssetInfo assetInfo = _config.AssetsToMigrate.Find(i => i.Name == "Members");
+            MigrationConfiguration.AssetInfo assetInfo = _config.AssetsToMigrate.Find(i => i.Name == "Members");
             SqlDataReader sdr = GetImportDataFromDBTable("Members");
 
             int importCount = 0;
@@ -29,61 +29,61 @@ namespace V1DataWriter
                 try
                 {
                     //SPECIAL CASE: Admin member will not be imported.
-                    //if (sdr["AssetOID"].ToString() == "Member:20")
-                    //{
-                    //    UpdateNewAssetOIDAndStatus("Members", sdr["AssetOID"].ToString(), sdr["AssetOID"].ToString(), ImportStatuses.SKIPPED, "Admin member (Member:20) cannot be imported.");
-                    //    continue;
-                    //}
+                    if (sdr["AssetOID"].ToString() == "Member:20")
+                    {
+                        UpdateNewAssetOIDAndStatus("Members", sdr["AssetOID"].ToString(), sdr["AssetOID"].ToString(), ImportStatuses.SKIPPED, "Admin member (Member:20) cannot be imported.");
+                        continue;
+                    }
 
                     ////SPECIAL CASE: Member with no username will not be imported.
-                    //if (String.IsNullOrEmpty(sdr["Username"].ToString()) == true)
-                    //{
-                    //    UpdateImportStatus("Members", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Member with no username cannot be imported.");
-                    //    continue;
-                    //}
+                    if (String.IsNullOrEmpty(sdr["Username"].ToString()) == true)
+                    {
+                        UpdateImportStatus("Members", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Member with no username cannot be imported.");
+                        continue;
+                    }
 
-                    ////DUPLICATE CHECK: Check for duplicates if enabled.
-                    //if (String.IsNullOrEmpty(assetInfo.DuplicateCheckField) == false)
-                    //{
-                    //    //Ensure that we have a value to check, if not, will attempt to create the member.
-                    //    if (String.IsNullOrEmpty(sdr[assetInfo.DuplicateCheckField].ToString()) == false)
-                    //    {
-                    //        string currentAssetOID = CheckForDuplicateInV1(assetInfo.InternalName, assetInfo.DuplicateCheckField, sdr[assetInfo.DuplicateCheckField].ToString());
-                    //        if (string.IsNullOrEmpty(currentAssetOID) == false)
-                    //        {
-                    //            UpdateNewAssetOIDAndStatus("Members", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate member.");
-                    //            continue;
-                    //        }
-                    //    }
-                    //}
+                    //DUPLICATE CHECK: Check for duplicates if enabled.
+                    if (String.IsNullOrEmpty(assetInfo.DuplicateCheckField) == false)
+                    {
+                        //Ensure that we have a value to check, if not, will attempt to create the member.
+                        if (String.IsNullOrEmpty(sdr[assetInfo.DuplicateCheckField].ToString()) == false)
+                        {
+                            string currentAssetOID = CheckForDuplicateInV1(assetInfo.InternalName, assetInfo.DuplicateCheckField, sdr[assetInfo.DuplicateCheckField].ToString());
+                            if (string.IsNullOrEmpty(currentAssetOID) == false)
+                            {
+                                UpdateNewAssetOIDAndStatus("Members", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate member.");
+                                continue;
+                            }
+                        }
+                    }
 
                     IAssetType assetType = _metaAPI.GetAssetType("Member");
-                    //Asset asset = _dataAPI.New(assetType, null);
-                    string newAssetOid = GetNewAssetOIDFromDB(sdr["AssetOID"].ToString(), "Member");
-                    Asset asset = GetAssetFromV1(newAssetOid);
+                    Asset asset = _dataAPI.New(assetType, null);
+                    //string newAssetOid = GetNewAssetOIDFromDB(sdr["AssetOID"].ToString(), "Member");
+                    //Asset asset = GetAssetFromV1(newAssetOid);
 
 
-                    //IAttributeDefinition fullNameAttribute = assetType.GetAttributeDefinition("Name");
-                    //asset.SetAttributeValue(fullNameAttribute, sdr["Name"].ToString());
+                    IAttributeDefinition fullNameAttribute = assetType.GetAttributeDefinition("Name");
+                    asset.SetAttributeValue(fullNameAttribute, sdr["Name"].ToString());
 
-                    //IAttributeDefinition userNameAttribute = assetType.GetAttributeDefinition("Username");
-                    //asset.SetAttributeValue(userNameAttribute, sdr["Username"].ToString());
+                    IAttributeDefinition userNameAttribute = assetType.GetAttributeDefinition("Username");
+                    asset.SetAttributeValue(userNameAttribute, sdr["Username"].ToString());
 
-                    //IAttributeDefinition passwordAttribute = assetType.GetAttributeDefinition("Password");
-                    //asset.SetAttributeValue(passwordAttribute, sdr["Password"].ToString());
-                    ////asset.SetAttributeValue(passwordAttribute, "password");
+                    IAttributeDefinition passwordAttribute = assetType.GetAttributeDefinition("Password");
+                    asset.SetAttributeValue(passwordAttribute, sdr["Password"].ToString());
+                    //asset.SetAttributeValue(passwordAttribute, "password");
 
-                    //IAttributeDefinition nickNameAttribute = assetType.GetAttributeDefinition("Nickname");
-                    //asset.SetAttributeValue(nickNameAttribute, sdr["Nickname"].ToString());
+                    IAttributeDefinition nickNameAttribute = assetType.GetAttributeDefinition("Nickname");
+                    asset.SetAttributeValue(nickNameAttribute, sdr["Nickname"].ToString());
 
-                    //IAttributeDefinition emailAttribute = assetType.GetAttributeDefinition("Email");
-                    //asset.SetAttributeValue(emailAttribute, sdr["Email"].ToString());
+                    IAttributeDefinition emailAttribute = assetType.GetAttributeDefinition("Email");
+                    asset.SetAttributeValue(emailAttribute, sdr["Email"].ToString());
 
-                    //IAttributeDefinition phoneAttribute = assetType.GetAttributeDefinition("Phone");
-                    //asset.SetAttributeValue(phoneAttribute, sdr["Phone"].ToString());
+                    IAttributeDefinition phoneAttribute = assetType.GetAttributeDefinition("Phone");
+                    asset.SetAttributeValue(phoneAttribute, sdr["Phone"].ToString());
 
-                    //IAttributeDefinition defaultRoleAttribute = assetType.GetAttributeDefinition("DefaultRole");
-                    //asset.SetAttributeValue(defaultRoleAttribute, sdr["DefaultRole"].ToString());
+                    IAttributeDefinition defaultRoleAttribute = assetType.GetAttributeDefinition("DefaultRole");
+                    asset.SetAttributeValue(defaultRoleAttribute, sdr["DefaultRole"].ToString());
 
                     IAttributeDefinition descAttribute = assetType.GetAttributeDefinition("Description");
                     //asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
@@ -92,60 +92,28 @@ namespace V1DataWriter
                     asset.SetAttributeValue(descAttribute, newDescription);
 
 
-                    //IAttributeDefinition notifyViaEmailAttribute = assetType.GetAttributeDefinition("NotifyViaEmail");
-                    //asset.SetAttributeValue(notifyViaEmailAttribute, sdr["NotifyViaEmail"].ToString());
+                    IAttributeDefinition notifyViaEmailAttribute = assetType.GetAttributeDefinition("NotifyViaEmail");
+                    asset.SetAttributeValue(notifyViaEmailAttribute, sdr["NotifyViaEmail"].ToString());
 
-                    //if (String.IsNullOrEmpty(sdr["TaggedWith"].ToString()) == false)
-                    //{
-                    //    IAttributeDefinition multiAttribute = assetType.GetAttributeDefinition("TaggedWith");
+                    if (String.IsNullOrEmpty(sdr["TaggedWith"].ToString()) == false)
+                    {
+                        IAttributeDefinition multiAttribute = assetType.GetAttributeDefinition("TaggedWith");
 
-                    //    AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
+                        AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
 
-                    //}
+                    }
 
-                    //IAttributeDefinition IsCollaboratorAttribute = assetType.GetAttributeDefinition("IsCollaborator");
-                    //asset.SetAttributeValue(IsCollaboratorAttribute, sdr["IsCollaborator"].ToString());
+                    IAttributeDefinition IsCollaboratorAttribute = assetType.GetAttributeDefinition("IsCollaborator");
+                    asset.SetAttributeValue(IsCollaboratorAttribute, sdr["IsCollaborator"].ToString());
                     //asset.SetAttributeValue(IsCollaboratorAttribute, "True");
 
-                    //IAttributeDefinition sendConversationEmailsAttribute = assetType.GetAttributeDefinition("SendConversationEmails");
-                    //asset.SetAttributeValue(sendConversationEmailsAttribute, sdr["SendConversationEmails"].ToString());
+                    IAttributeDefinition sendConversationEmailsAttribute = assetType.GetAttributeDefinition("SendConversationEmails");
+                    asset.SetAttributeValue(sendConversationEmailsAttribute, sdr["SendConversationEmails"].ToString());
 
                     _dataAPI.Save(asset);
                     //_logger.Info("Reached this point");
                     UpdateNewAssetOIDAndStatus("Members", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Member imported.");
                     importCount++;
-
-                    //Get Any EmbeddedImages for the Description Field
-                    //int[] imgIDLocation = new int[10];
-                    //int imageCounter = 0;
-
-                    //SqlDataReader sdrEmbeddedImages = GetDataFromDB("EmbeddedImages", sdr["AssetOID"].ToString());
-                    //while (sdrEmbeddedImages.Read())
-                    //{
-                    //    //UploadEmbeddedImageContent(ref asset, asset.Oid,(byte[])sdrEmbeddedImages["Content"], _imageConnector);
-
-                    //    ////Create an embedded image.
-                    //    string filePath = @"C:\Windows\Temp\TempImage.png";
-                    //    System.IO.File.WriteAllBytes(filePath, (byte[])sdrEmbeddedImages["Content"]);
-                    //    //string file = @"C:\Temp\versionone.jpg";
-                    //    Oid embeddedImageOid = _dataAPI.SaveEmbeddedImage(filePath, asset);
-
-                    //    string currentDescription = sdr["Description"].ToString();
-                    //    imgIDLocation[imageCounter] = currentDescription.IndexOf(".img/", 0, currentDescription.Length);
-                    //    string firstDescriptionPart = currentDescription.Substring(0, imgIDLocation[imageCounter] + 5);
-                    //    string secondDescriptionPart = currentDescription.Substring(imgIDLocation[imageCounter] + 5);
-                    //    imgIDLocation[imageCounter] = secondDescriptionPart.IndexOf(">", 0, secondDescriptionPart.Length);
-                    //    string newSecondDescriptionPart = secondDescriptionPart.Substring(imgIDLocation[imageCounter]);
-
-                    //    string embeddedImageTag = string.Format(" {0} alt=\"\" data-oid=\"{1}\" {2}", firstDescriptionPart + embeddedImageOid.Key + "\"", embeddedImageOid.Momentless, newSecondDescriptionPart);
-                    //    //var embeddedImageTag = string.Format("<p></p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOid.Key, embeddedImageOid.Momentless);
-                    //    asset.SetAttributeValue(descAttribute, embeddedImageTag);
-                    //    _dataAPI.Save(asset);
-
-                    //    UpdateNewAssetOIDAndStatus("EmbeddedImages", sdrEmbeddedImages["AssetOID"].ToString(), embeddedImageOid.Momentless.ToString(), ImportStatuses.IMPORTED, "EmbeddedImage imported.");
-
-                    //    imageCounter++;
-                    //}
 
                     _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
 
@@ -165,7 +133,7 @@ namespace V1DataWriter
                 }
             }
             sdr.Close();
-            //setManager();
+            setManager();
             return importCount;
         }
 
