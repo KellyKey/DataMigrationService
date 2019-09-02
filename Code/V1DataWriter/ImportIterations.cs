@@ -93,6 +93,14 @@ namespace V1DataWriter
                     IAttributeDefinition endDateAttribute = assetType.GetAttributeDefinition("EndDate");
                     asset.SetAttributeValue(endDateAttribute, sdr["EndDate"].ToString());
 
+                    if (String.IsNullOrEmpty(sdr["TaggedWith"].ToString()) == false)
+                    {
+                        IAttributeDefinition multiAttribute = assetType.GetAttributeDefinition("TaggedWith");
+
+                        AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
+
+                    }
+
                     IAttributeDefinition targetEstimateAttribute = assetType.GetAttributeDefinition("TargetEstimate");
                     asset.SetAttributeValue(targetEstimateAttribute, sdr["TargetEstimate"].ToString());
 
@@ -181,25 +189,77 @@ namespace V1DataWriter
         public int CloseIterations()
         {
             SqlDataReader sdr = GetImportDataFromDBTableForClosing("Iterations");
-            int assetCount = 0;   
+            int assetCount = 0;
+            int exceptionCount = 0;
+            while (sdr.Read())
+            {
+                Asset asset = null;
 
-                while (sdr.Read())
+                try
                 {
-                    try
+                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
                     {
-                        Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
-                        ExecuteOperationInV1("Timebox.Close", asset.Oid);
-                        assetCount++;
+                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
                     }
-                    catch(Exception ex)
+                    else
                     {
                         continue;
                     }
+
+                    ExecuteOperationInV1("Timebox.Inactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
                 }
-           
-                sdr.Close();
-                return assetCount;
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
+
+            }
+            sdr.Close();
+            return assetCount;
         }
+
+        public int OpenIterations()
+        {
+            SqlDataReader sdr = GetImportDataFromDBTableForClosing("Iterations");
+            int assetCount = 0;
+            int exceptionCount = 0;
+            while (sdr.Read())
+            {
+                Asset asset = null;
+
+                try
+                {
+                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                    {
+                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    ExecuteOperationInV1("Timebox.Reactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                }
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
+
+            }
+            sdr.Close();
+            return assetCount;
+        }
+
 
     }
 }

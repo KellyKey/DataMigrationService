@@ -62,8 +62,8 @@ namespace V1DataReader
             if (attribute.Value != null && attribute.Value.ToString() != "NULL")
                 return attribute.Value.ToString();
             else
-                //return DBNull.Value;
-                return "Scope:0";
+                return DBNull.Value;
+            //return "Scope:0";
         }
 
         protected Object GetSingleListValue(VersionOne.SDK.APIClient.Attribute attribute)

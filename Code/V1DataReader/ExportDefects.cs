@@ -112,6 +112,9 @@ namespace V1DataReader
             IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
             query.Selection.Add(priorityAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition parentAttribute = assetType.GetAttributeDefinition("Parent");
             query.Selection.Add(parentAttribute);
 
@@ -250,6 +253,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Priority", GetSingleRelationValue(asset.GetAttribute(priorityAttribute)));
                         cmd.Parameters.AddWithValue("@Parent", GetSingleRelationValue(asset.GetAttribute(parentAttribute)));
                         cmd.Parameters.AddWithValue("@Requests", GetMultiRelationValues(asset.GetAttribute(requestsAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@BlockingIssues", GetMultiRelationValues(asset.GetAttribute(blockingIssuesAttribute)));
                         cmd.Parameters.AddWithValue("@Issues", GetMultiRelationValues(asset.GetAttribute(issuesAttribute)));
                         cmd.ExecuteNonQuery();
@@ -327,6 +331,7 @@ namespace V1DataReader
             sb.Append("Priority,");
             sb.Append("Parent,");
             sb.Append("Requests,");
+            sb.Append("TaggedWith,");
             sb.Append("BlockingIssues,");
             sb.Append("Issues) ");
             sb.Append("VALUES (");
@@ -364,6 +369,7 @@ namespace V1DataReader
             sb.Append("@Priority,");
             sb.Append("@Parent,");
             sb.Append("@Requests,");
+            sb.Append("@TaggedWith,");
             sb.Append("@BlockingIssues,");
             sb.Append("@Issues);");
             return sb.ToString();

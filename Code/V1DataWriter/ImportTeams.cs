@@ -6,11 +6,14 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
     public class ImportTeams : IImportAssets
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         public ImportTeams(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
@@ -40,6 +43,14 @@ namespace V1DataWriter
 
                         IAttributeDefinition descAttribute = assetType.GetAttributeDefinition("Description");
                         asset.SetAttributeValue(descAttribute, sdr["Description"].ToString().Trim());
+
+                        if (String.IsNullOrEmpty(sdr["TaggedWith"].ToString()) == false)
+                        {
+                            IAttributeDefinition multiAttribute = assetType.GetAttributeDefinition("TaggedWith");
+
+                            AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
+
+                        }
 
                         _dataAPI.Save(asset);
                         UpdateNewAssetOIDAndStatus("Teams", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Team imported.");
@@ -100,15 +111,76 @@ namespace V1DataWriter
         {
             SqlDataReader sdr = GetImportDataFromDBTableForClosing("Teams");
             int assetCount = 0;
+            int exceptionCount = 0;
             while (sdr.Read())
             {
-                Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
-                ExecuteOperationInV1("Team.Inactivate", asset.Oid);
-                assetCount++;
+                Asset asset = null;
+
+                try
+                {
+                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                    {
+                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                        ExecuteOperationInV1("Team.Inactivate", asset.Oid);
+                        assetCount++;
+                        _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                    }
+                    catch (Exception ex)
+                    {
+                        exceptionCount++;
+                        _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                        continue;
+                    }
+
+
+                }
+            sdr.Close();
+                return assetCount;
+            }
+
+        public int OpenTeams()
+        {
+            SqlDataReader sdr = GetImportDataFromDBTableForClosing("Teams");
+            int assetCount = 0;
+            int exceptionCount = 0;
+            while (sdr.Read())
+            {
+                Asset asset = null;
+
+                try
+                {
+                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                    {
+                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    ExecuteOperationInV1("Team.Reactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                }
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
+
             }
             sdr.Close();
             return assetCount;
         }
+
 
     }
 }

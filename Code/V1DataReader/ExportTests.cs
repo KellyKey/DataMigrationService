@@ -73,6 +73,9 @@ namespace V1DataReader
             IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
             query.Selection.Add(statusAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Category");
             query.Selection.Add(categoryAttribute);
 
@@ -193,6 +196,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@ActualResults", actualResults);
                         cmd.Parameters.AddWithValue("@ExpectedResults", expectedResults);
                         cmd.Parameters.AddWithValue("@Status", GetSingleRelationValue(asset.GetAttribute(statusAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@Category", GetSingleRelationValue(asset.GetAttribute(categoryAttribute)));
                         cmd.Parameters.AddWithValue("@Parent", GetSingleRelationValue(asset.GetAttribute(parentAttribute)));
                         cmd.Parameters.AddWithValue("@GeneratedFrom", GetSingleRelationValue(asset.GetAttribute(generatedFromAttribute)));
@@ -229,6 +233,7 @@ namespace V1DataReader
             sb.Append("ActualResults,");
             sb.Append("ExpectedResults,");
             sb.Append("Status,");
+            sb.Append("TaggedWith,");
             sb.Append("Category,");
             sb.Append("Parent,");
             sb.Append("GeneratedFrom) ");
@@ -252,6 +257,7 @@ namespace V1DataReader
             sb.Append("@ActualResults,");
             sb.Append("@ExpectedResults,");
             sb.Append("@Status,");
+            sb.Append("@TaggedWith,");
             sb.Append("@Category,");
             sb.Append("@Parent,");
             sb.Append("@GeneratedFrom);");

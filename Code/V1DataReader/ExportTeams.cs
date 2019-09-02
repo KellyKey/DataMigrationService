@@ -28,6 +28,9 @@ namespace V1DataReader
             IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
             query.Selection.Add(nameAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition capacityExcludedMembersAttribute = assetType.GetAttributeDefinition("CapacityExcludedMembers");
             query.Selection.Add(capacityExcludedMembersAttribute);
 
@@ -72,6 +75,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@AssetState", GetScalerValue(asset.GetAttribute(assetStateAttribute)));
                         cmd.Parameters.AddWithValue("@Description", description);
                         cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@CapacityExcludedMembers", GetMultiRelationValues(asset.GetAttribute(capacityExcludedMembersAttribute)));
                         cmd.ExecuteNonQuery();
                     }
@@ -90,12 +94,14 @@ namespace V1DataReader
             sb.Append("AssetState,");
             sb.Append("Description,");
             sb.Append("Name,");
+            sb.Append("TaggedWith,");
             sb.Append("CapacityExcludedMembers) ");
             sb.Append("VALUES (");
             sb.Append("@AssetOID,");
             sb.Append("@AssetState,");
             sb.Append("@Description,");
             sb.Append("@Name,");
+            sb.Append("@TaggedWith,");
             sb.Append("@CapacityExcludedMembers);");
             return sb.ToString();
         }

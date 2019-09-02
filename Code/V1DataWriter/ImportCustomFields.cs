@@ -36,9 +36,7 @@ namespace V1DataWriter
             else
             {
                 //This code doesn't work and needs to be fixed...For Now, just use the _assetType variable passed in
-                //MigrationConfiguration.AssetInfo assetInfo = _config.AssetsToMigrate.Find(i => i.Name == _assetType);
-                //assetTypeInternalName = assetInfo.InternalName;
-                assetTypeInternalName = _assetType;
+                //assetTypeInternalName = _assetType;
 
                 if (_assetType == "Story")
                 {
@@ -48,6 +46,10 @@ namespace V1DataWriter
                 {
                     _tableName = _assetType + "s";
                 }
+
+                MigrationConfiguration.AssetInfo assetInfo = _config.AssetsToMigrate.Find(i => i.Name == _tableName);
+                assetTypeInternalName = assetInfo.InternalName;
+
             }
 
 
@@ -56,8 +58,12 @@ namespace V1DataWriter
             int importCount = 0;
             foreach (MigrationConfiguration.CustomFieldInfo field in fields)
             {
-                
-                
+                if(field.SourceName == "Custom_CrossProductsImpacted2")
+                {
+                    _logger.Info("Custom_ Multi-Relation Field Working - " + field.SourceName);
+                }
+
+
                 SqlDataReader sdr = GetImportDataFromDBTableForCustomFields(_tableName, field.SourceName);
                 while (sdr.Read())
                 {
@@ -67,29 +73,76 @@ namespace V1DataWriter
                         //Get the asset from V1.
                         IAssetType assetType = _metaAPI.GetAssetType(assetTypeInternalName);
                         Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                        //IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
+
                         _logger.Info("Asset: " + sdr["NewAssetOID"].ToString() + " Working... ");
 
                         //Set the custom field value and save it.
                         IAttributeDefinition customFieldAttribute = assetType.GetAttributeDefinition(field.TargetName);
-                        if (field.DataType == "Relation")
+
+                        if (field.DataType == "Multi-Relation")
                         {
-                            string listTypeOID = GetCustomListTypeAssetOIDFromV1(field.RelationName, sdr["FieldValue"].ToString());
-                            if (String.IsNullOrEmpty(listTypeOID) == false)
+
+                            if (String.IsNullOrEmpty(sdr["FieldValue"].ToString()) == false)
                             {
-                                asset.SetAttributeValue(customFieldAttribute, listTypeOID);
+                                AddMultiValueRelation(assetType, asset, _tableName, field.TargetName, sdr["FieldValue"].ToString());
                             }
                             else
                             {
                                 continue;
                             }
+
+                            //if (String.IsNullOrEmpty(sdr["FieldValue"].ToString()) == false)
+                            //{ 
+
+                            //    string[] listTypeOID = GetMultiRelationValues(field.SourceName, sdr["FieldValue"].ToString());
+                            //    //string listTypeOID = GetNewAssetOIDFromDB(sdr["FieldValue"].ToString());
+                            //    //string listTypeOID = GetCustomListTypeAssetOIDFromV1(field.RelationName, sdr["FieldValue"].ToString());
+                            //    foreach (string listType in listTypeOID)
+                            //    {
+                            //            string newlistType = listType.TrimEnd(';');
+                            //            string[] splitValue = newlistType.Split(':');
+                            //            IAssetType assetTypeNew = _metaAPI.GetAssetType(splitValue[0]);
+                            //            int attributeValue = Convert.ToInt32(splitValue[1]);
+
+                            //            Oid assetOID = new Oid(assetTypeNew, attributeValue, 0);
+                            //            //asset.SetAttributeValue(customFieldAttribute, GetMultiRelationValues(asset.GetAttribute(nameAttribute)));
+                            //            asset.AddAttributeValue(customFieldAttribute, assetOID);
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    //UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.SKIPPED, "CustomField Skipped.");
+                            //    continue;
+                            //}
+
+                        }
+                        else if(field.DataType == "Relation")
+                        {
+                            string newValue = GetNewAssetOIDFromDB(sdr["FieldValue"].ToString(), assetTypeInternalName);
+                            asset.SetAttributeValue(customFieldAttribute, newValue);
                         }
                         else
                         {
                             asset.SetAttributeValue(customFieldAttribute, sdr["FieldValue"].ToString());
                         }
+
                         _dataAPI.Save(asset);
-                    
-                        UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "CustomField imported.");
+
+                        if (field.DataType == "Relation")
+                            //if (field.TargetName == "Custom_CrossProductsImpacted")
+                        {
+                            _logger.Info("Custom_ Relation Field Added");
+                        }
+                        else if(field.DataType == "Multi-Relation")
+                        {
+                            _logger.Info("Custom_ Multi-Relation Field Added");
+
+                        }
+                        else
+                        {
+                            UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "CustomField imported.");
+                        }
 
                         importCount++;
                         _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);

@@ -67,6 +67,7 @@ namespace V1DataCore
             public bool PerformExport { get; set; }
             public bool PerformImport { get; set; }
             public bool PerformClose { get; set; }
+            public bool PerformOpen { get; set; }
             public bool PerformCleanup { get; set; }
             public bool MigrateTemplates { get; set; }
             public bool MigrateAttachmentBinaries { get; set; }
@@ -97,6 +98,7 @@ namespace V1DataCore
         {
             public string Name { get; set; }
             public bool Enabled { get; set; }
+            public string targetName { get; set; }
         }
 
         public struct CustomFieldInfo
@@ -234,6 +236,7 @@ namespace V1DataCore
                                PerformExport = System.Convert.ToBoolean(item.Element("performExport").Value),
                                PerformImport = System.Convert.ToBoolean(item.Element("performImport").Value),
                                PerformClose = System.Convert.ToBoolean(item.Element("performClose").Value),
+                               PerformOpen = System.Convert.ToBoolean(item.Element("performOpen").Value),
                                PerformCleanup = System.Convert.ToBoolean(item.Element("performCleanup").Value),
                                MigrateTemplates = System.Convert.ToBoolean(item.Element("migrateTemplates").Value),
                                MigrateAttachmentBinaries = System.Convert.ToBoolean(item.Element("migrateAttachmentBinaries").Value),

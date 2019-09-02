@@ -77,10 +77,20 @@ namespace V1DataWriter
                     asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
                     //asset.SetAttributeValue(statusAttribute, GetStatusAssetOID(sdr["Status"].ToString()));
 
+                    if (String.IsNullOrEmpty(sdr["TaggedWith"].ToString()) == false)
+                    {
+                        IAttributeDefinition multiAttribute = assetType.GetAttributeDefinition("TaggedWith");
+
+                        AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
+
+                    }
+
                     //HACK: For Rally import, needs to be refactored.
                     IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Category");
                     asset.SetAttributeValue(categoryAttribute, GetNewListTypeAssetOIDFromDB(sdr["Category"].ToString()));
                     //asset.SetAttributeValue(categoryAttribute, GetCategoryAssetOID(sdr["Category"].ToString()));
+
+
 
                     _dataAPI.Save(asset);
 
@@ -173,6 +183,44 @@ namespace V1DataWriter
             sdr.Close();
             return assetCount;
         }
+
+        public int OpenRegressionTests()
+        {
+            SqlDataReader sdr = GetImportDataFromDBTableForClosing("RegressionTests");
+            int assetCount = 0;
+            int exceptionCount = 0;
+            while (sdr.Read())
+            {
+                Asset asset = null;
+
+                if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                {
+                    asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                }
+                else
+                {
+                    continue;
+                }
+
+                try
+                {
+                    ExecuteOperationInV1("RegressionTest.Reactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                }
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
+
+            }
+            sdr.Close();
+            return assetCount;
+        }
+
 
     }
 }

@@ -28,7 +28,7 @@ namespace V1DataWriter
                 {
 
                     //DUPLICATE CHECK:
-                    string currentAssetOID = CheckForDuplicateInV1(sdr["AssetType"].ToString(), "Name", sdr["Name"].ToString());
+                    string currentAssetOID = CheckForDuplicateListTypesInV1(sdr["AssetType"].ToString(), "Name", sdr["Name"].ToString(), "Team", sdr["Team"].ToString());
                     if (string.IsNullOrEmpty(currentAssetOID) == false)
                     {
                         UpdateNewAssetOIDAndStatus("ListTypes", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate list type.");
@@ -130,6 +130,44 @@ namespace V1DataWriter
             sdr.Close();
             return assetCount;
         }
+
+        public int OpenListTypes()
+        {
+            SqlDataReader sdr = GetImportDataFromDBTableForClosing("Listtypes");
+            int assetCount = 0;
+            int exceptionCount = 0;
+            while (sdr.Read())
+            {
+                Asset asset = null;
+
+                if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                {
+                    asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                }
+                else
+                {
+                    continue;
+                }
+
+                try
+                {
+                    ExecuteOperationInV1(sdr["AssetType"].ToString() + ".Reactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                }
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
+
+            }
+            sdr.Close();
+            return assetCount;
+        }
+
 
     }
 }

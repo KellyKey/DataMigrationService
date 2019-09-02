@@ -107,6 +107,9 @@ namespace V1DataReader
             IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
             query.Selection.Add(priorityAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Scope.ParentMeAndUp");
             FilterTerm term = new FilterTerm(parentScopeAttribute);
             term.Equal(_config.V1SourceConnection.Project);
@@ -164,7 +167,7 @@ namespace V1DataReader
                         cmd.CommandText = SQL;
                         cmd.CommandType = System.Data.CommandType.Text;
                         cmd.Parameters.AddWithValue("@AssetOID", asset.Oid.ToString());
-                        cmd.Parameters.AddWithValue("@AssetState", GetScalerValue(asset.GetAttribute(assetStateAttribute)));
+                        cmd.Parameters.AddWithValue("@AssetState", CheckEpicState(asset.GetAttribute(assetStateAttribute)));
                         cmd.Parameters.AddWithValue("@AssetNumber", GetScalerValue(asset.GetAttribute(assetNumberAttribute)));
                         cmd.Parameters.AddWithValue("@Owners", GetMultiRelationValues(asset.GetAttribute(ownersAttribute)));
                         cmd.Parameters.AddWithValue("@Goals", GetMultiRelationValues(asset.GetAttribute(goalsAttribute)));
@@ -180,6 +183,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@RequestedBy", requestedBy);
                         cmd.Parameters.AddWithValue("@Value", GetScalerValue(asset.GetAttribute(valueAttribute)));
                         cmd.Parameters.AddWithValue("@Order", GetScalerValue(asset.GetAttribute(orderAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@BlockingIssues", GetMultiRelationValues(asset.GetAttribute(blockingIssuesAttribute)));
                         cmd.Parameters.AddWithValue("@Issues", GetMultiRelationValues(asset.GetAttribute(issuesAttribute)));
                         cmd.Parameters.AddWithValue("@Category", GetSingleRelationValue(asset.GetAttribute(categoryAttribute)));
@@ -193,10 +197,38 @@ namespace V1DataReader
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);
-            //This is not needed for Versions greater than 11
-            //DeleteEpicStories();  
+
+            if (_config.V1Configurations.MigrateTemplates == false)
+            {
+                DeleteEpicTemplates();
+            }
+
             return assetCounter;
         }
+
+        private object CheckEpicState(VersionOne.SDK.APIClient.Attribute attribute)
+        {
+            if (attribute.Value != null)
+                if (attribute.Value.ToString() == "200")
+                    return "Template";
+                else
+                    return attribute.Value.ToString();
+            else
+                return DBNull.Value;
+        }
+
+        private void DeleteEpicTemplates()
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = _sqlConn;
+                cmd.CommandText = "DELETE FROM Epics WHERE AssetState = 'Template';";
+                cmd.CommandType = System.Data.CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
 
         private string BuildEpicInsertStatement()
         {
@@ -219,6 +251,7 @@ namespace V1DataReader
             sb.Append("RequestedBy,");
             sb.Append("Value,");
             sb.Append("[Order],");
+            sb.Append("TaggedWith,");
             sb.Append("BlockingIssues,");
             sb.Append("Issues,");
             sb.Append("Category,");
@@ -244,6 +277,7 @@ namespace V1DataReader
             sb.Append("@RequestedBy,");
             sb.Append("@Value,");
             sb.Append("@Order,");
+            sb.Append("@TaggedWith,");
             sb.Append("@BlockingIssues,");
             sb.Append("@Issues,");
             sb.Append("@Category,");

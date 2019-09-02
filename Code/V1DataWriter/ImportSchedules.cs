@@ -49,6 +49,14 @@ namespace V1DataWriter
                     IAttributeDefinition descAttribute = assetType.GetAttributeDefinition("Description");
                     asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
 
+                    if (String.IsNullOrEmpty(sdr["TaggedWith"].ToString()) == false)
+                    {
+                        IAttributeDefinition multiAttribute = assetType.GetAttributeDefinition("TaggedWith");
+
+                        AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
+
+                    }
+
                     IAttributeDefinition tbLengthAttribute = assetType.GetAttributeDefinition("TimeboxLength");
                     asset.SetAttributeValue(tbLengthAttribute, sdr["TimeboxLength"].ToString());
 

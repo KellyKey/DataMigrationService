@@ -19,7 +19,7 @@ namespace V1DataWriter
 
         public override int Import()
         {
-            string customV1IDFieldName = GetV1IDCustomFieldName("Defect");
+            //string customV1IDFieldName = GetV1IDCustomFieldName("Defect");
             SqlDataReader sdr = GetImportDataFromDBTableWithOrder("Defects");
 
             int importCount = 0;
@@ -28,127 +28,141 @@ namespace V1DataWriter
                 try
                 {
                     //SPECIAL CASE: No assigned scope, fail to import.
-                    if (String.IsNullOrEmpty(sdr["Scope"].ToString()))
-                    {
-                        UpdateImportStatus("Defects", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Defect has no scope.");
-                        continue;
-                    }
+                    //if (String.IsNullOrEmpty(sdr["Scope"].ToString()))
+                    //{
+                    //    UpdateImportStatus("Defects", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Defect has no scope.");
+                    //    continue;
+                    //}
 
                     IAssetType assetType = _metaAPI.GetAssetType("Defect");
-                    Asset asset = _dataAPI.New(assetType, null);
+                    //Asset asset = _dataAPI.New(assetType, null);
 
-                    if (String.IsNullOrEmpty(customV1IDFieldName) == false)
-                    {
-                        IAttributeDefinition customV1IDAttribute = assetType.GetAttributeDefinition(customV1IDFieldName);
-                        asset.SetAttributeValue(customV1IDAttribute, sdr["AssetNumber"].ToString());
-                    }
+                    string newAssetOid = GetNewAssetOIDFromDB(sdr["AssetOID"].ToString(), "Story");
+                    Asset asset = GetAssetFromV1(newAssetOid);
 
-                    IAttributeDefinition fullNameAttribute = assetType.GetAttributeDefinition("Name");
-                    asset.SetAttributeValue(fullNameAttribute, AddV1IDToTitle(sdr["Name"].ToString(), sdr["AssetNumber"].ToString()));
+                    //if (String.IsNullOrEmpty(customV1IDFieldName) == false)
+                    //{
+                    //    IAttributeDefinition customV1IDAttribute = assetType.GetAttributeDefinition(customV1IDFieldName);
+                    //    asset.SetAttributeValue(customV1IDAttribute, sdr["AssetNumber"].ToString());
+                    //}
+
+                    //IAttributeDefinition fullNameAttribute = assetType.GetAttributeDefinition("Name");
+                    //asset.SetAttributeValue(fullNameAttribute, AddV1IDToTitle(sdr["Name"].ToString(), sdr["AssetNumber"].ToString()));
 
                     IAttributeDefinition descAttribute = assetType.GetAttributeDefinition("Description");
-                    asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
+                    //asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
+                    string targetURL = _config.V1TargetConnection.Url;
+                    string newDescription = SetEmbeddedImageContent(sdr["Description"].ToString(), targetURL);
+                    asset.SetAttributeValue(descAttribute, newDescription);
 
-                    IAttributeDefinition iterationAttribute = assetType.GetAttributeDefinition("Timebox");
-                    asset.SetAttributeValue(iterationAttribute, GetNewAssetOIDFromDB(sdr["Timebox"].ToString(), "Timebox"));
+                    //IAttributeDefinition iterationAttribute = assetType.GetAttributeDefinition("Timebox");
+                    //asset.SetAttributeValue(iterationAttribute, GetNewAssetOIDFromDB(sdr["Timebox"].ToString(), "Timebox"));
 
-                    IAttributeDefinition verifiedByAttribute = assetType.GetAttributeDefinition("VerifiedBy");
-                    asset.SetAttributeValue(verifiedByAttribute, GetNewAssetOIDFromDB(sdr["VerifiedBy"].ToString(), "Members"));
+                    //IAttributeDefinition verifiedByAttribute = assetType.GetAttributeDefinition("VerifiedBy");
+                    //asset.SetAttributeValue(verifiedByAttribute, GetNewAssetOIDFromDB(sdr["VerifiedBy"].ToString(), "Members"));
 
-                    if (String.IsNullOrEmpty(sdr["Owners"].ToString()) == false)
-                    {
-                        AddMultiValueRelation(assetType, asset, "Members", "Owners", sdr["Owners"].ToString());
-                    }
+                    //if (String.IsNullOrEmpty(sdr["Owners"].ToString()) == false)
+                    //{
+                    //    AddMultiValueRelation(assetType, asset, "Members", "Owners", sdr["Owners"].ToString());
+                    //}
 
-                    IAttributeDefinition teamAttribute = assetType.GetAttributeDefinition("Team");
-                    asset.SetAttributeValue(teamAttribute, GetNewAssetOIDFromDB(sdr["Team"].ToString()));
+                    //IAttributeDefinition teamAttribute = assetType.GetAttributeDefinition("Team");
+                    //asset.SetAttributeValue(teamAttribute, GetNewAssetOIDFromDB(sdr["Team"].ToString()));
 
-                    //TO DO: Versions (VersionLabel)???
+                    ////TO DO: Versions (VersionLabel)???
 
-                    if (String.IsNullOrEmpty(sdr["Goals"].ToString()) == false)
-                    {
-                        AddMultiValueRelation(assetType, asset, "Goals", sdr["Goals"].ToString());
-                    }
+                    //if (String.IsNullOrEmpty(sdr["Goals"].ToString()) == false)
+                    //{
+                    //    AddMultiValueRelation(assetType, asset, "Goals", sdr["Goals"].ToString());
+                    //}
 
-                    IAttributeDefinition superAttribute = assetType.GetAttributeDefinition("Super");
-                    asset.SetAttributeValue(superAttribute, GetNewAssetOIDFromDB(sdr["Super"].ToString()));
+                    //IAttributeDefinition superAttribute = assetType.GetAttributeDefinition("Super");
+                    //asset.SetAttributeValue(superAttribute, GetNewAssetOIDFromDB(sdr["Super"].ToString()));
 
-                    IAttributeDefinition referenceAttribute = assetType.GetAttributeDefinition("Reference");
-                    asset.SetAttributeValue(referenceAttribute, sdr["Reference"].ToString());
+                    //IAttributeDefinition referenceAttribute = assetType.GetAttributeDefinition("Reference");
+                    //asset.SetAttributeValue(referenceAttribute, sdr["Reference"].ToString());
 
-                    IAttributeDefinition detailEstimateAttribute = assetType.GetAttributeDefinition("DetailEstimate");
-                    asset.SetAttributeValue(detailEstimateAttribute, sdr["DetailEstimate"].ToString());
+                    //IAttributeDefinition detailEstimateAttribute = assetType.GetAttributeDefinition("DetailEstimate");
+                    //asset.SetAttributeValue(detailEstimateAttribute, sdr["DetailEstimate"].ToString());
 
-                    IAttributeDefinition toDoAttribute = assetType.GetAttributeDefinition("ToDo");
-                    asset.SetAttributeValue(toDoAttribute, sdr["ToDo"].ToString());
+                    //IAttributeDefinition toDoAttribute = assetType.GetAttributeDefinition("ToDo");
+                    //asset.SetAttributeValue(toDoAttribute, sdr["ToDo"].ToString());
 
-                    IAttributeDefinition estimateAttribute = assetType.GetAttributeDefinition("Estimate");
-                    asset.SetAttributeValue(estimateAttribute, sdr["Estimate"].ToString());
+                    //IAttributeDefinition estimateAttribute = assetType.GetAttributeDefinition("Estimate");
+                    //asset.SetAttributeValue(estimateAttribute, sdr["Estimate"].ToString());
 
-                    IAttributeDefinition environmentAttribute = assetType.GetAttributeDefinition("Environment");
-                    asset.SetAttributeValue(environmentAttribute, sdr["Environment"].ToString());
+                    //IAttributeDefinition environmentAttribute = assetType.GetAttributeDefinition("Environment");
+                    //asset.SetAttributeValue(environmentAttribute, sdr["Environment"].ToString());
 
-                    IAttributeDefinition resolutionAttribute = assetType.GetAttributeDefinition("Resolution");
-                    asset.SetAttributeValue(resolutionAttribute, sdr["Resolution"].ToString());
+                    //IAttributeDefinition resolutionAttribute = assetType.GetAttributeDefinition("Resolution");
+                    //asset.SetAttributeValue(resolutionAttribute, sdr["Resolution"].ToString());
 
-                    IAttributeDefinition versionAffectedAttribute = assetType.GetAttributeDefinition("VersionAffected");
-                    asset.SetAttributeValue(versionAffectedAttribute, sdr["VersionAffected"].ToString());
+                    //IAttributeDefinition versionAffectedAttribute = assetType.GetAttributeDefinition("VersionAffected");
+                    //asset.SetAttributeValue(versionAffectedAttribute, sdr["VersionAffected"].ToString());
 
-                    IAttributeDefinition fixedInBuildAttribute = assetType.GetAttributeDefinition("FixedInBuild");
-                    asset.SetAttributeValue(fixedInBuildAttribute, sdr["FixedInBuild"].ToString());
+                    //IAttributeDefinition fixedInBuildAttribute = assetType.GetAttributeDefinition("FixedInBuild");
+                    //asset.SetAttributeValue(fixedInBuildAttribute, sdr["FixedInBuild"].ToString());
 
-                    IAttributeDefinition foundByAttribute = assetType.GetAttributeDefinition("FoundBy");
-                    asset.SetAttributeValue(foundByAttribute, sdr["FoundBy"].ToString());
+                    //IAttributeDefinition foundByAttribute = assetType.GetAttributeDefinition("FoundBy");
+                    //asset.SetAttributeValue(foundByAttribute, sdr["FoundBy"].ToString());
 
-                    IAttributeDefinition scopeAttribute = assetType.GetAttributeDefinition("Scope");
-                    asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString(), "Scope"));
-                    //asset.SetAttributeValue(scopeAttribute, _config.V1Configurations.p);
+                    //IAttributeDefinition scopeAttribute = assetType.GetAttributeDefinition("Scope");
+                    //asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString(), "Scope"));
+                    ////asset.SetAttributeValue(scopeAttribute, _config.V1Configurations.p);
 
-                    IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
-                    asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
-                    //HACK: For Rally import, needs to be refactored.
-                    //asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB("StoryStatus", sdr["Status"].ToString()));
-                    //asset.SetAttributeValue(statusAttribute, GetStatusAssetOID(sdr["Status"].ToString()));
+                    //IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
+                    //asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
+                    ////HACK: For Rally import, needs to be refactored.
+                    ////asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB("StoryStatus", sdr["Status"].ToString()));
+                    ////asset.SetAttributeValue(statusAttribute, GetStatusAssetOID(sdr["Status"].ToString()));
 
-                    IAttributeDefinition typeAttribute = assetType.GetAttributeDefinition("Type");
-                    asset.SetAttributeValue(typeAttribute, GetNewListTypeAssetOIDFromDB(sdr["Type"].ToString()));
-                    //HACK: For Rally import, needs to be refactored.
-                    //asset.SetAttributeValue(typeAttribute, GetNewListTypeAssetOIDFromDB("DefectType", sdr["Type"].ToString()));
+                    //IAttributeDefinition typeAttribute = assetType.GetAttributeDefinition("Type");
+                    //asset.SetAttributeValue(typeAttribute, GetNewListTypeAssetOIDFromDB(sdr["Type"].ToString()));
+                    ////HACK: For Rally import, needs to be refactored.
+                    ////asset.SetAttributeValue(typeAttribute, GetNewListTypeAssetOIDFromDB("DefectType", sdr["Type"].ToString()));
 
-                    IAttributeDefinition resolutionReasonAttribute = assetType.GetAttributeDefinition("ResolutionReason");
-                    asset.SetAttributeValue(resolutionReasonAttribute, GetNewListTypeAssetOIDFromDB(sdr["ResolutionReason"].ToString()));
-                    //HACK: For Rally import, needs to be refactored.
-                    //asset.SetAttributeValue(resolutionReasonAttribute, GetNewListTypeAssetOIDFromDB("DefectResolution", sdr["ResolutionReason"].ToString()));
+                    //IAttributeDefinition resolutionReasonAttribute = assetType.GetAttributeDefinition("ResolutionReason");
+                    //asset.SetAttributeValue(resolutionReasonAttribute, GetNewListTypeAssetOIDFromDB(sdr["ResolutionReason"].ToString()));
+                    ////HACK: For Rally import, needs to be refactored.
+                    ////asset.SetAttributeValue(resolutionReasonAttribute, GetNewListTypeAssetOIDFromDB("DefectResolution", sdr["ResolutionReason"].ToString()));
 
-                    //HACK: For Rally import, needs to be refactored.
-                    IAttributeDefinition sourceAttribute = assetType.GetAttributeDefinition("Source");
-                    if (String.IsNullOrEmpty(_config.V1Configurations.SourceListTypeValue) == false)
-                        asset.SetAttributeValue(sourceAttribute, _config.V1Configurations.SourceListTypeValue);
-                    else
-                        asset.SetAttributeValue(sourceAttribute, GetNewListTypeAssetOIDFromDB(sdr["Source"].ToString()));
+                    ////HACK: For Rally import, needs to be refactored.
+                    //IAttributeDefinition sourceAttribute = assetType.GetAttributeDefinition("Source");
+                    //if (String.IsNullOrEmpty(_config.V1Configurations.SourceListTypeValue) == false)
+                    //    asset.SetAttributeValue(sourceAttribute, _config.V1Configurations.SourceListTypeValue);
+                    //else
+                    //    asset.SetAttributeValue(sourceAttribute, GetNewListTypeAssetOIDFromDB(sdr["Source"].ToString()));
 
-                    IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
-                    asset.SetAttributeValue(priorityAttribute, GetNewListTypeAssetOIDFromDB(sdr["Priority"].ToString()));
-                    //HACK: For Rally import, needs to be refactored.
-                    //asset.SetAttributeValue(priorityAttribute, GetNewListTypeAssetOIDFromDB("WorkitemPriority", sdr["Priority"].ToString()));
+                    //IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
+                    //asset.SetAttributeValue(priorityAttribute, GetNewListTypeAssetOIDFromDB(sdr["Priority"].ToString()));
+                    ////HACK: For Rally import, needs to be refactored.
+                    ////asset.SetAttributeValue(priorityAttribute, GetNewListTypeAssetOIDFromDB("WorkitemPriority", sdr["Priority"].ToString()));
 
-                    IAttributeDefinition parentAttribute = assetType.GetAttributeDefinition("Parent");
-                    asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(sdr["Parent"].ToString()));
+                    //IAttributeDefinition parentAttribute = assetType.GetAttributeDefinition("Parent");
+                    //asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(sdr["Parent"].ToString()));
 
-                    if (String.IsNullOrEmpty(sdr["Requests"].ToString()) == false)
-                    {
-                        AddMultiValueRelation(assetType, asset, "Requests", sdr["Requests"].ToString());
-                    }
+                    //if (String.IsNullOrEmpty(sdr["Requests"].ToString()) == false)
+                    //{
+                    //    AddMultiValueRelation(assetType, asset, "Requests", sdr["Requests"].ToString());
+                    //}
 
-                    if (String.IsNullOrEmpty(sdr["BlockingIssues"].ToString()) == false)
-                    {
-                        AddMultiValueRelation(assetType, asset, "BlockingIssues", sdr["BlockingIssues"].ToString());
-                    }
+                    //if (String.IsNullOrEmpty(sdr["BlockingIssues"].ToString()) == false)
+                    //{
+                    //    AddMultiValueRelation(assetType, asset, "BlockingIssues", sdr["BlockingIssues"].ToString());
+                    //}
 
-                    if (String.IsNullOrEmpty(sdr["Issues"].ToString()) == false)
-                    {
-                        AddMultiValueRelation(assetType, asset, "Issues", sdr["Issues"].ToString());
-                    }
+                    //if (String.IsNullOrEmpty(sdr["Issues"].ToString()) == false)
+                    //{
+                    //    AddMultiValueRelation(assetType, asset, "Issues", sdr["Issues"].ToString());
+                    //}
+
+                    //if (String.IsNullOrEmpty(sdr["TaggedWith"].ToString()) == false)
+                    //{
+                    //    IAttributeDefinition multiAttribute = assetType.GetAttributeDefinition("TaggedWith");
+
+                    //    AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
+
+                    //}
 
                     _dataAPI.Save(asset);
 
@@ -163,36 +177,36 @@ namespace V1DataWriter
                     importCount++;
 
                     //Get Any EmbeddedImages for the Description Field
-                    int[] imgIDLocation = new int[10];
-                    int imageCounter = 0;
+                    //int[] imgIDLocation = new int[10];
+                    //int imageCounter = 0;
 
-                    SqlDataReader sdrEmbeddedImages = GetDataFromDB("EmbeddedImages", sdr["AssetOID"].ToString());
-                    while (sdrEmbeddedImages.Read())
-                    {
-                        //UploadEmbeddedImageContent(ref asset, asset.Oid,(byte[])sdrEmbeddedImages["Content"], _imageConnector);
+                    //SqlDataReader sdrEmbeddedImages = GetDataFromDB("EmbeddedImages", sdr["AssetOID"].ToString());
+                    //while (sdrEmbeddedImages.Read())
+                    //{
+                    //    //UploadEmbeddedImageContent(ref asset, asset.Oid,(byte[])sdrEmbeddedImages["Content"], _imageConnector);
 
-                        ////Create an embedded image.
-                        string filePath = @"C:\Windows\Temp\TempImage.png";
-                        System.IO.File.WriteAllBytes(filePath, (byte[])sdrEmbeddedImages["Content"]);
-                        //string file = @"C:\Temp\versionone.jpg";
-                        Oid embeddedImageOid = _dataAPI.SaveEmbeddedImage(filePath, asset);
+                    //    ////Create an embedded image.
+                    //    string filePath = @"C:\Windows\Temp\TempImage.png";
+                    //    System.IO.File.WriteAllBytes(filePath, (byte[])sdrEmbeddedImages["Content"]);
+                    //    //string file = @"C:\Temp\versionone.jpg";
+                    //    Oid embeddedImageOid = _dataAPI.SaveEmbeddedImage(filePath, asset);
 
-                        string currentDescription = sdr["Description"].ToString();
-                        imgIDLocation[imageCounter] = currentDescription.IndexOf(".img/", 0, currentDescription.Length);
-                        string firstDescriptionPart = currentDescription.Substring(0, imgIDLocation[imageCounter] + 5);
-                        string secondDescriptionPart = currentDescription.Substring(imgIDLocation[imageCounter] + 5);
-                        imgIDLocation[imageCounter] = secondDescriptionPart.IndexOf(">", 0, secondDescriptionPart.Length);
-                        string newSecondDescriptionPart = secondDescriptionPart.Substring(imgIDLocation[imageCounter]);
+                    //    string currentDescription = sdr["Description"].ToString();
+                    //    imgIDLocation[imageCounter] = currentDescription.IndexOf(".img/", 0, currentDescription.Length);
+                    //    string firstDescriptionPart = currentDescription.Substring(0, imgIDLocation[imageCounter] + 5);
+                    //    string secondDescriptionPart = currentDescription.Substring(imgIDLocation[imageCounter] + 5);
+                    //    imgIDLocation[imageCounter] = secondDescriptionPart.IndexOf(">", 0, secondDescriptionPart.Length);
+                    //    string newSecondDescriptionPart = secondDescriptionPart.Substring(imgIDLocation[imageCounter]);
 
-                        string embeddedImageTag = string.Format(" {0} alt=\"\" data-oid=\"{1}\" {2}", firstDescriptionPart + embeddedImageOid.Key + "\"", embeddedImageOid.Momentless, newSecondDescriptionPart);
-                        //var embeddedImageTag = string.Format("<p></p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOid.Key, embeddedImageOid.Momentless);
-                        asset.SetAttributeValue(descAttribute, embeddedImageTag);
-                        _dataAPI.Save(asset);
+                    //    string embeddedImageTag = string.Format(" {0} alt=\"\" data-oid=\"{1}\" {2}", firstDescriptionPart + embeddedImageOid.Key + "\"", embeddedImageOid.Momentless, newSecondDescriptionPart);
+                    //    //var embeddedImageTag = string.Format("<p></p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOid.Key, embeddedImageOid.Momentless);
+                    //    asset.SetAttributeValue(descAttribute, embeddedImageTag);
+                    //    _dataAPI.Save(asset);
 
-                        UpdateNewAssetOIDAndStatus("EmbeddedImages", sdrEmbeddedImages["AssetOID"].ToString(), embeddedImageOid.Momentless.ToString(), ImportStatuses.IMPORTED, "EmbeddedImage imported.");
+                    //    UpdateNewAssetOIDAndStatus("EmbeddedImages", sdrEmbeddedImages["AssetOID"].ToString(), embeddedImageOid.Momentless.ToString(), ImportStatuses.IMPORTED, "EmbeddedImage imported.");
 
-                        imageCounter++;
-                    }
+                    //    imageCounter++;
+                    //}
 
 
                     _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
@@ -212,7 +226,7 @@ namespace V1DataWriter
                 }
             }
             sdr.Close();
-            SetDefectDependencies();
+            //SetDefectDependencies();
             return importCount;
         }
 
@@ -290,15 +304,76 @@ namespace V1DataWriter
         {
             SqlDataReader sdr = GetImportDataFromDBTableForClosing("Defects");
             int assetCount = 0;
+            int exceptionCount = 0;
             while (sdr.Read())
             {
-                Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
-                ExecuteOperationInV1("Defect.Inactivate", asset.Oid);
-                assetCount++;
+                Asset asset = null;
+
+                try
+                {
+                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                    {
+                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    ExecuteOperationInV1("Defect.Inactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                }
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
+
             }
             sdr.Close();
             return assetCount;
         }
+
+        public int OpenDefects()
+        {
+            SqlDataReader sdr = GetImportDataFromDBTableForClosing("Defects");
+            int assetCount = 0;
+            int exceptionCount = 0;
+            while (sdr.Read())
+            {
+                Asset asset = null;
+
+                try
+                {
+                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                    {
+                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    ExecuteOperationInV1("Defect.Reactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                }
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
+
+            }
+            sdr.Close();
+            return assetCount;
+        }
+
 
     }
 }

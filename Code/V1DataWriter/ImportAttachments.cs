@@ -94,6 +94,7 @@ namespace V1DataWriter
                     try
                     {
                         bool success = AttachFile(_imageConnector, assetContainer, filePath);
+                        //UploadAttachmentContent(assetContainer, (byte[])sdr["Content"], sdr["Filename"].ToString(), sdr["Name"].ToString());
                     }
                     finally
                     {
@@ -113,7 +114,6 @@ namespace V1DataWriter
                     //UploadAttachmentContent(asset.Oid.Key.ToString(), (byte[])sdr["Content"], sdr["ContentType"].ToString());
                     
                     
-                    //UploadAttachmentContent(assetContainer, (byte[])sdr["Content"], sdr["Filename"].ToString(), sdr["Name"].ToString());
                     //UploadAttachmentContent(asset, (byte[])sdr["Content"], sdr["Filename"].ToString(), sdr["Name"].ToString());
 
                     UpdateNewAssetOIDAndStatus("Attachments", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Attachment imported.");
@@ -144,7 +144,7 @@ namespace V1DataWriter
         private void UploadAttachmentContent(Asset newAsset, byte[] FileContent, string fileName, string attachmentName)
         {
 
-            string filePath = @"C:\Temp\" + fileName;
+            string filePath = @"C:\Windows\Temp\" + fileName;
             
             try
             {
@@ -396,7 +396,7 @@ namespace V1DataWriter
 
         private string createFile(string fileName, byte[] FileContent)
         {
-            string filePath = @"C:\Temp\" + fileName;
+            string filePath = @"C:\Windows\Temp\" + fileName;
 
             try
             {

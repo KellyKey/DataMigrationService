@@ -18,9 +18,8 @@ namespace V1DataReader
         {
             int listTypeCount = 0;
             IAttributeDefinition teamAttribute = null;
-            string listTypeName = string.Empty;
+            //string listTypeName = string.Empty;
 
-            string SQL = BuildListTypeInsertStatement();
 
             foreach (MigrationConfiguration.ListTypeInfo listType in _config.ListTypesToMigrate)
             {
@@ -49,6 +48,8 @@ namespace V1DataReader
 
                     QueryResult result = _dataAPI.Retrieve(query);
 
+                    string SQL = BuildListTypeInsertStatement();
+
                     foreach (Asset asset in result.Assets)
                     {
                         using (SqlCommand cmd = new SqlCommand())
@@ -57,7 +58,14 @@ namespace V1DataReader
                             cmd.CommandText = SQL;
                             cmd.CommandType = System.Data.CommandType.Text;
                             cmd.Parameters.AddWithValue("@AssetOID", asset.Oid.ToString());
-                            cmd.Parameters.AddWithValue("@AssetType", listType.Name);
+                            if (listType.Name == "Custom_CrossProductsImpacted")
+                            {
+                                cmd.Parameters.AddWithValue("@AssetType", "Custom_Cross_Products_Impacted");
+                            }
+                            else
+                            {
+                                cmd.Parameters.AddWithValue("@AssetType", listType.Name);
+                            }
                             cmd.Parameters.AddWithValue("@AssetState", GetScalerValue(asset.GetAttribute(assetStateAttribute)));
                             cmd.Parameters.AddWithValue("@Description", GetScalerValue(asset.GetAttribute(descriptionAttribute)));
                             if (listType.Name.Equals("StoryStatus"))

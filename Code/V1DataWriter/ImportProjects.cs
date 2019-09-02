@@ -23,6 +23,7 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTable("Projects");
 
             int importCount = 0;
+
             while (sdr.Read())
             {
                 try
@@ -93,6 +94,14 @@ namespace V1DataWriter
 
                     IAttributeDefinition endDateAttribute = assetType.GetAttributeDefinition("EndDate");
                     asset.SetAttributeValue(endDateAttribute, sdr["EndDate"].ToString());
+
+                    if (String.IsNullOrEmpty(sdr["TaggedWith"].ToString()) == false)
+                    {
+                        IAttributeDefinition multiAttribute = assetType.GetAttributeDefinition("TaggedWith");
+
+                        AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
+
+                    }
 
                     IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
                     asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB(sdr["Status"].ToString()));
@@ -183,7 +192,7 @@ namespace V1DataWriter
                 IAttributeDefinition parentAttribute = assetType.GetAttributeDefinition("Parent");
 
                 //If parent is Scope:0, assign to specified parent scope.
-                if (sdr["Parent"].ToString() == "Scope:0")
+                if (sdr["Parent"].ToString() == "Scope:0" || sdr["Parent"].ToString() == _config.V1TargetConnection.Project)
                     asset.SetAttributeValue(parentAttribute, _config.V1TargetConnection.Project);
                 else
                     asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(sdr["Parent"].ToString(), "Projects"));
@@ -220,15 +229,76 @@ namespace V1DataWriter
         {
             SqlDataReader sdr = GetImportDataFromDBTableForClosing("Projects");
             int assetCount = 0;
+            int exceptionCount = 0;
             while (sdr.Read())
             {
-                Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
-                ExecuteOperationInV1("Scope.Inactivate", asset.Oid);
-                assetCount++;
+                Asset asset = null;
+
+                try
+                {
+                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                    {
+                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    ExecuteOperationInV1("Scope.Inactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                }
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
+
             }
             sdr.Close();
             return assetCount;
         }
+
+        public int OpenProjects()
+        {
+            SqlDataReader sdr = GetImportDataFromDBTableForClosing("Projects");
+            int assetCount = 0;
+            int exceptionCount = 0;
+            while (sdr.Read())
+            {
+                Asset asset = null;
+
+                try
+                {
+                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                    {
+                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                    ExecuteOperationInV1("Scope.Reactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                }
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
+
+            }
+            sdr.Close();
+            return assetCount;
+        }
+
 
     }
 }

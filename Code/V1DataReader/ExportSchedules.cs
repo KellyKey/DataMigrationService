@@ -31,6 +31,9 @@ namespace V1DataReader
             IAttributeDefinition timeboxGapAttribute = assetType.GetAttributeDefinition("TimeboxGap");
             query.Selection.Add(timeboxGapAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition timeboxLengthAttribute = assetType.GetAttributeDefinition("TimeboxLength");
             query.Selection.Add(timeboxLengthAttribute);
 
@@ -76,6 +79,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Description", description);
                         cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@TimeboxGap", GetScalerValue(asset.GetAttribute(timeboxGapAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@TimeboxLength", asset.GetAttribute(timeboxLengthAttribute).Value.ToString());
                         cmd.ExecuteNonQuery();
                     }
@@ -95,6 +99,7 @@ namespace V1DataReader
             sb.Append("Description,");
             sb.Append("Name,");
             sb.Append("TimeboxGap,");
+            sb.Append("TaggedWith,");
             sb.Append("TimeboxLength) ");
             sb.Append("VALUES (");
             sb.Append("@AssetOID,");
@@ -102,6 +107,7 @@ namespace V1DataReader
             sb.Append("@Description,");
             sb.Append("@Name,");
             sb.Append("@TimeboxGap,");
+            sb.Append("@TaggedWith,");
             sb.Append("@TimeboxLength);");
             return sb.ToString();
         }

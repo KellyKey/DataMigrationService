@@ -20,7 +20,7 @@ namespace V1DataWriter
         public override int Import()
         {
             //SqlDataReader sdr = GetImportDataFromSproc("spGetLinksForImport");
-            SqlDataReader sdr = GetImportDataFromDBTableWithOrder("Links");
+            SqlDataReader sdr = GetImportDataFromDBTable("Links");
 
             int importCount = 0;
             while (sdr.Read())

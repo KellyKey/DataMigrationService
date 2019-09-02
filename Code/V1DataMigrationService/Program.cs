@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net.Mail;
 using VersionOne.SDK.APIClient;
 using NLog;
 using V1DataWriter;
@@ -37,8 +38,13 @@ namespace V1DataMigrationService
 
         static void Main(string[] args)
         {
+            //create a timer
+            DateTime timerStart = DateTime.Now;
+            DateTime timerEnd = DateTime.Now;
+
             try
             {
+
                 CreateLogHeader();
                 _logger.Info("Initializing configurations.");
                 _config = (MigrationConfiguration)ConfigurationManager.GetSection("migration");
@@ -49,7 +55,7 @@ namespace V1DataMigrationService
                 if (_config.V1Configurations.PerformExport == true && _config.V1Configurations.SourceConnectionToUse == "VersionOne") 
                     VerifyV1SourceConnection();
 
-                if (_config.V1Configurations.PerformImport == true || _config.V1Configurations.PerformClose == true || _config.V1Configurations.PerformCleanup) 
+                if (_config.V1Configurations.PerformImport == true || _config.V1Configurations.PerformClose == true || _config.V1Configurations.PerformOpen == true || _config.V1Configurations.PerformCleanup) 
                     VerifyV1TargetConnection();
                 _logger.Info("");
 
@@ -82,7 +88,15 @@ namespace V1DataMigrationService
                     _logger.Info("");
                 }
 
-                //Do claenup tasks in target system.
+                //Open imported items in target system for Maintenance ie. EmbeddedImages, etc.
+                if (_config.V1Configurations.PerformOpen == true)
+                {
+                    _logger.Info("*** Opening:");
+                    OpenAssets();
+                    _logger.Info("");
+                }
+
+                //Do cleanup tasks in target system.
                 if (_config.V1Configurations.PerformCleanup== true)
                 {
                     _logger.Info("*** CLEANUP:");
@@ -103,8 +117,17 @@ namespace V1DataMigrationService
             }
             finally
             {
+                timerEnd = DateTime.Now;
+                TimeSpan span = timerEnd.Subtract(timerStart);
+                Console.WriteLine("Total Time (seconds): " + span.Seconds);
+                Console.WriteLine("Total Time (minutes): " + span.Minutes);
+                Console.WriteLine("Total Time (hours): " + span.Hours);
+
                 _logger.Info("");
                 _logger.Info("");
+
+                //sendMessage("smtp.gmail.com", "8173953888@mobile.att.net", "kellypkey@gmail.com","Data Migration Process Finished","Process Complete");
+
                 Console.WriteLine();
                 Console.WriteLine("Press ENTER to close:");
                 Console.Read();
@@ -195,8 +218,8 @@ namespace V1DataMigrationService
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting member groups.");
-                            //ExportMemberGroups memberGroups = new ExportMemberGroups(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
-                            //assetCount = memberGroups.Export();
+                            ExportMemberGroups memberGroups = new ExportMemberGroups(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            assetCount = memberGroups.Export();
                             _logger.Info("-> Exported {0} member groups.", assetCount);
                         }
                         break;
@@ -650,7 +673,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Scope");
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Project");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} project custom fields.", assetCount);
                             }
@@ -717,7 +740,7 @@ namespace V1DataMigrationService
                             ImportRequests requests = new ImportRequests(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
                             assetCount = requests.Import();
                             _logger.Info("-> Imported {0} requests.", assetCount);
-                       
+
 
                             if (asset.EnableCustomFields == true)
                             {
@@ -1041,9 +1064,133 @@ namespace V1DataMigrationService
                 assetCount = projects.CloseProjects();
                 _logger.Info("-> Closed {0} projects.", assetCount);
             }
+        }
 
 
+        private static void OpenAssets()
+        {
+            int assetCount = 0;
 
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Projects").Enabled == true)
+            {
+                _logger.Info("Opening projects.");
+                ImportProjects projects = new ImportProjects(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = projects.OpenProjects();
+                _logger.Info("-> Opened {0} projects.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Iterations").Enabled == true)
+            {
+                _logger.Info("Opening iterations.");
+                ImportIterations iterations = new ImportIterations(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = iterations.OpenIterations();
+                _logger.Info("-> Opened {0} iterations.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Epics").Enabled == true)
+            {
+                _logger.Info("Opening epics.");
+                ImportEpics epics = new ImportEpics(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = epics.OpenEpics();
+                _logger.Info("-> Opened {0} epics.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Stories").Enabled == true)
+            {
+                _logger.Info("Opening stories.");
+                ImportStories stories = new ImportStories(_sqlConn, _targetMetaAPI, _targetDataAPI, _targetImageConnector, _config);
+                assetCount = stories.OpenStories();
+                //assetCount = stories.CloseStories();
+                _logger.Info("-> Opened {0} stories.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Defects").Enabled == true)
+            {
+                _logger.Info("Opening defects.");
+                ImportDefects defects = new ImportDefects(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = defects.OpenDefects();
+                _logger.Info("-> Opened {0} defects.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Tasks").Enabled == true)
+            {
+                _logger.Info("Opening tasks.");
+                ImportTasks tasks = new ImportTasks(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = tasks.OpenTasks();
+                _logger.Info("-> Opened {0} tasks.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "RegressionTests").Enabled == true)
+            {
+                _logger.Info("Opening regression tests.");
+                ImportRegressionTests tests = new ImportRegressionTests(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = tests.OpenRegressionTests();
+                _logger.Info("-> Opened {0} regression tests.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Tests").Enabled == true)
+            {
+                _logger.Info("Opening tests.");
+                ImportTests tests = new ImportTests(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = tests.OpenTests();
+                _logger.Info("-> Opened {0} tests.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Issues").Enabled == true)
+            {
+                _logger.Info("Opening issues.");
+                ImportIssues issues = new ImportIssues(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = issues.OpenIssues();
+                _logger.Info("-> Opened {0} issues.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Requests").Enabled == true)
+            {
+                _logger.Info("Opening requests.");
+                ImportRequests requests = new ImportRequests(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = requests.OpenRequests();
+                _logger.Info("-> Opened {0} requests.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "FeatureGroups").Enabled == true)
+            {
+                _logger.Info("Opening feature groups.");
+                ImportFeatureGroups featureGroups = new ImportFeatureGroups(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = featureGroups.OpenFeatureGroups();
+                _logger.Info("-> Opened {0} feature groups.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Goals").Enabled == true)
+            {
+                _logger.Info("Opening goals.");
+                ImportGoals goals = new ImportGoals(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = goals.OpenGoals();
+                _logger.Info("-> Opened {0} goals.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Teams").Enabled == true)
+            {
+                _logger.Info("Opening teams.");
+                ImportTeams teams = new ImportTeams(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = teams.OpenTeams();
+                _logger.Info("-> Opened {0} teams.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "Members").Enabled == true)
+            {
+                _logger.Info("Opening members.");
+                ImportMembers members = new ImportMembers(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = members.OpenMembers();
+                _logger.Info("-> Opened {0} members.", assetCount);
+            }
+
+            if (_config.AssetsToMigrate.Find(i => i.Name == "ListTypes").Enabled == true)
+            {
+                _logger.Info("Opening list types.");
+                ImportListTypes listTypes = new ImportListTypes(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = listTypes.OpenListTypes();
+                _logger.Info("-> Opened {0} list types.", assetCount);
+            }
         }
 
         private static void PurgeMigrationDatabase()
@@ -1280,6 +1427,30 @@ namespace V1DataMigrationService
             {
                 _logger.Error("-> Unable to connect to staging database \"{0}\".", v1DatabaseInfo.Database);
                 throw ex;
+            }
+        }
+
+        private static void sendMessage(string inMailServer, string inTo, string inFrom, string inMsg, string inSubject)
+        {
+            try
+            {
+                MailMessage message = new MailMessage(inFrom, inTo, inSubject, inMsg);
+                SmtpClient mySmtpClient = new SmtpClient(inMailServer);
+                mySmtpClient.UseDefaultCredentials = false;
+                mySmtpClient.Send(message);
+                Console.Write("The mail message has been sent to " + message);
+            }
+            catch (FormatException ex)
+            {
+                Console.Write(ex.Message);
+            }
+            catch (SmtpException ex)
+            {
+                Console.Write(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.Message);
             }
         }
 

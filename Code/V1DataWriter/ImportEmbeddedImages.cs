@@ -25,46 +25,89 @@ namespace V1DataWriter
         public override int Import()
         {
             SqlDataReader sdr = null;
-            sdr = GetImportDataFromSproc("spGetEmbeddedImagesForImport");
+            //Need to get ALL the records even though some may not have an Asset because there is code that downloads the content directly
+            sdr = GetImportDataFromDBTable("EmbeddedImages");  
+            //sdr = GetImportDataFromSproc("spGetEmbeddedImagesForImport");  THIS PROC doesn't pull All the records
+
             int importCount = 0;
             int failedCount = 0;
+            Asset asset = null;
             _logger.Info("-> Starting Embedded Images Import with DB");
 
             while (sdr.Read())
             {
-                try
-                {                    
-                    string newAssetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());                    
-                    //IAssetType newAssetType = _metaAPI.GetAssetType("Story");
-                    //Oid newAssetOID = new Oid(newAssetType, );
-                    //Asset newAsset = new Asset(newAssetType);
-                    Asset assetContainer = GetWorkitem(_imageConnector, newAssetOID);
+                if 
+                (
+                        String.IsNullOrEmpty(sdr["Content"].ToString()) ||
+                        String.IsNullOrEmpty(sdr["ContentType"].ToString())
+                )
+                {
+                    UpdateImportStatus("EmbeddedImages", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Embedded image missing required field.");
+                    continue;
+                }
 
-                    if (String.IsNullOrEmpty(sdr["Asset"].ToString()) ||
-                    String.IsNullOrEmpty(sdr["Content"].ToString()) ||
-                    String.IsNullOrEmpty(sdr["ContentType"].ToString()) ||
-                    String.IsNullOrEmpty(newAssetOID))
+                try
+                {
+                    string newAssetOID = null;
+                    Services services = new Services(_imageConnector);
+
+                    //Must have a New Asset OID to Save the Image, even though it doesn't appear to use it.  ie. Any Asset can point to the same EmbeddedImage
+                    if (String.IsNullOrEmpty(sdr["Asset"].ToString()))
                     {
-                        UpdateImportStatus("EmbeddedImages", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Embedded image missing required field.");
-                        continue;
+                        newAssetOID = "Scope:0";
+                        asset = GetWorkitem(services, newAssetOID);
+                    }
+                    else
+                    {
+                        newAssetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());
+                        asset = GetWorkitem(services, newAssetOID);
                     }
 
-                   // IAssetType assetType = _metaAPI.GetAssetType("EmbeddedImage");
-                   // Asset asset = _dataAPI.New(assetType, null);
+                    //Check if the newAsset actually returned or not
+                    if (asset == null)
+                    {
+                        asset = GetWorkitem(services, "Scope:0");
+                    }
 
-                   // IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Asset");
-                   // asset.SetAttributeValue(assetAttribute, sdr["Asset"].ToString());
+                    //IAssetType assetType = _metaAPI.GetAssetType("EmbeddedImage");
 
-                   // IAttributeDefinition contentAttribute = assetType.GetAttributeDefinition("Content");
-                   // asset.SetAttributeValue(contentAttribute, (byte[])sdr["Content"]);
+                    //IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Asset");
+                    //asset.SetAttributeValue(assetAttribute, newAssetOID);
 
-                   // IAttributeDefinition contentTypeAttribute = assetType.GetAttributeDefinition("ContentType");
-                   //// string mimeType = MimeType.Resolve(sdr["ContentType"].ToString());
-                    //asset.SetAttributeValue(contentTypeAttribute, sdr["ContentType"].ToString());
+                    //IAttributeDefinition contentAttribute = assetType.GetAttributeDefinition("Content");
+                    //asset.SetAttributeValue(contentAttribute, (byte[])sdr["Content"]);
 
-                    //Now save the binary content of the embedded image.
-                    UploadEmbeddedImageContent(assetContainer, (byte[])sdr["Content"]);                 
-                    UpdateNewAssetOIDAndStatus("EmbeddedImages", sdr["AssetOID"].ToString(), assetContainer.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Embedded image imported.");
+                    //IAttributeDefinition contentTypeAttribute = assetType.GetAttributeDefinition("ContentType");
+                    ////string mimeType = MimeType.Resolve(sdr["ContentType"].ToString());  ***DO NOT USE as it marks all Images with 'application/octet-stream' instead of an Img Type
+                    //asset.SetAttributeValue(contentTypeAttribute, sdr["ContentType"]);
+
+                    int typePosition = sdr["ContentType"].ToString().IndexOf("/", 0);
+                    string imageType = sdr["ContentType"].ToString().Substring(typePosition + 1);
+                    string filePath = @"C:\Windows\Temp\" + "tempFile." + imageType;
+                    Oid embeddedImageOID = null;
+
+                    try
+                    {
+                        //Process the File Bytes
+                        File.WriteAllBytes(filePath, (byte[])sdr["Content"]);
+
+                        embeddedImageOID = services.SaveEmbeddedImage(filePath, asset);
+                        _logger.Info("-> Imported {0} embeddedImage", embeddedImageOID.Token);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        File.Delete(filePath);
+                    }
+
+                    //_dataAPI.Save(asset);
+
+                    UpdateNewAssetOIDAndStatus("EmbeddedImages", sdr["AssetOID"].ToString(), embeddedImageOID.Momentless.ToString(), ImportStatuses.IMPORTED, "Embedded image imported.");
+
                     importCount++;
                     _logger.Info("-> Imported {0} Embedded image", importCount);
                 }
@@ -88,92 +131,32 @@ namespace V1DataWriter
             return importCount;
         }
 
-        private void UploadEmbeddedImageContent(Asset newAsset, byte[] FileContent)
+        public static Asset GetWorkitem(IServices services, string referenceNum)
         {
-            //Create a new story.
-            //var storyType = services.Meta.GetAssetType("Story");
-            //var newStory = services.New(storyType, services.GetOid("Scope:0"));
-            //var nameAttribute = storyType.GetAttributeDefinition("Name");
-            //var descriptionAttribute = storyType.GetAttributeDefinition("Description");
-            //var name = string.Format("Story with an embedded image");
-            //newStory.SetAttributeValue(nameAttribute, name);
-            //services.Save(newStory);
-            //Oid storyOID = newStory.Oid;
+            //IServices services;
 
-            ////Create an embedded image.
-            //string file = @"C:\Temp\versionone.jpg";
-            //Oid embeddedImageOid = services.SaveEmbeddedImage(file, newStory);
-            //var embeddedImageTag = string.Format("<p>Here's an embedded image:</p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOid.Key, embeddedImageOid.Momentless);
-            //newStory.SetAttributeValue(descriptionAttribute, embeddedImageTag);
-            //services.Save(newStory);
+            //services = new Services(connector);
+            int characterPosition = referenceNum.IndexOf(":", 0);
+            string assetType = referenceNum.Substring(0, characterPosition);
 
-            string filePath = @"C:\Windows\Temp\TempImage.jpg";
+            IAssetType workitemType = services.Meta.GetAssetType(assetType);
 
-            try
-            {
-                File.WriteAllBytes(filePath, FileContent);
-                Services services = new Services(_imageConnector);
-                var storyType = services.Meta.GetAssetType("Story");
-                //var newStory = services.New(storyType, services.GetOid("Scope:7795"));
-                var nameAttribute = storyType.GetAttributeDefinition("Name");
-                var descriptionAttribute = storyType.GetAttributeDefinition("Description");
-                var name = string.Format("Story: Another embedded image demo");
-                //newAsset.SetAttributeValue(descriptionAttribute, string.Format("<p>Image<p>"));
-                services.Save(newAsset);
-                //Console.Write(newAsset.GetAttribute(nameAttribute));
-                //Console.Write(newAsset.GetAttribute(descriptionAttribute));
-                //var oidTypeID = newAsset.Oid.ToString();
-                Oid storyOID = newAsset.Oid;
+            Query query = new Query(workitemType);
 
-                Oid embeddedImageOID = services.SaveEmbeddedImage(filePath, newAsset);
-                var embeddedImageTag = string.Format("<p>Here's a migrated embedded image:</p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOID.Key, embeddedImageOID.Momentless);
-                //var storyType = services.Meta.GetAssetType("Story");
-                // IAttributeDefinition descFieldAttribute = storyType.GetAttributeDefinition("Description");
-                newAsset.SetAttributeValue(descriptionAttribute, embeddedImageTag);
-                services.Save(newAsset);
-                _logger.Info("-> Imported {0} embedded image", embeddedImageOID.Token);       
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                File.Delete(filePath);
-            } 
-        }
-        public static Asset GetWorkitem(V1Connector connector, string referenceNum)
-        {
-
-            IServices services;
-
-            services = new Services(connector);
-
-            //IAssetType workitemType = services.Meta.GetAssetType("Workitem");
-            Oid storyId = services.GetOid(referenceNum);
-
-            Query query = new Query(storyId);
-
-            IAssetType storyType = services.Meta.GetAssetType("Story");
-            IAttributeDefinition nameAttribute = storyType.GetAttributeDefinition("Name");
-            IAttributeDefinition descFieldAttribute = storyType.GetAttributeDefinition("Description");
+            IAttributeDefinition idFieldAttribute =
 
             //workitemType.GetAttributeDefinition(_configuration.V1Connection.IdField);
-            //IAttributeDefinition idFieldAttribute   = workitemType.GetAttributeDefinition("ID");
-            //IAttributeDefinition nameFieldAttribute = workitemType.GetAttributeDefinition("Name");
-            //IAttributeDefinition descFieldAttribute = workitemType.GetAttributeDefinition("Description");
+            workitemType.GetAttributeDefinition("ID");
 
-            query.Selection.Add(nameAttribute);
-            query.Selection.Add(descFieldAttribute);
+            query.Selection.Add(idFieldAttribute);
 
-            //FilterTerm term = new FilterTerm(idFieldAttribute);
+            FilterTerm term = new FilterTerm(idFieldAttribute);
 
-            //term.Equal(referenceNum);
+            term.Equal(referenceNum);
 
-            //query.Filter = term;
+            query.Filter = term;
 
             QueryResult result = services.Retrieve(query);
-
 
 
             if (result.Assets.Any())
@@ -187,55 +170,84 @@ namespace V1DataWriter
 
         }
 
-        public int ImportAttachmentsAsLinks()
+        public int GetBlobs(IServices services, string referenceNum)
         {
-            SqlDataReader sdr = GetImportDataFromSproc("spGetAttachmentsForImport");
+            //Use Export Wizard to move the Blob Data from the Source Db into Staging created as the Query Table
+            //Query to Insert Blob Data into the EmbeddedImages Table before running GetBlobs
+            //Insert into EmbeddedImages
+            //(AssetOID, Content, ContentType, Hash)
+            //Select ID, Content, ContentType, Hash
+            //From Query
 
-            int importCount = 0;
-            while (sdr.Read())
-            {
-                try
-                {
-                    string assetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());
+            return 0;
 
-                    if (String.IsNullOrEmpty(assetOID) == false)
-                    {
-                        IAssetType assetType = _metaAPI.GetAssetType("Link");
-                        Asset asset = _dataAPI.New(assetType, null);
-
-                        //Build the URL for the link.
-                        string[] attachmentOID = sdr["AssetOID"].ToString().Split(':');
-                        string attachmentURL = _config.V1Configurations.ImportAttachmentsAsLinksURL + "/attachment.img/" + attachmentOID[1];
-
-                        IAttributeDefinition urlAttribute = assetType.GetAttributeDefinition("URL");
-                        asset.SetAttributeValue(urlAttribute, attachmentURL);
-
-                        IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
-                        asset.SetAttributeValue(nameAttribute, sdr["Name"].ToString());
-
-                        IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Asset");
-                        asset.SetAttributeValue(assetAttribute, assetOID);
-
-                        _dataAPI.Save(asset);
-                        UpdateNewAssetOIDAndStatus("Attachments", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Attachment imported as link.");
-                        importCount++;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    if (_config.V1Configurations.LogExceptions == true)
-                    {
-                        UpdateImportStatus("Attachments", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
-                        continue;
-                    }
-                    else
-                    {
-                        throw ex;
-                    }
-                }
-            }
-            sdr.Close();
-            return importCount;
         }
+
+//            SqlDataReader sdr = null;
+//            sdr = GetImportDataFromDBTable("Query");
+
+//            while (sdr.Read())
+//            {
+//                try
+//                {
+//                    string newAssetOID = null;
+
+//                    if (String.IsNullOrEmpty(sdr["Asset"].ToString()))
+//                    {
+//                        newAssetOID = "Scope:0";
+//                    }
+//                    else
+//                    {
+//                        newAssetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());
+//                    }
+
+
+
+//                    if (
+//                        String.IsNullOrEmpty(sdr["Content"].ToString()) ||
+//                        String.IsNullOrEmpty(sdr["ContentType"].ToString())
+//                        )
+//                    {
+//                        UpdateImportStatus("EmbeddedImages", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Embedded image missing required field.");
+//                        continue;
+//                    }
+//`
+//                    //IServices services;
+
+//                    //services = new Services(connector);
+//                    int characterPosition = referenceNum.IndexOf(":", 0);
+//            string assetType = referenceNum.Substring(0, characterPosition);
+
+//            IAssetType workitemType = services.Meta.GetAssetType(assetType);
+
+//            Query query = new Query(workitemType);
+
+//            IAttributeDefinition idFieldAttribute =
+
+//            //workitemType.GetAttributeDefinition(_configuration.V1Connection.IdField);
+//            workitemType.GetAttributeDefinition("ID");
+
+//            query.Selection.Add(idFieldAttribute);
+
+//            FilterTerm term = new FilterTerm(idFieldAttribute);
+
+//            term.Equal(referenceNum);
+
+//            query.Filter = term;
+
+//            QueryResult result = services.Retrieve(query);
+
+
+//            if (result.Assets.Any())
+//            {
+
+//                return result.Assets[0];
+
+//            }
+
+//            return null;
+
+//        }
+
     }
 }

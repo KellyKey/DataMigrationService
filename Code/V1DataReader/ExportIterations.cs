@@ -34,6 +34,9 @@ namespace V1DataReader
             IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
             query.Selection.Add(nameAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition targetEstimateAttribute = assetType.GetAttributeDefinition("TargetEstimate");
             query.Selection.Add(targetEstimateAttribute);
 
@@ -89,6 +92,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Schedule", GetSingleRelationValue(asset.GetAttribute(scheduleAttribute)));
                         cmd.Parameters.AddWithValue("@Description", description);
                         cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@TargetEstimate", GetScalerValue(asset.GetAttribute(targetEstimateAttribute)));
                         cmd.Parameters.AddWithValue("@EndDate", GetScalerValue(asset.GetAttribute(endDateAttribute)));
                         cmd.Parameters.AddWithValue("@BeginDate", GetScalerValue(asset.GetAttribute(beginDateAttribute)));
@@ -127,6 +131,7 @@ namespace V1DataReader
             sb.Append("Schedule,");
             sb.Append("Description,");
             sb.Append("Name,");
+            sb.Append("TaggedWith,");
             sb.Append("TargetEstimate,");
             sb.Append("EndDate,");
             sb.Append("BeginDate,");
@@ -139,6 +144,7 @@ namespace V1DataReader
             sb.Append("@Description,");
             sb.Append("@Name,");
             sb.Append("@TargetEstimate,");
+            sb.Append("@TaggedWith,");
             sb.Append("@EndDate,");
             sb.Append("@BeginDate,");
             sb.Append("@State);");

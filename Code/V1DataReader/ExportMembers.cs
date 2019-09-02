@@ -52,6 +52,12 @@ namespace V1DataReader
             IAttributeDefinition notifyViaEmailAttribute = assetType.GetAttributeDefinition("NotifyViaEmail");
             query.Selection.Add(notifyViaEmailAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
+            IAttributeDefinition managerAttribute = assetType.GetAttributeDefinition("Manager");
+            query.Selection.Add(managerAttribute);
+
             //SPECIAL CASE: sendConversationEmailsAttribute attribute only exists in V1 12 and later.
             IAttributeDefinition sendConversationEmailsAttribute = null;
             //IAttributeDefinition IsCollaboratorAttribute = null;
@@ -115,6 +121,8 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Username", GetScalerValue(asset.GetAttribute(usernameAttribute)));
                         cmd.Parameters.AddWithValue("@MemberLabels", GetMultiRelationValues(asset.GetAttribute(memberLabelsAttribute)));
                         cmd.Parameters.AddWithValue("@NotifyViaEmail", GetScalerValue(asset.GetAttribute(notifyViaEmailAttribute)));
+                        cmd.Parameters.AddWithValue("@Manager", GetMultiRelationValues(asset.GetAttribute(managerAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         //cmd.Parameters.AddWithValue("@IsCollaborator", IsCollaboratorAttribute == null ? "True" : GetScalerValue(asset.GetAttribute(IsCollaboratorAttribute)));
                         cmd.Parameters.AddWithValue("@SendConversationEmails", sendConversationEmailsAttribute == null ? "True" : GetScalerValue(asset.GetAttribute(sendConversationEmailsAttribute)));
                         cmd.ExecuteNonQuery();
@@ -139,6 +147,8 @@ namespace V1DataReader
             sb.Append("Phone,");
             sb.Append("DefaultRole,");
             sb.Append("Username,");
+            sb.Append("TaggedWith,");
+            sb.Append("Manager,");
             sb.Append("MemberLabels,");
             sb.Append("NotifyViaEmail,");
             //sb.Append("IsCollaborator,");
@@ -153,6 +163,8 @@ namespace V1DataReader
             sb.Append("@Phone,");
             sb.Append("@DefaultRole,");
             sb.Append("@Username,");
+            sb.Append("@TaggedWith,");
+            sb.Append("@Manager,");
             sb.Append("@MemberLabels,");
             sb.Append("@NotifyViaEmail,");
             //sb.Append("@IsCollaborator,");

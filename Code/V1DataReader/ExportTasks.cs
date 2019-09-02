@@ -67,6 +67,9 @@ namespace V1DataReader
             IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
             query.Selection.Add(statusAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition parentAttribute = assetType.GetAttributeDefinition("Parent");
             query.Selection.Add(parentAttribute);
 
@@ -142,6 +145,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Estimate", GetScalerValue(asset.GetAttribute(estimateAttribute)));
                         cmd.Parameters.AddWithValue("@LastVersion", lastVersion);
                         cmd.Parameters.AddWithValue("@Category", GetSingleRelationValue(asset.GetAttribute(categoryAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@Source", GetSingleRelationValue(asset.GetAttribute(sourceAttribute)));
                         cmd.Parameters.AddWithValue("@Status", GetSingleRelationValue(asset.GetAttribute(statusAttribute)));
                         cmd.Parameters.AddWithValue("@Parent", GetSingleRelationValue(asset.GetAttribute(parentAttribute)));
@@ -174,6 +178,7 @@ namespace V1DataReader
             sb.Append("Estimate,");
             sb.Append("LastVersion,");
             sb.Append("Category,");
+            sb.Append("TaggedWith,");
             sb.Append("Source,");
             sb.Append("Status,");
             sb.Append("Parent) ");
@@ -193,6 +198,7 @@ namespace V1DataReader
             sb.Append("@Estimate,");
             sb.Append("@LastVersion,");
             sb.Append("@Category,");
+            sb.Append("@TaggedWith,");
             sb.Append("@Source,");
             sb.Append("@Status,");
             sb.Append("@Parent);");

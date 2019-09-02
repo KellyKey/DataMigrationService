@@ -47,8 +47,12 @@ namespace V1DataWriter
          **************************************************************************************/
         protected SqlDataReader GetImportDataFromDBTable(string TableName)
         {
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ;";
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'SKIPPED';";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK);";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) order by Asset;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED';";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting';";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where Hash is not null;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
             return sdr;
@@ -77,6 +81,9 @@ namespace V1DataWriter
                 cmd.Connection = _sqlConn;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = SprocName;
+                //cmd.CommandType = CommandType.Text;
+                //cmd.CommandText = "Select * from EmbeddedImages where Asset is null";
+                //cmd.CommandText = "Select * from Attachments where Importstatus = 'FAILED'";
                 sdr = cmd.ExecuteReader();
             }
             return sdr;
@@ -84,9 +91,10 @@ namespace V1DataWriter
 
         protected SqlDataReader GetImportDataFromDBTableWithOrder(string TableName)
         {
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Failed' ORDER BY [Order] ASC;";
             string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY AssetOID ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED' ORDER BY [Order] ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting' and Description like '%<img src=%' ORDER BY [Order] ASC;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
             return sdr;
@@ -95,6 +103,10 @@ namespace V1DataWriter
         protected SqlDataReader GetImportDataFromDBTableForClosing(string TableName)
         {
             string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) WHERE AssetState = 'Closed' AND ImportStatus <> 'FAILED' ORDER BY AssetOID DESC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) WHERE AssetState = 'Closed' AND ImportStatus = 'FAILED' ORDER BY AssetOID DESC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY AssetOID DESC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) WHERE ImportStatus = 'Failed' AND Description like '%<img src=%' ORDER BY AssetOID DESC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) WHERE AssetState = 'Closed' AND Description like '%<img src=%' ORDER BY AssetOID DESC;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
             return sdr;
@@ -114,10 +126,9 @@ namespace V1DataWriter
             sb.Append("SELECT a.AssetOID, b.NewAssetOID, a.FieldName, a.FieldType, a.FieldValue FROM CustomFields AS a ");
             sb.Append("INNER JOIN " + AssetType + " AS b ");
             sb.Append("ON a.AssetOID = b.AssetOID ");
-            sb.Append("WHERE a.FieldName = '" + FieldName + "' " );
+            sb.Append("WHERE a.FieldName = '" + FieldName + "' ");
             sb.Append("AND b.ImportStatus <> 'FAILED';");
             //sb.Append("AND b.ImportStatus = 'FAILED';");
-
             SqlCommand cmd = new SqlCommand(sb.ToString(), _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
             return sdr;
@@ -140,6 +151,38 @@ namespace V1DataWriter
             FilterTerm idFilter = new FilterTerm(valueAttribute);
             idFilter.Equal(AttributeValue);
             query.Filter = idFilter;
+            QueryResult result = _dataAPI.Retrieve(query);
+
+            if (result.TotalAvaliable > 0)
+                return result.Assets[0].Oid.Token.ToString();
+            else
+                return null;
+        }
+
+
+        protected string CheckForDuplicateListTypesInV1(string AssetType, string AttributeName, string AttributeValue, string Attribute2Name, string Attribute2Value)
+        {
+            //if (AssetType.StartsWith("Custom_"))
+            //{
+            //    return null;
+            //}
+
+            IAssetType assetType = _metaAPI.GetAssetType(AssetType);
+            //_logger.Info("CheckForDuplicateInV1: assetType is {0} amd value is {1} ", AssetType, AttributeValue);
+
+            Query query = new Query(assetType);
+
+            IAttributeDefinition valueAttribute = assetType.GetAttributeDefinition(AttributeName);
+            query.Selection.Add(valueAttribute);
+            FilterTerm idFilter = new FilterTerm(valueAttribute);
+            idFilter.Equal(AttributeValue);
+
+            IAttributeDefinition value2Attribute = assetType.GetAttributeDefinition(Attribute2Name);
+            query.Selection.Add(value2Attribute);
+            FilterTerm idFilter2 = new FilterTerm(value2Attribute);
+            idFilter2.Equal(Attribute2Value);
+            query.Filter = new AndFilterTerm(idFilter, idFilter2);
+
             QueryResult result = _dataAPI.Retrieve(query);
 
             if (result.TotalAvaliable > 0)
@@ -210,17 +253,7 @@ namespace V1DataWriter
                 string SQL = "SELECT NewAssetOID FROM " + tableName + " WHERE AssetOID = '" + CurrentAssetOID + "';";
                 SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
                 var value = cmd.ExecuteScalar();
-                string result = (value == null) ? null : value.ToString();
-
-                //SPECIAL CASE: If assetOID was not found and table is "Stories", check the Epics table.
-                if (String.IsNullOrEmpty(result) && tableName == "Stories")
-                {
-                    SQL = "SELECT NewAssetOID FROM Epics WHERE AssetOID = '" + CurrentAssetOID + "';";
-                    cmd = new SqlCommand(SQL, _sqlConn);
-                    value = cmd.ExecuteScalar();
-                    result = (value == null) ? null : value.ToString();
-                }
-                return result;
+                return (value == null) ? null : value.ToString();
             }
             else
             {
@@ -239,8 +272,7 @@ namespace V1DataWriter
                 string SQL = "SELECT NewAssetOID FROM " + assetName + " WHERE AssetOID = '" + CurrentAssetOID + "';";
                 SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
                 var value = cmd.ExecuteScalar();
-                string result = (value == null) ? null : value.ToString();
-                return result;
+                return (value == null) ? null : value.ToString();
             }
             else
             {
@@ -248,17 +280,36 @@ namespace V1DataWriter
             }
         }
 
+        protected string GetNewAssetOIDFromDBUsingHash(string hashCode, string AssetType)
+        {
+
+            string assetName = GetTableNameForAsset(AssetType);
+
+            //var value;
+            if (hashCode.Length > 0)
+            {
+                string SQL = "SELECT NewAssetOID FROM " + assetName + " WHERE Hash = " + hashCode + ";";
+                SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
+                var value = cmd.ExecuteScalar();
+                return (value == null) ? null : value.ToString();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         protected string GetNewConversationOIDFromDB(string CurrentAssetOID, string AssetType)
         {
 
-            //var value;
+            
             if (String.IsNullOrEmpty(CurrentAssetOID) == false)
             {
                 string SQL = "SELECT NewConversationOID FROM " + AssetType + " WHERE Conversation = '" + CurrentAssetOID + "';";
                 SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
                 var value = cmd.ExecuteScalar();
-                string result = (value == null) ? null : value.ToString();
-                return result;
+                return (value == null) ? null : value.ToString();
             }
             else
             {
@@ -273,8 +324,7 @@ namespace V1DataWriter
                 string SQL = "SELECT NewAssetOID FROM Epics WHERE AssetOID = '" + CurrentAssetOID + "';";
                 SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
                 var value = cmd.ExecuteScalar();
-                string result = (value == null) ? null : value.ToString();
-                return result;
+                return (value == null) ? null : value.ToString();
             }
             else
             {
@@ -425,8 +475,9 @@ namespace V1DataWriter
             sb.Append("ImportDetails = '" + ImportDetail + "' ");
             sb.Append("WHERE AssetOID = '" + AssetOID + "' ");
             sb.Append("OPTION (OPTIMIZE FOR UNKNOWN);");
+            string sql = sb.ToString();
 
-            using (SqlCommand cmd = new SqlCommand(sb.ToString(), _sqlConn))
+            using (SqlCommand cmd = new SqlCommand(sql, _sqlConn))
             {
                 cmd.CommandTimeout = 120;
                 cmd.ExecuteNonQuery();
@@ -715,10 +766,28 @@ namespace V1DataWriter
                 tableName = "Conversations";
             else if (CurrentAssetOID.Contains("Actual"))
                 tableName = "Actuals";
-            else if(CurrentAssetOID.Contains("Attachment"))
+            else if (CurrentAssetOID.Contains("Attachment"))
                 tableName = "Attachments";
+            else if (CurrentAssetOID.Contains("EmbeddedImage"))
+                tableName = "EmbeddedImages";
+            else
+                tableName = "ListTypes";
 
             return tableName;
+        }
+
+        protected void AddMultiText(IAssetType assetType, Asset asset, IAttributeDefinition multiAttribute, string valueList)
+        {
+            string[] values = null;
+
+            values = valueList.Split(';');
+
+            foreach (string value in values)
+            {
+                if (String.IsNullOrEmpty(value)) continue;
+
+                asset.AddAttributeValue(multiAttribute, value);
+            }
         }
 
         protected SqlDataReader GetDataFromDB(string lookupTable, string assetOID)
@@ -735,85 +804,102 @@ namespace V1DataWriter
             }
         }
 
-
-        protected void UploadEmbeddedImageContent(ref Asset newAsset, Oid newAssetOid, byte[] FileContent, V1Connector _imageConnector)
+        protected string [] GetMultiRelationValues(string sourceFieldName, string fieldValue)
         {
-            Services services = new Services(_imageConnector);
-
-            //Create a new story.
-            var storyType = services.Meta.GetAssetType("Story");
-            //var newStory = services.New(storyType, services.GetOid("Scope:0"));
-            //var nameAttribute = storyType.GetAttributeDefinition("Name");
-            var descriptionAttribute = storyType.GetAttributeDefinition("Description");
-            newAsset.SetAttributeValue(descriptionAttribute, "Testing Description Assignment");
-            Console.WriteLine(newAsset.Oid);
-            //var name = string.Format("Story with an embedded image");
-            //newStory.SetAttributeValue(nameAttribute, name);
-            IAssetType typeOfAsset = newAsset.AssetType;
-            Console.WriteLine("The Type is: " + newAsset.Attributes.ToString());
-            services.Save(newAsset);
-            //Oid storyOID = newStory.Oid;
-
-            ////Create an embedded image.
-            string filePath = @"C:\Windows\Temp\TempImage.png";
-             File.WriteAllBytes(filePath, FileContent);
-            //string file = @"C:\Temp\versionone.jpg";
-            Oid embeddedImageOid = services.SaveEmbeddedImage(filePath, newAsset);
-            var embeddedImageTag = string.Format("<p>Here's an embedded image:</p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOid.Key, embeddedImageOid.Momentless);
-            newAsset.SetAttributeValue(descriptionAttribute, embeddedImageTag);
-            services.Save(newAsset);
+            string [] values = fieldValue.Split(';');
+            string [] newValues = new string [values.Length];
+            int iterator = 0;
 
 
-            try
+            foreach(string smallFieldValue in values)
             {
+                string listTypeOID = GetNewAssetOIDFromDB(smallFieldValue);
 
+                newValues[iterator] += listTypeOID + ';';
 
-
-                //Create a new embeddedImage
-                //var embeddedImageType = services.Meta.GetAssetType("EmbeddedImage");
-                //var newEmbeddedImage = services.New(embeddedImageType, null);
-                //IAttributeDefinition assetAttribute = embeddedImageType.GetAttributeDefinition("Asset");
-                //newEmbeddedImage.SetAttributeValue(assetAttribute, newAsset.Oid.Momentless);
-                //IAttributeDefinition contentAttribute = embeddedImageType.GetAttributeDefinition("Content");
-                //newEmbeddedImage.SetAttributeValue(contentAttribute, FileContent);
-                //IAttributeDefinition contentTypeAttribute = embeddedImageType.GetAttributeDefinition("Asset");
-                //newEmbeddedImage.SetAttributeValue(contentTypeAttribute, "image/png");
-
-                //services.Save(newEmbeddedImage);
-                //Oid storyOID = newEmbeddedImage.Oid;
-
-
-                //var storyType = services.Meta.GetAssetType("Story");
-                //var newStory = services.New(storyType, services.GetOid("Scope:536868"));
-                //var nameAttribute = storyType.GetAttributeDefinition("Name");
-                //var descriptionAttribute = storyType.GetAttributeDefinition("Description");
-                //var name = string.Format("Story: Another embedded image demo 1");
-                //newAsset.SetAttributeValue(descriptionAttribute, string.Format("<p>Image<p>"));
-                //services.Save(newAsset);
-                //Console.Write(newAsset.GetAttribute(nameAttribute));
-                //Console.Write(newAsset.GetAttribute(descriptionAttribute));
-                //var oidTypeID = newAsset.Oid.ToString();
-                //Oid storyOID = newAsset.Oid.Momentless;
-
-                //Oid embeddedImageOID = services.SaveEmbeddedImage(filePath, newAsset);
-                Oid embeddedImageOID = services.SaveEmbeddedImage(filePath, newAsset);
-                //var embeddedImageTag = string.Format("<p>Here's a migrated embedded image:</p></br><img src=\"{0}\" alt=\"\" data-oid=\"{1}\" />", "embedded.img/" + embeddedImageOID.Key, embeddedImageOID.Momentless);
-                //var storyType = services.Meta.GetAssetType("Story");
-                // IAttributeDefinition descFieldAttribute = storyType.GetAttributeDefinition("Description");
-                //newAsset.SetAttributeValue(descriptionAttribute, embeddedImageTag);
-                //services.Save(newAsset);
-                _logger.Info("-> Imported {0} embedded image", embeddedImageOID.Token);
+                iterator++;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                File.Delete(filePath);
-            }
+
+            return newValues;
         }
 
+        protected string SetEmbeddedImageContent(string currentDescription, string newURL)
+        {
+            //This method fixes 2 things in the Description Field
+            //First, it re-sets the Old URL from the Source to the New URL from the Target
+            //Second, it re-sets the OLD AssetOid to the New AssetOid
 
+            //Get Any EmbeddedImages for the Description Field
+            int imageCounter = 0;
+            int textPosition = 0;
+            string currentEmbeddedImageAssetOID = null;
+            string currentEmbeddedImageHash = null;
+            string newEmbeddedImageAssetOID = null;
+            string newDescription = currentDescription;
+            System.Diagnostics.Debug.WriteLine(currentDescription);
+
+            while (true)
+            {
+                int imgIDLocation = 0;
+                string firstDescriptionPart = null;
+                string imgDescriptionPart = null;
+                string imgPart = null;
+                string secondDescriptionPart = null;
+                string imgURLDescriptionPart = null;
+
+                imgIDLocation = newDescription.IndexOf("<img src=", textPosition, newDescription.Length - textPosition);
+                if (imgIDLocation == -1) break;
+                firstDescriptionPart = newDescription.Substring(0, imgIDLocation + 9);
+                textPosition = imgIDLocation + 9;
+
+                imgIDLocation = newDescription.IndexOf("alt=", textPosition, newDescription.Length - textPosition);
+                imgDescriptionPart = newDescription.Substring(textPosition,imgIDLocation - (textPosition + 1));
+
+                secondDescriptionPart = newDescription.Substring(imgIDLocation, newDescription.Length - imgIDLocation);
+
+                if (imgDescriptionPart.Contains("downloadblob.img"))
+                {
+                    imgIDLocation = imgDescriptionPart.IndexOf("downloadblob.img", 0, imgDescriptionPart.Length);
+                    imgPart = imgDescriptionPart.Substring(imgIDLocation, imgDescriptionPart.Length - imgIDLocation);
+                    imgURLDescriptionPart = newURL + "embedded.img/";
+
+                    imgIDLocation = imgPart.IndexOf("img/", 0, imgPart.Length);
+                    currentEmbeddedImageHash = imgPart.Substring(imgIDLocation + 4, imgPart.Length - (imgIDLocation + 4));
+                    char[] charsToTrim = { '"' };
+                    currentEmbeddedImageHash = currentEmbeddedImageHash.Trim(charsToTrim);
+                    newEmbeddedImageAssetOID = GetNewAssetOIDFromDBUsingHash("0x" + currentEmbeddedImageHash, "EmbeddedImage");
+                }
+                else if(imgDescriptionPart.Contains("embedded.img"))
+                {
+                    imgIDLocation = imgDescriptionPart.IndexOf("embedded.img", 0, imgDescriptionPart.Length);
+                    imgPart = imgDescriptionPart.Substring(imgIDLocation, imgDescriptionPart.Length - imgIDLocation);
+                    imgURLDescriptionPart = newURL + "embedded.img/";
+
+                    imgIDLocation = imgPart.IndexOf("img/", 0, imgPart.Length);
+                    currentEmbeddedImageAssetOID = imgPart.Substring(imgIDLocation + 4, imgPart.Length - (imgIDLocation + 4));
+                    char[] charsToTrim = { '"' };
+                    currentEmbeddedImageAssetOID = currentEmbeddedImageAssetOID.Trim(charsToTrim);
+                    newEmbeddedImageAssetOID = GetNewAssetOIDFromDB("EmbeddedImage:" + currentEmbeddedImageAssetOID);
+                }
+                else
+                {
+                    continue;
+                }
+                    
+                imgIDLocation = newEmbeddedImageAssetOID.IndexOf(":", 0, newEmbeddedImageAssetOID.Length);
+                newEmbeddedImageAssetOID = newEmbeddedImageAssetOID.Substring(imgIDLocation + 1, newEmbeddedImageAssetOID.Length - (imgIDLocation + 1));
+
+                newDescription = firstDescriptionPart + "\"" + imgURLDescriptionPart + newEmbeddedImageAssetOID + "\" " + secondDescriptionPart;
+                System.Diagnostics.Debug.WriteLine(newDescription);
+
+                imageCounter++;
+                textPosition = newDescription.Length - secondDescriptionPart.Length;
+                _logger.Info("EmbeddedImages Added - Count: " + imageCounter);
+
+               
+            }
+
+            return newDescription;
+        }
     }
 }

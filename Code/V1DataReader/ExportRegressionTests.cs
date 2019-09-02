@@ -60,8 +60,8 @@ namespace V1DataReader
             IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
             query.Selection.Add(statusAttribute);
 
-            IAttributeDefinition tagsAttribute = assetType.GetAttributeDefinition("TaggedWith");
-            query.Selection.Add(tagsAttribute);
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
 
             IAttributeDefinition teamAttribute = assetType.GetAttributeDefinition("Team");
             query.Selection.Add(teamAttribute);
@@ -109,7 +109,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Setup", GetSingleRelationValue(asset.GetAttribute(setupAttribute)));
                         cmd.Parameters.AddWithValue("@ExpectedResults", GetSingleRelationValue(asset.GetAttribute(expectedResultsAttribute)));
                         cmd.Parameters.AddWithValue("@Status", GetSingleRelationValue(asset.GetAttribute(statusAttribute)));
-                        cmd.Parameters.AddWithValue("@Tags", GetSingleRelationValue(asset.GetAttribute(tagsAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@Team", GetSingleRelationValue(asset.GetAttribute(teamAttribute)));
                         cmd.ExecuteNonQuery();
                     }
@@ -138,7 +138,7 @@ namespace V1DataReader
             sb.Append("Setup,");
             sb.Append("ExpectedResults,");
             sb.Append("Status,");
-            sb.Append("Tags,");
+            sb.Append("TaggedWith,");
             sb.Append("Team) ");
             sb.Append("VALUES (");
             sb.Append("@AssetOID,");
@@ -155,7 +155,7 @@ namespace V1DataReader
             sb.Append("@Setup,");
             sb.Append("@ExpectedResults,");
             sb.Append("@Status,");
-            sb.Append("@Tags,");
+            sb.Append("@TaggedWith,");
             sb.Append("@Team);");
             return sb.ToString();
         }

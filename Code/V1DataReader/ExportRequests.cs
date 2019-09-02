@@ -65,6 +65,9 @@ namespace V1DataReader
             IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
             query.Selection.Add(priorityAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
             query.Selection.Add(statusAttribute);
 
@@ -150,6 +153,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@ResolutionReason", GetSingleRelationValue(asset.GetAttribute(resolutionReasonAttribute)));
                         cmd.Parameters.AddWithValue("@Source", GetSingleRelationValue(asset.GetAttribute(sourceAttribute)));
                         cmd.Parameters.AddWithValue("@Priority", GetSingleRelationValue(asset.GetAttribute(priorityAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@Status", GetSingleRelationValue(asset.GetAttribute(statusAttribute)));
                         cmd.Parameters.AddWithValue("@Category", GetSingleRelationValue(asset.GetAttribute(categoryAttribute)));
                         cmd.ExecuteNonQuery();
@@ -180,6 +184,7 @@ namespace V1DataReader
             sb.Append("ResolutionReason,");
             sb.Append("Source,");
             sb.Append("Priority,");
+            sb.Append("TaggedWith,");
             sb.Append("Status,");
             sb.Append("Category) ");
             sb.Append("VALUES (");
@@ -198,6 +203,7 @@ namespace V1DataReader
             sb.Append("@ResolutionReason,");
             sb.Append("@Source,");
             sb.Append("@Priority,");
+            sb.Append("@TaggedWith,");
             sb.Append("@Status,");
             sb.Append("@Category);");
             return sb.ToString();

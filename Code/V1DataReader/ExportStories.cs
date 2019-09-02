@@ -112,6 +112,9 @@ namespace V1DataReader
             IAttributeDefinition requestsAttribute = assetType.GetAttributeDefinition("Requests.ID");
             query.Selection.Add(requestsAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition blockingIssuesAttribute = assetType.GetAttributeDefinition("BlockingIssues.ID");
             query.Selection.Add(blockingIssuesAttribute);
 
@@ -238,6 +241,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Dependants", GetMultiRelationValues(asset.GetAttribute(dependantsAttribute)));
                         cmd.Parameters.AddWithValue("@Parent", GetSingleRelationValue(asset.GetAttribute(parentAttribute)));
                         cmd.Parameters.AddWithValue("@Requests", GetMultiRelationValues(asset.GetAttribute(requestsAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@BlockingIssues", GetMultiRelationValues(asset.GetAttribute(blockingIssuesAttribute)));
                         cmd.Parameters.AddWithValue("@Issues", GetMultiRelationValues(asset.GetAttribute(issuesAttribute)));
                         cmd.Parameters.AddWithValue("@Benefits", benefits);
@@ -323,6 +327,7 @@ namespace V1DataReader
             sb.Append("Dependants,");
             sb.Append("Parent,");
             sb.Append("Requests,");
+            sb.Append("TaggedWith,");
             sb.Append("BlockingIssues,");
             sb.Append("Issues,");
             sb.Append("Benefits) ");
@@ -363,6 +368,7 @@ namespace V1DataReader
             sb.Append("@Dependants,");
             sb.Append("@Parent,");
             sb.Append("@Requests,");
+            sb.Append("@TaggedWith,");
             sb.Append("@BlockingIssues,");
             sb.Append("@Issues,");
             sb.Append("@Benefits);");

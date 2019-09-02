@@ -67,6 +67,9 @@ namespace V1DataReader
             IAttributeDefinition priorityAttribute = assetType.GetAttributeDefinition("Priority");
             query.Selection.Add(priorityAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition requestsAttribute = assetType.GetAttributeDefinition("Requests.ID");
             query.Selection.Add(requestsAttribute);
 
@@ -180,6 +183,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Category", categoryAttribute == null ? DBNull.Value : GetSingleRelationValue(asset.GetAttribute(categoryAttribute)));
                         cmd.Parameters.AddWithValue("@Requests", GetMultiRelationValues(asset.GetAttribute(requestsAttribute)));
                         cmd.Parameters.AddWithValue("@BlockedPrimaryWorkitems", GetMultiRelationValues(asset.GetAttribute(blockedPrimaryWorkitemsAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@PrimaryWorkitems", GetMultiRelationValues(asset.GetAttribute(primaryWorkitemsAttribute)));
                         cmd.Parameters.AddWithValue("@BlockedEpics", blockedEpicsAttribute == null ? DBNull.Value : GetMultiRelationValues(asset.GetAttribute(blockedEpicsAttribute)));
                         cmd.Parameters.AddWithValue("@Epics", epicsAttribute == null ? DBNull.Value : GetMultiRelationValues(asset.GetAttribute(epicsAttribute)));
@@ -215,6 +219,7 @@ namespace V1DataReader
             sb.Append("Priority,");
             sb.Append("Category,");
             sb.Append("Requests,");
+            sb.Append("TaggedWith,");
             sb.Append("BlockedPrimaryWorkitems,");
             sb.Append("PrimaryWorkitems,");
             sb.Append("BlockedEpics,");
@@ -239,6 +244,7 @@ namespace V1DataReader
             sb.Append("@Priority,");
             sb.Append("@Category,");
             sb.Append("@Requests,");
+            sb.Append("@TaggedWith,");
             sb.Append("@BlockedPrimaryWorkitems,");
             sb.Append("@PrimaryWorkitems,");
             sb.Append("@BlockedEpics,");

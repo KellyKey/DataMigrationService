@@ -41,6 +41,9 @@ namespace V1DataReader
             IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
             query.Selection.Add(nameAttribute);
 
+            IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
+            query.Selection.Add(taggedWithAttribute);
+
             IAttributeDefinition endDateAttribute = assetType.GetAttributeDefinition("EndDate");
             query.Selection.Add(endDateAttribute);
 
@@ -122,6 +125,7 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Name", name);
                         cmd.Parameters.AddWithValue("@EndDate", GetScalerValue(asset.GetAttribute(endDateAttribute)));
                         cmd.Parameters.AddWithValue("@BeginDate", GetScalerValue(asset.GetAttribute(beginDateAttribute)));
+                        cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
                         cmd.Parameters.AddWithValue("@Status", GetSingleRelationValue(asset.GetAttribute(statusAttribute)));
                         cmd.Parameters.AddWithValue("@Members", membersAttribute == null ? DBNull.Value : GetMultiRelationValues(asset.GetAttribute(membersAttribute)));
                         cmd.Parameters.AddWithValue("@Reference", referenceAttribute == null ? DBNull.Value : GetScalerValue(asset.GetAttribute(referenceAttribute)));
@@ -151,6 +155,7 @@ namespace V1DataReader
             sb.Append("Name,");
             sb.Append("EndDate,");
             sb.Append("BeginDate,");
+            sb.Append("TaggedWith,");
             sb.Append("Status,");
             sb.Append("Members,");
             sb.Append("Reference) ");
@@ -164,6 +169,7 @@ namespace V1DataReader
             sb.Append("@Name,");
             sb.Append("@EndDate,");
             sb.Append("@BeginDate,");
+            sb.Append("@TaggedWith,");
             sb.Append("@Status,");
             sb.Append("@Members,");
             sb.Append("@Reference);");
