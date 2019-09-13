@@ -38,7 +38,12 @@
 *	- 8/23/2013 AJB Added URL. AssetType columns to Attachments table to support Rally export.
 *	- 9/9/2013	AKB	Added spGetAttachmentsForRallyImport stored procedure.
 *   - 4/3/2015  KPK Added PlannedStart and PlannedEnd to Epics table
-*	- 12/6/2018 KPK Added TaggedWith to Epic, Story, Defect, Test, Task, RegressionTest
+*   - 3/7/2019  MA  Added EmbeddedImages table
+*   - 3/7/2019  MA  Added stored procedure for Embedded Images
+*   - 5/31/19  KPK Added Team field to the ListTypes table to Support Team Process
+*   - 6/24/19  KPK Added TaggedWith field to the 13 Assets that Support Tags
+*	- 6/26/19  KPK Added Manager field to the Members table
+*	- 6/26/19  KPK Added Epic Dependencies and Dependants fields to the Epics table
 *******************************************************************************************************/
 
 USE master;
@@ -108,7 +113,8 @@ CREATE TABLE ListTypes (
 	NewEpicAssetOID varchar(50),					--V1 asset OID assigned to the newly imported asset (for Epic conversion)
 	AssetType varchar(50),							--V1 asset type
 	AssetState varchar(50),							--V1 asset state
-	Name varchar(max) not null,						--Text
+	Name varchar(max) not null,						--
+	Team varchar(50),								--Relation to Team
 	Description varchar(max)						--LongText
 );
 GO
@@ -126,9 +132,11 @@ CREATE TABLE Members (
 	Name varchar(max) not null,						--Text
 	Phone varchar(max),								--Text
 	DefaultRole varchar(50) not null,				--Relation to Role
+	Manager varchar(50),							--Relation to Member Manager
 	Username varchar(100),							--Text
 	[Password] varchar(100),						--Text
 	MemberLabels varchar(max),						--Multi-Relation to MemberLabel
+	TaggedWith varchar(max),						--Multi-Text
 	NotifyViaEmail varchar(50) not null,			--Boolean
 	SendConversationEmails varchar(50) not null,	--Boolean
 	CONSTRAINT [PK_Members] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
@@ -166,6 +174,7 @@ CREATE TABLE Projects (
 	BeginDate varchar(50) not null,					--Date
 	Status varchar(50),								--Relation to ScopeStatus
 	Members varchar(max),							--Multi-Relation to Member
+	TaggedWith varchar(max),						--Multi-Text
 	Scheme varchar(50),								--Relation to Scheme
 	Reference varchar(max),							--Text
 	CONSTRAINT [PK_Projects] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
@@ -197,6 +206,7 @@ CREATE TABLE Schedules (
 	Name varchar(max) not null,						--Text
 	TimeboxGap varchar(50) not null,				--Duration
 	TimeboxLength varchar(50) not null,				--Duration
+	TaggedWith varchar(max),						--Multi-Text
 	Ideas varchar(max),								--Multi-LongInt
 	MentionedInExpressions varchar(max),			--Multi-Relation to Expression
 	CONSTRAINT [PK_Schedules] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
@@ -217,6 +227,7 @@ CREATE TABLE Iterations (
 	Description varchar(max),						--LongText
 	Name varchar(max) not null,						--Text
 	TargetEstimate varchar(50),						--Numeric
+	TaggedWith varchar(max),						--Multi-Text
 	BeginDate varchar(50) not null,					--Date
 	EndDate varchar(50) not null,					--Date
 	CONSTRAINT [PK_Iterations] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
@@ -278,6 +289,7 @@ CREATE TABLE Issues (
 	Source varchar(50),								--Relation to StorySource
 	Priority varchar(50),							--Relation to IssuePriority
 	Category varchar(50),							--Relation to IssueCategory
+	TaggedWith varchar(max),						--Multi-Text
 	Requests varchar(max),							--Multi-Relation to Request
 	BlockedPrimaryWorkitems varchar(max),			--Multi-Relation to PrimaryWorkitem
 	PrimaryWorkitems varchar(max),					--Multi-Relation to PrimaryWorkitem
@@ -310,6 +322,7 @@ CREATE TABLE Requests (
 	Priority varchar(50),							--Relation to RequestPriority
 	Status varchar(50),								--Relation to RequestStatus
 	Category varchar(50),							--Relation to RequestCategory
+	TaggedWith varchar(max)						--Multi-Text
 	CONSTRAINT [PK_Requests] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -360,10 +373,12 @@ CREATE TABLE Epics (
 	Issues varchar(max),							--Multi-Relation to Issue
 	Category varchar(50),							--Relation to EpicCategory
 	Source varchar(50),								--Relation to StorySource
+	Dependencies varchar(max),						--Multi-Relation to Epic
+	Dependants varchar(max),						--Multi-Relation to Epic
 	PlannedStart varchar(50),						--Text
 	PlannedEnd varchar(50),							--Text
 	Priority varchar(50),							--Relation to EpicPriority
-	TaggedWith varchar(100),						--Tags Field added
+	TaggedWith varchar(max)						--Multi-Text
 	CONSTRAINT [PK_Epics] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -403,6 +418,7 @@ CREATE TABLE Stories (
 	Risk varchar(50),								--Relation to WorkitemRisk
 	Source varchar(50),								--Relation to StorySource
 	Priority varchar(50),							--Relation to WorkitemPriority
+	TaggedWith varchar(max),						--Multi-Text
 	Dependencies varchar(max),						--Multi-Relation to Story
 	Dependants varchar(max),						--Multi-Relation to Story
 	Parent varchar(50),								--Relation to Theme
@@ -410,7 +426,6 @@ CREATE TABLE Stories (
 	BlockingIssues varchar(max),					--Multi-Relation to Issue
 	Issues varchar(max),							--Multi-Relation to Issue
 	Benefits varchar(max),							--LongText
-	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_Stories] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -453,11 +468,11 @@ CREATE TABLE Defects (
 	ResolutionReason varchar(50),					--Relation to DefectResolution
 	Source varchar(50),								--Relation to StorySource
 	Priority varchar(50),							--Relation to WorkitemPriority
+	TaggedWith varchar(max),						--Multi-Text
 	Parent varchar(50),								--Relation to Theme
 	Requests varchar(max),							--Multi-Relation to Request
 	BlockingIssues varchar(max),					--Multi-Relation to Issue
 	Issues varchar(max),							--Multi-Relation to Issue
-	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_Defects] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -485,9 +500,9 @@ CREATE TABLE Tasks (
 	Category varchar(50),							--Relation to TaskCategory
 	Source varchar(50),								--Relation to TaskSource
 	Status varchar(50),								--Relation to TaskStatus
+	TaggedWith varchar(max),						--Multi-Text
 	Parent varchar(50),								--Relation to PrimaryWorkitem
 	ParentType varchar(50),							--Parent asset type
-	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_Tasks] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -514,9 +529,10 @@ CREATE TABLE RegressionTests (
 	ExpectedResults varchar(max),					--LongText
 	Status varchar(50),								--Relation to TestStatus
 	Category varchar(50),							--Relation to TestCategory
+	TaggedWith varchar(max),						--Multi-Text
 	GeneratedFrom varchar(50),						--Relation to RegressionTest
 	RegressionSuites varchar(max),					--Multi-Relation to RegressionSuites
-	TaggedWith varchar(100),						--Tags Field added
+	Tags varchar(max)								--Text
 	CONSTRAINT [PK_RegressionTests] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -547,10 +563,10 @@ CREATE TABLE Tests (
 	ExpectedResults varchar(max),					--LongText
 	Status varchar(50),								--Relation to TestStatus
 	Category varchar(50),							--Relation to TestCategory
+	TaggedWith varchar(max),						--Multi-Text
 	Parent varchar(50),								--Relation to Workitem
 	ParentType varchar(50),							--Parent asset type
 	GeneratedFrom varchar(50),						--Relation to RegressionTest
-	TaggedWith varchar(100),						--Tags Field added
 	CONSTRAINT [PK_Tests] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
 );
 GO
@@ -648,8 +664,21 @@ CREATE TABLE Teams (
 	AssetState varchar(50),							--V1 asset state
 	Description varchar(max),						--LongText
 	Name varchar(max) not null,						--Text
-	CapacityExcludedMembers varchar(max)			--Multi-Relation to Member
+	CapacityExcludedMembers varchar(max),			--Multi-Relation to Member
+	TaggedWith varchar(max),							--Multi-Text
 	CONSTRAINT [PK_Teams] PRIMARY KEY CLUSTERED ([AssetOID] ASC)
+);
+GO
+
+--EmbeddedImages table
+CREATE TABLE EmbeddedImages (
+	AssetOID varchar(50) PRIMARY KEY NOT NULL,
+	NewAssetOID varchar(50) NULL,
+	ImportStatus varchar(50) NULL,
+	ImportDetails varchar(max) NULL,
+	Asset varchar(50) NULL,
+	Content varbinary(max) NULL,
+	ContentType varchar(max) NULL
 );
 GO
 
@@ -684,6 +713,7 @@ CREATE PROCEDURE spPurgeDatabase AS
 	TRUNCATE TABLE Conversations;
 	TRUNCATE TABLE Actuals;
 	TRUNCATE TABLE Teams;
+	TRUNCATE TABLE EmbeddedImages;
 GO
 
 -- spGetAttachmentsForImport stored procedure.
@@ -748,7 +778,7 @@ BEGIN
 	-- NOTE: Currently for 11.3 and earlier (epic is story).
 	SELECT * FROM Attachments WITH (NOLOCK)
 	WHERE Asset IN (SELECT assetOID FROM Epics)
-	AND Asset LIKE 'Story%'
+	AND Asset LIKE 'Epic%'
 
 	UNION ALL
 
@@ -771,6 +801,97 @@ BEGIN
 	UNION ALL
 
 	SELECT * FROM Attachments WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Tests)
+	AND Asset LIKE 'Test%'
+
+END
+GO
+
+-- spGetEmbeddedImagesForImport stored procedure.
+CREATE PROCEDURE spGetEmbeddedImagesForImport AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Members)
+	AND Asset LIKE 'Member%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Teams)
+	AND Asset LIKE 'Team%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Schedules)
+	AND Asset LIKE 'Schedule%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Projects)
+	AND Asset LIKE 'Scope%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Iterations)
+	AND Asset LIKE 'Timebox%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Goals)
+	AND Asset LIKE 'Goal%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM FeatureGroups)
+	AND Asset LIKE 'Theme%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Requests)
+	AND Asset LIKE 'Request%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Issues)
+	AND Asset LIKE 'Issue%'
+
+	UNION ALL
+
+	-- NOTE: Currently for 11.3 and earlier (epic is story).
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Epics)
+	AND Asset LIKE 'Epic%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Stories)
+	AND Asset LIKE 'Story%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Defects)
+	AND Asset LIKE 'Defect%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
+	WHERE Asset IN (SELECT assetOID FROM Tasks)
+	AND Asset LIKE 'Task%'
+
+	UNION ALL
+
+	SELECT * FROM EmbeddedImages WITH (NOLOCK)
 	WHERE Asset IN (SELECT assetOID FROM Tests)
 	AND Asset LIKE 'Test%'
 
