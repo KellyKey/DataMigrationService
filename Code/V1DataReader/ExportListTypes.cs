@@ -6,12 +6,15 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataReader
 {
     public class ExportListTypes : IExportAssets
     {
         private string listTypeName = string.Empty;
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         public ExportListTypes(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
@@ -76,6 +79,8 @@ namespace V1DataReader
                             cmd.ExecuteNonQuery();
                         }
                         listTypeCount++;
+                        _logger.Info("ListType: {0} added - Count = {1}", listType.Name, listTypeCount);
+
                     }
                 }
             }
