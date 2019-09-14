@@ -183,7 +183,7 @@ namespace V1DataMigrationService
                             if (asset.EnableCustomFields == true)
                             {
                                 //Need to Export Custom Fields
-                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "ListType");
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "List");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} list type custom fields.", assetCount);
                             }
@@ -608,7 +608,7 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "ListType");
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "List");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} ListTypes custom fields.", assetCount);
                             }
