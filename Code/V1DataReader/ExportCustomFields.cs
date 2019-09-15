@@ -133,7 +133,9 @@ namespace V1DataReader
 
                     cmd.ExecuteNonQuery();
                     assetCount++;
+                    _logger.Info(attributeName + ": added - Count = {0}", assetCount);
                 }
+
             }
             return assetCount;
         }
