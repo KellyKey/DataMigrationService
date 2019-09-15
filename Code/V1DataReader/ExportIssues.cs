@@ -190,6 +190,7 @@ namespace V1DataReader
                         cmd.ExecuteNonQuery();
                     }
                     assetCounter++;
+                    _logger.Info("Issue: added - Count = {0}", assetCounter);
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);

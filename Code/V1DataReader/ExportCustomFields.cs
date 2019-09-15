@@ -60,11 +60,17 @@ namespace V1DataReader
 
             QueryResult result = _dataAPI.Retrieve(query);
 
+            List<MigrationConfiguration.CustomFieldInfo> fields = _config.CustomFieldsToMigrate.FindAll(i => i.AssetType == _InternalAssetType);
+
             int customFieldCount = 0;
-            foreach (Asset asset in result.Assets)
+            foreach (MigrationConfiguration.CustomFieldInfo field in fields)
+            //Use the commented code for Selecting ALL Custom Fields in lieu of just those in App.Config
+            //foreach (Asset asset in result.Assets)
             {
-                string attributeName = GetScalerValue(asset.GetAttribute(nameAttribute)).ToString();
-                string attributeType = GetScalerValue(asset.GetAttribute(attributeTypeAttribute)).ToString();
+                string attributeName = field.SourceName;
+                //string attributeName = GetScalerValue(asset.GetAttribute(nameAttribute)).ToString();
+                string attributeType = field.DataType;
+                //string attributeType = GetScalerValue(asset.GetAttribute(attributeTypeAttribute)).ToString();
                 if (attributeName.StartsWith("Custom_"))
                 {
                     _logger.Info("The CustomField is {0} and Type is {1}", attributeName, attributeType);
