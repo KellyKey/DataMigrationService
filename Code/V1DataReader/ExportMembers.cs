@@ -86,7 +86,7 @@ namespace V1DataReader
             {
                 QueryResult result = _dataAPI.Retrieve(query);
                 assetTotal = result.TotalAvaliable;        
-                _logger.Info("The TotalAvailable Members is {0} ",assetTotal);
+                //_logger.Info("The TotalAvailable Members is {0} ",assetTotal);
 
 
                 foreach (Asset asset in result.Assets)
@@ -128,6 +128,8 @@ namespace V1DataReader
                         cmd.ExecuteNonQuery();
                     }
                     assetCounter++;
+                    _logger.Info("Member: added - Count = {0}", assetCounter);
+
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);
