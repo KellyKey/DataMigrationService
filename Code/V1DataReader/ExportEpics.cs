@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
-using NLog;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataReader
 {
     public class ExportEpics : IExportAssets
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
-
         
         public ExportEpics(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
@@ -202,6 +201,7 @@ namespace V1DataReader
                         cmd.ExecuteNonQuery();
                     }
                     assetCounter++;
+                    _logger.Info("Epic: added - Count = {0}", assetCounter);
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);
