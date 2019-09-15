@@ -421,16 +421,16 @@ namespace V1DataMigrationService
 
                             if (asset.EnableCustomFields == true)
                             {
-                                //ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, asset.Name);
+                                //Need to Export Custom Fields
                                 ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Story");
                                 assetCount = custom.Export();
                                 _logger.Debug("-> Exported {0} Story custom fields.", assetCount);
 
                                 //Need to Export the PrimaryWorkitems which will get fields configured for Story, Defect, and TestSets all in one run
                                 //Do not need to run it again in Defects and TestSets
-                                //custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "PrimaryWorkitem");
-                                //assetCount = custom.Export();
-                                //_logger.Debug("-> Exported {0} PrimaryWorkitem custom fields.", assetCount);
+                                ExportCustomFields custom2 = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "PrimaryWorkitem");
+                                assetCount = custom2.Export();
+                                _logger.Debug("-> Exported {0} PrimaryWorkitem custom fields.", assetCount);
 
                             }
 
