@@ -13,7 +13,6 @@ namespace V1DataReader
     public class ExportProjects : IExportAssets
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
-
         
         public ExportProjects(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) 
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
@@ -136,6 +135,7 @@ namespace V1DataReader
                        
                     }
                     assetCounter++;
+                    _logger.Info("Project: added - Count = {0}", assetCounter);
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);
