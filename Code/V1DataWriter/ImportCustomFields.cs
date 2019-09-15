@@ -58,11 +58,6 @@ namespace V1DataWriter
             int importCount = 0;
             foreach (MigrationConfiguration.CustomFieldInfo field in fields)
             {
-                if(field.SourceName == "Custom_CrossProductsImpacted2")
-                {
-                    _logger.Info("Custom_ Multi-Relation Field Working - " + field.SourceName);
-                }
-
 
                 SqlDataReader sdr = GetImportDataFromDBTableForCustomFields(_tableName, field.SourceName);
                 while (sdr.Read())
