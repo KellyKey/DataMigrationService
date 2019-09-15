@@ -6,11 +6,14 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataReader
 {
     public class ExportStories : IExportAssets
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         public ExportStories(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
@@ -248,6 +251,7 @@ namespace V1DataReader
                         cmd.ExecuteNonQuery();
                     }
                     assetCounter++;
+                    _logger.Info("Story: added - Count = {0}", assetCounter);
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);
@@ -260,7 +264,7 @@ namespace V1DataReader
             //Check for Epics as Stories from V1 Major < 12
             //ExportEpics epicStory = new ExportEpics(_sqlConn, _metaAPI, _dataAPI, _config);
             //epicStory.Export();
-            int rc = ExportEpicsFromStories();
+            //int rc = ExportEpicsFromStories();
             
             return assetCounter;
         }
