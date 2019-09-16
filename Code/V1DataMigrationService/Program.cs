@@ -416,15 +416,15 @@ namespace V1DataMigrationService
                             ExportStories stories = new ExportStories(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
                             //For Rally and Jira Migrations
                             //ExportStories stories = new ExportStories(_sqlConn, _config);
-                            //assetCount = stories.Export();
-                            //_logger.Info("-> Exported {0} stories.", assetCount);
+                            assetCount = stories.Export();
+                            _logger.Info("-> Exported {0} stories.", assetCount);
 
                             if (asset.EnableCustomFields == true)
                             {
                                 //Need to Export Custom Fields
-                                //ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Story");
-                                //assetCount = custom.Export();
-                                //_logger.Debug("-> Exported {0} Story custom fields.", assetCount);
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "Story");
+                                assetCount = custom.Export();
+                                _logger.Debug("-> Exported {0} Story custom fields.", assetCount);
 
                                 //Need to Export the PrimaryWorkitems which will get fields configured for Story, Defect, and TestSets all in one run
                                 //Do not need to run it again in Defects and TestSets
