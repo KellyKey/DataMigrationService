@@ -58,8 +58,10 @@ namespace V1DataReader
             isCustom.Equal("true");
             query.Filter = new AndFilterTerm(assetName, isCustom);
 
-            QueryResult result = _dataAPI.Retrieve(query);
+            //Not Needed unless pulling ALL Records instead of those in App.Config
+            //QueryResult result = _dataAPI.Retrieve(query);
 
+            //Pulls the Custom Fields from App.Config
             List<MigrationConfiguration.CustomFieldInfo> fields = _config.CustomFieldsToMigrate.FindAll(i => i.AssetType == _InternalAssetType);
 
             int customFieldCount = 0;
@@ -90,6 +92,28 @@ namespace V1DataReader
             query.Selection.Add(nameAttribute);
 
             //Test for LongText Fields because they will not pull from the API with an Empty String Filter
+            switch (_InternalAssetType)
+            {
+                case "Member":
+                case "Iteration":
+                    break;
+                default:
+                    IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Scope.ParentMeAndUp");
+                    FilterTerm term = new FilterTerm(parentScopeAttribute);
+                    term.Equal(_config.V1SourceConnection.Project);
+                    query.Filter = term;
+                    break;
+            }
+
+
+
+            if (_config.V1Configurations.PageSize != 0)
+            {
+                query.Paging.Start = 0;
+                query.Paging.PageSize = _config.V1Configurations.PageSize;
+            }
+
+            //Test for LongText Fields because they will not pull from the API with an Empty String Filter
             switch (attributeType)
             {
                 case "LongText":
@@ -101,48 +125,56 @@ namespace V1DataReader
                     query.Filter = filter;
                     break;
             }
-            
 
-            QueryResult result = _dataAPI.Retrieve(query);
-            string SQL = BuildCustomFieldInsertStatement();
+            int assetTotal = 0;
 
-            foreach (Asset asset in result.Assets)
+            do
             {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    
-                    cmd.Connection = _sqlConn;
-                    cmd.CommandText = SQL;
-                    cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.Parameters.AddWithValue("@AssetOID", asset.Oid.ToString());
-                    cmd.Parameters.AddWithValue("@FieldName", attributeName);
-                    cmd.Parameters.AddWithValue("@FieldType", attributeType);
+                QueryResult result = _dataAPI.Retrieve(query);
+                assetTotal = result.TotalAvaliable;
 
-                    if (attributeType == "Relation")
+                string SQL = BuildCustomFieldInsertStatement();
+
+                foreach (Asset asset in result.Assets)
+                {
+                    using (SqlCommand cmd = new SqlCommand())
                     {
-                        cmd.Parameters.AddWithValue("@FieldValue", GetMultiRelationValues(asset.GetAttribute(nameAttribute)));
-                    }
-                    else
-                    {
-                        //Remove NULL Records from LongText Fields
-                        Object fieldValue = GetScalerValue(asset.GetAttribute(nameAttribute));
-                        if (fieldValue.Equals(DBNull.Value))
+
+                        cmd.Connection = _sqlConn;
+                        cmd.CommandText = SQL;
+                        cmd.CommandType = System.Data.CommandType.Text;
+                        cmd.Parameters.AddWithValue("@AssetOID", asset.Oid.ToString());
+                        cmd.Parameters.AddWithValue("@FieldName", attributeName);
+                        cmd.Parameters.AddWithValue("@FieldType", attributeType);
+
+                        if (attributeType == "Relation")
                         {
-                            continue;
+                            cmd.Parameters.AddWithValue("@FieldValue", GetMultiRelationValues(asset.GetAttribute(nameAttribute)));
                         }
                         else
                         {
-                            cmd.Parameters.AddWithValue("@FieldValue", fieldValue);
+                            //Remove NULL Records from LongText Fields
+                            Object fieldValue = GetScalerValue(asset.GetAttribute(nameAttribute));
+                            if (fieldValue.Equals(DBNull.Value))
+                            {
+                                _logger.Info(attributeName + ": IsNull skipped ");
+                                continue;
+                            }
+                            else
+                            {
+                                cmd.Parameters.AddWithValue("@FieldValue", fieldValue);
+                            }
                         }
+
+
+                        cmd.ExecuteNonQuery();
+                        assetCount++;
+                        _logger.Info(attributeName + ": added - Count = {0}", assetCount);
                     }
-                  
-
-                    cmd.ExecuteNonQuery();
-                    assetCount++;
-                    _logger.Info(attributeName + ": added - Count = {0}", assetCount);
+                    query.Paging.Start = assetCount;
                 }
+            } while (assetCount != assetTotal) ;
 
-            }
             return assetCount;
         }
 
