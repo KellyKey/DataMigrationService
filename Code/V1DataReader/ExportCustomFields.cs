@@ -127,6 +127,7 @@ namespace V1DataReader
             }
 
             int assetTotal = 0;
+            int skippedTotal = 0;
 
             do
             {
@@ -157,7 +158,8 @@ namespace V1DataReader
                             Object fieldValue = GetScalerValue(asset.GetAttribute(nameAttribute));
                             if (fieldValue.Equals(DBNull.Value))
                             {
-                                _logger.Info(attributeName + ": IsNull skipped ");
+                                skippedTotal++;
+                                _logger.Info(attributeName + ": IsNull skipped - Count = {0}", skippedTotal);
                                 continue;
                             }
                             else
@@ -171,9 +173,9 @@ namespace V1DataReader
                         assetCount++;
                         _logger.Info(attributeName + ": added - Count = {0}", assetCount);
                     }
-                    query.Paging.Start = assetCount;
                 }
-            } while (assetCount != assetTotal) ;
+                query.Paging.Start = assetCount;
+            } while ((assetCount + skippedTotal) != assetTotal) ;
 
             return assetCount;
         }
