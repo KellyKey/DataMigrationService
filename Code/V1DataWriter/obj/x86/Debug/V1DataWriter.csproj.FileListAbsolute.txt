@@ -74,3 +74,5 @@ C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataWriter\obj\x86\Debug\V1DataWriter.csprojResolveAssemblyReference.cache
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataWriter\obj\x86\Debug\V1DataWriter.dll
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataWriter\obj\x86\Debug\V1DataWriter.pdb
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataWriter\bin\x86\Debug\V1DataWriter.dll.CodeAnalysisLog.xml
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataWriter\bin\x86\Debug\V1DataWriter.dll.lastcodeanalysissucceeded

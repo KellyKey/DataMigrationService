@@ -83,7 +83,7 @@ namespace V1DataReader
                         cmd.ExecuteNonQuery();
                     }
                     assetCounter++;
-                    _logger.Info("Member: added - Count = {0}", assetCounter);
+                    _logger.Info("Actual: added - Count = {0}", assetCounter);
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);
