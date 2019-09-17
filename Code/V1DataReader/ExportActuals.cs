@@ -6,11 +6,13 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataReader
 {
     public class ExportActuals : IExportAssets
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
 
         public ExportActuals(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations) 
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
@@ -81,6 +83,7 @@ namespace V1DataReader
                         cmd.ExecuteNonQuery();
                     }
                     assetCounter++;
+                    _logger.Info("Member: added - Count = {0}", assetCounter);
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);
