@@ -24,29 +24,39 @@ namespace V1DataReader
 
         public override int Export()
         {
-            IAssetType assetType = _metaAPI.GetAssetType("Attachment");
+
+            IAssetType assetType = _metaAPI.GetAssetType("Scope");
             Query query = new Query(assetType);
 
-            IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
+            //IAssetType assetType = _metaAPI.GetAssetType("Attachment");
+            //Query query = new Query(assetType);
+
+            IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Name");
             query.Selection.Add(nameAttribute);
 
-            IAttributeDefinition contentAttribute = assetType.GetAttributeDefinition("Content");
+            IAttributeDefinition contentAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Content");
             query.Selection.Add(contentAttribute);
 
-            IAttributeDefinition contentTypeAttribute = assetType.GetAttributeDefinition("ContentType");
+            IAttributeDefinition contentTypeAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.ContentType");
             query.Selection.Add(contentTypeAttribute);
 
-            IAttributeDefinition fileNameAttribute = assetType.GetAttributeDefinition("Filename");
+            IAttributeDefinition fileNameAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Filename");
             query.Selection.Add(fileNameAttribute);
 
-            IAttributeDefinition descriptionAttribute = assetType.GetAttributeDefinition("Description");
+            IAttributeDefinition descriptionAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Description");
             query.Selection.Add(descriptionAttribute);
 
-            IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Category");
+            IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Category");
             query.Selection.Add(categoryAttribute);
 
-            IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Asset");
+            IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Asset");
             query.Selection.Add(assetAttribute);
+
+            //Filter on parent scope.
+            IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("ParentMeAndUp");
+            FilterTerm term = new FilterTerm(parentScopeAttribute);
+            term.Equal(_config.V1SourceConnection.Project);
+            query.Filter = term;
 
             string SQL = BuildAttachmentInsertStatement();
 
