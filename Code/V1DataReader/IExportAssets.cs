@@ -37,6 +37,25 @@ namespace V1DataReader
                 return DBNull.Value;
         }
 
+        protected SqlDataReader GetDataFromDB(string assetOID)
+        {
+            string tableName = GetTableNameForAsset(assetOID);
+
+            string SQL = "SELECT * FROM " + tableName + " WHERE AssetOID = '" + assetOID + "'";
+            SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
+            SqlDataReader sdr = cmd.ExecuteReader();
+
+            if (sdr.HasRows == true)
+            {
+                return sdr;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         protected Object GetMultiRelationValues(VersionOne.SDK.APIClient.Attribute attribute)
         {
             string values = String.Empty;
@@ -91,6 +110,58 @@ namespace V1DataReader
                 return DBNull.Value;
             }
         }
+
+        protected string GetTableNameForAsset(string CurrentAssetOID)
+        {
+            string tableName = String.Empty;
+            if (CurrentAssetOID.Contains("Member"))
+                tableName = "Members";
+            else if (CurrentAssetOID.Contains("MemberLabel"))
+                tableName = "MemberGroups";
+            else if (CurrentAssetOID.Contains("Team"))
+                tableName = "Teams";
+            else if (CurrentAssetOID.Contains("Schedule"))
+                tableName = "Schedules";
+            else if (CurrentAssetOID.Contains("Scope"))
+                tableName = "Projects";
+            else if (CurrentAssetOID.Contains("ScopeLabel"))
+                tableName = "Programs";
+            else if (CurrentAssetOID.Contains("Timebox"))
+                tableName = "Iterations";
+            else if (CurrentAssetOID.Contains("Goal"))
+                tableName = "Goals";
+            else if (CurrentAssetOID.Contains("Theme"))
+                tableName = "FeatureGroups";
+            else if (CurrentAssetOID.Contains("Request"))
+                tableName = "Requests";
+            else if (CurrentAssetOID.Contains("Issue"))
+                tableName = "Issues";
+            else if (CurrentAssetOID.Contains("Epic"))
+                tableName = "Epics";
+            else if (CurrentAssetOID.Contains("Story"))
+                tableName = "Stories";
+            else if (CurrentAssetOID.Contains("Defect"))
+                tableName = "Defects";
+            else if (CurrentAssetOID.Contains("Task"))
+                tableName = "Tasks";
+            else if (CurrentAssetOID.Contains("Test"))
+                tableName = "Tests";
+            else if (CurrentAssetOID.Contains("Link"))
+                tableName = "Links";
+            else if (CurrentAssetOID.Contains("Expression"))
+                tableName = "Conversations";
+            else if (CurrentAssetOID.Contains("Actual"))
+                tableName = "Actuals";
+            else if (CurrentAssetOID.Contains("Attachment"))
+                tableName = "Attachments";
+            else if (CurrentAssetOID.Contains("EmbeddedImage"))
+                tableName = "EmbeddedImages";
+            else
+                tableName = "ListTypes";
+
+            return tableName;
+        }
+
 
     }
 }

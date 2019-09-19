@@ -86,31 +86,26 @@ namespace V1DataReader
         {
             IAssetType assetType = _metaAPI.GetAssetType(_InternalAssetType);
             Query query = new Query(assetType);
-            int assetCount = 0;
+            FilterTerm termScope = null;
+            FilterTerm termNull = null;
 
             IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition(attributeName);
             query.Selection.Add(nameAttribute);
 
-            //Test for LongText Fields because they will not pull from the API with an Empty String Filter
+            //Test for Global v. Localized Scope
             switch (_InternalAssetType)
             {
+                //Global Scope ie. no way to limit them to a Scope.ParentMeAndUp
                 case "Member":
                 case "Iteration":
                     break;
+                //Local Scope ie. limit the Scope to Optimize the Run
                 default:
                     IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Scope.ParentMeAndUp");
-                    FilterTerm term = new FilterTerm(parentScopeAttribute);
-                    term.Equal(_config.V1SourceConnection.Project);
-                    query.Filter = term;
+                    termScope = new FilterTerm(parentScopeAttribute);
+                    termScope.Equal(_config.V1SourceConnection.Project);
+                    query.Filter = termScope;
                     break;
-            }
-
-
-
-            if (_config.V1Configurations.PageSize != 0)
-            {
-                query.Paging.Start = 0;
-                query.Paging.PageSize = _config.V1Configurations.PageSize;
             }
 
             //Test for LongText Fields because they will not pull from the API with an Empty String Filter
@@ -120,14 +115,22 @@ namespace V1DataReader
                     break;
                 default:
                     //Filter to ensure that we have a value.
-                    FilterTerm filter = new FilterTerm(nameAttribute);
-                    filter.NotEqual(String.Empty);
-                    query.Filter = filter;
+                    termNull = new FilterTerm(nameAttribute);
+                    termNull.NotEqual(String.Empty);
+                    query.Filter = new AndFilterTerm(termScope, termNull);
                     break;
             }
 
+            int assetCount = 0;
+            int skippedCount = 0;
             int assetTotal = 0;
-            int skippedTotal = 0;
+            int totalCounter = 0;
+
+            if (_config.V1Configurations.PageSize != 0)
+            {
+                query.Paging.Start = 0;
+                query.Paging.PageSize = _config.V1Configurations.PageSize;
+            }
 
             do
             {
@@ -158,8 +161,8 @@ namespace V1DataReader
                             Object fieldValue = GetScalerValue(asset.GetAttribute(nameAttribute));
                             if (fieldValue.Equals(DBNull.Value))
                             {
-                                skippedTotal++;
-                                _logger.Info(attributeName + ": IsNull skipped - Count = {0}", skippedTotal);
+                                skippedCount++;
+                                _logger.Info(attributeName + ": IsNull skipped - Count = {0}", skippedCount);
                                 continue;
                             }
                             else
@@ -170,12 +173,13 @@ namespace V1DataReader
 
 
                         cmd.ExecuteNonQuery();
-                        assetCount++;
-                        _logger.Info(attributeName + ": added - Count = {0}", assetCount);
                     }
+                    assetCount++;
+                    _logger.Info(attributeName + ": added - Count = {0}", assetCount);
                 }
-                query.Paging.Start = assetCount;
-            } while ((assetCount + skippedTotal) != assetTotal) ;
+                totalCounter = assetCount + skippedCount;
+                query.Paging.Start = totalCounter;
+            } while (totalCounter != assetTotal);
 
             return assetCount;
         }

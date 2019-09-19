@@ -25,38 +25,39 @@ namespace V1DataReader
         public override int Export()
         {
 
-            IAssetType assetType = _metaAPI.GetAssetType("Scope");
+            IAssetType assetType = _metaAPI.GetAssetType("Attachment");
             Query query = new Query(assetType);
 
             //IAssetType assetType = _metaAPI.GetAssetType("Attachment");
             //Query query = new Query(assetType);
 
-            IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Name");
+
+            IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
             query.Selection.Add(nameAttribute);
 
-            IAttributeDefinition contentAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Content");
+            IAttributeDefinition contentAttribute = assetType.GetAttributeDefinition("Content");
             query.Selection.Add(contentAttribute);
 
-            IAttributeDefinition contentTypeAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.ContentType");
+            IAttributeDefinition contentTypeAttribute = assetType.GetAttributeDefinition("ContentType");
             query.Selection.Add(contentTypeAttribute);
 
-            IAttributeDefinition fileNameAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Filename");
+            IAttributeDefinition fileNameAttribute = assetType.GetAttributeDefinition("Filename");
             query.Selection.Add(fileNameAttribute);
 
-            IAttributeDefinition descriptionAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Description");
+            IAttributeDefinition descriptionAttribute = assetType.GetAttributeDefinition("Description");
             query.Selection.Add(descriptionAttribute);
 
-            IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Category");
+            IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Category");
             query.Selection.Add(categoryAttribute);
 
-            IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Workitems:Attachments.Asset");
+            IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Asset");
             query.Selection.Add(assetAttribute);
 
-            //Filter on parent scope.
-            IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("ParentMeAndUp");
-            FilterTerm term = new FilterTerm(parentScopeAttribute);
-            term.Equal(_config.V1SourceConnection.Project);
-            query.Filter = term;
+            //*** NOT WORKING YET Filter on parent scope.
+            //IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("ParentMeAndUp");
+            //FilterTerm term = new FilterTerm(parentScopeAttribute);
+            //term.Equal(_config.V1SourceConnection.Project);
+            //query.Filter = term;
 
             string SQL = BuildAttachmentInsertStatement();
 
@@ -67,6 +68,8 @@ namespace V1DataReader
             }
 
             int assetCounter = 0;
+            int skippedCounter = 0;
+            int totalCounter = 0;
             int assetTotal = 0;
 
             do
@@ -76,6 +79,14 @@ namespace V1DataReader
 
                 foreach (Asset asset in result.Assets)
                 {
+                    SqlDataReader sdr = GetDataFromDB(asset.GetAttribute(assetAttribute).Value.ToString());
+                    if (sdr == null)
+                    {
+                        skippedCounter++;
+                        _logger.Info("Attachment: Skipped - Count = {0}", skippedCounter);
+                        continue;
+                    }
+
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         //NAME NPI MASK:
@@ -108,8 +119,9 @@ namespace V1DataReader
                     assetCounter++;
                     _logger.Info("Attachment: added - Count = {0}", assetCounter);
                 }
-                query.Paging.Start = assetCounter;
-            } while (assetCounter != assetTotal);
+                totalCounter = assetCounter + skippedCounter;
+                query.Paging.Start = totalCounter;
+            } while (totalCounter != assetTotal);
             return assetCounter;
         }
 

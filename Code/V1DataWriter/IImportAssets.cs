@@ -804,6 +804,23 @@ namespace V1DataWriter
             }
         }
 
+        protected SqlDataReader GetDataFromDB(string assetOID)
+        {
+            string tableName = GetTableNameForAsset(assetOID);
+
+            if (String.IsNullOrEmpty(assetOID) == false)
+            {
+                string SQL = "SELECT * FROM " + tableName + " WHERE Asset = '" + assetOID + "' and ImportStatus = '';";
+                SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
+                return cmd.ExecuteReader();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
         protected string [] GetMultiRelationValues(string sourceFieldName, string fieldValue)
         {
             string [] values = fieldValue.Split(';');
