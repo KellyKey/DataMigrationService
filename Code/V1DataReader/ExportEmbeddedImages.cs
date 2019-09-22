@@ -39,14 +39,15 @@ namespace V1DataReader
 
             string SQL = BuildEmbeddedImageInsertStatement();
 
-            if (_config.V1Configurations.PageSize != 0)
-            {
-                query.Paging.Start = 0;
-                query.Paging.PageSize = _config.V1Configurations.PageSize;
-            }
 
             int assetCounter = 0;
             int assetTotal = 0;
+
+            if (_config.V1Configurations.PageSize != 0)
+            {
+                query.Paging.Start = assetCounter;
+                query.Paging.PageSize = _config.V1Configurations.PageSize;
+            }
 
             do
             {

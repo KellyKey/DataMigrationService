@@ -48,7 +48,7 @@ namespace V1DataWriter
                         _dataAPI.Save(asset);
                         UpdateNewAssetOIDAndStatus("ListTypes", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "List type imported.");
                         importCount++;
-                        //_logger.Info("New List, AssetOID is {0} and Count is {1}", sdr["AssetOID"].ToString(), importCount);
+                        _logger.Info("New List, AssetOID is {0} and Count is {1}", sdr["AssetOID"].ToString(), importCount);
 
                     }
 

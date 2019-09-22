@@ -37,7 +37,7 @@ namespace V1DataWriter
                     IAssetType assetType = _metaAPI.GetAssetType("Defect");
                     Asset asset = _dataAPI.New(assetType, null);
 
-                    //string newAssetOid = GetNewAssetOIDFromDB(sdr["AssetOID"].ToString(), "Story");
+                    //string newAssetOid = GetNewAssetOIDFromDB(sdr["AssetOID"].ToString(), "Defect");
                     //Asset asset = GetAssetFromV1(newAssetOid);
 
                     if (String.IsNullOrEmpty(customV1IDFieldName) == false)

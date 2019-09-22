@@ -39,14 +39,20 @@ namespace V1DataReader
 
             string SQL = BuildLinkInsertStatement();
 
+            //int assetCounter = 11820;
+            //int skippedCounter = 446902;
+            //int totalCounter = 458722;
+            int assetCounter = 0;
+            int skippedCounter = 0;
+            int totalCounter = 0;
+            int assetTotal = 0;
+
             if (_config.V1Configurations.PageSize != 0)
             {
-                query.Paging.Start = 0;
+                query.Paging.Start = totalCounter;
                 query.Paging.PageSize = _config.V1Configurations.PageSize;
             }
 
-            int assetCounter = 0;
-            int assetTotal = 0;
 
             do
             {
@@ -55,6 +61,15 @@ namespace V1DataReader
 
                 foreach (Asset asset in result.Assets)
                 {
+
+                    SqlDataReader sdr = GetDataFromDB(asset.GetAttribute(assetAttribute).Value.ToString());
+                    if (sdr == null)
+                    {
+                        skippedCounter++;
+                        _logger.Info("Link: Skipped - Count = {0}", skippedCounter);
+                        continue;
+                    }
+
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         //NAME NPI MASK:
@@ -78,8 +93,9 @@ namespace V1DataReader
                     assetCounter++;
                     _logger.Info("Link: added - Count = {0}", assetCounter);
                 }
-                query.Paging.Start = assetCounter;
-            } while (assetCounter != assetTotal);
+                totalCounter = assetCounter + skippedCounter;
+                query.Paging.Start = totalCounter;
+            } while (totalCounter != assetTotal);
             return assetCounter;
         }
 

@@ -44,6 +44,7 @@
 *   - 6/24/19  KPK Added TaggedWith field to the 13 Assets that Support Tags
 *	- 6/26/19  KPK Added Manager field to the Members table
 *	- 6/26/19  KPK Added Epic Dependencies and Dependants fields to the Epics table
+*	- 9/22/19  KPK Added Hash Field to EmbeddedImages table
 *******************************************************************************************************/
 
 USE master;
@@ -678,6 +679,7 @@ CREATE TABLE EmbeddedImages (
 	ImportDetails varchar(max) NULL,
 	Asset varchar(50) NULL,
 	Content varbinary(max) NULL,
+	Hash binary(20) NULL,
 	ContentType varchar(max) NULL
 );
 GO

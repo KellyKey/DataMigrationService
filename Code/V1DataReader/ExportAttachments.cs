@@ -53,24 +53,22 @@ namespace V1DataReader
             IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Asset");
             query.Selection.Add(assetAttribute);
 
-            //*** NOT WORKING YET Filter on parent scope.
-            //IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("ParentMeAndUp");
-            //FilterTerm term = new FilterTerm(parentScopeAttribute);
-            //term.Equal(_config.V1SourceConnection.Project);
-            //query.Filter = term;
-
             string SQL = BuildAttachmentInsertStatement();
 
-            if (_config.V1Configurations.PageSize != 0)
-            {
-                query.Paging.Start = 0;
-                query.Paging.PageSize = _config.V1Configurations.PageSize;
-            }
-
+            //int assetCounter = 43091;
+            //int skippedCounter = 70216;
+            //int totalCounter = 113307;
             int assetCounter = 0;
             int skippedCounter = 0;
             int totalCounter = 0;
             int assetTotal = 0;
+
+            if (_config.V1Configurations.PageSize != 0)
+            {
+                query.Paging.Start = totalCounter;
+                query.Paging.PageSize = _config.V1Configurations.PageSize;
+            }
+
 
             do
             {
