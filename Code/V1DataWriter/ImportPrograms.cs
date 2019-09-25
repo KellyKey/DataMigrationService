@@ -6,11 +6,14 @@ using System.Data;
 using System.Data.SqlClient;
 using VersionOne.SDK.APIClient;
 using V1DataCore;
+using NLog;
 
 namespace V1DataWriter
 {
     public class ImportPrograms : IImportAssets
     {
+        private static Logger _logger = LogManager.GetCurrentClassLogger();
+
         public ImportPrograms(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
@@ -49,6 +52,7 @@ namespace V1DataWriter
                         _dataAPI.Save(asset);
                         UpdateNewAssetOIDAndStatus("Programs", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Program imported.");
                         importCount++;
+                        _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
                     }
                 }
                 catch (Exception ex)
@@ -56,6 +60,7 @@ namespace V1DataWriter
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Programs", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
                         continue;
                     }
                     else
