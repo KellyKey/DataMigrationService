@@ -179,7 +179,7 @@ namespace V1DataWriter
 
                     ExecuteOperationInV1("Timebox.Inactivate", asset.Oid);
                     assetCount++;
-                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Closed - Count: " + assetCount);
                 }
                 catch (Exception ex)
                 {

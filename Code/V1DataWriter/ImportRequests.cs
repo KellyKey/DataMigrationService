@@ -99,6 +99,7 @@ namespace V1DataWriter
                     UpdateNewAssetOIDAndNumberInDB("Requests", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber);
                     UpdateImportStatus("Requests", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "Request imported.");
                     importCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
 
                 }
                 catch (Exception ex)
@@ -106,6 +107,7 @@ namespace V1DataWriter
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Requests", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
                         continue;
                     }
                     else
@@ -140,7 +142,7 @@ namespace V1DataWriter
 
                     ExecuteOperationInV1("Request.Inactivate", asset.Oid);
                     assetCount++;
-                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Closed - Count: " + assetCount);
                 }
                 catch (Exception ex)
                 {

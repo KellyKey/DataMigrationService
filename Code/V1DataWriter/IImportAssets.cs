@@ -47,11 +47,11 @@ namespace V1DataWriter
          **************************************************************************************/
         protected SqlDataReader GetImportDataFromDBTable(string TableName)
         {
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK);";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK);";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) order by Asset;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED';";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting';";
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null;";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where Hash is not null;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -870,6 +870,10 @@ namespace V1DataWriter
                 textPosition = imgIDLocation + 9;
 
                 imgIDLocation = newDescription.IndexOf("alt=", textPosition, newDescription.Length - textPosition);
+                if(imgIDLocation == -1)
+                {
+                    continue;
+                }
                 imgDescriptionPart = newDescription.Substring(textPosition,imgIDLocation - (textPosition + 1));
 
                 secondDescriptionPart = newDescription.Substring(imgIDLocation, newDescription.Length - imgIDLocation);
