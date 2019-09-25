@@ -26,15 +26,15 @@ namespace V1DataWriter
             {
                 try
                 {
-                    //string currentAssetOID = CheckForDuplicateInV1("Team", "Name", sdr["Name"].ToString());
+                    string currentAssetOID = CheckForDuplicateInV1("Team", "Name", sdr["Name"].ToString());
 
-                    //if (string.IsNullOrEmpty(currentAssetOID) == false)
-                    //{
-                    //    UpdateNewAssetOIDAndStatus("Teams", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate team.");
-                    //    continue;
-                    //}
-                    //else
-                    //{
+                    if (string.IsNullOrEmpty(currentAssetOID) == false)
+                    {
+                        UpdateNewAssetOIDAndStatus("Teams", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate team.");
+                        continue;
+                    }
+                    else
+                    {
                         IAssetType assetType = _metaAPI.GetAssetType("Team");
                         Asset asset = _dataAPI.New(assetType, null);
 
@@ -60,7 +60,7 @@ namespace V1DataWriter
                         importCount++;
                         _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
 
-                    //}
+                    }
                 }
                 catch (Exception ex)
                 {
