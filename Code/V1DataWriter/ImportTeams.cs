@@ -58,6 +58,7 @@ namespace V1DataWriter
                         _dataAPI.Save(asset);
                         UpdateNewAssetOIDAndStatus("Teams", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Team imported.");
                         importCount++;
+                        _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
 
                     }
                 }
@@ -66,6 +67,7 @@ namespace V1DataWriter
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Teams", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
                         continue;
                     }
                     else
