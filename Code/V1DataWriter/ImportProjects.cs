@@ -148,6 +148,8 @@ namespace V1DataWriter
 
         private void SetParentProjects()
         {
+            int importCount = 0;
+                 
             SqlDataReader sdr = GetImportDataFromDBTable("Projects");
             while (sdr.Read())
             {
@@ -169,6 +171,8 @@ namespace V1DataWriter
                     asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(sdr["Parent"].ToString(), "Projects"));
 
                 _dataAPI.Save(asset);
+                importCount++;
+                _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Parent Set - Count: " + importCount);
             }
             sdr.Close();
         }
