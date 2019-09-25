@@ -53,5 +53,4 @@ C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCore\bin\x86\Debug\Newtonsoft.Json.xml
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCore\obj\x86\Debug\V1DataCore.dll
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCore\obj\x86\Debug\V1DataCore.pdb
-\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCore\bin\x86\Debug\V1DataCore.dll.CodeAnalysisLog.xml
-\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCore\bin\x86\Debug\V1DataCore.dll.lastcodeanalysissucceeded
+\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCore\obj\x86\Debug\V1DataCore.csprojResolveAssemblyReference.cache

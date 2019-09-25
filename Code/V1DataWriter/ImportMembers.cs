@@ -103,8 +103,8 @@ namespace V1DataWriter
 
                     }
 
-                    IAttributeDefinition IsCollaboratorAttribute = assetType.GetAttributeDefinition("IsCollaborator");
-                    asset.SetAttributeValue(IsCollaboratorAttribute, sdr["IsCollaborator"].ToString());
+                    //IAttributeDefinition IsCollaboratorAttribute = assetType.GetAttributeDefinition("IsCollaborator");
+                    //asset.SetAttributeValue(IsCollaboratorAttribute, sdr["IsCollaborator"].ToString());
                     //asset.SetAttributeValue(IsCollaboratorAttribute, "True");
 
                     IAttributeDefinition sendConversationEmailsAttribute = assetType.GetAttributeDefinition("SendConversationEmails");

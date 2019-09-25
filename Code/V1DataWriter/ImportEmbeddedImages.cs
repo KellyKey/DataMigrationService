@@ -48,26 +48,25 @@ namespace V1DataWriter
 
                 try
                 {
-                    string newAssetOID = null;
+                    //string newAssetOID = null;
                     Services services = new Services(_imageConnector);
 
-                    //Must have a New Asset OID to Save the Image, even though it doesn't appear to use it.  ie. Any Asset can point to the same EmbeddedImage
-                    if (String.IsNullOrEmpty(sdr["Asset"].ToString()))
-                    {
-                        newAssetOID = "Scope:0";
-                        asset = GetWorkitem(services, newAssetOID);
-                    }
-                    else
-                    {
-                        newAssetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());
-                        asset = GetWorkitem(services, newAssetOID);
-                    }
+                    //if (String.IsNullOrEmpty(sdr["Asset"].ToString()))
+                    //{
+                    //    newAssetOID = "Scope:0";
+                    //    asset = GetWorkitem(services, newAssetOID);
+                    //}
+                    //else
+                    //{
+                    //    newAssetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());
+                    //    asset = GetWorkitem(services, newAssetOID);
+                    //}
 
-                    //Check if the newAsset actually returned or not
-                    if (asset == null)
-                    {
+                    //Must have a New Asset OID to Save the Image, even though it doesn't appear to use it.  ie. Any Asset can point to the same EmbeddedImage
+                    //if (asset == null)
+                    //{
                         asset = GetWorkitem(services, "Scope:0");
-                    }
+                    //}
 
                     //IAssetType assetType = _metaAPI.GetAssetType("EmbeddedImage");
 

@@ -64,5 +64,3 @@ C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.csprojResolveAssemblyReference.cache
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.dll
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCleanup\obj\x86\Debug\V1DataCleanup.pdb
-\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCleanup\bin\x86\Debug\V1DataCleanup.dll.CodeAnalysisLog.xml
-\\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataCleanup\bin\x86\Debug\V1DataCleanup.dll.lastcodeanalysissucceeded
