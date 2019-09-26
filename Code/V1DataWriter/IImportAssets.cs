@@ -467,7 +467,7 @@ namespace V1DataWriter
 
         protected void UpdateImportStatus(string Table, string AssetOID, ImportStatuses ImportStatus, string ImportDetail)
         {
-            _logger.Info("Status: {0} Message is {1}", AssetOID, ImportDetail);
+            //_logger.Info("Status: {0} Message is {1}", AssetOID, ImportDetail);
             
             StringBuilder sb = new StringBuilder();
             sb.Append("UPDATE " + Table + " ");

@@ -114,6 +114,7 @@ namespace V1DataWriter
                     UpdateNewAssetOIDAndNumberInDB("Issues", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber);
                     UpdateImportStatus("Issues", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "Issue imported.");
                     importCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
 
                 }
                 catch (Exception ex)
@@ -121,6 +122,7 @@ namespace V1DataWriter
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Issues", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
                         continue;
                     }
                     else

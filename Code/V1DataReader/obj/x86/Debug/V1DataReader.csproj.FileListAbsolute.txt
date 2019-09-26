@@ -74,3 +74,19 @@ C:\Users\kellykey\Documents\GitHub\ServicesTeam\Tools\DataMigrationService\Code\
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataReader\obj\x86\Debug\V1DataReader.csprojResolveAssemblyReference.cache
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataReader\obj\x86\Debug\V1DataReader.dll
 \\Mac\Home\Documents\GitHub (original)\ServicesTeam\Customer\Datamine\Code\V1DataReader\obj\x86\Debug\V1DataReader.pdb
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\V1DataReader.dll
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\V1DataReader.pdb
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\log4net.dll
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\Newtonsoft.Json.dll
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\NLog.dll
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\V1DataCore.dll
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\VersionOne.SDK.APIClient.dll
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\V1DataCore.pdb
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\log4net.xml
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\Newtonsoft.Json.xml
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\NLog.xml
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\obj\x86\Debug\V1DataReader.csprojAssemblyReference.cache
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\obj\x86\Debug\V1DataReader.csproj.CoreCompileInputs.cache
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\obj\x86\Debug\V1DataReader.csproj.CopyComplete
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\obj\x86\Debug\V1DataReader.dll
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\obj\x86\Debug\V1DataReader.pdb
