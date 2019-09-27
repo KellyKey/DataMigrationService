@@ -172,6 +172,7 @@ namespace V1DataWriter
                     UpdateNewAssetOIDAndNumberInDB("Epics", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber);
                     UpdateImportStatus("Epics", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "Epic imported.");
                     importCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
 
                 }
                 catch (Exception ex)
@@ -179,6 +180,7 @@ namespace V1DataWriter
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("Epics", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed to Import ");
                         continue;
                     }
                     else
@@ -219,9 +221,8 @@ namespace V1DataWriter
                     asset.SetAttributeValue(parentAttribute, newSuperAssetOID);
                 }
                 _dataAPI.Save(asset);
-                //_logger.Info("-> Set Parent for {0} Epic to {1}.", sdr["NewAssetOID"].ToString(), newSuperAssetOID);
                 setParentCount++;
-
+                _logger.Info("-> Set Parent for {0} Epic to {1} - Count is {2}.", sdr["NewAssetOID"].ToString(), newSuperAssetOID, setParentCount);
             }
             sdr.Close();
             _logger.Info("-> {0} Parents have been Set", setParentCount);

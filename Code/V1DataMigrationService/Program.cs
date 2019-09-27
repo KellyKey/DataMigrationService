@@ -736,10 +736,10 @@ namespace V1DataMigrationService
                     case "Requests":
                         if (asset.Enabled == true)
                         {
-                            //_logger.Info("Importing requests.");
-                            //ImportRequests requests = new ImportRequests(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
-                            //assetCount = requests.Import();
-                            //_logger.Info("-> Imported {0} requests.", assetCount);
+                            _logger.Info("Importing requests.");
+                            ImportRequests requests = new ImportRequests(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                            assetCount = requests.Import();
+                            _logger.Info("-> Imported {0} requests.", assetCount);
 
 
                             if (asset.EnableCustomFields == true)

@@ -47,11 +47,11 @@ namespace V1DataWriter
          **************************************************************************************/
         protected SqlDataReader GetImportDataFromDBTable(string TableName)
         {
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK);";
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) order by Asset;";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK);";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) order by Order;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED';";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting';";
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where Hash is not null;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -91,9 +91,9 @@ namespace V1DataWriter
 
         protected SqlDataReader GetImportDataFromDBTableWithOrder(string TableName)
         {
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY AssetOID ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY AssetOID ASC;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED' ORDER BY [Order] ASC;";
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting' and Description like '%<img src=%' ORDER BY [Order] ASC;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -123,12 +123,12 @@ namespace V1DataWriter
         protected SqlDataReader GetImportDataFromDBTableForCustomFields(string AssetType, string FieldName)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("SELECT a.AssetOID, b.NewAssetOID, a.FieldName, a.FieldType, a.FieldValue FROM CustomFields AS a ");
+            sb.Append("SELECT a.AssetOID, b.NewAssetOID, a.FieldName, a.FieldType, a.FieldValue FROM CustomFields AS a WITH (NOLOCK)  ");
             sb.Append("INNER JOIN " + AssetType + " AS b ");
             sb.Append("ON a.AssetOID = b.AssetOID ");
             sb.Append("WHERE a.FieldName = '" + FieldName + "' ");
-            sb.Append("AND b.ImportStatus <> 'FAILED';");
-            //sb.Append("AND b.ImportStatus = 'FAILED';");
+            sb.Append("AND b.ImportStatus <> 'FAILED' ");
+            //sb.Append("AND a.ImportStatus = 'FAILED';");
             SqlCommand cmd = new SqlCommand(sb.ToString(), _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
             return sdr;
@@ -479,7 +479,7 @@ namespace V1DataWriter
 
             using (SqlCommand cmd = new SqlCommand(sql, _sqlConn))
             {
-                cmd.CommandTimeout = 120;
+                cmd.CommandTimeout = 60;
                 cmd.ExecuteNonQuery();
             }
         }

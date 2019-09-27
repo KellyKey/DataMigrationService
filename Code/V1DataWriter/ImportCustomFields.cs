@@ -139,7 +139,6 @@ namespace V1DataWriter
                             _logger.Info("Custom Scaler Field Added");
                         }
 
-                        //UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "CustomField imported.");
                         UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "CustomField imported.");
                         importCount++;
                         _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
