@@ -25,8 +25,8 @@ namespace V1DataWriter
         public override int Import()
         {
             string customV1IDFieldName = GetV1IDCustomFieldName("Story");
-            _logger.Info("Custom field Config is {0}", _config.V1Configurations.CustomV1IDField);
-            _logger.Info("Custom Field Name is {0}", customV1IDFieldName);
+            //_logger.Info("Custom field Config is {0}", _config.V1Configurations.CustomV1IDField);
+            //_logger.Info("Custom Field Name is {0}", customV1IDFieldName);
 
             SqlDataReader sdr = GetImportDataFromDBTableWithOrder("Stories");
 
@@ -89,8 +89,8 @@ namespace V1DataWriter
                     IAttributeDefinition superAttribute = assetType.GetAttributeDefinition("Super");
                     asset.SetAttributeValue(superAttribute, GetNewEpicAssetOIDFromDB(sdr["Super"].ToString()));
 
-                    IAttributeDefinition orderAttribute = assetType.GetAttributeDefinition("Order");
-                    asset.SetAttributeValue(orderAttribute, sdr["Order"].ToString());
+                    //IAttributeDefinition orderAttribute = assetType.GetAttributeDefinition("Order");
+                    //asset.SetAttributeValue(orderAttribute, sdr["Order"].ToString());
 
                     IAttributeDefinition referenceAttribute = assetType.GetAttributeDefinition("Reference");
                     asset.SetAttributeValue(referenceAttribute, sdr["Reference"].ToString());
@@ -262,13 +262,18 @@ namespace V1DataWriter
         
         private void SetStoryDependencies()
         {
-            _logger.Info("*****Setting Story Dependencies");
+            int storyCount = 0;
 
             SqlDataReader sdr = GetImportDataFromDBTable("Stories");
             while (sdr.Read())
             {
+                storyCount++;
+                _logger.Info("*****Setting Story Dependencies - Count is " + storyCount);
+
                 IAssetType assetType = _metaAPI.GetAssetType("Story");
                 Asset asset = null;
+
+                bool saveDependencies = false;
 
                 if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
                 {
@@ -282,15 +287,21 @@ namespace V1DataWriter
                 if (String.IsNullOrEmpty(sdr["Dependencies"].ToString()) == false)
                 {
                     AddMultiValueRelation(assetType, asset, "Stories", "Dependencies", sdr["Dependencies"].ToString());
+                    saveDependencies = true;
                     _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Dependencies Added ");
                 }
 
                 if (String.IsNullOrEmpty(sdr["Dependants"].ToString()) == false)
                 {
                     AddMultiValueRelation(assetType, asset, "Stories", "Dependants", sdr["Dependants"].ToString());
+                    saveDependencies = true;
                     _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Dependents Added ");
                 }
-                _dataAPI.Save(asset);
+                
+                if(saveDependencies == true)
+                {
+                    _dataAPI.Save(asset);
+                }
 
             }
             sdr.Close();

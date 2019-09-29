@@ -91,9 +91,9 @@ namespace V1DataWriter
 
         protected SqlDataReader GetImportDataFromDBTableWithOrder(string TableName)
         {
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY AssetOID ASC;";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY [Order] ASC;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED' ORDER BY [Order] ASC;";
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting' and Description like '%<img src=%' ORDER BY [Order] ASC;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();

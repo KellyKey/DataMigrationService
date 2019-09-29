@@ -26,32 +26,26 @@ namespace V1DataWriter
         {
 
             string assetTypeInternalName = null;
-            if (_assetType.Contains("PrimaryWorkitem"))
+
+            if (_assetType == "Story")
             {
-                string [] assetTypeName = null;
-                assetTypeName = _assetType.Split(':');
-                _assetType = assetTypeName[0];
-                assetTypeInternalName = assetTypeName[1];
+                _tableName = "Stories";
             }
             else
             {
-                //This code doesn't work and needs to be fixed...For Now, just use the _assetType variable passed in
-                //assetTypeInternalName = _assetType;
-
-                if (_assetType == "Story")
-                {
-                    _tableName = "Stories";
-                }
-                else
-                {
-                    _tableName = _assetType + "s";
-                }
-
-                MigrationConfiguration.AssetInfo assetInfo = _config.AssetsToMigrate.Find(i => i.Name == _tableName);
-                assetTypeInternalName = assetInfo.InternalName;
-
+                _tableName = _assetType + "s";
             }
 
+            MigrationConfiguration.AssetInfo assetInfo = _config.AssetsToMigrate.Find(i => i.Name == _tableName);
+            assetTypeInternalName = assetInfo.InternalName;
+
+            if (_assetType.Contains("PrimaryWorkitem"))
+            {
+                string[] assetTypeName = null;
+                assetTypeName = _assetType.Split(':');
+                _tableName = assetTypeName[1];
+                assetTypeInternalName = assetTypeName[0];
+            }
 
             List<MigrationConfiguration.CustomFieldInfo> fields = _config.CustomFieldsToMigrate.FindAll(i => i.AssetType == assetTypeInternalName);
 
@@ -70,7 +64,7 @@ namespace V1DataWriter
                         Asset asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
                         //IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
 
-                        _logger.Info("Asset: " + sdr["NewAssetOID"].ToString() + " Working... ");
+                        _logger.Info("---" + field.TargetName + " Working... ");
 
                         //Set the custom field value and save it.
                         IAttributeDefinition customFieldAttribute = assetType.GetAttributeDefinition(field.TargetName);
@@ -124,20 +118,20 @@ namespace V1DataWriter
 
                         _dataAPI.Save(asset);
 
-                        if (field.DataType == "Relation")
-                            //if (field.TargetName == "Custom_CrossProductsImpacted")
-                        {
-                            _logger.Info("Custom_ Relation Field Added");
-                        }
-                        else if(field.DataType == "Multi-Relation")
-                        {
-                            _logger.Info("Custom_ Multi-Relation Field Added");
+                        //if (field.DataType == "Relation")
+                        //    //if (field.TargetName == "Custom_CrossProductsImpacted")
+                        //{
+                        //    _logger.Info("Custom_ Relation Field Added");
+                        //}
+                        //else if(field.DataType == "Multi-Relation")
+                        //{
+                        //    _logger.Info("Custom_ Multi-Relation Field Added");
 
-                        }
-                        else
-                        {
-                            _logger.Info("Custom Scaler Field Added");
-                        }
+                        //}
+                        //else
+                        //{
+                        //    _logger.Info("Custom Scaler Field Added");
+                        //}
 
                         UpdateImportStatus("CustomFields", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "CustomField imported.");
                         importCount++;

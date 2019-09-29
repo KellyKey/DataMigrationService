@@ -800,6 +800,14 @@ namespace V1DataMigrationService
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} Story custom fields.", assetCount);
                             }
+
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "PrimaryWorkitem:Stories");
+                                assetCount = custom.Import();
+                                _logger.Debug("-> Imported {0} Story custom fields.", assetCount);
+                            }
+
                         }
                         break;
 
@@ -816,6 +824,13 @@ namespace V1DataMigrationService
                                 ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Defect");
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} defects custom fields.", assetCount);
+                            }
+
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "PrimaryWorkitem:Defects");
+                                assetCount = custom.Import();
+                                _logger.Debug("-> Imported {0} Story custom fields.", assetCount);
                             }
                         }
                         break;
