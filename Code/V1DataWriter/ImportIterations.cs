@@ -180,7 +180,7 @@ namespace V1DataWriter
                 try
                 {
                     colonLocation = asset.Oid.ToString().IndexOf(":");
-                    ExecuteOperationInV1(asset.Oid.ToString().Substring(0, colonLocation) + ".Inactivate", asset.Oid);
+                    ExecuteOperationInV1(asset.Oid.ToString().Substring(0, colonLocation) + ".Close", asset.Oid);
                     assetCount++;
                     _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Close - Count: " + assetCount);
                 }
