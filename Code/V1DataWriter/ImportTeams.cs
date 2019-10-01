@@ -85,59 +85,64 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTableForClosing("Teams");
             int assetCount = 0;
             int exceptionCount = 0;
+            int colonLocation = 0;
+
             while (sdr.Read())
             {
                 Asset asset = null;
 
+                if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                {
+                    asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                }
+                else
+                {
+                    continue;
+                }
+
                 try
                 {
-                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
-                    {
-                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
-                    }
-                    else
-                    {
-                        continue;
-                    }
-
-                        ExecuteOperationInV1("Team.Inactivate", asset.Oid);
-                        assetCount++;
-                        _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
-                    }
-                    catch (Exception ex)
-                    {
-                        exceptionCount++;
-                        _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
-                        continue;
-                    }
-
-
+                    colonLocation = asset.Oid.ToString().IndexOf(":");
+                    ExecuteOperationInV1(asset.Oid.ToString().Substring(0, colonLocation) + ".Inactivate", asset.Oid);
+                    assetCount++;
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Close - Count: " + assetCount);
                 }
-            sdr.Close();
-                return assetCount;
+                catch (Exception ex)
+                {
+                    exceptionCount++;
+                    _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
+                    continue;
+                }
+
             }
+            sdr.Close();
+            return assetCount;
+        }
 
         public int OpenTeams()
         {
             SqlDataReader sdr = GetImportDataFromDBTableForClosing("Teams");
             int assetCount = 0;
             int exceptionCount = 0;
+            int colonLocation = 0;
+
             while (sdr.Read())
             {
                 Asset asset = null;
 
+                if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
+                {
+                    asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
+                }
+                else
+                {
+                    continue;
+                }
+
                 try
                 {
-                    if (String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
-                    {
-                        asset = GetAssetFromV1(sdr["NewAssetOID"].ToString());
-                    }
-                    else
-                    {
-                        continue;
-                    }
-
-                    ExecuteOperationInV1("Team.Reactivate", asset.Oid);
+                    colonLocation = asset.Oid.ToString().IndexOf(":");
+                    ExecuteOperationInV1(asset.Oid.ToString().Substring(0, colonLocation) + ".Reactivate", asset.Oid);
                     assetCount++;
                     _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Open - Count: " + assetCount);
                 }
@@ -147,7 +152,6 @@ namespace V1DataWriter
                     _logger.Info("Exception: " + sdr["AssetOID"].ToString() + " Exception - Count: " + exceptionCount);
                     continue;
                 }
-
 
             }
             sdr.Close();
