@@ -22,6 +22,7 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTable("Programs");
 
             int importCount = 0;
+            int skippedCount = 0;
             while (sdr.Read())
             {
                 try
@@ -31,6 +32,7 @@ namespace V1DataWriter
                     if (string.IsNullOrEmpty(currentAssetOID) == false)
                     {
                         UpdateNewAssetOIDAndStatus("Programs", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate program.");
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count = " + ++skippedCount);
                         continue;
                     }
                     else

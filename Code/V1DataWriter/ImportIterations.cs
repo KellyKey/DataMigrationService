@@ -23,6 +23,7 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTable("Iterations");
 
             int importCount = 0;
+            int skippedCount = 0;
             while (sdr.Read())
             {
                 try
@@ -31,6 +32,7 @@ namespace V1DataWriter
                     if (String.IsNullOrEmpty(sdr["Schedule"].ToString()))
                     {
                         UpdateImportStatus("Iterations", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Iteration has no schedule.");
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed - Count = " + ++skippedCount);
                         continue;
                     }
 
@@ -40,10 +42,11 @@ namespace V1DataWriter
                     string currentAssetOID = CheckForDuplicateIterationByName(sdr["Schedule"].ToString(), sprintName);
                     if (string.IsNullOrEmpty(currentAssetOID) == false)
                     {
-                        //UpdateNewAssetOIDAndStatus("Iterations", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate iteration, matched on name.");
-                        //ActivateIteration(sdr["AssetState"].ToString(), currentAssetOID);
-                        sprintName = sdr["Schedule"].ToString() + " - " + sdr["Name"].ToString();
-                        //continue;
+                        UpdateNewAssetOIDAndStatus("Iterations", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate iteration, matched on name.");
+                        ActivateIteration(sdr["AssetState"].ToString(), currentAssetOID);
+                        //sprintName = sdr["Schedule"].ToString() + " - " + sdr["Name"].ToString();
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count = " + ++skippedCount);
+                        continue;
                     }
 
                     //DUPLICATE CHECK: Check for existing sprint by begin date (and schedule) as the name did not match.
@@ -53,6 +56,7 @@ namespace V1DataWriter
                         UpdateNewAssetOIDAndStatus("Iterations", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.UPDATED, "Duplicate iteration, matched on begin date, name was updated.");
                         ActivateIteration(sdr["AssetState"].ToString(), currentAssetOID);
                         UpdateIterationName(currentAssetOID, sdr["Name"].ToString().Trim());
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count = " + ++skippedCount);
                         continue;
                     }
 
