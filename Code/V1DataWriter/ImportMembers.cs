@@ -24,6 +24,7 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTable("Members");
 
             int importCount = 0;
+            int skippedCount = 0;
             while (sdr.Read())
             {
                 try
@@ -32,6 +33,7 @@ namespace V1DataWriter
                     if (sdr["AssetOID"].ToString() == "Member:20")
                     {
                         UpdateNewAssetOIDAndStatus("Members", sdr["AssetOID"].ToString(), sdr["AssetOID"].ToString(), ImportStatuses.SKIPPED, "Admin member (Member:20) cannot be imported.");
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count = " + ++skippedCount);
                         continue;
                     }
 
@@ -39,6 +41,7 @@ namespace V1DataWriter
                     if (String.IsNullOrEmpty(sdr["Username"].ToString()) == true)
                     {
                         UpdateImportStatus("Members", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Member with no username cannot be imported.");
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count = " + ++skippedCount);
                         continue;
                     }
 
@@ -52,6 +55,7 @@ namespace V1DataWriter
                             if (string.IsNullOrEmpty(currentAssetOID) == false)
                             {
                                 UpdateNewAssetOIDAndStatus("Members", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate member.");
+                                _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count = " + ++skippedCount);
                                 continue;
                             }
                         }
@@ -111,7 +115,6 @@ namespace V1DataWriter
                     asset.SetAttributeValue(sendConversationEmailsAttribute, sdr["SendConversationEmails"].ToString());
 
                     _dataAPI.Save(asset);
-                    //_logger.Info("Reached this point");
                     UpdateNewAssetOIDAndStatus("Members", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "Member imported.");
                     importCount++;
 
