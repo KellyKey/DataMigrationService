@@ -23,6 +23,7 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTable("Schedules");
 
             int importCount = 0;
+            int skippedCount = 0;
             int duplicateCount = 0;
             while (sdr.Read())
             {
@@ -40,6 +41,7 @@ namespace V1DataWriter
                         else
                         {
                             UpdateNewAssetOIDAndStatus("Schedules", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate schedule.");
+                            _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count = " + ++skippedCount);
                             continue;
                         }
                     }
