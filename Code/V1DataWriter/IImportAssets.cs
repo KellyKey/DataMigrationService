@@ -280,24 +280,24 @@ namespace V1DataWriter
             }
         }
 
-        protected string GetNewAssetOIDFromDBUsingHash(string hashCode, string AssetType)
-        {
+        //protected string GetNewAssetOIDFromDBUsingHash(string hashCode, string AssetType)
+        //{
 
-            string assetName = GetTableNameForAsset(AssetType);
+        //    string assetName = GetTableNameForAsset(AssetType);
 
-            //var value;
-            if (hashCode.Length > 0)
-            {
-                string SQL = "SELECT NewAssetOID FROM " + assetName + " WHERE Hash = " + hashCode + ";";
-                SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
-                var value = cmd.ExecuteScalar();
-                return (value == null) ? null : value.ToString();
-            }
-            else
-            {
-                return null;
-            }
-        }
+        //    //var value;
+        //    if (hashCode.Length > 0)
+        //    {
+        //        string SQL = "SELECT NewAssetOID FROM " + assetName + " WHERE Hash = " + hashCode + ";";
+        //        SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
+        //        var value = cmd.ExecuteScalar();
+        //        return (value == null) ? null : value.ToString();
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
 
 
         protected string GetNewConversationOIDFromDB(string CurrentAssetOID, string AssetType)
@@ -842,9 +842,10 @@ namespace V1DataWriter
 
         protected string SetEmbeddedImageContent(string currentDescription, string newURL)
         {
-            //This method fixes 2 things in the Description Field
+            //This method does 3 things in the Description Field
             //First, it re-sets the Old URL from the Source to the New URL from the Target
             //Second, it re-sets the OLD AssetOid to the New AssetOid
+            //Third, it Imports the EmbeddedImages in the Description 
 
             //Get Any EmbeddedImages for the Description Field
             int imageCounter = 0;
@@ -888,7 +889,7 @@ namespace V1DataWriter
                     currentEmbeddedImageHash = imgPart.Substring(imgIDLocation + 4, imgPart.Length - (imgIDLocation + 4));
                     char[] charsToTrim = { '"' };
                     currentEmbeddedImageHash = currentEmbeddedImageHash.Trim(charsToTrim);
-                    newEmbeddedImageAssetOID = GetNewAssetOIDFromDBUsingHash("0x" + currentEmbeddedImageHash, "EmbeddedImage");
+                    newEmbeddedImageAssetOID = GetNewAssetOIDFromDBUsingHash("0x" + currentEmbeddedImageHash, "EmbeddedImages");
                 }
                 else if(imgDescriptionPart.Contains("embedded.img"))
                 {
@@ -900,7 +901,7 @@ namespace V1DataWriter
                     currentEmbeddedImageAssetOID = imgPart.Substring(imgIDLocation + 4, imgPart.Length - (imgIDLocation + 4));
                     char[] charsToTrim = { '"' };
                     currentEmbeddedImageAssetOID = currentEmbeddedImageAssetOID.Trim(charsToTrim);
-                    newEmbeddedImageAssetOID = GetNewAssetOIDFromDB("EmbeddedImage:" + currentEmbeddedImageAssetOID);
+                    newEmbeddedImageAssetOID = GetNewAssetOIDFromDBUsingAssetOID("EmbeddedImage:" + currentEmbeddedImageAssetOID, "EmbeddedImages");
                 }
                 else
                 {
@@ -922,5 +923,127 @@ namespace V1DataWriter
 
             return newDescription;
         }
+
+        protected string GetNewAssetOIDFromDBUsingHash(string hashCode, string tableName)
+        {
+            //var value;
+            string assetOid = null;
+            string newAssetOid = null;
+
+            if (hashCode.Length > 0)
+            {
+                string SQL = "SELECT AssetOID FROM " + tableName + " WHERE Hash = " + hashCode + ";";
+                SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
+                var value = cmd.ExecuteScalar();
+                assetOid = value.ToString();
+                return newAssetOid = EmbeddedImageImport(assetOid);
+            }
+            else
+            {
+                return null;
+            }
+            
+        }
+
+        protected string GetNewAssetOIDFromDBUsingAssetOID(string assetOid, string tableName)
+        {
+            string newAssetOid = null;
+
+            if (assetOid.Length > 0)
+            {
+                return newAssetOid = EmbeddedImageImport(assetOid);
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+
+        public string EmbeddedImageImport(string assetOid)
+        {
+            SqlDataReader sdr = null;
+            sdr = GetDataFromDB(assetOid);
+
+            int importCount = 0;
+            int failedCount = 0;
+            Asset asset = null;
+            Oid embeddedImageOID = null;
+
+            while (sdr.Read())
+            {
+                if
+                (
+                        String.IsNullOrEmpty(sdr["Content"].ToString()) ||
+                        String.IsNullOrEmpty(sdr["ContentType"].ToString())
+                )
+                {
+                    UpdateImportStatus("EmbeddedImages", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Embedded image missing required field.");
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Failed - Count: " + ++failedCount);
+                    continue;
+                }
+
+                try
+                {
+                    string newAssetOID = null;
+
+                    if (String.IsNullOrEmpty(sdr["Asset"].ToString()))
+                    {
+                        newAssetOID = _config.V1TargetConnection.Project;
+                        asset = GetAssetFromV1(newAssetOID);
+                    }
+                    else
+                    {
+                        newAssetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());
+                        asset = GetAssetFromV1(newAssetOID);
+                    }
+
+                    int typePosition = sdr["ContentType"].ToString().IndexOf("/", 0);
+                    string imageType = sdr["ContentType"].ToString().Substring(typePosition + 1);
+                    string filePath = @"C:\Windows\Temp\" + "tempFile." + imageType;
+
+                    try
+                    {
+                        //Process the File Bytes
+                        File.WriteAllBytes(filePath, (byte[])sdr["Content"]);
+
+                        embeddedImageOID = _dataAPI.SaveEmbeddedImage(filePath, asset);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+                    finally
+                    {
+                        File.Delete(filePath);
+                    }
+
+                    UpdateNewAssetOIDAndStatus("EmbeddedImages", sdr["AssetOID"].ToString(), embeddedImageOID.Momentless.ToString(), ImportStatuses.IMPORTED, "Embedded image imported.");
+
+                    importCount++;
+                    _logger.Info("-> Imported {0} Embedded image", importCount);
+                }
+                catch (Exception ex)
+                {
+                    if (_config.V1Configurations.LogExceptions == true)
+                    {
+                        string error = ex.Message.Replace("'", ":");
+                        UpdateImportStatus("Embedded image", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, error);
+                        failedCount++;
+                        _logger.Info("-> Failed {0} Embedded image.", failedCount);
+                        continue;
+                    }
+                    else
+                    {
+                        throw ex;
+                    }
+                }
+            }
+            sdr.Close();
+            return embeddedImageOID.ToString();
+        }
+
+
     }
 }
