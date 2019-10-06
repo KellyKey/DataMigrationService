@@ -37,6 +37,12 @@ namespace V1DataReader
             IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Asset");
             query.Selection.Add(assetAttribute);
 
+            //Filter on parent scope.
+            IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Asset:Workitem.Scope.ParentMeAndUp");
+            FilterTerm term = new FilterTerm(parentScopeAttribute);
+            term.Equal(_config.V1SourceConnection.Project);
+            query.Filter = term;
+
             string SQL = BuildLinkInsertStatement();
 
             //int assetCounter = 11820;

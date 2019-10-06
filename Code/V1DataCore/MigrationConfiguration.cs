@@ -33,8 +33,11 @@ namespace V1DataCore
             public string PortfolioExportFilePrefix { get; set; }
             public string StoryExportFilePrefix { get; set; }
             public string DefectExportFilePrefix { get; set; }
+            public string TestSetExportFilePrefix { get; set; }
             public string TaskExportFilePrefix { get; set; }
             public string TestExportFilePrefix { get; set; }
+            public string RegressionPlanExportFilePrefix { get; set; }
+            public string RegressionSuiteExportFilePrefix { get; set; }
             public string RegressionTestExportFilePrefix { get; set; }
             public string TestStepExportFilePrefix { get; set; }
             public string ConversationExportFilePrefix { get; set; }

@@ -99,9 +99,13 @@
     <Compile Include="ExportLinks.cs" />
     <Compile Include="ExportListTypes.cs" />
     <Compile Include="ExportManager.cs" />
+    <Compile Include="ExportRegressionPlans.cs" />
+    <Compile Include="ExportRegressionSuites.cs" />
     <Compile Include="ExportRegressionTests.cs" />
+    <Compile Include="ExportStories.cs" />
     <Compile Include="ExportTasks.cs" />
     <Compile Include="ExportTests.cs" />
+    <Compile Include="ExportTestSets.cs" />
     <Compile Include="ExportUtils.cs" />
     <Compile Include="IExportAssets.cs" />
     <Compile Include="ExportDefects.cs" />
@@ -116,7 +120,6 @@
     <Compile Include="ExportProjects.cs" />
     <Compile Include="ExportRequests.cs" />
     <Compile Include="ExportSchedules.cs" />
-    <Compile Include="ExportStories.cs" />
     <Compile Include="ExportTeams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

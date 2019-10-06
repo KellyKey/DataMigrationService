@@ -37,10 +37,17 @@ namespace V1DataReader
             IAttributeDefinition contentTypeAttribute = assetType.GetAttributeDefinition("ContentType");
             query.Selection.Add(contentTypeAttribute);
 
+            //Filter on parent scope.
+            IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Asset:Workitem.Scope.ParentMeAndUp");
+            FilterTerm term = new FilterTerm(parentScopeAttribute);
+            term.Equal(_config.V1SourceConnection.Project);
+            query.Filter = term;
+
             string SQL = BuildEmbeddedImageInsertStatement();
 
-
             int assetCounter = 0;
+            int skippedCounter = 0;
+            int totalCounter = 0;
             int assetTotal = 0;
 
             if (_config.V1Configurations.PageSize != 0)
@@ -56,6 +63,14 @@ namespace V1DataReader
 
                 foreach (Asset asset in result.Assets)
                 {
+                    //SqlDataReader sdr = GetDataFromDB(asset.GetAttribute(assetAttribute).Value.ToString());
+                    //if (sdr == null)
+                    //{
+                    //    skippedCounter++;
+                    //    _logger.Info("EmbeddedImage: Skipped - Count = {0}", skippedCounter);
+                    //    continue;
+                    //}
+
                     using (SqlCommand cmd = new SqlCommand())
                     {
                         cmd.Connection = _sqlConn;
@@ -68,9 +83,10 @@ namespace V1DataReader
                         cmd.ExecuteNonQuery();
                     }
                     assetCounter++;
-                    _logger.Info("Asset: " + asset.Oid.ToString() + " Added - Count: " + assetCounter);
+                    _logger.Info("EmbeddedImage Added - Count: " + assetCounter);
                 }
-                query.Paging.Start = assetCounter;
+                totalCounter = assetCounter + skippedCounter;
+                query.Paging.Start = totalCounter;
             } while (assetCounter != assetTotal);
             return assetCounter;
         }

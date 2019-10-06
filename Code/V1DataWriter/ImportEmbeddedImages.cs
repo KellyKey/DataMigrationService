@@ -25,9 +25,7 @@ namespace V1DataWriter
         public override int Import()
         {
             SqlDataReader sdr = null;
-            //Need to get ALL the records even though some may not have an Asset because there is code that downloads the content directly
             sdr = GetImportDataFromDBTable("EmbeddedImages");  
-            //sdr = GetImportDataFromSproc("spGetEmbeddedImagesForImport");  THIS PROC doesn't pull All the records
 
             int importCount = 0;
             int failedCount = 0;
@@ -43,42 +41,25 @@ namespace V1DataWriter
                 )
                 {
                     UpdateImportStatus("EmbeddedImages", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Embedded image missing required field.");
+                    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Failed - Count: " + ++failedCount);
                     continue;
                 }
 
                 try
                 {
-                    //string newAssetOID = null;
+                    string newAssetOID = null;
                     Services services = new Services(_imageConnector);
 
-                    //if (String.IsNullOrEmpty(sdr["Asset"].ToString()))
-                    //{
-                    //    newAssetOID = "Scope:0";
-                    //    asset = GetWorkitem(services, newAssetOID);
-                    //}
-                    //else
-                    //{
-                    //    newAssetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());
-                    //    asset = GetWorkitem(services, newAssetOID);
-                    //}
-
-                    //Must have a New Asset OID to Save the Image, even though it doesn't appear to use it.  ie. Any Asset can point to the same EmbeddedImage
-                    //if (asset == null)
-                    //{
-                        asset = GetWorkitem(services, "Scope:0");
-                    //}
-
-                    //IAssetType assetType = _metaAPI.GetAssetType("EmbeddedImage");
-
-                    //IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Asset");
-                    //asset.SetAttributeValue(assetAttribute, newAssetOID);
-
-                    //IAttributeDefinition contentAttribute = assetType.GetAttributeDefinition("Content");
-                    //asset.SetAttributeValue(contentAttribute, (byte[])sdr["Content"]);
-
-                    //IAttributeDefinition contentTypeAttribute = assetType.GetAttributeDefinition("ContentType");
-                    ////string mimeType = MimeType.Resolve(sdr["ContentType"].ToString());  ***DO NOT USE as it marks all Images with 'application/octet-stream' instead of an Img Type
-                    //asset.SetAttributeValue(contentTypeAttribute, sdr["ContentType"]);
+                    if (String.IsNullOrEmpty(sdr["Asset"].ToString()))
+                    {
+                        newAssetOID = _config.V1TargetConnection.Project;
+                        asset = GetWorkitem(services, newAssetOID);
+                    }
+                    else
+                    {
+                        newAssetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());
+                        asset = GetWorkitem(services, newAssetOID);
+                    }
 
                     int typePosition = sdr["ContentType"].ToString().IndexOf("/", 0);
                     string imageType = sdr["ContentType"].ToString().Substring(typePosition + 1);
@@ -91,8 +72,6 @@ namespace V1DataWriter
                         File.WriteAllBytes(filePath, (byte[])sdr["Content"]);
 
                         embeddedImageOID = services.SaveEmbeddedImage(filePath, asset);
-                        _logger.Info("-> Imported {0} embeddedImage", embeddedImageOID.Token);
-
                     }
                     catch (Exception ex)
                     {
@@ -102,8 +81,6 @@ namespace V1DataWriter
                     {
                         File.Delete(filePath);
                     }
-
-                    //_dataAPI.Save(asset);
 
                     UpdateNewAssetOIDAndStatus("EmbeddedImages", sdr["AssetOID"].ToString(), embeddedImageOID.Momentless.ToString(), ImportStatuses.IMPORTED, "Embedded image imported.");
 

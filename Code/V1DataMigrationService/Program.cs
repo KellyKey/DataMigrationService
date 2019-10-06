@@ -459,6 +459,23 @@ namespace V1DataMigrationService
                         }
                         break;
 
+                    case "TestSets":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Exporting TestSets.");
+                            ExportTestSets testSets = new ExportTestSets(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            assetCount = testSets.Export();
+                            _logger.Info("-> Exported {0} TestSets.", assetCount);
+
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ExportCustomFields custom = new ExportCustomFields(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config, "TestSet");
+                                assetCount = custom.Export();
+                                _logger.Debug("-> Exported {0} TestSet custom fields.", assetCount);
+                            }
+                        }
+                        break;
+
                     case "Tasks":
                         if (asset.Enabled == true)
                         {
@@ -513,8 +530,33 @@ namespace V1DataMigrationService
                         }
                         break;
 
-                        
-                        case "RegressionTests":
+                    case "RegressionPlans":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Exporting regression plans.");
+                            //For V1 Migrations
+                            ExportRegressionPlans regressionPlans = new ExportRegressionPlans(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportRegressionPlans regressionTests = new ExportRegressionPlans(_sqlConn, _config);
+                            assetCount = regressionPlans.Export();
+                            _logger.Info("-> Exported {0} regression plans.", assetCount);
+                        }
+                        break;
+
+                    case "RegressionSuites":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Exporting regression tests.");
+                            //For V1 Migrations
+                            ExportRegressionSuites regressionSuites = new ExportRegressionSuites(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportRegressionSuites regressionTests = new ExportRegressionSuites(_sqlConn, _config);
+                            assetCount = regressionSuites.Export();
+                            _logger.Info("-> Exported {0} regression suites.", assetCount);
+                        }
+                        break;
+
+                    case "RegressionTests":
                         if (asset.Enabled == true)
                         {
                             _logger.Info("Exporting regression tests.");
@@ -830,10 +872,34 @@ namespace V1DataMigrationService
                             {
                                 ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "PrimaryWorkitem:Defects");
                                 assetCount = custom.Import();
-                                _logger.Debug("-> Imported {0} Story custom fields.", assetCount);
+                                _logger.Debug("-> Imported {0} Defect custom fields.", assetCount);
                             }
                         }
                         break;
+
+                    //case "TestSets":
+                    //    if (asset.Enabled == true)
+                    //    {
+                    //        _logger.Info("Importing TestSets.");
+                    //        ImportTestSets testSets = new ImportTestSets(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                    //        assetCount = testSets.Import();
+                    //        _logger.Info("-> Imported {0} TestSets.", assetCount);
+
+                    //        if (asset.EnableCustomFields == true)
+                    //        {
+                    //            ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "TestSet");
+                    //            assetCount = custom.Import();
+                    //            _logger.Debug("-> Imported {0} TestSet custom fields.", assetCount);
+                    //        }
+
+                    //        if (asset.EnableCustomFields == true)
+                    //        {
+                    //            ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "PrimaryWorkitem:TestSets");
+                    //            assetCount = custom.Import();
+                    //            _logger.Debug("-> Imported {0} TestSet custom fields.", assetCount);
+                    //        }
+                    //    }
+                    //    break;
 
                     case "Tasks":
                         if (asset.Enabled == true)

@@ -28,10 +28,6 @@ namespace V1DataReader
             IAssetType assetType = _metaAPI.GetAssetType("Attachment");
             Query query = new Query(assetType);
 
-            //IAssetType assetType = _metaAPI.GetAssetType("Attachment");
-            //Query query = new Query(assetType);
-
-
             IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
             query.Selection.Add(nameAttribute);
 
@@ -53,6 +49,12 @@ namespace V1DataReader
             IAttributeDefinition assetAttribute = assetType.GetAttributeDefinition("Asset");
             query.Selection.Add(assetAttribute);
 
+            //Filter on parent scope.
+            IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Asset:Workitem.Scope.ParentMeAndUp");
+            FilterTerm term = new FilterTerm(parentScopeAttribute);
+            term.Equal(_config.V1SourceConnection.Project);
+            query.Filter = term;
+
             string SQL = BuildAttachmentInsertStatement();
 
             //int assetCounter = 43091;
@@ -69,7 +71,6 @@ namespace V1DataReader
                 query.Paging.PageSize = _config.V1Configurations.PageSize;
             }
 
-
             do
             {
                 QueryResult result = _dataAPI.Retrieve(query);
@@ -77,13 +78,13 @@ namespace V1DataReader
 
                 foreach (Asset asset in result.Assets)
                 {
-                    SqlDataReader sdr = GetDataFromDB(asset.GetAttribute(assetAttribute).Value.ToString());
-                    if (sdr == null)
-                    {
-                        skippedCounter++;
-                        _logger.Info("Attachment: Skipped - Count = {0}", skippedCounter);
-                        continue;
-                    }
+                    //SqlDataReader sdr = GetDataFromDB(asset.GetAttribute(assetAttribute).Value.ToString());
+                    //if (sdr == null)
+                    //{
+                    //    skippedCounter++;
+                    //    _logger.Info("Attachment: Skipped - Count = {0}", skippedCounter);
+                    //    continue;
+                    //}
 
                     using (SqlCommand cmd = new SqlCommand())
                     {

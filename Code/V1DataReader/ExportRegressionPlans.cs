@@ -10,28 +10,23 @@ using NLog;
 
 namespace V1DataReader
 {
-    public class ExportRegressionTests : IExportAssets
+    public class ExportRegressionPlans : IExportAssets
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public ExportRegressionTests(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ExportRegressionPlans(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Export()
         {
-            IAssetType assetType = _metaAPI.GetAssetType("RegressionTest");
+            IAssetType assetType = _metaAPI.GetAssetType("RegressionPlan");
             Query query = new Query(assetType);
-
-//Team : Relation to Team — reciprocal of RegressionTests
 
             IAttributeDefinition assetStateAttribute = assetType.GetAttributeDefinition("AssetState");
             query.Selection.Add(assetStateAttribute);
 
-            IAttributeDefinition assetNumberAttribute = assetType.GetAttributeDefinition("Number");
-            query.Selection.Add(assetNumberAttribute);
-
-            IAttributeDefinition ownersAttribute = assetType.GetAttributeDefinition("Owners");
-            query.Selection.Add(ownersAttribute);
+            IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
+            query.Selection.Add(nameAttribute);
 
             IAttributeDefinition scopeAttribute = assetType.GetAttributeDefinition("Scope");
             query.Selection.Add(scopeAttribute);
@@ -39,41 +34,20 @@ namespace V1DataReader
             IAttributeDefinition descriptionAttribute = assetType.GetAttributeDefinition("Description");
             query.Selection.Add(descriptionAttribute);
 
-            IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
-            query.Selection.Add(nameAttribute);
-
-            IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Category");
-            query.Selection.Add(categoryAttribute);
+            IAttributeDefinition ownersAttribute = assetType.GetAttributeDefinition("Owner");
+            query.Selection.Add(ownersAttribute);
 
             IAttributeDefinition referenceAttribute = assetType.GetAttributeDefinition("Reference");
             query.Selection.Add(referenceAttribute);
 
-            IAttributeDefinition stepsAttribute = assetType.GetAttributeDefinition("Steps");
-            query.Selection.Add(stepsAttribute);
-
-            IAttributeDefinition inputsAttribute = assetType.GetAttributeDefinition("Inputs");
-            query.Selection.Add(inputsAttribute);
-
-            IAttributeDefinition setupAttribute = assetType.GetAttributeDefinition("Setup");
-            query.Selection.Add(setupAttribute);
-
-            IAttributeDefinition expectedResultsAttribute = assetType.GetAttributeDefinition("ExpectedResults");
-            query.Selection.Add(expectedResultsAttribute);
-
-            IAttributeDefinition statusAttribute = assetType.GetAttributeDefinition("Status");
-            query.Selection.Add(statusAttribute);
+            IAttributeDefinition assetNumberAttribute = assetType.GetAttributeDefinition("Number");
+            query.Selection.Add(assetNumberAttribute);
 
             IAttributeDefinition taggedWithAttribute = assetType.GetAttributeDefinition("TaggedWith");
             query.Selection.Add(taggedWithAttribute);
 
-            IAttributeDefinition generatedFromAttribute = assetType.GetAttributeDefinition("GeneratedFrom");
-            query.Selection.Add(generatedFromAttribute);
-
             IAttributeDefinition regressionSuitesAttribute = assetType.GetAttributeDefinition("RegressionSuites");
             query.Selection.Add(regressionSuitesAttribute);
-
-            IAttributeDefinition teamAttribute = assetType.GetAttributeDefinition("Team");
-            query.Selection.Add(teamAttribute);
 
             //Filter on parent scope.
             IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Scope.ParentMeAndUp");
@@ -81,7 +55,7 @@ namespace V1DataReader
             term.Equal(_config.V1SourceConnection.Project);
             query.Filter = term;
 
-            string SQL = BuildRegressionTestInsertStatement();
+            string SQL = BuildRegressionPlanInsertStatement();
 
             if (_config.V1Configurations.PageSize != 0)
             {
@@ -111,31 +85,23 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@Scope", GetSingleRelationValue(asset.GetAttribute(scopeAttribute)));
                         cmd.Parameters.AddWithValue("@Description", GetScalerValue(asset.GetAttribute(descriptionAttribute)));
                         cmd.Parameters.AddWithValue("@Name", GetScalerValue(asset.GetAttribute(nameAttribute)));
-                        cmd.Parameters.AddWithValue("@Category", GetSingleRelationValue(asset.GetAttribute(categoryAttribute)));
                         cmd.Parameters.AddWithValue("@Reference", GetSingleRelationValue(asset.GetAttribute(referenceAttribute)));
-                        cmd.Parameters.AddWithValue("@Steps", GetSingleRelationValue(asset.GetAttribute(stepsAttribute)));
-                        cmd.Parameters.AddWithValue("@Inputs", GetSingleRelationValue(asset.GetAttribute(inputsAttribute)));
-                        cmd.Parameters.AddWithValue("@Setup", GetSingleRelationValue(asset.GetAttribute(setupAttribute)));
-                        cmd.Parameters.AddWithValue("@ExpectedResults", GetSingleRelationValue(asset.GetAttribute(expectedResultsAttribute)));
-                        cmd.Parameters.AddWithValue("@Status", GetSingleRelationValue(asset.GetAttribute(statusAttribute)));
                         cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
-                        cmd.Parameters.AddWithValue("@GeneratedFrom", GetMultiRelationValues(asset.GetAttribute(generatedFromAttribute)));
                         cmd.Parameters.AddWithValue("@RegressionSuites", GetMultiRelationValues(asset.GetAttribute(regressionSuitesAttribute)));
-                        cmd.Parameters.AddWithValue("@Team", GetSingleRelationValue(asset.GetAttribute(teamAttribute)));
                         cmd.ExecuteNonQuery();
                     }
                     assetCounter++;
-                    _logger.Info("Regression Test: added - Count = {0}", assetCounter);
+                    _logger.Info("Regression Plan: added - Count = {0}", assetCounter);
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);
             return assetCounter;
         }
 
-        private string BuildRegressionTestInsertStatement()
+        private string BuildRegressionPlanInsertStatement()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("INSERT INTO REGRESSIONTESTS (");
+            sb.Append("INSERT INTO REGRESSIONPLANS (");
             sb.Append("AssetOID,");
             sb.Append("AssetState,");
             sb.Append("AssetNumber,");
@@ -143,17 +109,9 @@ namespace V1DataReader
             sb.Append("Scope,");
             sb.Append("Description,");
             sb.Append("Name,");
-            sb.Append("Category,");
             sb.Append("Reference,");
-            sb.Append("Steps,");
-            sb.Append("Inputs,");
-            sb.Append("Setup,");
-            sb.Append("ExpectedResults,");
-            sb.Append("Status,");
             sb.Append("TaggedWith,");
-            sb.Append("GeneratedFrom,");
-            sb.Append("RegressionSuites,");
-            sb.Append("Team) ");
+            sb.Append("RegressionSuites) ");
             sb.Append("VALUES (");
             sb.Append("@AssetOID,");
             sb.Append("@AssetState,");
@@ -162,17 +120,9 @@ namespace V1DataReader
             sb.Append("@Scope,");
             sb.Append("@Description,");
             sb.Append("@Name,");
-            sb.Append("@Category,");
             sb.Append("@Reference,");
-            sb.Append("@Steps,");
-            sb.Append("@Inputs,");
-            sb.Append("@Setup,");
-            sb.Append("@ExpectedResults,");
-            sb.Append("@Status,");
             sb.Append("@TaggedWith,");
-            sb.Append("@GeneratedFrom,");
-            sb.Append("@RegressionSuites,");
-            sb.Append("@Team);");
+            sb.Append("@RegressionSuites);");
             return sb.ToString();
         }
 

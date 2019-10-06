@@ -22,6 +22,7 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTable("ListTypes");
 
             int importCount = 0;
+            int skippedCount = 0;
             while (sdr.Read())
             {
                 try
@@ -32,6 +33,7 @@ namespace V1DataWriter
                     if (string.IsNullOrEmpty(currentAssetOID) == false)
                     {
                         UpdateNewAssetOIDAndStatus("ListTypes", sdr["AssetOID"].ToString(), currentAssetOID, ImportStatuses.SKIPPED, "Duplicate list type.");
+                        _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count: " + ++skippedCount);
                     }
                     else
                     {
@@ -66,6 +68,7 @@ namespace V1DataWriter
                     if (_config.V1Configurations.LogExceptions == true)
                     {
                         UpdateImportStatus("ListTypes", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Failed - Count: " + ++skippedCount);
                         continue;
                     }
                     else

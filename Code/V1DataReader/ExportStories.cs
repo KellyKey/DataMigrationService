@@ -259,13 +259,7 @@ namespace V1DataReader
             if (_config.V1Configurations.MigrateTemplates == false)
             {
                 DeleteStoryTemplates();
-            }
-
-            //Check for Epics as Stories from V1 Major < 12
-            //ExportEpics epicStory = new ExportEpics(_sqlConn, _metaAPI, _dataAPI, _config);
-            //epicStory.Export();
-            //int rc = ExportEpicsFromStories();
-            
+            }            
             return assetCounter;
         }
 

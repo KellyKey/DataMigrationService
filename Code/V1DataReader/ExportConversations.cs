@@ -62,6 +62,13 @@ namespace V1DataReader
             IAttributeDefinition inReplyToAttribute = assetType.GetAttributeDefinition("InReplyTo");
             query.Selection.Add(inReplyToAttribute);
 
+            //Filter on parent scope.
+            IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Mentions:Workitem.Scope.ParentMeAndUp");
+            FilterTerm term = new FilterTerm(parentScopeAttribute);
+            term.Equal(_config.V1SourceConnection.Project);
+            query.Filter = term;
+
+
             string SQL = BuildConversationInsertStatement();
 
             if (_config.V1Configurations.PageSize != 0)
