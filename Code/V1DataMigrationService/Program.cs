@@ -877,29 +877,29 @@ namespace V1DataMigrationService
                         }
                         break;
 
-                    //case "TestSets":
-                    //    if (asset.Enabled == true)
-                    //    {
-                    //        _logger.Info("Importing TestSets.");
-                    //        ImportTestSets testSets = new ImportTestSets(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
-                    //        assetCount = testSets.Import();
-                    //        _logger.Info("-> Imported {0} TestSets.", assetCount);
+                    case "TestSets":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Importing TestSets.");
+                            ImportTestSets testSets = new ImportTestSets(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                            assetCount = testSets.Import();
+                            _logger.Info("-> Imported {0} TestSets.", assetCount);
 
-                    //        if (asset.EnableCustomFields == true)
-                    //        {
-                    //            ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "TestSet");
-                    //            assetCount = custom.Import();
-                    //            _logger.Debug("-> Imported {0} TestSet custom fields.", assetCount);
-                    //        }
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "TestSet");
+                                assetCount = custom.Import();
+                                _logger.Debug("-> Imported {0} TestSet custom fields.", assetCount);
+                            }
 
-                    //        if (asset.EnableCustomFields == true)
-                    //        {
-                    //            ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "PrimaryWorkitem:TestSets");
-                    //            assetCount = custom.Import();
-                    //            _logger.Debug("-> Imported {0} TestSet custom fields.", assetCount);
-                    //        }
-                    //    }
-                    //    break;
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "PrimaryWorkitem:TestSets");
+                                assetCount = custom.Import();
+                                _logger.Debug("-> Imported {0} TestSet custom fields.", assetCount);
+                            }
+                        }
+                        break;
 
                     case "Tasks":
                         if (asset.Enabled == true)

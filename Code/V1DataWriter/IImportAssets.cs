@@ -91,9 +91,9 @@ namespace V1DataWriter
 
         protected SqlDataReader GetImportDataFromDBTableWithOrder(string TableName)
         {
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY [Order] ASC;";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY [Order] ASC;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED' ORDER BY [Order] ASC;";
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting' and Description like '%<img src=%' ORDER BY [Order] ASC;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus != 'IMPORTED' ORDER BY [Order] ASC;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
@@ -1021,6 +1021,7 @@ namespace V1DataWriter
 
                     importCount++;
                     _logger.Info("-> Imported {0} Embedded image", importCount);
+                    return embeddedImageOID.ToString();
                 }
                 catch (Exception ex)
                 {
@@ -1039,7 +1040,7 @@ namespace V1DataWriter
                 }
             }
             sdr.Close();
-            return embeddedImageOID.ToString();
+            return String.Empty;
         }
 
 

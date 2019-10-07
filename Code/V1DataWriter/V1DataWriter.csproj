@@ -121,6 +121,7 @@
     <Compile Include="ImportTasks.cs" />
     <Compile Include="ImportTeams.cs" />
     <Compile Include="ImportTests.cs" />
+    <Compile Include="ImportTestSets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlUtil.cs" />
   </ItemGroup>
