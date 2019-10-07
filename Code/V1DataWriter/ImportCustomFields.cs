@@ -53,10 +53,10 @@ namespace V1DataWriter
             foreach (MigrationConfiguration.CustomFieldInfo field in fields)
             {
 
-                if (field.SourceName != "Custom_Severity2")
-                {
-                    continue;
-                }
+                //if (field.SourceName != "Custom_Severity2")
+                //{
+                //    continue;
+                //}
 
                 SqlDataReader sdr = GetImportDataFromDBTableForCustomFields(_tableName, field.SourceName);
                 while (sdr.Read())

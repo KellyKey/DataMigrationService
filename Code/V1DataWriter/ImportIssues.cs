@@ -23,6 +23,7 @@ namespace V1DataWriter
             SqlDataReader sdr = GetImportDataFromDBTableWithOrder("Issues");
 
             int importCount = 0;
+            int skippedCount = 0;
             while (sdr.Read())
             {
                 try
@@ -31,13 +32,15 @@ namespace V1DataWriter
                     if (String.IsNullOrEmpty(sdr["Scope"].ToString()))
                     {
                         UpdateImportStatus("Issues", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Issue has no scope.");
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Failed - Count = " + ++skippedCount);
                         continue;
                     }
 
                     //SPECIAL CASE: Issue already has been Imported.
                     if (sdr["ImportStatus"].ToString().Equals("IMPORTED"))
                     {
-                        //UpdateImportStatus("Issues", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Issue has no scope.");
+                        UpdateImportStatus("Issues", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "Issue has no scope.");
+                        _logger.Error("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count = " + ++skippedCount);
                         continue;
                     }
 

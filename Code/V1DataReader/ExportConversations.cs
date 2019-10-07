@@ -63,10 +63,27 @@ namespace V1DataReader
             query.Selection.Add(inReplyToAttribute);
 
             //Filter on parent scope.
-            IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Mentions:Workitem.Scope.ParentMeAndUp");
-            FilterTerm term = new FilterTerm(parentScopeAttribute);
-            term.Equal(_config.V1SourceConnection.Project);
-            query.Filter = term;
+            IAttributeDefinition workitemScopeAttribute = assetType.GetAttributeDefinition("Mentions:Workitem.Scope.ParentMeAndUp");
+            FilterTerm termWorkitem = new FilterTerm(workitemScopeAttribute);
+            termWorkitem.Equal(_config.V1SourceConnection.Project);
+
+            IAttributeDefinition issueScopeAttribute = assetType.GetAttributeDefinition("Mentions:Issue.Scope.ParentMeAndUp");
+            FilterTerm termIssue = new FilterTerm(issueScopeAttribute);
+            termIssue.Equal(_config.V1SourceConnection.Project);
+
+            IAttributeDefinition goalScopeAttribute = assetType.GetAttributeDefinition("Mentions:Goal.Scope.ParentMeAndUp");
+            FilterTerm termGoal = new FilterTerm(goalScopeAttribute);
+            termGoal.Equal(_config.V1SourceConnection.Project);
+
+            IAttributeDefinition regressionTestScopeAttribute = assetType.GetAttributeDefinition("Mentions:RegressionTest.Scope.ParentMeAndUp");
+            FilterTerm termRegressionTest = new FilterTerm(regressionTestScopeAttribute);
+            termRegressionTest.Equal(_config.V1SourceConnection.Project);
+
+            IAttributeDefinition requestScopeAttribute = assetType.GetAttributeDefinition("Mentions:Request.Scope.ParentMeAndUp");
+            FilterTerm termRequest = new FilterTerm(requestScopeAttribute);
+            termRequest.Equal(_config.V1SourceConnection.Project);
+
+            query.Filter = new OrFilterTerm(termWorkitem, termIssue, termGoal, termRegressionTest, termRequest);
 
 
             string SQL = BuildConversationInsertStatement();

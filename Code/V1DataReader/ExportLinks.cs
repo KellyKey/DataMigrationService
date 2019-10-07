@@ -38,10 +38,27 @@ namespace V1DataReader
             query.Selection.Add(assetAttribute);
 
             //Filter on parent scope.
-            IAttributeDefinition parentScopeAttribute = assetType.GetAttributeDefinition("Asset:Workitem.Scope.ParentMeAndUp");
-            FilterTerm term = new FilterTerm(parentScopeAttribute);
-            term.Equal(_config.V1SourceConnection.Project);
-            query.Filter = term;
+            IAttributeDefinition workitemScopeAttribute = assetType.GetAttributeDefinition("Asset:Workitem.Scope.ParentMeAndUp");
+            FilterTerm termWorkitem = new FilterTerm(workitemScopeAttribute);
+            termWorkitem.Equal(_config.V1SourceConnection.Project);
+
+            IAttributeDefinition issueScopeAttribute = assetType.GetAttributeDefinition("Asset:Issue.Scope.ParentMeAndUp");
+            FilterTerm termIssue = new FilterTerm(issueScopeAttribute);
+            termIssue.Equal(_config.V1SourceConnection.Project);
+
+            IAttributeDefinition goalScopeAttribute = assetType.GetAttributeDefinition("Asset:Goal.Scope.ParentMeAndUp");
+            FilterTerm termGoal = new FilterTerm(goalScopeAttribute);
+            termGoal.Equal(_config.V1SourceConnection.Project);
+
+            IAttributeDefinition regressionTestScopeAttribute = assetType.GetAttributeDefinition("Asset:RegressionTest.Scope.ParentMeAndUp");
+            FilterTerm termRegressionTest = new FilterTerm(regressionTestScopeAttribute);
+            termRegressionTest.Equal(_config.V1SourceConnection.Project);
+
+            IAttributeDefinition requestScopeAttribute = assetType.GetAttributeDefinition("Asset:Request.Scope.ParentMeAndUp");
+            FilterTerm termRequest = new FilterTerm(requestScopeAttribute);
+            termRequest.Equal(_config.V1SourceConnection.Project);
+
+            query.Filter = new OrFilterTerm(termWorkitem, termIssue, termGoal, termRegressionTest, termRequest);
 
             string SQL = BuildLinkInsertStatement();
 
@@ -68,13 +85,13 @@ namespace V1DataReader
                 foreach (Asset asset in result.Assets)
                 {
 
-                    SqlDataReader sdr = GetDataFromDB(asset.GetAttribute(assetAttribute).Value.ToString());
-                    if (sdr == null)
-                    {
-                        skippedCounter++;
-                        _logger.Info("Link: Skipped - Count = {0}", skippedCounter);
-                        continue;
-                    }
+                    //SqlDataReader sdr = GetDataFromDB(asset.GetAttribute(assetAttribute).Value.ToString());
+                    //if (sdr == null)
+                    //{
+                    //    skippedCounter++;
+                    //    _logger.Info("Link: Skipped - Count = {0}", skippedCounter);
+                    //    continue;
+                    //}
 
                     using (SqlCommand cmd = new SqlCommand())
                     {

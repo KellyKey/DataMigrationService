@@ -47,11 +47,11 @@ namespace V1DataWriter
          **************************************************************************************/
         protected SqlDataReader GetImportDataFromDBTable(string TableName)
         {
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK);";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK);";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) order by Order;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED';";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting';";
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where Hash is not null;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
@@ -91,10 +91,11 @@ namespace V1DataWriter
 
         protected SqlDataReader GetImportDataFromDBTableWithOrder(string TableName)
         {
-            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY [Order] ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) ORDER BY [Order] ASC;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED' ORDER BY [Order] ASC;";
-            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null ORDER BY [Order] ASC;";
             //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting' and Description like '%<img src=%' ORDER BY [Order] ASC;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus != 'IMPORTED' ORDER BY [Order] ASC;";
             SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
             SqlDataReader sdr = cmd.ExecuteReader();
             return sdr;
@@ -794,7 +795,7 @@ namespace V1DataWriter
         {
             if (String.IsNullOrEmpty(assetOID) == false)
             {
-                string SQL = "SELECT * FROM " + lookupTable + " WHERE Asset = '" + assetOID + "' and ImportStatus = '';";
+                string SQL = "SELECT * FROM " + lookupTable + " WHERE AssetOID = '" + assetOID + "'";
                 SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
                 return cmd.ExecuteReader();
             }
@@ -810,7 +811,7 @@ namespace V1DataWriter
 
             if (String.IsNullOrEmpty(assetOID) == false)
             {
-                string SQL = "SELECT * FROM " + tableName + " WHERE Asset = '" + assetOID + "' and ImportStatus = '';";
+                string SQL = "SELECT * FROM " + tableName + " WHERE Asset = '" + assetOID + "'";
                 SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
                 return cmd.ExecuteReader();
             }
@@ -964,7 +965,7 @@ namespace V1DataWriter
         public string EmbeddedImageImport(string assetOid)
         {
             SqlDataReader sdr = null;
-            sdr = GetDataFromDB(assetOid);
+            sdr = GetDataFromDB("EmbeddedImages", assetOid);
 
             int importCount = 0;
             int failedCount = 0;
@@ -988,16 +989,13 @@ namespace V1DataWriter
                 {
                     string newAssetOID = null;
 
-                    if (String.IsNullOrEmpty(sdr["Asset"].ToString()))
+                    if(String.IsNullOrEmpty(sdr["NewAssetOID"].ToString()) == false)
                     {
-                        newAssetOID = _config.V1TargetConnection.Project;
-                        asset = GetAssetFromV1(newAssetOID);
+                        return sdr["NewAssetOID"].ToString();
                     }
-                    else
-                    {
-                        newAssetOID = GetNewAssetOIDFromDB(sdr["Asset"].ToString());
-                        asset = GetAssetFromV1(newAssetOID);
-                    }
+
+                    newAssetOID = _config.V1TargetConnection.Project;
+                    asset = GetAssetFromV1(newAssetOID);
 
                     int typePosition = sdr["ContentType"].ToString().IndexOf("/", 0);
                     string imageType = sdr["ContentType"].ToString().Substring(typePosition + 1);
