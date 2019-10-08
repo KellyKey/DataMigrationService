@@ -10,16 +10,16 @@ using NLog;
 
 namespace V1DataWriter
 {
-    public class ImportRegressionPlans : IImportAssets
+    public class ImportRegressionSuites : IImportAssets
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
 
-        public ImportRegressionPlans(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
+        public ImportRegressionSuites(SqlConnection sqlConn, IMetaModel MetaAPI, Services DataAPI, MigrationConfiguration Configurations)
             : base(sqlConn, MetaAPI, DataAPI, Configurations) { }
 
         public override int Import()
         {
-            SqlDataReader sdr = GetImportDataFromDBTable("RegressionPlans");
+            SqlDataReader sdr = GetImportDataFromDBTable("RegressionSuites");
 
             int importCount = 0;
             int skippedCount = 0;
@@ -30,12 +30,12 @@ namespace V1DataWriter
                     //SPECIAL CASE: Orphaned RegressionPlans that has no assigned scope, fail to import.
                     if (String.IsNullOrEmpty(sdr["Scope"].ToString()))
                     {
-                        UpdateImportStatus("RegressionPlans", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "RegressionPlan has no scope.");
+                        UpdateImportStatus("RegressionSuites", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "RegressionSuite has no scope.");
                         _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count: " + ++skippedCount);
                         continue;
                     }
 
-                    IAssetType assetType = _metaAPI.GetAssetType("RegressionPlan");
+                    IAssetType assetType = _metaAPI.GetAssetType("RegressionSuites");
                     Asset asset = _dataAPI.New(assetType, null);
 
                     IAttributeDefinition fullNameAttribute = assetType.GetAttributeDefinition("Name");
@@ -64,15 +64,20 @@ namespace V1DataWriter
                         AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
                     }
 
-                    if (String.IsNullOrEmpty(sdr["RegressionSuites"].ToString()) == false)
+                    if (String.IsNullOrEmpty(sdr["RegressionTests"].ToString()) == false)
                     {
-                        AddMultiValueRelation(assetType, asset, "RegressionSuites", sdr["RegressionSuites"].ToString());
+                        AddMultiValueRelation(assetType, asset, "RegressionTests", sdr["RegressionTests"].ToString());
+                    }
+
+                    if (String.IsNullOrEmpty(sdr["TestSets"].ToString()) == false)
+                    {
+                        AddMultiValueRelation(assetType, asset, "TestSets", sdr["TestSets"].ToString());
                     }
 
                     _dataAPI.Save(asset);
-                    string newAssetNumber = GetAssetNumberV1("RegressionPlan", asset.Oid.Momentless.ToString());
-                    UpdateNewAssetOIDAndNumberInDB("RegressionPlans", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber);
-                    UpdateImportStatus("RegressionPlans", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "RegressionPlan imported.");
+                    string newAssetNumber = GetAssetNumberV1("RegressionSuite", asset.Oid.Momentless.ToString());
+                    UpdateNewAssetOIDAndNumberInDB("RegressionSuites", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), newAssetNumber);
+                    UpdateImportStatus("RegressionSuites", sdr["AssetOID"].ToString(), ImportStatuses.IMPORTED, "RegressionSuite imported.");
                     importCount++;
                     _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Added - Count: " + importCount);
 
@@ -81,7 +86,7 @@ namespace V1DataWriter
                 {
                     if (_config.V1Configurations.LogExceptions == true)
                     {
-                        UpdateImportStatus("RegressionPlans", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
+                        UpdateImportStatus("RegressionSuites", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, ex.Message);
                         _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Failed - Count: " + ++skippedCount);
                         continue;
                     }
@@ -95,9 +100,9 @@ namespace V1DataWriter
             return importCount;
         }
 
-        public int CloseRegressionPlans()
+        public int CloseRegressionSuites()
         {
-            SqlDataReader sdr = GetImportDataFromDBTableForClosing("RegressionPlans");
+            SqlDataReader sdr = GetImportDataFromDBTableForClosing("RegressionSuites");
             int assetCount = 0;
             int exceptionCount = 0;
             int colonLocation = 0;
@@ -134,9 +139,9 @@ namespace V1DataWriter
             return assetCount;
         }
 
-        public int OpenRegressionPlans()
+        public int OpenRegressionSuites()
         {
-            SqlDataReader sdr = GetImportDataFromDBTableForClosing("RegressionPlans");
+            SqlDataReader sdr = GetImportDataFromDBTableForClosing("RegressionSuites");
             int assetCount = 0;
             int exceptionCount = 0;
             int colonLocation = 0;

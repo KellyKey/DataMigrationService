@@ -115,6 +115,7 @@
     <Compile Include="ImportPrograms.cs" />
     <Compile Include="ImportProjects.cs" />
     <Compile Include="ImportRegressionPlans.cs" />
+    <Compile Include="ImportRegressionSuites.cs" />
     <Compile Include="ImportRegressionTests.cs" />
     <Compile Include="ImportRequests.cs" />
     <Compile Include="ImportSchedules.cs" />

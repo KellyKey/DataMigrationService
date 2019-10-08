@@ -811,6 +811,40 @@ namespace V1DataMigrationService
                         }
                         break;
 
+                    case "RegressionPlans":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Importing RegressionPlans.");
+                            ImportRegressionPlans regressionPlans = new ImportRegressionPlans(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                            assetCount = regressionPlans.Import();
+                            _logger.Info("-> Imported {0} RegressionPlans.", assetCount);
+
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Epic");
+                                assetCount = custom.Import();
+                                _logger.Debug("-> Imported {0} RegressionPlan custom fields.", assetCount);
+                            }
+                        }
+                        break;
+
+                    case "RegressionSuites":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Importing RegressionSuites.");
+                            ImportRegressionSuites regressionSuites = new ImportRegressionSuites(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                            assetCount = regressionSuites.Import();
+                            _logger.Info("-> Imported {0} RegressionSuites.", assetCount);
+
+                            if (asset.EnableCustomFields == true)
+                            {
+                                ImportCustomFields custom = new ImportCustomFields(_sqlConn, _targetMetaAPI, _targetDataAPI, _config, "Epic");
+                                assetCount = custom.Import();
+                                _logger.Debug("-> Imported {0} RegressionSuites custom fields.", assetCount);
+                            }
+                        }
+                        break;
+
                     case "Epics":
                         if (asset.Enabled == true)
                         {
