@@ -386,6 +386,43 @@ namespace V1DataMigrationService
                         }
                         break;
 
+                    case "RegressionPlans":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Exporting regression plans.");
+                            //For V1 Migrations
+                            ExportRegressionPlans regressionPlans = new ExportRegressionPlans(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportRegressionPlans regressionTests = new ExportRegressionPlans(_sqlConn, _config);
+                            assetCount = regressionPlans.Export();
+                            _logger.Info("-> Exported {0} regression plans.", assetCount);
+                        }
+                        break;
+
+                    case "RegressionSuites":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Exporting regression tests.");
+                            //For V1 Migrations
+                            ExportRegressionSuites regressionSuites = new ExportRegressionSuites(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            //For Rally and Jira Migrations
+                            //ExportRegressionSuites regressionTests = new ExportRegressionSuites(_sqlConn, _config);
+                            assetCount = regressionSuites.Export();
+                            _logger.Info("-> Exported {0} regression suites.", assetCount);
+                        }
+                        break;
+
+                    //For V1 Migrations
+                    case "Environments":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Exporting Environments.");
+                            ExportEnvironments environments = new ExportEnvironments(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
+                            assetCount = environments.Export();
+                            _logger.Info("-> Exported {0} environments.", assetCount);
+                        }
+                        break;
+
                     case "Epics":
                         if (asset.Enabled == true)
                         {
@@ -527,32 +564,6 @@ namespace V1DataMigrationService
                                 _logger.Debug("-> Exported {0} Tests custom fields.", assetCount);
                             }
 
-                        }
-                        break;
-
-                    case "RegressionPlans":
-                        if (asset.Enabled == true)
-                        {
-                            _logger.Info("Exporting regression plans.");
-                            //For V1 Migrations
-                            ExportRegressionPlans regressionPlans = new ExportRegressionPlans(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
-                            //For Rally and Jira Migrations
-                            //ExportRegressionPlans regressionTests = new ExportRegressionPlans(_sqlConn, _config);
-                            assetCount = regressionPlans.Export();
-                            _logger.Info("-> Exported {0} regression plans.", assetCount);
-                        }
-                        break;
-
-                    case "RegressionSuites":
-                        if (asset.Enabled == true)
-                        {
-                            _logger.Info("Exporting regression tests.");
-                            //For V1 Migrations
-                            ExportRegressionSuites regressionSuites = new ExportRegressionSuites(_sqlConn, _sourceMetaAPI, _sourceDataAPI, _config);
-                            //For Rally and Jira Migrations
-                            //ExportRegressionSuites regressionTests = new ExportRegressionSuites(_sqlConn, _config);
-                            assetCount = regressionSuites.Export();
-                            _logger.Info("-> Exported {0} regression suites.", assetCount);
                         }
                         break;
 
@@ -842,6 +853,16 @@ namespace V1DataMigrationService
                                 assetCount = custom.Import();
                                 _logger.Debug("-> Imported {0} RegressionSuites custom fields.", assetCount);
                             }
+                        }
+                        break;
+
+                    case "Environments":
+                        if (asset.Enabled == true)
+                        {
+                            _logger.Info("Importing Environments.");
+                            ImportEnvironments environments = new ImportEnvironments(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                            assetCount = environments.Import();
+                            _logger.Info("-> Imported {0} environments.", assetCount);
                         }
                         break;
 

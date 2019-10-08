@@ -87,7 +87,7 @@ namespace V1DataWriter
                     asset.SetAttributeValue(estimateAttribute, sdr["Estimate"].ToString());
 
                     IAttributeDefinition environmentAttribute = assetType.GetAttributeDefinition("Environment");
-                    asset.SetAttributeValue(environmentAttribute, sdr["Environment"].ToString());
+                    asset.SetAttributeValue(environmentAttribute, GetNewAssetOIDFromDB(sdr["Environment"].ToString()));
 
                     IAttributeDefinition scopeAttribute = assetType.GetAttributeDefinition("Scope");
                     asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString(), "Scope"));
@@ -98,11 +98,6 @@ namespace V1DataWriter
                     ////HACK: For Rally import, needs to be refactored.
                     ////asset.SetAttributeValue(statusAttribute, GetNewListTypeAssetOIDFromDB("StoryStatus", sdr["Status"].ToString()));
                     ////asset.SetAttributeValue(statusAttribute, GetStatusAssetOID(sdr["Status"].ToString()));
-
-                    IAttributeDefinition affectedByDefectsAttribute = assetType.GetAttributeDefinition("AffectedByDefects");
-                    asset.SetAttributeValue(affectedByDefectsAttribute, GetNewListTypeAssetOIDFromDB(sdr["AffectedByDefects"].ToString()));
-                    ////HACK: For Rally import, needs to be refactored.
-                    ////asset.SetAttributeValue(typeAttribute, GetNewListTypeAssetOIDFromDB("DefectType", sdr["Type"].ToString()));
 
                     ////HACK: For Rally import, needs to be refactored.
                     IAttributeDefinition sourceAttribute = assetType.GetAttributeDefinition("Source");
@@ -118,6 +113,11 @@ namespace V1DataWriter
 
                     IAttributeDefinition parentAttribute = assetType.GetAttributeDefinition("Parent");
                     asset.SetAttributeValue(parentAttribute, GetNewAssetOIDFromDB(sdr["Parent"].ToString()));
+
+                    if (String.IsNullOrEmpty(sdr["AffectedByDefects"].ToString()) == false)
+                    {
+                        AddMultiValueRelation(assetType, asset, "AffectedByDefects", sdr["AffectedByDefects"].ToString());
+                    }
 
                     if (String.IsNullOrEmpty(sdr["Requests"].ToString()) == false)
                     {

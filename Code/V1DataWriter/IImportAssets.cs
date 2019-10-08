@@ -569,6 +569,10 @@ namespace V1DataWriter
                 {
                     attributeName = "Issues";
                 }
+                else if (attributeName == "AffectedByDefects")
+                {
+                    attributeName = "Defects";
+                }
 
                 string newAssetOID = GetNewAssetOIDFromDB(value);
 
@@ -771,6 +775,12 @@ namespace V1DataWriter
                 tableName = "Attachments";
             else if (CurrentAssetOID.Contains("EmbeddedImage"))
                 tableName = "EmbeddedImages";
+            else if (CurrentAssetOID.Contains("RegressionPlan"))
+                tableName = "RegressionPlans";
+            else if (CurrentAssetOID.Contains("RegressionSuite"))
+                tableName = "RegressionSuites";
+            else if (CurrentAssetOID.Length < 1)
+                tableName = "";
             else
                 tableName = "ListTypes";
 

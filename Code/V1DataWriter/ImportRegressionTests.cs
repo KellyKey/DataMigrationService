@@ -80,10 +80,14 @@ namespace V1DataWriter
                     if (String.IsNullOrEmpty(sdr["TaggedWith"].ToString()) == false)
                     {
                         IAttributeDefinition multiAttribute = assetType.GetAttributeDefinition("TaggedWith");
-
                         AddMultiText(assetType, asset, multiAttribute, sdr["TaggedWith"].ToString());
-
                     }
+
+                    if (String.IsNullOrEmpty(sdr["RegressionSuites"].ToString()) == false)
+                    {
+                        AddMultiValueRelation(assetType, asset, "RegressionSuites", sdr["RegressionSuites"].ToString());
+                    }
+
 
                     //HACK: For Rally import, needs to be refactored.
                     IAttributeDefinition categoryAttribute = assetType.GetAttributeDefinition("Category");

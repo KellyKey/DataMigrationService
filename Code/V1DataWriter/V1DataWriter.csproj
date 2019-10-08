@@ -102,6 +102,7 @@
     <Compile Include="ImportCustomFields.cs" />
     <Compile Include="ImportDefects.cs" />
     <Compile Include="ImportEmbeddedImages.cs" />
+    <Compile Include="ImportEnvironments.cs" />
     <Compile Include="ImportEpics.cs" />
     <Compile Include="ImportFeatureGroups.cs" />
     <Compile Include="ImportGoals.cs" />

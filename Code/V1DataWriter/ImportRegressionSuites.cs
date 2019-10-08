@@ -27,15 +27,16 @@ namespace V1DataWriter
             {
                 try
                 {
+                    //RegressionSuites do not have a Scope
                     //SPECIAL CASE: Orphaned RegressionPlans that has no assigned scope, fail to import.
-                    if (String.IsNullOrEmpty(sdr["Scope"].ToString()))
-                    {
-                        UpdateImportStatus("RegressionSuites", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "RegressionSuite has no scope.");
-                        _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count: " + ++skippedCount);
-                        continue;
-                    }
+                    //if (String.IsNullOrEmpty(sdr["Scope"].ToString()))
+                    //{
+                    //    UpdateImportStatus("RegressionSuites", sdr["AssetOID"].ToString(), ImportStatuses.FAILED, "RegressionSuite has no scope.");
+                    //    _logger.Info("Asset: " + sdr["AssetOID"].ToString() + " Skipped - Count: " + ++skippedCount);
+                    //    continue;
+                    //}
 
-                    IAssetType assetType = _metaAPI.GetAssetType("RegressionSuites");
+                    IAssetType assetType = _metaAPI.GetAssetType("RegressionSuite");
                     Asset asset = _dataAPI.New(assetType, null);
 
                     IAttributeDefinition fullNameAttribute = assetType.GetAttributeDefinition("Name");
@@ -47,13 +48,11 @@ namespace V1DataWriter
                     string newDescription = SetEmbeddedImageContent(sdr["Description"].ToString(), targetURL);
                     asset.SetAttributeValue(descAttribute, newDescription);
 
-                    IAttributeDefinition scopeAttribute = assetType.GetAttributeDefinition("Scope");
-                    asset.SetAttributeValue(scopeAttribute, GetNewAssetOIDFromDB(sdr["Scope"].ToString()));
+                    IAttributeDefinition regressionPlanAttribute = assetType.GetAttributeDefinition("RegressionPlan");
+                    asset.SetAttributeValue(regressionPlanAttribute, GetNewAssetOIDFromDB(sdr["RegressionPlan"].ToString()));
 
-                    if (String.IsNullOrEmpty(sdr["Owners"].ToString()) == false)
-                    {
-                        AddMultiValueRelation(assetType, asset, "Members", "Owners", sdr["Owners"].ToString());
-                    }
+                    IAttributeDefinition ownerAttribute = assetType.GetAttributeDefinition("Owner");
+                    asset.SetAttributeValue(ownerAttribute, GetNewAssetOIDFromDB(sdr["Owners"].ToString()));
 
                     IAttributeDefinition referenceAttribute = assetType.GetAttributeDefinition("Reference");
                     asset.SetAttributeValue(referenceAttribute, sdr["Reference"].ToString());

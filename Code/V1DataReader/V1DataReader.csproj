@@ -96,6 +96,8 @@
     <Compile Include="ExportConversations.cs" />
     <Compile Include="ExportCustomFields.cs" />
     <Compile Include="ExportEmbeddedImages.cs" />
+    <Compile Include="ExportEnvironments.cs" />
+    <Compile Include="ExportGoals.cs" />
     <Compile Include="ExportLinks.cs" />
     <Compile Include="ExportListTypes.cs" />
     <Compile Include="ExportManager.cs" />
@@ -111,7 +113,6 @@
     <Compile Include="ExportDefects.cs" />
     <Compile Include="ExportEpics.cs" />
     <Compile Include="ExportFeatureGroups.cs" />
-    <Compile Include="ExportGoals.cs" />
     <Compile Include="ExportIssues.cs" />
     <Compile Include="ExportIterations.cs" />
     <Compile Include="ExportMemberGroups.cs" />

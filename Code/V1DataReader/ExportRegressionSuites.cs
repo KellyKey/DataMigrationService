@@ -31,9 +31,6 @@ namespace V1DataReader
             IAttributeDefinition descriptionAttribute = assetType.GetAttributeDefinition("Description");
             query.Selection.Add(descriptionAttribute);
 
-            IAttributeDefinition estimateAttribute = assetType.GetAttributeDefinition("Estimate");
-            query.Selection.Add(estimateAttribute);
-
             IAttributeDefinition ownersAttribute = assetType.GetAttributeDefinition("Owner");
             query.Selection.Add(ownersAttribute);
 
@@ -89,7 +86,6 @@ namespace V1DataReader
                         cmd.Parameters.AddWithValue("@AssetNumber", GetScalerValue(asset.GetAttribute(assetNumberAttribute)));
                         cmd.Parameters.AddWithValue("@Owners", GetMultiRelationValues(asset.GetAttribute(ownersAttribute)));
                         cmd.Parameters.AddWithValue("@Description", GetScalerValue(asset.GetAttribute(descriptionAttribute)));
-                        cmd.Parameters.AddWithValue("@Estimate", GetScalerValue(asset.GetAttribute(estimateAttribute)));
                         cmd.Parameters.AddWithValue("@Name", GetScalerValue(asset.GetAttribute(nameAttribute)));
                         cmd.Parameters.AddWithValue("@Reference", GetSingleRelationValue(asset.GetAttribute(referenceAttribute)));
                         cmd.Parameters.AddWithValue("@TaggedWith", GetMultiRelationValues(asset.GetAttribute(taggedWithAttribute)));
@@ -99,7 +95,7 @@ namespace V1DataReader
                         cmd.ExecuteNonQuery();
                     }
                     assetCounter++;
-                    _logger.Info("Regression Plan: added - Count = {0}", assetCounter);
+                    _logger.Info("Regression Suite: added - Count = {0}", assetCounter);
                 }
                 query.Paging.Start = assetCounter;
             } while (assetCounter != assetTotal);
@@ -115,19 +111,18 @@ namespace V1DataReader
             sb.Append("AssetNumber,");
             sb.Append("Owners,");
             sb.Append("Description,");
-            sb.Append("Estimate,");
             sb.Append("Name,");
             sb.Append("Reference,");
             sb.Append("TaggedWith,");
             sb.Append("RegressionPlan,");
             sb.Append("RegressionTests,");
             sb.Append("TestSets) ");
+            sb.Append("VALUES (");
             sb.Append("@AssetOID,");
             sb.Append("@AssetState,");
             sb.Append("@AssetNumber,");
             sb.Append("@Owners,");
             sb.Append("@Description,");
-            sb.Append("@Estimate,");
             sb.Append("@Name,");
             sb.Append("@Reference,");
             sb.Append("@TaggedWith,");
