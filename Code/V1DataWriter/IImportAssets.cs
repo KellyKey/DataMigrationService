@@ -264,8 +264,18 @@ namespace V1DataWriter
 
         protected string GetNewAssetOIDFromDB(string CurrentAssetOID, string AssetType)
         {
+            string newValue = null; 
 
-            string assetName = GetTableNameForAsset(CurrentAssetOID);
+            if (CurrentAssetOID.Contains("DefectSeverity"))
+            {
+                newValue = "ListType";
+            }
+            else
+            {
+                newValue = CurrentAssetOID;
+            }
+
+            string assetName = GetTableNameForAsset(newValue);
 
             //var value;
             if (String.IsNullOrEmpty(CurrentAssetOID) == false)
@@ -779,6 +789,8 @@ namespace V1DataWriter
                 tableName = "RegressionPlans";
             else if (CurrentAssetOID.Contains("RegressionSuite"))
                 tableName = "RegressionSuites";
+            else if (CurrentAssetOID.Contains("Environment"))
+                tableName = "Environments";
             else if (CurrentAssetOID.Length < 1)
                 tableName = "";
             else

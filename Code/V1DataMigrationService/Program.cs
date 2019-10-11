@@ -1161,6 +1161,14 @@ namespace V1DataMigrationService
                 _logger.Info("-> Closed {0} tasks.", assetCount);
             }
 
+            if (_config.AssetsToMigrate.Find(i => i.Name == "TestSets").Enabled == true)
+            {
+                _logger.Info("Closing TestSets.");
+                ImportTestSets testSets = new ImportTestSets(_sqlConn, _targetMetaAPI, _targetDataAPI, _config);
+                assetCount = testSets.CloseTestSets();
+                _logger.Info("-> Closed {0} TestSets.", assetCount);
+            }
+
             if (_config.AssetsToMigrate.Find(i => i.Name == "Defects").Enabled == true)
             {
                 _logger.Info("Closing defects.");
