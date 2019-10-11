@@ -41,8 +41,8 @@ namespace V1DataWriter
                         IAssetType assetType = _metaAPI.GetAssetType(sdr["AssetType"].ToString());
                         Asset asset = _dataAPI.New(assetType, null);
 
-                        IAttributeDefinition fullNameAttribute = assetType.GetAttributeDefinition("Name");
-                        asset.SetAttributeValue(fullNameAttribute, sdr["Name"].ToString());
+                        IAttributeDefinition teamAttribute = assetType.GetAttributeDefinition("Team");
+                        asset.SetAttributeValue(teamAttribute, GetNewAssetOIDFromDB(sdr["Team"].ToString()));
 
                         IAttributeDefinition descAttribute = assetType.GetAttributeDefinition("Description");
                         asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
