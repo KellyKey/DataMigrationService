@@ -58,6 +58,20 @@ namespace V1DataWriter
             return sdr;
         }
 
+        protected SqlDataReader GetImportDataFromDBTableWhereManagerNotNull(string TableName)
+        {
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK);";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) order by Order;";
+            string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where Manager != 'NULL';";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'FAILED';";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus = 'Waiting';";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where ImportStatus is null;";
+            //string SQL = "SELECT * FROM " + TableName + " WITH (NOLOCK) where Hash is not null;";
+            SqlCommand cmd = new SqlCommand(SQL, _sqlConn);
+            SqlDataReader sdr = cmd.ExecuteReader();
+            return sdr;
+        }
+
         //protected DataTableReader GetImportDataFromDBTableDTR(string TableName)
         //{
         //    DataTable dt = new DataTable();

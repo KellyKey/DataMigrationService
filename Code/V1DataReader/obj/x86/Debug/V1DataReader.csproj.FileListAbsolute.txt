@@ -90,3 +90,4 @@ C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\obj\x86\Debug\V1DataReader.
 C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\obj\x86\Debug\V1DataReader.csproj.CopyComplete
 C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\obj\x86\Debug\V1DataReader.dll
 C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\obj\x86\Debug\V1DataReader.pdb
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataReader\bin\x86\Debug\V1DataReader.dll.config

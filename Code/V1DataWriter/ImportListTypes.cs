@@ -41,11 +41,24 @@ namespace V1DataWriter
                         IAssetType assetType = _metaAPI.GetAssetType(sdr["AssetType"].ToString());
                         Asset asset = _dataAPI.New(assetType, null);
 
+                        IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Name");
+                        asset.SetAttributeValue(nameAttribute, sdr["Name"].ToString());
+
                         IAttributeDefinition teamAttribute = assetType.GetAttributeDefinition("Team");
-                        asset.SetAttributeValue(teamAttribute, GetNewAssetOIDFromDB(sdr["Team"].ToString()));
+                        string teamOID = GetNewAssetOIDFromDB(sdr["Team"].ToString());
+
+                        if (String.IsNullOrEmpty(teamOID) == false )
+                        { 
+                            asset.SetAttributeValue(teamAttribute, teamOID );
+                        }
 
                         IAttributeDefinition descAttribute = assetType.GetAttributeDefinition("Description");
                         asset.SetAttributeValue(descAttribute, sdr["Description"].ToString());
+
+                        IAttributeDefinition colorAttribute = assetType.GetAttributeDefinition("ColorName");
+                        asset.SetAttributeValue(colorAttribute, "watermelon");
+                        //Not In Staging Yet but is a required field so hard coding for now
+                        //asset.SetAttributeValue(descAttribute, sdr["ColorName"].ToString());
 
                         _dataAPI.Save(asset);
                         UpdateNewAssetOIDAndStatus("ListTypes", sdr["AssetOID"].ToString(), asset.Oid.Momentless.ToString(), ImportStatuses.IMPORTED, "List type imported.");

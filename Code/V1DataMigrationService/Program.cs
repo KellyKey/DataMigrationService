@@ -1415,7 +1415,6 @@ namespace V1DataMigrationService
                 IAssetType scopeType = _sourceMetaAPI.GetAssetType("Scope");
                 _logger.Info("Test - Testing URI - SUCCESS");
 
-
                 _logger.Info("Test - Testing Token - Pulling Data");
                 Oid projectId = _sourceDataAPI.GetOid("Scope:0");
                 IAssetType defectType = _sourceMetaAPI.GetAssetType("Defect");
@@ -1497,7 +1496,7 @@ namespace V1DataMigrationService
                     _targetDataConnector = V1Connector
                         .WithInstanceUrl(_config.V1TargetConnection.Url)
                         .WithUserAgentHeader("V1DataMigration", "1.0")
-                        .WithAccessToken(_config.V1TargetConnection.AccessToken.Trim())
+                        .WithAccessToken(_config.V1TargetConnection.AccessToken)
                         .Build();
 
                     //Version 15.1 upgrade...no need for .UseEndpoint
@@ -1522,24 +1521,17 @@ namespace V1DataMigrationService
                 _targetDataAPI = new Services(_targetDataConnector);
                 _targetMetaAPI = _targetDataAPI.Meta;
 
-                IAssetType assetType = _targetMetaAPI.GetAssetType("Member");
-                Query query = new Query(assetType);
-                IAttributeDefinition nameAttribute = assetType.GetAttributeDefinition("Username");
-                query.Selection.Add(nameAttribute);
-                FilterTerm idFilter = new FilterTerm(nameAttribute);
-                idFilter.Equal(_config.V1TargetConnection.Username);
-                query.Filter = idFilter;
-                QueryResult result = _targetDataAPI.Retrieve(query);
-                if (result.TotalAvaliable > 0)
-                {
-                    _logger.Info("-> Connection to V1 target instance \"{0}\" verified.", _config.V1TargetConnection.Url);
-                    _logger.Debug("-> V1 target instance version: {0}.", _targetDataAPI.Meta.ToString());
-                    MigrationStats.WriteStat(_sqlConn, "Target API Version", _targetDataAPI.Meta.ToString());
-                }
-                else
-                {
-                    throw new Exception(String.Format("Unable to validate connection to {0} with username {1}. You may not have permission to access this instance.", _config.V1TargetConnection.Url, _config.V1TargetConnection.Username));
-                }
+                _logger.Info("Test - Testing URI - Pulling Meta");
+                _logger.Info("Test - Meta Data is:  " + (MetaModel)_targetMetaAPI); 
+                IAssetType assetType = _targetMetaAPI.GetAssetType("Scope");
+                _logger.Info("Test - Testing URI - SUCCESS");
+
+                _logger.Info("Test - Testing Token - Pulling Data");
+                Oid projectId = _targetDataAPI.GetOid("Scope:0");
+                IAssetType defectType = _targetMetaAPI.GetAssetType("Defect");
+                Asset NewScope = _targetDataAPI.New(defectType, projectId);
+                _logger.Info("Test - Testing Token - SUCCESS");
+
             }
             catch (Exception ex)
             {

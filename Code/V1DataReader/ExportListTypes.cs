@@ -49,6 +49,9 @@ namespace V1DataReader
                     IAttributeDefinition descriptionAttribute = assetType.GetAttributeDefinition("Description");
                     query.Selection.Add(descriptionAttribute);
 
+                    IAttributeDefinition colorAttribute = assetType.GetAttributeDefinition("ColorName");
+                    query.Selection.Add(colorAttribute);
+
                     QueryResult result = _dataAPI.Retrieve(query);
 
                     string SQL = BuildListTypeInsertStatement();
@@ -71,6 +74,7 @@ namespace V1DataReader
                             }
                             cmd.Parameters.AddWithValue("@AssetState", GetScalerValue(asset.GetAttribute(assetStateAttribute)));
                             cmd.Parameters.AddWithValue("@Description", GetScalerValue(asset.GetAttribute(descriptionAttribute)));
+                            cmd.Parameters.AddWithValue("@ColorName", GetScalerValue(asset.GetAttribute(colorAttribute)));
                             if (listType.Name.Equals("StoryStatus"))
                             {
                                 cmd.Parameters.AddWithValue("@Team", GetSingleRelationValue(asset.GetAttribute(teamAttribute)));
@@ -95,6 +99,7 @@ namespace V1DataReader
             sb.Append("AssetType,");
             sb.Append("AssetState,");
             sb.Append("Description,");
+            sb.Append("ColorName,");
             if (listTypeName.Equals("StoryStatus"))
             {
                 sb.Append("Team,");
@@ -105,6 +110,7 @@ namespace V1DataReader
             sb.Append("@AssetType,");
             sb.Append("@AssetState,");
             sb.Append("@Description,");
+            sb.Append("@ColorName,");
             if (listTypeName.Equals("StoryStatus"))
             {
                 sb.Append("@Team,");

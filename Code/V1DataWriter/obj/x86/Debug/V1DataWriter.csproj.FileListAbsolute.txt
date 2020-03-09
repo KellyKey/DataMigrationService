@@ -90,3 +90,4 @@ C:\Users\kkey\source\repos\NewRepo\Code\V1DataWriter\obj\x86\Debug\V1DataWriter.
 C:\Users\kkey\source\repos\NewRepo\Code\V1DataWriter\obj\x86\Debug\V1DataWriter.csproj.CopyComplete
 C:\Users\kkey\source\repos\NewRepo\Code\V1DataWriter\obj\x86\Debug\V1DataWriter.dll
 C:\Users\kkey\source\repos\NewRepo\Code\V1DataWriter\obj\x86\Debug\V1DataWriter.pdb
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataWriter\bin\x86\Debug\V1DataWriter.dll.config

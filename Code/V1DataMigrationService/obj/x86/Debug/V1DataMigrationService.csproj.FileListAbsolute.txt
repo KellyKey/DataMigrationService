@@ -142,3 +142,5 @@ C:\Users\kkey\source\repos\NewRepo\Code\V1DataMigrationService\obj\x86\Debug\V1D
 C:\Users\kkey\source\repos\NewRepo\Code\V1DataMigrationService\obj\x86\Debug\V1DataMigrationService.csproj.CopyComplete
 C:\Users\kkey\source\repos\NewRepo\Code\V1DataMigrationService\obj\x86\Debug\V1DataMigrationService.exe
 C:\Users\kkey\source\repos\NewRepo\Code\V1DataMigrationService\obj\x86\Debug\V1DataMigrationService.pdb
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataMigrationService\bin\x86\Debug\V1DataReader.dll.config
+C:\Users\kkey\source\repos\NewRepo\Code\V1DataMigrationService\bin\x86\Debug\V1DataWriter.dll.config
