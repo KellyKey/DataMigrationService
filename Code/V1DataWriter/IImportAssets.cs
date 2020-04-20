@@ -1057,7 +1057,7 @@ namespace V1DataWriter
 
                     importCount++;
                     _logger.Info("-> Imported {0} Embedded image", importCount);
-                    return embeddedImageOID.ToString();
+                    return embeddedImageOID.Momentless.ToString();
                 }
                 catch (Exception ex)
                 {
